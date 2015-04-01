@@ -17,6 +17,7 @@ namespace Game{
 		public PlayerController playerController;
 
 		GMap myMap;
+		GRoom myRoom;
 
 		void Start ()
 		{
@@ -27,8 +28,7 @@ namespace Game{
 		// Update is called once per frame
 		void Update ()
 		{
-			playerCharacter.KUpdate ();
-			playerController.KUpdate ();
+			KUpdate ();
 		}
 		
 		void Event_PlayerEnterDoor(int n){
@@ -57,6 +57,12 @@ namespace Game{
 		}
 		void LinkRoom(GRoom room){
 			room.Event_EnterDoor = Event_PlayerEnterDoor;
+		}
+
+		void KUpdate(){
+			playerCharacter.KUpdate ();
+			playerController.KUpdate ();
+			//myRoom.KUpdate ();
 		}
 
 	}

@@ -102,9 +102,11 @@ namespace Game{
 		{
 		
 		}
-		// Update is called once per frame
-		void Update ()
+		public void KUpdate ()
 		{
+			for(int i =0 ; i < myEntities.Count;i++){
+				myEntities[i].KUpdate();
+			}
 		
 		}
 	}
