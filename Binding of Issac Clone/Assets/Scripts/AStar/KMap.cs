@@ -1,0 +1,88 @@
+using UnityEngine;
+using System.Collections.Generic;
+
+namespace AStar{
+	public class KMap{
+		int[][] dicAround = new int[][]{
+			new int[]{0,1},new int[]{1,1},new int[]{1,0},new int[]{1,-1},
+			new int[]{0,-1},new int[]{-1,-1},new int[]{-1,0},new int[]{-1,1}
+		};
+		int width, height;
+		Node nodeFinal;
+		Node[,] mapNodes;
+		List<Node> nodesFree = new List<Node> ();
+		Vector2 from, to;
+		
+		public KMap(int w, int h){
+			this.width = w;
+			this.height = h;
+			mapNodes = new Node[w, h];
+			for (int i = 0; i < w; i++)
+				for (int j = 0; j < h; j++)
+					mapNodes [i, j] = new Node (i,j);
+		}
+
+		public Node GetPath(Vector2 from, Vector2 to){
+			this.from = from;
+			this.to = to;
+			PrepareForNewSearch ();
+			for (int i = 0; i < 100; i++)
+				if (Iterate ())
+					break;
+			return nodeFinal;
+		}
+		void PrepareForNewSearch(){
+			nodesFree = new List<Node> ();
+			nodesFree.Add(mapNodes[(int)from.x,(int)from.y] );
+			for (int i = 0; i < width; i++)
+				for (int j = 0; j< height; j++)
+					mapNodes [i, j].Reset ();
+		}
+		bool Iterate(){
+			var nodeNow = GetLowestNode (nodesFree);
+			if (nodeNow.x == (int)to.x && nodeNow.y == (int)to.y) {
+				nodeFinal = nodeNow;
+				return true;
+			}
+			AddNodesAround (nodeNow, mapNodes, nodesFree);
+
+			return false;//failed to find the target
+		}
+		Node GetLowestNode(List<Node> list){
+			var priceOld = 99999.0f;
+			Node n = null;
+			int index = -1;
+			for (int i = 0; i<list.Count; i++) {
+				var priceNew= list[i].value + list[i].valueAccumulated;
+				if(priceNew < priceOld){
+					index = i;
+					priceOld = priceNew;
+					n = list[i];
+				}
+			}
+			if (index != -1) list.RemoveAt (index);
+			return n;
+		}
+		void AddNodesAround(Node n, Node[,] map, List<Node> nodesFree){
+			for (int i = 0; i < 8; i++) {
+				int xNew = n.x + dicAround[i][0],
+					yNew = n.y + dicAround[i][1];
+				if(xNew<0 ||yNew<0 || xNew >= width ||yNew >= height) continue;
+				var nodeNew = map[xNew,yNew];
+				if(!nodeNew.isAlive || nodeNew.isAdded ) continue;
+				nodeNew.isAdded = true;
+				nodeNew.nodePrevious = n;
+				CalculateValue(nodeNew,n);
+				nodesFree.Add(nodeNew);
+			}
+		}
+		void CalculateValue(Node nBefore, Node nAfter){
+			nBefore.valueAccumulated = nAfter.valueAccumulated + 1;
+			nBefore.value = 
+				nBefore.valueInternal 
+				+ (to - new Vector2(nBefore.x,nBefore.y)).sqrMagnitude;
+		}
+
+
+	}
+}
