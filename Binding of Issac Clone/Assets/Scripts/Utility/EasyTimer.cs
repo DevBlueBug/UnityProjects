@@ -7,26 +7,26 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using Game.Entity;
-using System.Collections.Generic;
-namespace Game
+using System;
+namespace Utility
 {
-	public class GTheme : UnityEngine.MonoBehaviour
+	public class EasyTimer
 	{
-		[System.Serializable]
-		public class GThemeRoom{
-			public GEntity Floor,Wall_Boundry,Door;
+		float time,timeMax;
+		public EasyTimer (float timeInit, float timeMax)
+		{
+			this.time = timeInit;
+			this.timeMax = timeMax;
 		}
-		[System.Serializable]
-		public class GThemeEntities{
-			public List<GEntity> Simple;
+		public bool Tick(float timeElapsed){
+			time += timeElapsed;
+			bool done = time > timeMax;
+			if (done) {
+				time = 0;
+				return true;
+			}
+			return false;
 		}
-
-		public GThemeRoom Room;
-		public GThemeEntities Entities;
-
-
-
 	}
 }
 

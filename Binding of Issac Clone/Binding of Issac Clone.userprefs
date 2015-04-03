@@ -1,17 +1,23 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Game\GameMaster.cs">
     <Files>
-      <File FileName="Assets\Scripts\Game\Data\DMapGenerator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\GameMaster.cs" Line="65" Column="6" />
-      <File FileName="Assets\Scripts\Game\Data\DMapDecorator.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\Data\DRoom.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\Data\DEntity.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\Data\DMap.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\GEntityPack.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\GMap.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\GRoom.cs" Line="22" Column="3" />
+      <File FileName="Binding of Issac Clone.sln" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\GRoom.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Game\GTheme.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\Entity\Behavior\GBehavior.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\Entity\Task\GTask.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\Entity\Task\GTaskMove.cs" Line="25" Column="1" />
+      <File FileName="Assets\Scripts\Utility\EasyTimer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\Entity\Behavior\GBhvFollowPlayer.cs" Line="36" Column="28" />
+      <File FileName="Assets\Scripts\Game\GameMaster.cs" Line="35" Column="37" />
+      <File FileName="Assets\Scripts\Game\GRoomGenerator.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\GMap.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\Entity\GEntity.cs" Line="13" Column="17" />
+      <File FileName="Assets\Scripts\Game\Data\DMap.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\Data\DMapDecorator.cs" Line="15" Column="44" />
+      <File FileName="Assets\Scripts\AStar\KMap.cs" Line="29" Column="20" />
+      <File FileName="Assets\Scripts\Game\Data\DMapGenerator.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

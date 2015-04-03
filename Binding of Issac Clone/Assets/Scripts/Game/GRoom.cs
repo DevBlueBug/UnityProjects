@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 using Game.Entity;
+
 namespace Game{
 	public class GRoom : MonoBehaviour
 	{
@@ -13,34 +14,34 @@ namespace Game{
 			{2, new Vector3(.5f, 0, 0)},
 			{3, new Vector3(0, 0,.5f)}
 		};
-		//prefabs
-		public GEntity 
-			Entity_Floor,
-			Entity_Boundry,
-			Entity_Door;
-
-
-		public Vector2 Index;
+		
 		public Delegates.D_EnteredDoor Event_EnterDoor = delegate(int w){Debug.Log("HEY " + w);};
+		
+		public int width,height;
+		public Vector2 Index;
+		public AStar.KMap mapAstar;
 
-		int width,height;
 
-		GEntity myFloor;
-		List<GEntity> myEntities;
-		GEntity[,] mapEntities; 
-	
+		public GEntity myFloor;
+		public List<GEntity> myEntities;
+		public GEntity[,] mapEntities; 
+		
+		public int X {get{return (int)Index.x;}}
+		public int Y {get{return (int)Index.y;}}
+		
+		public GRoom SetSize(int width,int height){
+			this.width = width;
+			this.height = height;
+			mapEntities = new GEntity[width, height];
+			mapAstar = new AStar.KMap (width, height);
+			return this;
 
-		public GRoom Init(Data.DRoom r){
-			this.width = r.width;
-			this.height = r.height;
+		}
+
+		public GRoom Init(int x, int y, int w, int h){
+			Index = new Vector2 (x, y);
+			SetSize (w,h);
 			myEntities = new List<GEntity> ();
-			mapEntities = new GEntity[r.width, r.height];
-			myFloor = Instantiate (Entity_Floor);
-			myFloor.transform.parent = this.transform;
-			myFloor.scale = new Vector3 (r.width, 1, r.height);
-			myFloor.position = new Vector3 (r.width * .5f-.5f , 0, r.height *.5f-.5f);
-			AddBoundries (Entity_Boundry, r.width, r.height);
-			AddDoors (r.doors, Entity_Door, r.width, r.height);
 			return this;
 		}
 		public void AddBoundries(GEntity E_Boundry, int w, int h){
@@ -53,35 +54,22 @@ namespace Game{
 				AddMap (E_Boundry, w-1, i,0);
 			}
 		}
-		public void AddDoors(bool[] isDoored, GEntity entity, int w, int h){
-			Vector3[] positions = new Vector3[]{
-				new Vector3(w / 2, h - 1, 2),new Vector3(w -1, h /2, 3),
-				new Vector3(w /2, 0,0 ),new Vector3( 0, h /2,1 )
-			};
-			for (int i = 0; i < 4; i++) {
-				if(isDoored[i]){
-					int n = i;
-					AddMap(entity,(int)positions[i].x,(int)positions[i].y,(int)positions[i].z)
-					.E_TriggerEnter += delegate {
-						Event_EnterDoor(n);
-					};
-				}
-
-			}
+		public void AddDoor(GEntity entity, int x, int y, int dirLooking, int dirHeaded){
+			AddMap (entity, x, y, dirLooking);
+			entity.E_TriggerEnter += delegate{Event_EnterDoor (dirHeaded);};
 		}
 		public GEntity AddMap(GEntity entity, int x , int y, int dirLooking){
 			if (mapEntities [x, y] != null) {
 				mapEntities [x, y].Kill();
+				myEntities.Remove(mapEntities[x,y]);
 			}
-			mapEntities [x, y] = Instantiate (entity);
-			mapEntities [x, y].transform.parent = this.transform;
-			mapEntities [x, y].position = new Vector3 (x, 0, y);
-			mapEntities [x, y].rotation = new Vector3 (0, 180 + 90 * dirLooking,0);
-			return mapEntities [x, y];
+			mapAstar [x, y].isAlive = false;
+			mapEntities [x, y] = entity;
+			AddSimple (entity,x,y,dirLooking);
+			return entity;
 		}
 		
-		public GEntity AddSimple(GEntity entity, int x , int y, int dirLooking){
-			var e = Instantiate (entity);
+		public GEntity AddSimple(GEntity e, int x , int y, int dirLooking){
 			e.transform.parent = this.transform;
 			e.position = new Vector3 (x, 0, y);
 			e.rotation = new Vector3 (0, 180 + 90 * dirLooking,0);
@@ -105,7 +93,7 @@ namespace Game{
 		public void KUpdate ()
 		{
 			for(int i =0 ; i < myEntities.Count;i++){
-				myEntities[i].KUpdate();
+				myEntities[i].KUpdate(this);
 			}
 		
 		}
