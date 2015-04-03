@@ -12,12 +12,16 @@ namespace Game.Data
 				Decorate (r);
 		}
 		void Decorate(DRoom room){
-			var e = new DEntity ();
-			e.myType = (DEntity.MyType)UnityEngine.Random.Range(0,2);
-			e.x = 2+UnityEngine.Random.Range(0,3);
-			e.y = 2+UnityEngine.Random.Range(0,3);
-			e.id = 0;
-			room.entities.Add(e);
+			int n =  UnityEngine.Random.Range (1, 10);
+			//int n =  1;
+			for (int i = 0; i< n; i++) {
+				var e = new DEntity ();
+				e.myType = (DEntity.MyType)UnityEngine.Random.Range(0,2);
+				e.x = UnityEngine.Random.Range(1,room.width-1);
+				e.y = UnityEngine.Random.Range(1,room.height-1);
+				e.id = 0;
+				room.entities.Add(e);
+			}
 
 		}
 	}

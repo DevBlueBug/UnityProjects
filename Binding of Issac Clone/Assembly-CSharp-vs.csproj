@@ -53,13 +53,18 @@
      <Compile Include="Assets\Scripts\Game\Data\DMapDecorator.cs" />
      <Compile Include="Assets\Scripts\Game\Data\DMapGenerator.cs" />
      <Compile Include="Assets\Scripts\Game\Data\DRoom.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Behavior\GBehavior.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Behavior\GBhvFollowPlayer.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\GEntity.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\GEntityDelegates.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\GWorld.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Task\GTask.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Task\GTaskMove.cs" />
      <Compile Include="Assets\Scripts\Game\GEntityPack.cs" />
      <Compile Include="Assets\Scripts\Game\GMap.cs" />
      <Compile Include="Assets\Scripts\Game\GRoom.cs" />
      <Compile Include="Assets\Scripts\Game\GRoomDelegates.cs" />
+     <Compile Include="Assets\Scripts\Game\GRoomGenerator.cs" />
      <Compile Include="Assets\Scripts\Game\GTheme.cs" />
      <Compile Include="Assets\Scripts\Game\GameMaster.cs" />
      <Compile Include="Assets\Scripts\Game\PlayerController.cs" />
@@ -88,6 +93,7 @@
      <Compile Include="Assets\Scripts\GameLogic\ProjectileBase.cs" />
      <Compile Include="Assets\Scripts\Linker.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\Utility\EasyTimer.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

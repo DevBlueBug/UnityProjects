@@ -7,21 +7,22 @@ namespace Game{
 	
 	public class GameMaster : MonoBehaviour
 	{
+		public static Entity.GEntity Player;
 		public int[][] dirClockwise = new int[][]{
 			new int[]{0,1},new int[]{1,0},new int[]{0,-1},new int[]{-1,0}
 		};
 		//Settings 
 		//different designs of rooms for "theme"
 		public List<GTheme> Themes;
-		public Entity.GEntity playerCharacter; 
+		public Entity.GEntity playerEntity; 
 		public PlayerController playerController;
 
 		GMap myMap;
-		GRoom myRoom;
 
 		void Start ()
 		{
-			playerController.myEntity = playerCharacter;
+			playerController.myEntity = playerEntity;
+			Player = playerEntity;
 			LoadNewLevel ();
 		}
 		
@@ -32,11 +33,10 @@ namespace Game{
 		}
 		
 		void Event_PlayerEnterDoor(int n){
-			//Debug.Log ("EVENT_PLAYER_ENTER_DOOR " + n);
 			var dir = dirClockwise [n];
-			int newRoomX = myMap.roomAt_X + dir [0],
-				newRoomY = myMap.roomAt_Y + dir [1];
-			LoadRoom (newRoomX, newRoomY);
+			int x = myMap.roomActive.X + dir [0],
+			y = myMap.roomActive.Y + dir [1];
+			LoadRoom (myMap.Load (x, y));
 		}
 
 
@@ -44,24 +44,18 @@ namespace Game{
 			var dataMap = new Game.Data.DMapGenerator ()
 				.GenerateMap (10, 10, 30);
 			var theme = Themes [Random.Range (0, Themes.Count)];
-
-			myMap = new GMap ().Init (dataMap, theme.room,theme.entityPack );
-			LoadRoom (myMap.width / 2, myMap.height / 2);
-			//LinkRoom( myMap.DEBUG_ACTIVE_RANDOM_ROOM ());
-			//myMap.roomActive.AddPlayer (playerCharacter, -1);
+			myMap = GMap.Generate (theme, dataMap);
+			//myMap.roomActive.AddPlayer (playerEntity,-1);
+			LoadRoom (myMap.roomActive);
 		}
-		void LoadRoom(int x, int y){
-			var room = myMap.ActiveRoom (x, y);
-			LinkRoom (room);
-			room.AddPlayer (playerCharacter,-1);
-		}
-		void LinkRoom(GRoom room){
+		void LoadRoom(GRoom room){
 			room.Event_EnterDoor = Event_PlayerEnterDoor;
+			room.AddPlayer (playerEntity,-1);
 		}
-
 		void KUpdate(){
-			playerCharacter.KUpdate ();
+			playerEntity.KUpdate (myMap.roomActive);
 			playerController.KUpdate ();
+			myMap.KUpdate ();
 			//myRoom.KUpdate ();
 		}
 

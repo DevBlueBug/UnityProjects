@@ -12,7 +12,9 @@ namespace AStar{
 		Node[,] mapNodes;
 		List<Node> nodesFree = new List<Node> ();
 		Vector2 from, to;
-		
+		public Node this[int x, int y]{
+			get{ return mapNodes [x, y];}
+		}
 		public KMap(int w, int h){
 			this.width = w;
 			this.height = h;
@@ -23,23 +25,28 @@ namespace AStar{
 		}
 
 		public Node GetPath(Vector2 from, Vector2 to){
+			this.nodeFinal = null;
 			this.from = from;
 			this.to = to;
 			PrepareForNewSearch ();
-			for (int i = 0; i < 100; i++)
+			for (int i = 0; i < 10; i++)
 				if (Iterate ())
 					break;
 			return nodeFinal;
 		}
 		void PrepareForNewSearch(){
 			nodesFree = new List<Node> ();
-			nodesFree.Add(mapNodes[(int)from.x,(int)from.y] );
 			for (int i = 0; i < width; i++)
 				for (int j = 0; j< height; j++)
 					mapNodes [i, j].Reset ();
+
+			mapNodes [(int)from.x, (int)from.y].isAdded = true;
+			nodesFree.Add(mapNodes[(int)from.x,(int)from.y] );
+
 		}
 		bool Iterate(){
 			var nodeNow = GetLowestNode (nodesFree);
+			//Debug.Log(nodeNow.x + " " + nodeNow.y);
 			if (nodeNow.x == (int)to.x && nodeNow.y == (int)to.y) {
 				nodeFinal = nodeNow;
 				return true;
