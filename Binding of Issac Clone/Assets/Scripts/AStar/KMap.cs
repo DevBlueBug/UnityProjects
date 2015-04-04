@@ -3,9 +3,15 @@ using System.Collections.Generic;
 
 namespace AStar{
 	public class KMap{
+		/**
 		int[][] dicAround = new int[][]{
 			new int[]{0,1},new int[]{1,1},new int[]{1,0},new int[]{1,-1},
 			new int[]{0,-1},new int[]{-1,-1},new int[]{-1,0},new int[]{-1,1}
+		};
+		**/
+		int[][] dicAround = new int[][]{
+			new int[]{0,1},new int[]{1,0},
+			new int[]{0,-1},new int[]{-1,0}
 		};
 		int width, height;
 		Node nodeFinal;
@@ -29,7 +35,7 @@ namespace AStar{
 			this.from = from;
 			this.to = to;
 			PrepareForNewSearch ();
-			for (int i = 0; i < 10; i++)
+			for (int i = 0; i < 30; i++)
 				if (Iterate ())
 					break;
 			return nodeFinal;
@@ -71,7 +77,7 @@ namespace AStar{
 			return n;
 		}
 		void AddNodesAround(Node n, Node[,] map, List<Node> nodesFree){
-			for (int i = 0; i < 8; i++) {
+			for (int i = 0; i < dicAround.Length; i++) {
 				int xNew = n.x + dicAround[i][0],
 					yNew = n.y + dicAround[i][1];
 				if(xNew<0 ||yNew<0 || xNew >= width ||yNew >= height) continue;
@@ -84,7 +90,9 @@ namespace AStar{
 			}
 		}
 		void CalculateValue(Node nBefore, Node nAfter){
-			nBefore.valueAccumulated = nAfter.valueAccumulated + 1;
+			nBefore.valueAccumulated = nAfter.valueAccumulated 
+					+ Mathf.Abs(nAfter.x - nBefore.x)
+					+ Mathf.Abs(nAfter.y - nBefore.y);
 			nBefore.value = 
 				nBefore.valueInternal 
 				+ (to - new Vector2(nBefore.x,nBefore.y)).sqrMagnitude;

@@ -7,22 +7,19 @@ namespace Game{
 	
 	public class GameMaster : MonoBehaviour
 	{
-		public static Entity.GEntity Player;
 		public int[][] dirClockwise = new int[][]{
 			new int[]{0,1},new int[]{1,0},new int[]{0,-1},new int[]{-1,0}
 		};
 		//Settings 
 		//different designs of rooms for "theme"
 		public List<GTheme> Themes;
-		public Entity.GEntity playerEntity; 
-		public PlayerController playerController;
 
 		GMap myMap;
+		public GPlayer player;
 
 		void Start ()
 		{
-			playerController.myEntity = playerEntity;
-			Player = playerEntity;
+
 			LoadNewLevel ();
 		}
 		
@@ -50,11 +47,11 @@ namespace Game{
 		}
 		void LoadRoom(GRoom room){
 			room.Event_EnterDoor = Event_PlayerEnterDoor;
-			room.AddPlayer (playerEntity,-1);
+			player.EnterRoom (room);
+
 		}
 		void KUpdate(){
-			playerEntity.KUpdate (myMap.roomActive);
-			playerController.KUpdate ();
+			player.KUpdate (myMap.roomActive);
 			myMap.KUpdate ();
 			//myRoom.KUpdate ();
 		}

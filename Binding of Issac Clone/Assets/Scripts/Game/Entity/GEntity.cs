@@ -11,7 +11,9 @@ namespace Game.Entity{
 	{
 		public D_TriggerEnter E_TriggerEnter = delegate{};
 		public D_TriggerExit E_TriggerExit = delegate{};
+		public D_Attack E_Attack = delegate {};
 		public Rigidbody body;
+		public Vector3 rot = new Vector3();
 		public float 
 			hp,
 			velo,veloMax;
@@ -45,31 +47,38 @@ namespace Game.Entity{
 		}
 		
 		public void AddTask(GTask task){
+			task.Init (this);
 			this.myTasks.Add (task);
 		}
 		public void AddForce(Vector3 force){
 			forceToAdd += force;
 		}
+		void Start(){
+			HelperIterateInit (myBehaviors);
+			HelperIterateInit (myTasks);
 
+		}
 		void FixedUpdate () {
 			FixedUpdate_VelocityForce ();
 		}
+
+		public void HelperIterateInit<T> (List<T> components) 
+		where T:IEntityComponent{
+			if (components.Count == 0) return;
+			components [0].Init ( this);
+		}
+		public void HelperIterate<T> (List<T> components,GRoom room) 
+		where T:IEntityComponent{
+			if (components.Count == 0) return;
+			components [0].KUpdate (this, room);
+			if (!components [0].IsAlive)
+				components.RemoveAt (0);
+		}
 		public virtual void KUpdate (GRoom room)
 		{
-			{
-				if (myBehaviors.Count == 0)
-					return;
-				myBehaviors [0].KUpdate (this, room);
-				if (!myBehaviors [0].isAlive)
-					myBehaviors.RemoveAt (0);
-			}
-			{
-				if (myTasks.Count == 0)
-					return;
-				myTasks [0].KUpdate (this, room);
-				if (!myTasks [0].isAlive)
-					myTasks.RemoveAt (0);
-			}
+			this.rotation = rot;
+			HelperIterate (myBehaviors,room);
+			HelperIterate (myTasks,room);
 		}
 
 		
@@ -82,6 +91,10 @@ namespace Game.Entity{
 				//Debug.Log(myUnit.body.velocity);
 			}
 			forceToAdd = new Vector3 ();
+		}
+		public virtual void Attack(Vector3 direction){
+			E_Attack (direction);
+
 		}
 		public virtual void Kill(){
 			GameObject.Destroy (this.gameObject);

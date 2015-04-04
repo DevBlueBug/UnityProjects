@@ -3,7 +3,7 @@ namespace Game.Entity.Task
 {
 	public class GTaskMove :GTask
 	{
-		public static float MinDistance = .04f;
+		public static float MinDistance = .01f;
 		Vector3 position;
 		public GTaskMove (Vector3 position)
 		{

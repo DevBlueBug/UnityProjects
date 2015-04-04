@@ -3,21 +3,28 @@ using System.Collections.Generic;
 
 namespace Game.Entity.Task
 {
-	public class GTask
+	public class GTask : IEntityComponent
 	{
 		public bool isAlive =true;
+		public bool IsAlive{ get { return isAlive; } }
+		public List<GTask> otehrs = new List<GTask>();
+		//List<IEntityComponent> OthersToUpdate { get{return others;} }
 
-		public List<GTask> otherTasks = new List<GTask>();
+		public virtual bool TestIsAlive (GEntity entity, GRoom room)
+		{
+			return true;
+		}
+		
+		public virtual void Init(GEntity entity){
+		}
 		public void KUpdate(GEntity entity, GRoom room){
 			isAlive = TestIsAlive (entity, room);
 			if (!isAlive) return;
-			for(int i = 0 ; i < otherTasks.Count;i++){
-				otherTasks[i].KUpdate(entity,room);
+			
+			for(int i = 0 ; i < otehrs.Count;i++){
+				otehrs[i].KUpdate(entity,room);
 			}
 			Do (entity, room);
-		}
-		public virtual bool TestIsAlive(GEntity entity, GRoom room){
-			return isAlive;
 		}
 		public virtual void Do(GEntity entity, GRoom room){
 		}

@@ -12,16 +12,28 @@ using Utility;
 using System.Collections.Generic;
 namespace Game.Entity.Behavior
 {
-	public class GBehavior : MonoBehaviour
+	public class GBehavior : MonoBehaviour,IEntityComponent
 	{
 		public bool isAlive =true;
+		public bool IsAlive { get { return this.isAlive; } }
+	
 
-
-		public List<GBehavior> otherBhr = new List<GBehavior>();
-
+		
+		public List<GBehavior> others = new List<GBehavior>();
+		
+		public virtual bool TestIsAlive (GEntity entity, GRoom room)
+		{
+			return true;
+		}
+		
+		public virtual void Init(GEntity entity){
+		}
 		public void KUpdate(GEntity entity, GRoom room){
-			for(int i = 0 ; i < otherBhr.Count;i++){
-				otherBhr[i].KUpdate(entity,room);
+			isAlive = TestIsAlive (entity, room);
+			if (!isAlive) return;
+			
+			for(int i = 0 ; i < others.Count;i++){
+				others[i].KUpdate(entity,room);
 			}
 			Do (entity, room);
 		}

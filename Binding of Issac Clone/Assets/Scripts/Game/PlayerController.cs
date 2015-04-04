@@ -14,12 +14,20 @@ namespace Game{
 			public KeyCode key;
 			public Vector2 dir; 
 		}
-		static Dictionary<KeyCode,Vector3> inputKeyboard = new Dictionary<KeyCode, Vector3>()
+		static Dictionary<KeyCode,Vector3> inputKeyboardMove = new Dictionary<KeyCode, Vector3>()
 		{
 			{KeyCode.W, new Vector3(0,0,1)},
 			{KeyCode.D, new Vector3(1,0,0)},
 			{KeyCode.S, new Vector3(0,0,-1)},
 			{KeyCode.A, new Vector3(-1,0,0) }
+		};
+		
+		static Dictionary<KeyCode,Vector3> inputKeyboardAttack = new Dictionary<KeyCode, Vector3>()
+		{
+			{KeyCode.I, new Vector3(0,0,1)},
+			{KeyCode.L, new Vector3(1,0,0)},
+			{KeyCode.K, new Vector3(0,0,-1)},
+			{KeyCode.J, new Vector3(-1,0,0) }
 		};
 
 		public GEntity myEntity;
@@ -51,13 +59,22 @@ namespace Game{
 		void UpdateKeyBoard_Movement(){
 			//move
 			Vector3 direction = Vector2.zero;
-			foreach (var k in inputKeyboard) {
+			foreach (var k in inputKeyboardMove) {
 				if(Input.GetKey(k.Key) ) direction += k.Value;
 			}
 			if (direction.sqrMagnitude == 0)
 				return;
 			direction.Normalize ();
 			myEntity.AddForce (myEntity.velo * direction);
+		}
+		
+		void UpdateKeyBoard_Attack(){
+			foreach (var k in inputKeyboardMove) {
+				if(Input.GetKey(k.Key) ) {
+					myEntity.Attack(k.Value);
+					return;
+				}
+			}
 		}
 
 	}

@@ -22,19 +22,19 @@ namespace Game.Entity.Behavior
 		public override void Do (GEntity entity, GRoom room)
 		{
 			if (!timer.Tick (Time.deltaTime)) return;
-			
-			//Debug.Log ("HI");
+
 			var node = room.mapAstar.GetPath (
 				new Vector2 ( Mathf.RoundToInt(entity.position.x),Mathf.RoundToInt(entity.position.z)),
-			new Vector2 (Mathf.RoundToInt(GameMaster.Player.position.x),
-			             Mathf.RoundToInt(GameMaster.Player.position.z)));
-
+				new Vector2 (Mathf.RoundToInt(GPlayer.Entity.position.x),
+			             Mathf.RoundToInt(GPlayer.Entity.position.z)));
+			if (node == null)
+				return;
 
 			System.Collections.Generic.Stack<Vector2> positions = new System.Collections.Generic.Stack<Vector2> ();
 
 			int count = 0;
 			while (node.nodePrevious != null && count++ < 20) {
-				//Debug.Log("node was at " + node.x + " "  + node.y + " , " + count);
+
 				positions.Push(new Vector2(node.x,node.y));
 				node = node.nodePrevious;
 			}
@@ -42,6 +42,7 @@ namespace Game.Entity.Behavior
 			entity.myTasks = new System.Collections.Generic.List<GTask> ();
 			while (positions.Count > 0 && count++ < 20) {
 				var p = positions.Pop();
+				//Debug.Log("node was at " + p.x + " "  + p.y + " , " + count);
 				entity.AddTask( new GTaskMove(new Vector3(p.x,0,p.y) ) );
 			}
 			return;
