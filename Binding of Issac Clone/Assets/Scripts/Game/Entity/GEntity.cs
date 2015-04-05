@@ -9,11 +9,24 @@ using Game.Entity.Behavior;
 namespace Game.Entity{
 	public class GEntity : MonoBehaviour
 	{
-		public D_TriggerEnter E_TriggerEnter = delegate{};
-		public D_TriggerExit E_TriggerExit = delegate{};
 		public D_Attack E_Attack = delegate {};
+		public D_Birth E_Birth = delegate {};
+		public D_Kill E_Killed = delegate{};
+		public D_OnCollisionEnter E_OnCollisionEnter = delegate{};
+		public D_OnSwitchEnter E_OnTriggerEnter = delegate{};
+
+		public static int IdCount = 0;
+
+		public enum MyType{World,Player,Enemy};
+		//identity
+		public int id; // will be assinged auto
+		public MyType myType;
 		public Rigidbody body;
-		public Vector3 rot = new Vector3();
+		public Collider myCollider;
+		public Collider myColliderSwitch;
+
+		//Status
+		public bool isAlive = true;
 		public float 
 			hp,
 			velo,veloMax;
@@ -21,6 +34,54 @@ namespace Game.Entity{
 		public List<GBehavior> myBehaviors = new List<GBehavior> ();
 		public List<GTask> myTasks = new List<GTask>();
 
+		//saved
+		Vector3 rot = new Vector3();
+
+		
+		public virtual void Awake(){
+			HelperIterateInit (myBehaviors);
+			HelperIterateInit (myTasks);
+			id = IdCount++;
+			
+		}
+		
+		public virtual void Start(){
+		}
+
+		void FixedUpdate () {
+			FixedUpdate_VelocityForce ();
+		}
+		
+		public virtual void KUpdate (GRoom room)
+		{
+			if (!isAlive) return;
+
+
+			this.rotation = rot;
+			HelperIterate (myBehaviors,room);
+			HelperIterate (myTasks,room);
+
+			if (hp <= 0) {
+				Kill();
+				return;
+			}
+		
+		}
+
+		//helpers
+		public void HelperIterateInit<T> (List<T> components)where T:IEntityComponent{
+
+			if (components.Count == 0) return;
+			components [0].Init ( this);
+		}
+		public void HelperIterate<T> (List<T> components,GRoom room) where T:IEntityComponent{
+		
+			if (components.Count == 0) return;
+			components [0].KUpdate (this, room);
+			if (!components [0].IsAlive)
+				components.RemoveAt (0);
+		}
+		//getSet
 		public Vector3 position{
 			get{ return this.transform.localPosition;}
 			set{ this.transform.localPosition = value;}
@@ -30,8 +91,9 @@ namespace Game.Entity{
 			set{ this.transform.localScale = value;}
 		}
 		public Vector3 rotation{
-			get{ return this.transform.localRotation.eulerAngles;}
-			set{ this.transform.localRotation = Quaternion.Euler(value);}
+			get{ return rot;}
+			set{this.rot = value; 
+				this.transform.localRotation = Quaternion.Euler(rot);}
 		}
 		public GEntity SetPosition(Vector3 value){
 			this.position = value;
@@ -53,35 +115,15 @@ namespace Game.Entity{
 		public void AddForce(Vector3 force){
 			forceToAdd += force;
 		}
-		void Start(){
-			HelperIterateInit (myBehaviors);
-			HelperIterateInit (myTasks);
-
-		}
-		void FixedUpdate () {
-			FixedUpdate_VelocityForce ();
+		public void AddBehavior(GBehavior bhv){
+			myBehaviors.Add (bhv);
+			bhv.transform.parent = this.transform;
+			bhv.transform.position = this.transform.position;
+			bhv.Init (this);
 		}
 
-		public void HelperIterateInit<T> (List<T> components) 
-		where T:IEntityComponent{
-			if (components.Count == 0) return;
-			components [0].Init ( this);
-		}
-		public void HelperIterate<T> (List<T> components,GRoom room) 
-		where T:IEntityComponent{
-			if (components.Count == 0) return;
-			components [0].KUpdate (this, room);
-			if (!components [0].IsAlive)
-				components.RemoveAt (0);
-		}
-		public virtual void KUpdate (GRoom room)
-		{
-			this.rotation = rot;
-			HelperIterate (myBehaviors,room);
-			HelperIterate (myTasks,room);
-		}
 
-		
+		//FunctionCalls
 		void FixedUpdate_VelocityForce(){
 			if (body.velocity.sqrMagnitude + forceToAdd.sqrMagnitude == 0)
 				return;
@@ -92,18 +134,20 @@ namespace Game.Entity{
 			}
 			forceToAdd = new Vector3 ();
 		}
-		public virtual void Attack(Vector3 direction){
-			E_Attack (direction);
+		public virtual void Attack(int n){
+			E_Attack (this,n);
 
 		}
 		public virtual void Kill(){
+			this.isAlive = false;
+			E_Killed (this);
 			GameObject.Destroy (this.gameObject);
 		}
-		void OnTriggerEnter(Collider c){
-			E_TriggerEnter (c);
+		public virtual void OnCollisionEnter(Collision c){
+			this.E_OnCollisionEnter (this, c);
 		}
-		void OnTriggerExit(Collider c){
-			E_TriggerExit (c);
+		public virtual void OnTriggerEnter(Collider c){
+			this.E_OnTriggerEnter (this, c);
 		}
 
 	}

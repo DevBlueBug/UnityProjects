@@ -33,6 +33,7 @@ namespace Game{
 			var dir = dirClockwise [n];
 			int x = myMap.roomActive.X + dir [0],
 			y = myMap.roomActive.Y + dir [1];
+			myMap.roomActive.UnLinkEntity (player.myEntitiy);
 			LoadRoom (myMap.Load (x, y));
 		}
 
@@ -48,6 +49,7 @@ namespace Game{
 		void LoadRoom(GRoom room){
 			room.Event_EnterDoor = Event_PlayerEnterDoor;
 			player.EnterRoom (room);
+			myMap.roomActive.LinkEntity (player.myEntitiy);
 
 		}
 		void KUpdate(){

@@ -40,6 +40,9 @@ namespace AStar{
 					break;
 			return nodeFinal;
 		}
+		public void Reset(int x, int y){
+			this.mapNodes [x, y] = new Node (x, y);
+		}
 		void PrepareForNewSearch(){
 			nodesFree = new List<Node> ();
 			for (int i = 0; i < width; i++)

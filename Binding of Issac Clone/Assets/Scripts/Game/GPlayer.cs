@@ -9,29 +9,37 @@
 //------------------------------------------------------------------------------
 using UnityEngine;
 using Game.Entity;
+using Game.Entity.Behavior;
 namespace Game
 {
 	public class GPlayer : MonoBehaviour
 	{
-		public static GEntity Entity;
-		public GEntity myEntitiy;
+		public static GEntity PlayerEntity;
+		public static Vector3 PlayerPosition;
+
+		public GEntity P_PlayerBase;
+		public GBehavior behaviorPlayer;
 		public PlayerController playerController;
-		public GEntity myBullet;
 
-		void Start(){
-			GPlayer.Entity = myEntitiy;
+		public GEntity myEntitiy;
+
+		void Awake(){
+			myEntitiy = GetNewPlayer ();
 			playerController.myEntity = myEntitiy;
-			myEntitiy.E_Attack = Attack;
 
+		}
+		public GEntity GetNewPlayer(){
+			var player = Instantiate (P_PlayerBase);
+			player.AddBehavior (Instantiate(behaviorPlayer));
+			return player;
 		}
 		public void KUpdate(GRoom room){
-			
+			if (myEntitiy == null) return;
 			myEntitiy.KUpdate (room);
+			GPlayer.PlayerPosition = myEntitiy.position;
+
 			playerController.KUpdate ();
 
-		}
-		public void Attack(Vector3 direction){
-			
 		}
 
 		public void EnterRoom (GRoom room)

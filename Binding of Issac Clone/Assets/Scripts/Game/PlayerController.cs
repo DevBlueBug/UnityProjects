@@ -22,12 +22,12 @@ namespace Game{
 			{KeyCode.A, new Vector3(-1,0,0) }
 		};
 		
-		static Dictionary<KeyCode,Vector3> inputKeyboardAttack = new Dictionary<KeyCode, Vector3>()
+		static Dictionary<KeyCode,int> inputKeyboardAttack = new Dictionary<KeyCode, int>()
 		{
-			{KeyCode.I, new Vector3(0,0,1)},
-			{KeyCode.L, new Vector3(1,0,0)},
-			{KeyCode.K, new Vector3(0,0,-1)},
-			{KeyCode.J, new Vector3(-1,0,0) }
+			{KeyCode.I, 0},
+			{KeyCode.L, 1},
+			{KeyCode.K, 2},
+			{KeyCode.J, 3 }
 		};
 
 		public GEntity myEntity;
@@ -37,8 +37,7 @@ namespace Game{
 			bool isDesktop = true;
 			if (isDesktop)
 				E_InputUpdate = this.UpdateKeyboard;
-			else
-				;
+
 		}
 
 		// Use this for initialization
@@ -55,6 +54,7 @@ namespace Game{
 		
 		void UpdateKeyboard(){
 			UpdateKeyBoard_Movement ();
+			UpdateKeyBoard_Attack ();
 		}
 		void UpdateKeyBoard_Movement(){
 			//move
@@ -69,8 +69,8 @@ namespace Game{
 		}
 		
 		void UpdateKeyBoard_Attack(){
-			foreach (var k in inputKeyboardMove) {
-				if(Input.GetKey(k.Key) ) {
+			foreach (var k in inputKeyboardAttack) {
+				if(Input.GetKeyDown(k.Key) ) {
 					myEntity.Attack(k.Value);
 					return;
 				}

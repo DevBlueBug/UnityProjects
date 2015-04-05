@@ -15,29 +15,46 @@ namespace Game.Entity.Behavior
 	public class GBehavior : MonoBehaviour,IEntityComponent
 	{
 		public bool isAlive =true;
+		public bool isContinueUpdating = true;
+
 		public bool IsAlive { get { return this.isAlive; } }
 	
 
 		
 		public List<GBehavior> others = new List<GBehavior>();
-		
+
+
+		public virtual void Start(){}
 		public virtual bool TestIsAlive (GEntity entity, GRoom room)
 		{
 			return true;
 		}
 		
 		public virtual void Init(GEntity entity){
+			foreach (var o in others)
+				o.Init (entity);
 		}
-		public void KUpdate(GEntity entity, GRoom room){
+		public virtual void KUpdate(GEntity entity, GRoom room){
 			isAlive = TestIsAlive (entity, room);
 			if (!isAlive) return;
-			
-			for(int i = 0 ; i < others.Count;i++){
-				others[i].KUpdate(entity,room);
-			}
+
+			UpdateTheRest (others,entity, room);
 			Do (entity, room);
 		}
 		public virtual void Do(GEntity entity, GRoom room){
+		}
+		protected void UpdateTheRest(List<GBehavior> bhvs,GEntity entity, GRoom room){
+			
+			for(int i = 0 ; i < bhvs.Count;i++){
+				bhvs[i].KUpdate(entity,room);
+				if(!bhvs[i].isAlive){
+					bhvs.RemoveAt(i);
+					continue;
+				}
+				if(!bhvs[i].isContinueUpdating ) break;
+
+			}
+
 		}
 	}
 }

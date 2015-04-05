@@ -1,18 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Game\Entity\Behavior\GBhvShoot.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Game\Entity\Behavior\GBhvApplyForce.cs">
     <Files>
-      <File FileName="Binding of Issac Clone.sln" Line="41" Column="1" />
-      <File FileName="Assets\Scripts\Game\GRoom.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\GTheme.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\Entity\Behavior\GBhvFollowPlayer.cs" Line="32" Column="4" />
-      <File FileName="Assets\Scripts\Game\Entity\Task\GTask.cs" Line="7" Column="3" />
-      <File FileName="Assets\Scripts\Game\Entity\IEntityComponent.cs" Line="18" Column="22" />
-      <File FileName="Assets\Scripts\Game\Entity\Behavior\GBehavior.cs" Line="31" Column="47" />
-      <File FileName="c:\Users\KyungHwan\Desktop\GitHub\DevBlueBug\UnityProjects\Binding of Issac Clone\Assets\Scripts\Game\Entity\GEntity.cs" Line="70" Column="45" />
-      <File FileName="c:\Users\KyungHwan\Desktop\GitHub\DevBlueBug\UnityProjects\Binding of Issac Clone\Assets\Scripts\Game\Entity\Task\GTaskMove.cs" Line="12" Column="24" />
-      <File FileName="Assets\Scripts\Game\Entity\GEntityDelegates.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\Entity\Behavior\GBhvShoot.cs" Line="8" Column="27" />
+      <File FileName="Assets\Scripts\Game\Entity\Behavior\GBhvApplyForce.cs" Line="10" Column="19" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

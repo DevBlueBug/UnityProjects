@@ -12,21 +12,14 @@ using Utility;
 using Game.Entity.Task;
 namespace Game.Entity.Behavior
 {
-	public class GBhvFollowPlayer : GBehavior
+	public class GBhvFollowPlayer : GBhvTimer	
 	{
-		public float interval; //smaller the unit more accurate 
-		EasyTimer timer;
-		public void Start(){
-			timer = new EasyTimer (999, interval);
-		}
 		public override void Do (GEntity entity, GRoom room)
 		{
-			if (!timer.Tick (Time.deltaTime)) return;
-
 			var node = room.mapAstar.GetPath (
 				new Vector2 ( Mathf.RoundToInt(entity.position.x),Mathf.RoundToInt(entity.position.z)),
-				new Vector2 (Mathf.RoundToInt(GPlayer.Entity.position.x),
-			             Mathf.RoundToInt(GPlayer.Entity.position.z)));
+				new Vector2 (Mathf.RoundToInt(GPlayer.PlayerPosition.x),
+			             Mathf.RoundToInt(GPlayer.PlayerPosition.z)));
 			if (node == null)
 				return;
 
