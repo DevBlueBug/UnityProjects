@@ -12,8 +12,13 @@ namespace Game.Entity.Behavior
 {
 	public class GBhvApplyForce : GBehavior
 	{
-		public GBhvApplyForce ()
+		public GameObject positionFrom;
+		public float force;
+		public override void Do (GEntity entity, GRoom room)
 		{
+			base.Do (entity, room);
+			var dir = (entity.transform.position - positionFrom.transform.position);
+			entity.body.AddForce(new Vector3 (dir.x, 0, dir.z).normalized*force);
 		}
 	}
 }

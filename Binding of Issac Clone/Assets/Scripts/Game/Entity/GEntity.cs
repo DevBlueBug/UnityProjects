@@ -9,11 +9,13 @@ using Game.Entity.Behavior;
 namespace Game.Entity{
 	public class GEntity : MonoBehaviour
 	{
+		public D_FixedUpdate E_FixedUpdate = delegate {};
 		public D_Attack E_Attack = delegate {};
 		public D_Birth E_Birth = delegate {};
 		public D_Kill E_Killed = delegate{};
 		public D_OnCollisionEnter E_OnCollisionEnter = delegate{};
-		public D_OnSwitchEnter E_OnTriggerEnter = delegate{};
+		public D_OnTriggerEnter E_OnTriggerEnter = delegate{};
+		public D_OnTriggerStay E_OnTriigerStay = delegate {};
 
 		public static int IdCount = 0;
 
@@ -26,17 +28,19 @@ namespace Game.Entity{
 		public Collider myColliderSwitch;
 
 		//Status
+		public bool isDebug = false;
 		public bool isAlive = true;
 		public float 
 			hp,
-			velo,veloMax;
-		Vector3 forceToAdd;
+			velo;
+		public GTask taskCurrent = null;
 		public List<GBehavior> myBehaviors = new List<GBehavior> ();
 		public List<GTask> myTasks = new List<GTask>();
 
+
+
 		//saved
 		Vector3 rot = new Vector3();
-
 		
 		public virtual void Awake(){
 			HelperIterateInit (myBehaviors);
@@ -48,24 +52,40 @@ namespace Game.Entity{
 		public virtual void Start(){
 		}
 
-		void FixedUpdate () {
-			FixedUpdate_VelocityForce ();
+		public virtual void KFixedUpdate (GRoom room) {
+			if (taskCurrent != null && taskCurrent.isAlive)
+				taskCurrent.KFixedUpdate (this, room);
 		}
 		
 		public virtual void KUpdate (GRoom room)
 		{
+			if(isDebug)Debug.Log (gameObject.name +  " " + body.velocity);
 			if (!isAlive) return;
 
 
 			this.rotation = rot;
 			HelperIterate (myBehaviors,room);
-			HelperIterate (myTasks,room);
+			UpdateTasks (room);
 
 			if (hp <= 0) {
 				Kill();
 				return;
 			}
 		
+		}
+		public void UpdateTasks(GRoom room){
+			if (taskCurrent == null || !taskCurrent.isAlive) {
+				if(myTasks.Count ==0) return;
+				taskCurrent = myTasks[0];
+				taskCurrent.Init(this);
+				myTasks.RemoveAt(0);
+				return;
+			}
+			taskCurrent.KUpdate (this, room);
+			if (!taskCurrent.IsAlive) {
+				taskCurrent.Kill(this);
+			}
+
 		}
 
 		//helpers
@@ -78,8 +98,10 @@ namespace Game.Entity{
 		
 			if (components.Count == 0) return;
 			components [0].KUpdate (this, room);
-			if (!components [0].IsAlive)
+			if (!components [0].IsAlive) {
+				components[0].Kill(this);
 				components.RemoveAt (0);
+			}
 		}
 		//getSet
 		public Vector3 position{
@@ -112,9 +134,6 @@ namespace Game.Entity{
 			task.Init (this);
 			this.myTasks.Add (task);
 		}
-		public void AddForce(Vector3 force){
-			forceToAdd += force;
-		}
 		public void AddBehavior(GBehavior bhv){
 			myBehaviors.Add (bhv);
 			bhv.transform.parent = this.transform;
@@ -122,18 +141,7 @@ namespace Game.Entity{
 			bhv.Init (this);
 		}
 
-
 		//FunctionCalls
-		void FixedUpdate_VelocityForce(){
-			if (body.velocity.sqrMagnitude + forceToAdd.sqrMagnitude == 0)
-				return;
-			body.velocity+=  forceToAdd / body.mass * Time.fixedTime;
-			if (body.velocity.sqrMagnitude > veloMax*veloMax) {
-				body.velocity = body.velocity.normalized * veloMax;
-				//Debug.Log(myUnit.body.velocity);
-			}
-			forceToAdd = new Vector3 ();
-		}
 		public virtual void Attack(int n){
 			E_Attack (this,n);
 
@@ -148,6 +156,9 @@ namespace Game.Entity{
 		}
 		public virtual void OnTriggerEnter(Collider c){
 			this.E_OnTriggerEnter (this, c);
+		}
+		public virtual void OnTriggerStay(Collider c){
+			this.E_OnTriigerStay (this, c);
 		}
 
 	}

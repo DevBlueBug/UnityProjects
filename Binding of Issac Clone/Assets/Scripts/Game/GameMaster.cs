@@ -28,6 +28,9 @@ namespace Game{
 		{
 			KUpdate ();
 		}
+		void FixedUpdate(){
+			KFixedUpdate ();
+		}
 		
 		void Event_PlayerEnterDoor(int n){
 			var dir = dirClockwise [n];
@@ -51,6 +54,10 @@ namespace Game{
 			player.EnterRoom (room);
 			myMap.roomActive.LinkEntity (player.myEntitiy);
 
+		}
+		void KFixedUpdate(){
+			player.KFixedUpdate (myMap.roomActive);
+			myMap.KFixedUpdate ();
 		}
 		void KUpdate(){
 			player.KUpdate (myMap.roomActive);

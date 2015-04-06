@@ -15,6 +15,18 @@ namespace Game{
 			get{return map[x,y];}
 			set{ map [x, y] = value;}
 		}
+
+		
+		public void KFixedUpdate(){
+			roomActive.KFixedUpdate ();
+		}
+		public void KUpdate ()
+		{
+			roomActive.KUpdate ();
+			
+		}
+
+
 		public static GMap Generate(GTheme theme, Data.DMap data){
 			GMap map = new GMap ();
 			map.Init (data.width, data.height);
@@ -48,12 +60,6 @@ namespace Game{
 				roomActive.gameObject.SetActive (false);
 			map [room.X, room.Y] = room;
 			Load (room.X, room.Y);
-		}
-		
-		public void KUpdate ()
-		{
-			roomActive.KUpdate ();
-			
 		}
 
 		public GRoom DEBUG_ACTIVE_RANDOM_ROOM(){

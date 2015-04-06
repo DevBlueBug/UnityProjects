@@ -43,6 +43,11 @@ namespace Game{
 		{
 			
 		}
+		public void KFixedUpdate(){
+			for(int i =0 ; i < myEntities.Count;i++){
+				myEntities[i].KFixedUpdate(this);
+			}
+		}
 		public void KUpdate ()
 		{
 			for(int i =0 ; i < myEntities.Count;i++){

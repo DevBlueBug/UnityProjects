@@ -7,8 +7,9 @@ namespace Game.Entity.Behavior
 	public class GBhvOnHitbox : GBehavior
 	{
 		public bool 
-			isCollision,
-			isTrigger,
+			isCollisionEnter,
+			isTriggerEnter,
+			isTriggerStay,
 
 			isHitWorld,
 			isHitPlayer, 
@@ -19,17 +20,13 @@ namespace Game.Entity.Behavior
 		List<string> tagsToCheck  = new List<string>();
 		List<GEntity> entititesCollided = new List<GEntity> ();
 
-		
+
 		public override void Init (GEntity entity)
 		{
 			base.Init (entity);
 			foreach (var b in onBehaviorsMe) b.Init (entity);
 			foreach (var b in onBehaviorsOther) b.Init (entity);
-			if (isCollision)
-				entity.E_OnCollisionEnter += Hdr_OnCollisionEnter;
-			if (isTrigger) {
-				entity.E_OnTriggerEnter += Hdr_OnTriggerEnter;
-			}
+			Link (entity);
 
 			if (isHitWorld)
 				tagsToCheck.Add (GameTags.World);
@@ -37,12 +34,31 @@ namespace Game.Entity.Behavior
 				tagsToCheck.Add (GameTags.Player);
 			if (isHitEnemy)
 				tagsToCheck.Add (GameTags.Enemy);
-
 		}
-
-		public override void Start ()
+		public override void Kill (GEntity entity)
 		{
-			base.Start ();
+			UnLink (entity);
+			base.Kill (entity);
+		}
+		public void Link(GEntity entity){
+			if (isCollisionEnter)
+				entity.E_OnCollisionEnter += Hdr_OnCollision;
+			if (isTriggerEnter) {
+				entity.E_OnTriggerEnter += Hdr_OnTrigger;
+			}
+			if (isTriggerStay) {
+				entity.E_OnTriigerStay += Hdr_OnTrigger;
+			}
+		}
+		public void UnLink(GEntity entity){
+			if (isCollisionEnter)
+				entity.E_OnCollisionEnter -= Hdr_OnCollision;
+			if (isTriggerEnter) {
+				entity.E_OnTriggerEnter -= Hdr_OnTrigger;
+			}
+			if (isTriggerStay) {
+				entity.E_OnTriigerStay -= Hdr_OnTrigger;
+			}
 		}
 		public bool IsTagCorrect(GameObject o){
 
@@ -53,10 +69,10 @@ namespace Game.Entity.Behavior
 
 			return false;
 		}
-		public void Hdr_OnCollisionEnter(GEntity entity, Collision c){
+		public void Hdr_OnCollision(GEntity entity, Collision c){
 			Hdr_Collision (entity, c.gameObject);
 		}
-		public void Hdr_OnTriggerEnter(GEntity entity, Collider c){
+		public void Hdr_OnTrigger(GEntity entity, Collider c){
 			Hdr_Collision (entity, c.gameObject);
 		}
 		public void Hdr_Collision(GEntity me, GameObject other){

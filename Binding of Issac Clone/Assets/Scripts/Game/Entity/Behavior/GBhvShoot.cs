@@ -11,8 +11,9 @@ namespace Game.Entity.Behavior{
 		public List<GBehavior> behaviorsToAdd; //behaviors that will be added to the entity
 		//create the entity
 		//copy then add all the behavior to the new bullet model
-
+		public float force;
 		public GameObject posFrom;
+
 
 		public override void Start ()
 		{
@@ -28,7 +29,7 @@ namespace Game.Entity.Behavior{
 			var obj = GetEntity(P_Entity, behaviorsToAdd);
 			obj.rotation = entity.rotation;
 			obj.transform.position = posFrom.transform.position;
-			obj.AddForce ((posFrom.transform.position - entity.transform.position) * 10);
+			obj.body.AddForce ((posFrom.transform.position - entity.transform.position) * force);
 			entity.E_Birth (entity, obj);
 		}
 		GEntity GetEntity(GEntity Prefab, List<GBehavior> bhvs){

@@ -19,6 +19,7 @@ namespace Game.Entity
 
 		bool TestIsAlive (GEntity entity, GRoom room);
 		void Init (GEntity entity);
+		void Kill(GEntity entity);
 		void KUpdate (GEntity entity, GRoom room);
 		void Do (GEntity entity, GRoom room);
 	}

@@ -33,6 +33,13 @@ namespace Game
 			player.AddBehavior (Instantiate(behaviorPlayer));
 			return player;
 		}
+
+		public void KFixedUpdate (GRoom roomActive)
+		{
+			myEntitiy.KFixedUpdate (roomActive);
+			playerController.KFixedUpdate ();
+		}
+
 		public void KUpdate(GRoom room){
 			if (myEntitiy == null) return;
 			myEntitiy.KUpdate (room);

@@ -34,6 +34,8 @@ namespace Game.Entity.Behavior
 			foreach (var o in others)
 				o.Init (entity);
 		}
+		public virtual void Kill(GEntity entity){
+		}
 		public virtual void KUpdate(GEntity entity, GRoom room){
 			isAlive = TestIsAlive (entity, room);
 			if (!isAlive) return;

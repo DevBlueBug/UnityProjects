@@ -9,15 +9,31 @@ namespace Game.Entity.Task
 		{
 			this.position = position;
 		}
+		
+		public override void KFixedUpdate (GEntity entity, GRoom room)
+		{
+			base.KFixedUpdate (entity, room);
+			Move (entity, room);
+		}
+
+
+		public override void Init (GEntity entity)
+		{
+			base.Init (entity);
+		}
+		public override void Kill (GEntity entity)
+		{
+			base.Kill (entity);
+		}
 		public override bool TestIsAlive (GEntity entity, GRoom room)
 		{
 			return (position - entity.position).sqrMagnitude > MinDistance;
 		}
-		public override void Do (GEntity entity, GRoom room)
-		{
-			var distance = position - entity.position;
-			if (!isAlive) return;
-			entity.AddForce (distance.normalized * entity.velo);
+		public void Move(GEntity entity, GRoom room){
+			if (!entity.isAlive) return;
+			entity.body.AddForce (
+				(position - entity.position).normalized 
+			                      * entity.velo);
 		}
 	}
 }

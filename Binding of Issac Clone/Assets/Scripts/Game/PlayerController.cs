@@ -45,15 +45,19 @@ namespace Game{
 		{
 		
 		}
+		public Vector3 myVelocity;
 		// Update is called once per frame
 		public virtual void KUpdate ()
 		{
+			myVelocity = myEntity.body.velocity;
 			E_InputUpdate ();
 		
 		}
+		public virtual void KFixedUpdate(){
+			UpdateKeyBoard_Movement ();
+		}
 		
 		void UpdateKeyboard(){
-			UpdateKeyBoard_Movement ();
 			UpdateKeyBoard_Attack ();
 		}
 		void UpdateKeyBoard_Movement(){
@@ -65,7 +69,9 @@ namespace Game{
 			if (direction.sqrMagnitude == 0)
 				return;
 			direction.Normalize ();
-			myEntity.AddForce (myEntity.velo * direction);
+			myEntity.body.AddForce (direction*myEntity.velo );
+			//myEntity.body.AddForce (speedNeeded * myEntity.body.mass);
+			//myEntity.AddForce (myEntity.velo * direction);
 		}
 		
 		void UpdateKeyBoard_Attack(){
