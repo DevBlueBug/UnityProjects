@@ -33,6 +33,7 @@ namespace Game.Entity.Behavior
 			}
 			count = 0;
 			entity.myTasks = new System.Collections.Generic.List<GTask> ();
+			entity.taskCurrent = null;
 			while (positions.Count > 0 && count++ < 20) {
 				var p = positions.Pop();
 				//Debug.Log("node was at " + p.x + " "  + p.y + " , " + count);

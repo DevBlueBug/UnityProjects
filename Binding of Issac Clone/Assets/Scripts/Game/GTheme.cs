@@ -15,7 +15,10 @@ namespace Game
 	{
 		[System.Serializable]
 		public class GThemeRoom{
-			public GEntity Floor,Wall_Boundry,Door;
+			public GEntity 
+				Floor,
+				Wall_Boundry;
+			public GEntItem Door;
 		}
 		[System.Serializable]
 		public class GThemeEntities{

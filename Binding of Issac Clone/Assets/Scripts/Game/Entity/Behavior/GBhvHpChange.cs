@@ -16,7 +16,7 @@ namespace Game.Entity.Behavior
 		public override void Do (GEntity entity, GRoom room)
 		{
 			base.Do (entity, room);
-			entity.hp += hpChange;
+			entity.AddHp( hpChange );
 		}
 	}
 }

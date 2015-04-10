@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AniOnStateExit.cs" />
      <Compile Include="Assets\Scripts\AStar\KMap.cs" />
      <Compile Include="Assets\Scripts\AStar\Node.cs" />
      <Compile Include="Assets\Scripts\Game\Data\DEntity.cs" />
@@ -55,15 +56,19 @@
      <Compile Include="Assets\Scripts\Game\Data\DRoom.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Behavior\GBehavior.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Behavior\GBhvApplyForce.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Behavior\GBhvApplyForceSpring.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Behavior\GBhvEmpty.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Behavior\GBhvFollowPlayer.cs" />
-     <Compile Include="Assets\Scripts\Game\Entity\Behavior\GBhvHitboxHp.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Behavior\GBhvHpChange.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Behavior\GBhvLookAtFiringDirection.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Behavior\GBhvLookAtPlayer.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Behavior\GBhvOnDeath.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Behavior\GBhvOnHitbox.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Behavior\GBhvOnStart.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Behavior\GBhvShoot.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Behavior\GBhvTimer.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\GEntItem.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\GEntTrigger.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\GEntity.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\GEntityDelegates.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\GHitbox.cs" />
@@ -82,6 +87,9 @@
      <Compile Include="Assets\Scripts\Game\GTheme.cs" />
      <Compile Include="Assets\Scripts\Game\GameMaster.cs" />
      <Compile Include="Assets\Scripts\Game\GameTags.cs" />
+     <Compile Include="Assets\Scripts\Game\Graphic\Effect\GEffFlickering.cs" />
+     <Compile Include="Assets\Scripts\Game\Graphic\Effect\GRendererEffect.cs" />
+     <Compile Include="Assets\Scripts\Game\Graphic\GRenderer.cs" />
      <Compile Include="Assets\Scripts\Game\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Utility\EasyTimer.cs" />
  <Reference Include="UnityEngine.UI">

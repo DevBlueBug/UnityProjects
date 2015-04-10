@@ -22,7 +22,7 @@ namespace Game.Entity.Task
 		}
 		public virtual void KFixedUpdate(GEntity entity,GRoom room){
 		}
-		public void KUpdate(GEntity entity, GRoom room){
+		public virtual void KUpdate(GEntity entity, GRoom room){
 			isAlive = TestIsAlive (entity, room);
 			if (!isAlive) return;
 			

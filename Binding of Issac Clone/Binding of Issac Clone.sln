@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{457882FF-DC5B-86D6-125C-1716F65D54CB}") = "Binding of Issac Clone", "Assembly-CSharp.csproj", "{0B199E0A-A693-886A-3E43-24CD0A0BBCA7}"
 EndProject
+Project("{457882FF-DC5B-86D6-125C-1716F65D54CB}") = "Binding of Issac Clone", "Assembly-CSharp-Editor.csproj", "{9EED27D0-3CE2-F2EA-0CFB-3615D7FE7C15}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,11 +15,15 @@ Global
 		{0B199E0A-A693-886A-3E43-24CD0A0BBCA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B199E0A-A693-886A-3E43-24CD0A0BBCA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B199E0A-A693-886A-3E43-24CD0A0BBCA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EED27D0-3CE2-F2EA-0CFB-3615D7FE7C15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EED27D0-3CE2-F2EA-0CFB-3615D7FE7C15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EED27D0-3CE2-F2EA-0CFB-3615D7FE7C15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EED27D0-3CE2-F2EA-0CFB-3615D7FE7C15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																																																																																																GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																																																																																									GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

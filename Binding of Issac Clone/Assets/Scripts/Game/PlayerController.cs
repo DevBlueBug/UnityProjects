@@ -33,6 +33,9 @@ namespace Game{
 		public GEntity myEntity;
 		D_InputUpdate E_InputUpdate = delegate{};
 
+		public Game.Entity.Task.GTaskMove taskMove = 
+			new Game.Entity.Task.GTaskMove(new Vector3());
+
 		void Awake(){
 			bool isDesktop = true;
 			if (isDesktop)
@@ -69,7 +72,9 @@ namespace Game{
 			if (direction.sqrMagnitude == 0)
 				return;
 			direction.Normalize ();
-			myEntity.body.AddForce (direction*myEntity.velo );
+			taskMove.position = myEntity.position + direction;
+			taskMove.Do (myEntity, null);
+			//myEntity.body.AddForce (direction*myEntity.velo );
 			//myEntity.body.AddForce (speedNeeded * myEntity.body.mass);
 			//myEntity.AddForce (myEntity.velo * direction);
 		}

@@ -14,6 +14,8 @@ namespace Game.Entity.Behavior
 {
 	public class GBehavior : MonoBehaviour,IEntityComponent
 	{
+		public delegate void D_Custom_Do(GEntity entity, GRoom room);
+
 		public bool isAlive =true;
 		public bool isContinueUpdating = true;
 

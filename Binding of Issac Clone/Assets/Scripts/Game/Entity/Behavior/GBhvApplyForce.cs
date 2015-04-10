@@ -17,8 +17,9 @@ namespace Game.Entity.Behavior
 		public override void Do (GEntity entity, GRoom room)
 		{
 			base.Do (entity, room);
+			//Debug.Log (entity.gameObject.name + " " + entity.tag + " " +force);
 			var dir = (entity.transform.position - positionFrom.transform.position);
-			entity.body.AddForce(new Vector3 (dir.x, 0, dir.z).normalized*force);
+			entity.AddForce(new Vector3 (dir.x, 0, dir.z).normalized*force * (1.0f/Time.fixedDeltaTime));
 		}
 	}
 }

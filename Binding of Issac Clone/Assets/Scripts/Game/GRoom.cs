@@ -74,9 +74,9 @@ namespace Game{
 				AddMap (E_Boundry, w-1, i,0);
 			}
 		}
-		public void AddDoor(GEntity entity, int x, int y, int dirLooking, int dirHeaded){
+		public void AddDoor(GEntItem entity, int x, int y, int dirLooking, int dirHeaded){
 			AddMap (entity, x, y, dirLooking);
-			entity.E_OnTriggerEnter += delegate{Event_EnterDoor (dirHeaded);};
+			entity.hitbox.onDoMe += delegate{Event_EnterDoor (dirHeaded);};
 		}
 		public GEntity AddMap(GEntity entity, int x , int y, int dirLooking){
 			if (mapEntities [x, y] != null) {

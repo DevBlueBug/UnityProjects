@@ -20,7 +20,8 @@ namespace Game{
 			AddBoundries (room, theme.Room.Wall_Boundry, data.width, data.height);
 			AddDoors (room, theme.Room.Door, data.doors, data.width, data.height);
 			foreach (var dataUnit in data.entities) {
-				if(Random.Range(0,2) == 0){
+
+				if(dataUnit.myType == Game.Data.DEntity.MyType.Enemy){
 					room.AddSimple (HelperToEntity(theme.Entities,dataUnit), dataUnit.x, dataUnit.y, dataUnit.dirLooking);
 				}
 				else 
@@ -43,18 +44,18 @@ namespace Game{
 				room.AddMap (HelperInstantiate(prefab), w-1, i,0);
 			}
 		}
-		public void AddDoors(GRoom room, GEntity door, bool[] isDoored, int w, int h){
+		public void AddDoors(GRoom room, GEntItem door, bool[] isDoored, int w, int h){
 			for (int i = 0; i < 4; i++) {
 				if (isDoored [i]){
 					switch(i){
 						case 0: 
-							room.AddDoor(HelperInstantiate(door),w/2,h-1,2,i);break;
+							room.AddDoor(GameObject.Instantiate(door),w/2,h-1,2,i);break;
 						case 1: 
-							room.AddDoor(HelperInstantiate(door),w-1,h/2,3,i);break;
+						room.AddDoor(GameObject.Instantiate(door),w-1,h/2,3,i);break;
 						case 2: 
-							room.AddDoor(HelperInstantiate(door),w/2,0,0,i);break;
+						room.AddDoor(GameObject.Instantiate(door),w/2,0,0,i);break;
 						case 3: 
-							room.AddDoor(HelperInstantiate(door),0,h/2,1,i);break;
+						room.AddDoor(GameObject.Instantiate(door),0,h/2,1,i);break;
 					}
 				}
 			}

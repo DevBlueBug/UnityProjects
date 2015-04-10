@@ -13,6 +13,9 @@ namespace Game.Entity{
 		public D_Attack E_Attack = delegate {};
 		public D_Birth E_Birth = delegate {};
 		public D_Kill E_Killed = delegate{};
+		public D_HpChange E_HpChange = delegate {	};
+		public D_ForceApplied E_ForceApplied = delegate {	};
+
 		public D_OnCollisionEnter E_OnCollisionEnter = delegate{};
 		public D_OnTriggerEnter E_OnTriggerEnter = delegate{};
 		public D_OnTriggerStay E_OnTriigerStay = delegate {};
@@ -29,10 +32,14 @@ namespace Game.Entity{
 
 		//Status
 		public bool isDebug = false;
-		public bool isAlive = true;
 		public float 
 			hp,
 			velo;
+		public bool 
+			isAlive = true,
+			isHpChange = true,
+			isForced = true;
+
 		public GTask taskCurrent = null;
 		public List<GBehavior> myBehaviors = new List<GBehavior> ();
 		public List<GTask> myTasks = new List<GTask>();
@@ -53,19 +60,19 @@ namespace Game.Entity{
 		}
 
 		public virtual void KFixedUpdate (GRoom room) {
-			if (taskCurrent != null && taskCurrent.isAlive)
-				taskCurrent.KFixedUpdate (this, room);
 		}
 		
 		public virtual void KUpdate (GRoom room)
 		{
 			if(isDebug)Debug.Log (gameObject.name +  " " + body.velocity);
 			if (!isAlive) return;
-
-
+			
 			this.rotation = rot;
+			this.position = new Vector3 (this.position.x,0,this.position.z);
+
 			HelperIterate (myBehaviors,room);
 			UpdateTasks (room);
+			//UpdateTasks (room);
 
 			if (hp <= 0) {
 				Kill();
@@ -79,6 +86,7 @@ namespace Game.Entity{
 				taskCurrent = myTasks[0];
 				taskCurrent.Init(this);
 				myTasks.RemoveAt(0);
+				UpdateTasks(room);
 				return;
 			}
 			taskCurrent.KUpdate (this, room);
@@ -139,6 +147,18 @@ namespace Game.Entity{
 			bhv.transform.parent = this.transform;
 			bhv.transform.position = this.transform.position;
 			bhv.Init (this);
+		}
+		public bool AddForce(Vector3 force){
+			if (!isForced) return false;
+			body.AddForce (force);
+			E_ForceApplied (this,force);
+			return true;
+		}
+		public bool AddHp(float hpChange){
+			if (!isHpChange) return false;
+			this.hp += hpChange;
+			E_HpChange (this,hpChange);
+			return true;
 		}
 
 		//FunctionCalls
