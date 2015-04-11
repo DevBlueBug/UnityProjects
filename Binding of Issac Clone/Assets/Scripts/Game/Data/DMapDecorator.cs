@@ -12,10 +12,10 @@ namespace Game.Data
 				Decorate (r);
 		}
 		void Decorate(DRoom room){
-			//return;
-			//int n = 1;
+			///return;
+			int n = 1;
 			int type = 1;
-			int n =  UnityEngine.Random.Range (10, 20);
+			//int n =  UnityEngine.Random.Range (10, 20);
 			//int n =  1;
 			for (int i = 0; i< n; i++) {
 				var e = new DEntity ();

@@ -29,7 +29,7 @@ namespace Game{
 			{KeyCode.K, 2},
 			{KeyCode.J, 3 }
 		};
-
+		public CharacterController chaController;
 		public GEntity myEntity;
 		D_InputUpdate E_InputUpdate = delegate{};
 
@@ -48,16 +48,20 @@ namespace Game{
 		{
 		
 		}
+		public void SetEntity(GEntity entity){
+			myEntity = entity;
+		}
 		public Vector3 myVelocity;
 		// Update is called once per frame
 		public virtual void KUpdate ()
 		{
 			myVelocity = myEntity.body.velocity;
 			E_InputUpdate ();
+			UpdateKeyBoard_Movement ();
 		
 		}
 		public virtual void KFixedUpdate(){
-			UpdateKeyBoard_Movement ();
+
 		}
 		
 		void UpdateKeyboard(){
@@ -69,11 +73,17 @@ namespace Game{
 			foreach (var k in inputKeyboardMove) {
 				if(Input.GetKey(k.Key) ) direction += k.Value;
 			}
+
+
+			
 			if (direction.sqrMagnitude == 0)
 				return;
+
 			direction.Normalize ();
-			taskMove.position = myEntity.position + direction;
-			taskMove.Do (myEntity, null);
+			
+			var chaController = myEntity.GetComponent<CharacterController> ();
+			myEntity.Move(direction * myEntity.velo);
+			return;
 			//myEntity.body.AddForce (direction*myEntity.velo );
 			//myEntity.body.AddForce (speedNeeded * myEntity.body.mass);
 			//myEntity.AddForce (myEntity.velo * direction);

@@ -19,8 +19,9 @@ namespace Game{
 
 		void Start ()
 		{
-
+			player.E_NewPlayer ();
 			LoadNewLevel ();
+			player.E_NewRoom(myMap.roomActive,-1);
 		}
 		
 		// Update is called once per frame
@@ -36,8 +37,8 @@ namespace Game{
 			var dir = dirClockwise [n];
 			int x = myMap.roomActive.X + dir [0],
 			y = myMap.roomActive.Y + dir [1];
-			myMap.roomActive.UnLinkEntity (player.myEntitiy);
-			LoadRoom (myMap.Load (x, y));
+			LinkRoom (myMap.Load (x, y));
+			player.E_NewRoom (myMap.roomActive,n);
 		}
 
 
@@ -47,12 +48,10 @@ namespace Game{
 			var theme = Themes [Random.Range (0, Themes.Count)];
 			myMap = GMap.Generate (theme, dataMap);
 			//myMap.roomActive.AddPlayer (playerEntity,-1);
-			LoadRoom (myMap.roomActive);
+			LinkRoom (myMap.roomActive);
 		}
-		void LoadRoom(GRoom room){
+		void LinkRoom(GRoom room){
 			room.Event_EnterDoor = Event_PlayerEnterDoor;
-			player.EnterRoom (room);
-			myMap.roomActive.LinkEntity (player.myEntitiy);
 
 		}
 		void KFixedUpdate(){

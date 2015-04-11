@@ -1,8 +1,11 @@
 using UnityEngine;
 using System.Collections;
 
-public class GEffFlickering : MonoBehaviour
-{
+namespace Game.Graphic.Effect{
+	
+	public class GEffFlickering : GRendererEffect
+	{
+	}
+	
 
 }
-

@@ -21,27 +21,50 @@ namespace Game
 		public GBehavior behaviorPlayer;
 		public PlayerController playerController;
 
-		public GEntity myEntitiy;
+		GEntity myEntitiy;
+
+		bool isPlayerAlive = false;
+		GRoom roomLastLinked = null;
 
 		void Awake(){
-			myEntitiy = GetNewPlayer ();
-			playerController.myEntity = myEntitiy;
 
 		}
+
 		public GEntity GetNewPlayer(){
 			var player = Instantiate (P_PlayerBase);
 			player.AddBehavior (Instantiate(behaviorPlayer));
+			player.E_Killed += delegate { isPlayerAlive = false;};
+
+
 			return player;
+		}
+		public void E_NewPlayer(){
+			myEntitiy = GetNewPlayer ();
+			playerController.SetEntity(myEntitiy);
+			isPlayerAlive = true;
+		}
+		public void E_NewRoom(GRoom room, int enteredDoorNumber){
+			if (!isPlayerAlive)
+				return;
+			if (roomLastLinked != null)
+				roomLastLinked.UnLinkEntity (myEntitiy);
+			room.LinkEntity (myEntitiy);
+			room.AddPlayer (myEntitiy,(enteredDoorNumber+2)%4);
+			roomLastLinked = room;
 		}
 
 		public void KFixedUpdate (GRoom roomActive)
 		{
+			if (!isPlayerAlive)	return;
+
 			myEntitiy.KFixedUpdate (roomActive);
 			playerController.KFixedUpdate ();
 		}
 
 		public void KUpdate(GRoom room){
-			if (myEntitiy == null) return;
+			if (!isPlayerAlive)	return;
+
+
 			myEntitiy.KUpdate (room);
 			GPlayer.PlayerPosition = myEntitiy.position;
 
@@ -49,10 +72,6 @@ namespace Game
 
 		}
 
-		public void EnterRoom (GRoom room)
-		{
-			room.AddPlayer (myEntitiy,-1);
-		}
 	}
 }
 

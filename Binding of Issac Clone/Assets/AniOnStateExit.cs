@@ -22,9 +22,11 @@ public class AniOnStateExit : StateMachineBehaviour {
 
 	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+
 		Assign (animator);
 	}
 	void Assign(Animator ani){
+
 		foreach (var b in bools) {
 			ani.SetBool(b.id,b.value);
 		}

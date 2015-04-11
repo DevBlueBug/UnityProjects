@@ -22,15 +22,14 @@ namespace Game.Entity{
 
 		public static int IdCount = 0;
 
-		public enum MyType{World,Player,Enemy};
-		//identity
-		public int id; // will be assinged auto
-		public MyType myType;
+		//components 
 		public Rigidbody body;
-		public Collider myCollider;
-		public Collider myColliderSwitch;
+		public CharacterController myController;
+		public Game.Graphic.GRenderer myRenderer;
+
 
 		//Status
+		public int id; // will be assinged auto
 		public bool isDebug = false;
 		public float 
 			hp,
@@ -44,6 +43,11 @@ namespace Game.Entity{
 		public List<GBehavior> myBehaviors = new List<GBehavior> ();
 		public List<GTask> myTasks = new List<GTask>();
 
+		internal bool 
+			isMove = false,
+			isMoveChanged = false;
+		Vector3 
+			moveAmount = Vector3.zero;
 
 
 		//saved
@@ -53,32 +57,56 @@ namespace Game.Entity{
 			HelperIterateInit (myBehaviors);
 			HelperIterateInit (myTasks);
 			id = IdCount++;
-			
+			if (myController != null) {
+				//myController.detectCollisions = false;
+				//myController.isTrigger = true;
+				//myController.is
+			}
 		}
 		
 		public virtual void Start(){
 		}
 
+		public void FixedUpdate(){
+			//position += moveAmountAdded;
+			//moveAmountAdded = Vector3.zero;
+
+		}
 		public virtual void KFixedUpdate (GRoom room) {
 		}
-		
+		void UpdateMove(){
+			if (isMoveChanged) {
+				isMove = true;
+				isMoveChanged = false;
+				this.myController.Move (moveAmount * Time.deltaTime);
+				moveAmount = Vector3.zero;
+			} else {
+				if(isMove){
+					this.myController.Move(Vector3.zero);
+					isMove = false;
+				}
+			}
+			if(isMove&& myController != null)this.myController.Move (body.velocity * Time.deltaTime);
+
+		}
 		public virtual void KUpdate (GRoom room)
 		{
-			if(isDebug)Debug.Log (gameObject.name +  " " + body.velocity);
-			if (!isAlive) return;
-			
-			this.rotation = rot;
-			this.position = new Vector3 (this.position.x,0,this.position.z);
+			if(isDebug && body.velocity.magnitude >= 0.1f)Debug.Log (gameObject.name +  " " + body.velocity);
 
+			//if(isDebug)Debug.Log("M V
 			HelperIterate (myBehaviors,room);
 			UpdateTasks (room);
-			//UpdateTasks (room);
+			UpdateMove ();
 
+
+			//UpdateTasks (room);
+			this.rotation = rot;
+			this.position = new Vector3 (this.position.x,0,this.position.z);
+			if (!isAlive) return;			
 			if (hp <= 0) {
 				Kill();
 				return;
 			}
-		
 		}
 		public void UpdateTasks(GRoom room){
 			if (taskCurrent == null || !taskCurrent.isAlive) {
@@ -162,6 +190,10 @@ namespace Game.Entity{
 		}
 
 		//FunctionCalls
+		public void Move(Vector3 velocity){
+			isMoveChanged = true;
+			moveAmount += velocity;
+		}
 		public virtual void Attack(int n){
 			E_Attack (this,n);
 

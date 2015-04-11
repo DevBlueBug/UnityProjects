@@ -103,10 +103,16 @@ namespace Game{
 		public void AddPlayer(GEntity playerEntity, int direction){
 			playerEntity.transform.parent = this.transform;
 			foreach (var k in DicPlayerStartingPosition)
-				if (direction == k.Key)
-					playerEntity.position = new Vector3 (
-						(int)(width * k.Value.x), 0, 
-						(int)(height * k.Value.z));// * k.Value;
+				if (direction == k.Key) {
+				
+				var respawnPoint = new Vector3 (
+					(int)(width * k.Value.x), 0, 
+					(int)(height * k.Value.z));// * k.Value;
+
+				var ToCenter = (new Vector3((int)(width*.5f),0,(int)(height*.5f) ) - respawnPoint).normalized;
+				playerEntity.position = respawnPoint + ToCenter*1.3f;
+
+				}
 		}
 		public void LinkEntity(GEntity e){
 			e.E_Killed += Hdr_Kill_RemoveFromList;

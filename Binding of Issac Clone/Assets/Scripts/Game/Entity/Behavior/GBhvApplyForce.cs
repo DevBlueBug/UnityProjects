@@ -19,6 +19,7 @@ namespace Game.Entity.Behavior
 			base.Do (entity, room);
 			//Debug.Log (entity.gameObject.name + " " + entity.tag + " " +force);
 			var dir = (entity.transform.position - positionFrom.transform.position);
+			//entity.Move (new Vector3 (dir.x, 0, dir.z).normalized * force);
 			entity.AddForce(new Vector3 (dir.x, 0, dir.z).normalized*force * (1.0f/Time.fixedDeltaTime));
 		}
 	}

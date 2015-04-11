@@ -34,8 +34,7 @@ namespace Game.Entity.Task
 		public void Move(GEntity entity, GRoom room){
 			var dis = position - entity.position;
 			var dir = new Vector3 (dis.x, 0, dis.z).normalized;
-			var mag = entity.body.velocity.magnitude;
-			var ratio =  1 - Vector3.Dot (dir, entity.body.velocity.normalized);
+			entity.Move (new Vector3(dir.x * entity.velo ,0, dir.z * entity.velo));
 
 			
 			
@@ -55,7 +54,6 @@ namespace Game.Entity.Task
 			}
 			**/
 			//Debug.Log(entity.id + " MOVE TO " + this.position);
-			entity.position += dir * entity.velo * Time.deltaTime;
 			//entity.body.AddForce (force);
 			//Debug.Log ("ADDING " + forceAdd);
 		}
