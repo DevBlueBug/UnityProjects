@@ -25,7 +25,8 @@ namespace Game.Entity.Behavior
 		
 		public List<GBehavior> others = new List<GBehavior>();
 
-
+		
+		public virtual void Awake(){}
 		public virtual void Start(){}
 		public virtual bool TestIsAlive (GEntity entity, GRoom room)
 		{
@@ -47,7 +48,7 @@ namespace Game.Entity.Behavior
 		}
 		public virtual void Do(GEntity entity, GRoom room){
 		}
-		protected void UpdateTheRest(List<GBehavior> bhvs,GEntity entity, GRoom room){
+		public static void UpdateTheRest(List<GBehavior> bhvs,GEntity entity, GRoom room){
 			
 			for(int i = 0 ; i < bhvs.Count;i++){
 				bhvs[i].KUpdate(entity,room);

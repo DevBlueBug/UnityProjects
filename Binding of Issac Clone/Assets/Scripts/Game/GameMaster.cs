@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Game.Data;
+using UI.MiniMap;
 
 namespace Game{
 	
@@ -10,19 +11,41 @@ namespace Game{
 		public int[][] dirClockwise = new int[][]{
 			new int[]{0,1},new int[]{1,0},new int[]{0,-1},new int[]{-1,0}
 		};
+		public MinMap mapMini;
 		//Settings 
 		//different designs of rooms for "theme"
 		public List<GTheme> Themes;
 
-		GMap myMap;
+		GMap mapGame;
 		public GPlayer player;
+
 
 		void Start ()
 		{
 			player.E_NewPlayer ();
-			LoadNewLevel ();
-			player.E_NewRoom(myMap.roomActive,-1);
+			LoadNewLevel (10,10,30);
+			player.E_NewRoom(mapGame.roomActive,-1);
+		
+			Link (mapMini, mapGame);
+
 		}
+		void Link(UI.MiniMap.MinMap mapMini, GMap mapGame){
+			mapMini.width = mapGame.width;
+			mapMini.height = mapGame.height;
+			mapMini.Reset ();
+			//Dictionary<MinMapRoom.KType,MinMapRoom.KType> dicType;
+			//Dictionary<MinMapRoom.KState,MinMapRoom.KState> dicState;
+			for(int i = 0;i < mapGame.width;i++)for(int j = 0 ; j < mapGame.height;j++){
+				var roomGame =mapGame[i,j];
+				if(roomGame==null)continue;
+				mapMini[i,j].SetRoom(true);
+				//mapMini[i,j].SetState
+			}
+
+
+
+		}
+
 		
 		// Update is called once per frame
 		void Update ()
@@ -35,32 +58,32 @@ namespace Game{
 		
 		void Event_PlayerEnterDoor(int n){
 			var dir = dirClockwise [n];
-			int x = myMap.roomActive.X + dir [0],
-			y = myMap.roomActive.Y + dir [1];
-			LinkRoom (myMap.Load (x, y));
-			player.E_NewRoom (myMap.roomActive,n);
+			int x = mapGame.roomActive.X + dir [0],
+			y = mapGame.roomActive.Y + dir [1];
+			LinkRoom (mapGame.Load (x, y));
+			player.E_NewRoom (mapGame.roomActive,n);
 		}
 
 
-		void LoadNewLevel(){
+		void LoadNewLevel(int w, int h, int roomNum){
 			var dataMap = new Game.Data.DMapGenerator ()
-				.GenerateMap (10, 10, 30);
+				.GenerateMap (w,h, roomNum);
 			var theme = Themes [Random.Range (0, Themes.Count)];
-			myMap = GMap.Generate (theme, dataMap);
+			mapGame = GMap.Generate (theme, dataMap);
 			//myMap.roomActive.AddPlayer (playerEntity,-1);
-			LinkRoom (myMap.roomActive);
+			LinkRoom (mapGame.roomActive);
 		}
 		void LinkRoom(GRoom room){
 			room.Event_EnterDoor = Event_PlayerEnterDoor;
 
 		}
 		void KFixedUpdate(){
-			player.KFixedUpdate (myMap.roomActive);
-			myMap.KFixedUpdate ();
+			player.KFixedUpdate (mapGame.roomActive);
+			mapGame.KFixedUpdate ();
 		}
 		void KUpdate(){
-			player.KUpdate (myMap.roomActive);
-			myMap.KUpdate ();
+			player.KUpdate (mapGame.roomActive);
+			mapGame.KUpdate ();
 			//myRoom.KUpdate ();
 		}
 

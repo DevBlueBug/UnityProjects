@@ -46,8 +46,10 @@ namespace Game.Entity{
 		internal bool 
 			isMove = false,
 			isMoveChanged = false;
-		Vector3 
-			moveAmount = Vector3.zero;
+		internal Vector3 
+			moveAmount = Vector3.zero,
+			moveAmountOld,
+			forceAdded;
 
 
 		//saved
@@ -67,22 +69,19 @@ namespace Game.Entity{
 		public virtual void Start(){
 		}
 
-		public void FixedUpdate(){
-			//position += moveAmountAdded;
-			//moveAmountAdded = Vector3.zero;
-
-		}
 		public virtual void KFixedUpdate (GRoom room) {
 		}
 		void UpdateMove(){
 			if (isMoveChanged) {
 				isMove = true;
 				isMoveChanged = false;
+				moveAmountOld = moveAmount;
 				this.myController.Move (moveAmount * Time.deltaTime);
 				moveAmount = Vector3.zero;
 			} else {
 				if(isMove){
 					this.myController.Move(Vector3.zero);
+					moveAmountOld = Vector3.zero;
 					isMove = false;
 				}
 			}
@@ -91,12 +90,14 @@ namespace Game.Entity{
 		}
 		public virtual void KUpdate (GRoom room)
 		{
-			if(isDebug && body.velocity.magnitude >= 0.1f)Debug.Log (gameObject.name +  " " + body.velocity);
+			//if(isDebug )Debug.Log (gameObject.name +  " " + body.velocity);
 
 			//if(isDebug)Debug.Log("M V
-			HelperIterate (myBehaviors,room);
+			GBehavior.UpdateTheRest (myBehaviors, this, room);
 			UpdateTasks (room);
 			UpdateMove ();
+			//if(isDebug )Debug.Log (gameObject.name +  " " + myController.velocity);
+
 
 
 			//UpdateTasks (room);
@@ -129,15 +130,6 @@ namespace Game.Entity{
 
 			if (components.Count == 0) return;
 			components [0].Init ( this);
-		}
-		public void HelperIterate<T> (List<T> components,GRoom room) where T:IEntityComponent{
-		
-			if (components.Count == 0) return;
-			components [0].KUpdate (this, room);
-			if (!components [0].IsAlive) {
-				components[0].Kill(this);
-				components.RemoveAt (0);
-			}
 		}
 		//getSet
 		public Vector3 position{
@@ -180,6 +172,7 @@ namespace Game.Entity{
 			if (!isForced) return false;
 			body.AddForce (force);
 			E_ForceApplied (this,force);
+			forceAdded = force;
 			return true;
 		}
 		public bool AddHp(float hpChange){
@@ -201,7 +194,6 @@ namespace Game.Entity{
 		public virtual void Kill(){
 			this.isAlive = false;
 			E_Killed (this);
-			GameObject.Destroy (this.gameObject);
 		}
 		public virtual void OnCollisionEnter(Collision c){
 			this.E_OnCollisionEnter (this, c);

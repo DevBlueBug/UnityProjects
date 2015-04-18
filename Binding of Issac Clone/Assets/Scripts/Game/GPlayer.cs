@@ -30,16 +30,11 @@ namespace Game
 
 		}
 
-		public GEntity GetNewPlayer(){
-			var player = Instantiate (P_PlayerBase);
-			player.AddBehavior (Instantiate(behaviorPlayer));
-			player.E_Killed += delegate { isPlayerAlive = false;};
-
-
-			return player;
-		}
 		public void E_NewPlayer(){
-			myEntitiy = GetNewPlayer ();
+			myEntitiy = Instantiate (P_PlayerBase);
+			myEntitiy.AddBehavior (Instantiate(behaviorPlayer));
+			myEntitiy.E_Killed += delegate { isPlayerAlive = false;};
+			GPlayer.PlayerEntity = myEntitiy;
 			playerController.SetEntity(myEntitiy);
 			isPlayerAlive = true;
 		}

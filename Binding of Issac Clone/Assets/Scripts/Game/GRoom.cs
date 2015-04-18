@@ -7,6 +7,8 @@ using Game.Entity;
 namespace Game{
 	public class GRoom : MonoBehaviour
 	{
+		public enum KType {Normal,Treasure,Boss,Secret }
+		public enum KState {None, HasGold,HasHeart,HasBomb }
 		static Dictionary<int,Vector3> DicPlayerStartingPosition = new Dictionary<int, Vector3>(){
 			{-1, new Vector3(.5f,0,.5f)},
 			{0, new Vector3(.5f,0,1)},
@@ -16,7 +18,9 @@ namespace Game{
 		};
 		
 		public Delegates.D_EnteredDoor Event_EnterDoor = delegate(int w){Debug.Log("HEY " + w);};
-		
+
+		public KType myType;
+		public KState myState;
 		public int width,height;
 		public Vector2 Index;
 		public AStar.KMap mapAstar;
