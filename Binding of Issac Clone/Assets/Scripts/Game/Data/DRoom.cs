@@ -7,17 +7,21 @@ namespace Game.Data {
 
 	public class DRoom
 	{
+		public enum KType {Normal,Start,Treasure,Boss,Secret }
+
 		public Vector2 id;
 		public int X{ get { return(int)id.x; } }
 		public int Y{ get { return(int)id.y; } }
 		public int width,height;
 		public bool[] doors = new bool[]{false,false,false,false};
+		public float distance;
 		
 		public List<DEntity> entities = new List<DEntity>();
 
-		public DRoom(){
+		public DRoom(Vector2 id){
 			width = 15;
 			height = 9;
+			this.id = id;
 		}
 	}
 

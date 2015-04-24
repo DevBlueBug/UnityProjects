@@ -36,6 +36,7 @@ namespace Game{
 				var GRoom = new GRoomGenerator().Generate(theme ,data[i,j]);
 				map.RegisteRoom(GRoom);
 			}
+			map.Load ((int)data.roomInit.id.x, (int)data.roomInit.id.y);
 			return map;
 		}
 

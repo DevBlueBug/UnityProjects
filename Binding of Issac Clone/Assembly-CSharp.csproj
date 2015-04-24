@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\Game\Data\DMap.cs" />
      <Compile Include="Assets\Scripts\Game\Data\DMapDecorator.cs" />
      <Compile Include="Assets\Scripts\Game\Data\DMapGenerator.cs" />
+     <Compile Include="Assets\Scripts\Game\Data\DMapPopulator.cs" />
      <Compile Include="Assets\Scripts\Game\Data\DRoom.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Behavior\GBehavior.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Behavior\GBhvApplyForce.cs" />
@@ -81,7 +82,6 @@
      <Compile Include="Assets\Scripts\Game\GInfo.cs" />
      <Compile Include="Assets\Scripts\Game\GMap.cs" />
      <Compile Include="Assets\Scripts\Game\GPlayer.cs" />
-     <Compile Include="Assets\Scripts\Game\GRepulsiveForce.cs" />
      <Compile Include="Assets\Scripts\Game\GRoom.cs" />
      <Compile Include="Assets\Scripts\Game\GRoomDelegates.cs" />
      <Compile Include="Assets\Scripts\Game\GRoomGenerator.cs" />
@@ -91,7 +91,12 @@
      <Compile Include="Assets\Scripts\Game\Graphic\Effect\GEffFlickering.cs" />
      <Compile Include="Assets\Scripts\Game\Graphic\Effect\GRendererEffect.cs" />
      <Compile Include="Assets\Scripts\Game\Graphic\GRenderer.cs" />
+     <Compile Include="Assets\Scripts\Game\Graphic\GRepulsiveForce.cs" />
      <Compile Include="Assets\Scripts\Game\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\GameEditor\EditorTile.cs" />
+     <Compile Include="Assets\Scripts\GameEditor\EditorUI.cs" />
+     <Compile Include="Assets\Scripts\GameEditor\EditorUI_WheelMenu.cs" />
+     <Compile Include="Assets\Scripts\SimpleJSON.cs" />
      <Compile Include="Assets\Scripts\UI\EnergyBar.cs" />
      <Compile Include="Assets\Scripts\UI\HealthBar.cs" />
      <Compile Include="Assets\Scripts\UI\KUI.cs" />

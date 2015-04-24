@@ -34,6 +34,7 @@ namespace UI.MiniMap{
 				{KeyCode.J, new Vector3(-1,0,0)},
 				{KeyCode.L, new Vector3(1,0,0)}
 			};
+			return;
 			foreach (var k in dicKeys) {
 				if(Input.GetKeyDown(k.Key)){
 					MoveCamera((int)k.Value.x,(int)k.Value.y);
@@ -55,15 +56,15 @@ namespace UI.MiniMap{
 			rooms [x, y].transform.localPosition = new Vector3 (x, y, 0);
 			return rooms [x, y];
 		}
-		void MoveCameraTo(int x, int y){
-			rooms [(int)camMap.transform.localPosition.x,
-			      (int)camMap.transform.localPosition.y].SetRoom (false);
+		public void MoveCameraTo(int x, int y){
+			//rooms [(int)camMap.transform.localPosition.x,
+			//     (int)camMap.transform.localPosition.y].SetRoom (false);
 			camMap.transform.localPosition = new Vector3 (x, y, -1);
-			rooms [x, y].gameObject.SetActive (true);
-			rooms [x,y].SetRoom (true);
+			//rooms [x, y].gameObject.SetActive (true);
+			//rooms [x,y].SetRoom (true);
 
 		}
-		void MoveCamera(int x, int y){
+		public void MoveCamera(int x, int y){
 			MoveCameraTo ((int)camMap.transform.localPosition.x+x,
 			              (int)camMap.transform.localPosition.y+y);
 		}

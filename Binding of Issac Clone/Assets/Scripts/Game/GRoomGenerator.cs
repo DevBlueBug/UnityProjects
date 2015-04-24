@@ -27,6 +27,7 @@ namespace Game{
 				else 
 					room.AddMap(HelperInstantiate(theme.Room.Wall_Boundry), dataUnit.x,dataUnit.y,0);
 			}
+
 			return room;
 		}
 		GEntity HelperInstantiate(GEntity entity){

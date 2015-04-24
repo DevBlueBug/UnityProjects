@@ -44,7 +44,7 @@ namespace Game
 			if (roomLastLinked != null)
 				roomLastLinked.UnLinkEntity (myEntitiy);
 			room.LinkEntity (myEntitiy);
-			room.AddPlayer (myEntitiy,(enteredDoorNumber+2)%4);
+			room.AddPlayer (myEntitiy,(enteredDoorNumber == -1)? -1:(enteredDoorNumber+2)%4);
 			roomLastLinked = room;
 		}
 

@@ -23,9 +23,7 @@ namespace Game{
 		void Start ()
 		{
 			player.E_NewPlayer ();
-			LoadNewLevel (10,10,30);
-			player.E_NewRoom(mapGame.roomActive,-1);
-		
+			LoadNewLevel (out mapGame, 10,10,30);
 			Link (mapMini, mapGame);
 
 		}
@@ -35,6 +33,7 @@ namespace Game{
 			mapMini.Reset ();
 			//Dictionary<MinMapRoom.KType,MinMapRoom.KType> dicType;
 			//Dictionary<MinMapRoom.KState,MinMapRoom.KState> dicState;
+
 			for(int i = 0;i < mapGame.width;i++)for(int j = 0 ; j < mapGame.height;j++){
 				var roomGame =mapGame[i,j];
 				if(roomGame==null)continue;
@@ -55,26 +54,31 @@ namespace Game{
 		void FixedUpdate(){
 			KFixedUpdate ();
 		}
-		
-		void Event_PlayerEnterDoor(int n){
+		void EVENT_LOAD_NEW_ROOM(GRoom room, int playerDirection){
+			player.E_NewRoom(room,playerDirection);
+			mapMini.MoveCameraTo(room.X, room.Y);
+			LinkRoom (mapGame.roomActive);
+		}
+		void HDR_PlayerEnteredRoom(int n){
 			var dir = dirClockwise [n];
 			int x = mapGame.roomActive.X + dir [0],
 			y = mapGame.roomActive.Y + dir [1];
-			LinkRoom (mapGame.Load (x, y));
-			player.E_NewRoom (mapGame.roomActive,n);
+			EVENT_LOAD_NEW_ROOM (mapGame.Load (x, y), n);
 		}
 
 
-		void LoadNewLevel(int w, int h, int roomNum){
+		void LoadNewLevel(out GMap mapGame, int w, int h, int roomNum){
 			var dataMap = new Game.Data.DMapGenerator ()
 				.GenerateMap (w,h, roomNum);
 			var theme = Themes [Random.Range (0, Themes.Count)];
 			mapGame = GMap.Generate (theme, dataMap);
+			EVENT_LOAD_NEW_ROOM (mapGame.roomActive, -1);
 			//myMap.roomActive.AddPlayer (playerEntity,-1);
-			LinkRoom (mapGame.roomActive);
+
+
 		}
 		void LinkRoom(GRoom room){
-			room.Event_EnterDoor = Event_PlayerEnterDoor;
+			room.Event_EnterDoor = HDR_PlayerEnteredRoom;
 
 		}
 		void KFixedUpdate(){

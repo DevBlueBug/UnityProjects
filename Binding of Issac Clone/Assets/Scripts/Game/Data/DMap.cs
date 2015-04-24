@@ -5,6 +5,7 @@ namespace Game.Data
 	public class DMap
 	{
 		public int width, height;
+		public DRoom roomInit;
 		DRoom[,] rooms;
 		public List<DRoom> roomsAvailable;
 		
