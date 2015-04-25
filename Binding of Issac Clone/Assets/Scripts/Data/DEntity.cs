@@ -1,5 +1,5 @@
 using System;
-namespace Game.Data
+namespace Data
 {
 	public class DEntity
 	{

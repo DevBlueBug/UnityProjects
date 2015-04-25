@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-namespace Game.Data
+namespace Data
 {
 	public class DMapAccessory{
 		public float prefearedApproximity; // how close is the room 

@@ -13,12 +13,10 @@ public class EditorUI_WheelMenu : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	public void KUpdate ()
 	{
-		if (Input.GetMouseButtonDown (1)) {
-			menu.SetActive(!menu.activeSelf);
-		}
 		var input = Input.GetAxis ("Mouse ScrollWheel");
+
 		if (input != 0) {
 			if(!menu.activeSelf){
 				menu.SetActive(true);
@@ -32,7 +30,11 @@ public class EditorUI_WheelMenu : MonoBehaviour
 		UpdateMove ();
 
 	}
+	public void SetActive(bool b){
+		this.gameObject.SetActive (b);
+		menu.SetActive (b);
 
+	}
 	public void UpdateMove(){
 		menu.transform.localPosition += new Vector3 (0,speed*.1f,0);
 		speed *= .9f;

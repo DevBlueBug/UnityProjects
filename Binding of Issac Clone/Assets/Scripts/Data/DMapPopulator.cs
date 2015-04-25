@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 using UnityEngine;
 using System.Collections.Generic;
-namespace Game.Data
+namespace Data
 {
 	
 	public class DMapPopulator{

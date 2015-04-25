@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using Data;
 
 namespace GameEditor{
 	public class EditorTile : MonoBehaviour
@@ -17,35 +18,25 @@ namespace GameEditor{
 		public RectTransform rect;
 		public Image img;
 
-		public KType myType;
+		public DRoomLayout.TileType myType;
 
-		public enum KType
-		{
-			Ground,
-			Air,
-			Wall_Hard,
-			Wall_Soft,
-			Wall_Solid,
-			Trap,
-			Enemy,
-			Item
-		}
-		public void SetType(KType state){
-			if (state == KType.Ground)
+		public void SetType(DRoomLayout.TileType type){
+			this.myType = type;
+			if (type == DRoomLayout.TileType.Ground)
 				img.sprite = SPR_Ground;
-			else if (state == KType.Air)
+			else if (type == DRoomLayout.TileType.Air)
 				img.sprite = SPR_GroundAir;
-			else if (state == KType.Wall_Hard)
+			else if (type == DRoomLayout.TileType.Wall_Hard)
 				img.sprite = SPR_Wall_Hard;
-			else if (state == KType.Wall_Soft)
+			else if (type == DRoomLayout.TileType.Wall_Soft)
 				img.sprite = SPR_Wall_Soft;
-			else if (state == KType.Wall_Solid)
+			else if (type == DRoomLayout.TileType.Wall_Solid)
 				img.sprite = SPR_Wall_Solid;
-			else if (state == KType.Trap)
+			else if (type == DRoomLayout.TileType.Trap)
 				img.sprite = SPR_Trap;
-			else if (state == KType.Enemy)
+			else if (type == DRoomLayout.TileType.Enemy)
 				img.sprite = SPR_Enemy;
-			else if (state == KType.Item)
+			else if (type == DRoomLayout.TileType.Item)
 				img.sprite = SPR_Item;
 
 		}

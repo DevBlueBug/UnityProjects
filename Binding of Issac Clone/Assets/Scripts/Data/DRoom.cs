@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-namespace Game.Data {
+namespace Data {
 
 	public class DRoom
 	{

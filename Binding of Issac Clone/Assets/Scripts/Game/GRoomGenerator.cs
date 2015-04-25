@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Game.Entity;
+using Data;
 
 namespace Game{
 	
@@ -21,7 +22,7 @@ namespace Game{
 			AddDoors (room, theme.Room.Door, data.doors, data.width, data.height);
 			foreach (var dataUnit in data.entities) {
 
-				if(dataUnit.myType == Game.Data.DEntity.MyType.Enemy){
+				if(dataUnit.myType == DEntity.MyType.Enemy){
 					room.AddSimple (HelperToEntity(theme.Entities,dataUnit), dataUnit.x, dataUnit.y, dataUnit.dirLooking);
 				}
 				else 

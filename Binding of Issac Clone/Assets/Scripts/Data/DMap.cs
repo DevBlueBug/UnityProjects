@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-namespace Game.Data
+namespace Data
 {
 	public class DMap
 	{

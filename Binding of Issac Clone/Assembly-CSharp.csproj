@@ -49,12 +49,13 @@
      <Compile Include="Assets\AniOnStateExit.cs" />
      <Compile Include="Assets\Scripts\AStar\KMap.cs" />
      <Compile Include="Assets\Scripts\AStar\Node.cs" />
-     <Compile Include="Assets\Scripts\Game\Data\DEntity.cs" />
-     <Compile Include="Assets\Scripts\Game\Data\DMap.cs" />
-     <Compile Include="Assets\Scripts\Game\Data\DMapDecorator.cs" />
-     <Compile Include="Assets\Scripts\Game\Data\DMapGenerator.cs" />
-     <Compile Include="Assets\Scripts\Game\Data\DMapPopulator.cs" />
-     <Compile Include="Assets\Scripts\Game\Data\DRoom.cs" />
+     <Compile Include="Assets\Scripts\Data\DEntity.cs" />
+     <Compile Include="Assets\Scripts\Data\DMap.cs" />
+     <Compile Include="Assets\Scripts\Data\DMapDecorator.cs" />
+     <Compile Include="Assets\Scripts\Data\DMapGenerator.cs" />
+     <Compile Include="Assets\Scripts\Data\DMapPopulator.cs" />
+     <Compile Include="Assets\Scripts\Data\DRoom.cs" />
+     <Compile Include="Assets\Scripts\Data\DRoomLayout.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Behavior\GBehavior.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Behavior\GBhvApplyForce.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Behavior\GBhvApplyForcePlayerVelocity.cs" />
@@ -93,6 +94,7 @@
      <Compile Include="Assets\Scripts\Game\Graphic\GRenderer.cs" />
      <Compile Include="Assets\Scripts\Game\Graphic\GRepulsiveForce.cs" />
      <Compile Include="Assets\Scripts\Game\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\GameEditor\EditorMaster.cs" />
      <Compile Include="Assets\Scripts\GameEditor\EditorTile.cs" />
      <Compile Include="Assets\Scripts\GameEditor\EditorUI.cs" />
      <Compile Include="Assets\Scripts\GameEditor\EditorUI_WheelMenu.cs" />
@@ -106,6 +108,19 @@
      <Compile Include="Assets\Scripts\UI\UICounter.cs" />
      <Compile Include="Assets\Scripts\Utility\EasyInstantiate.cs" />
      <Compile Include="Assets\Scripts\Utility\EasyTimer.cs" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\6.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\10.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\12.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\7.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\4.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\2.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\9.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\1.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\11.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\5.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\0.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\3.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\8.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

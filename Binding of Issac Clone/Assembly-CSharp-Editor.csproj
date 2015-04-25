@@ -47,6 +47,19 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Editor\SetPivot.cs" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\6.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\10.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\12.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\7.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\4.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\2.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\9.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\1.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\11.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\5.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\0.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\3.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\8.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

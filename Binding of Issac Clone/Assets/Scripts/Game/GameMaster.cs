@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using Game.Data;
+using Data;
 using UI.MiniMap;
 
 namespace Game{
@@ -68,7 +68,7 @@ namespace Game{
 
 
 		void LoadNewLevel(out GMap mapGame, int w, int h, int roomNum){
-			var dataMap = new Game.Data.DMapGenerator ()
+			var dataMap = new DMapGenerator ()
 				.GenerateMap (w,h, roomNum);
 			var theme = Themes [Random.Range (0, Themes.Count)];
 			mapGame = GMap.Generate (theme, dataMap);

@@ -13,7 +13,7 @@ namespace Game{
 		// Use this for initialization
 		public GEntity UnWrap(Data.DEntity data){
 			Dictionary<Data.DEntity.MyType,List<GEntity>>
-			dirEntities = new Dictionary<Game.Data.DEntity.MyType, List<GEntity>> (){
+			dirEntities = new Dictionary<Data.DEntity.MyType, List<GEntity>> (){
 				{Data.DEntity.MyType.World,world},
 				{Data.DEntity.MyType.Enemy,enemies},
 			};
