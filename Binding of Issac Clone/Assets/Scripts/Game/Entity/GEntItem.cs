@@ -6,7 +6,7 @@ namespace Game.Entity{
 	
 	public class GEntItem : GEntity
 	{
-		public GBhvOnHitbox hitbox;
+		public GBhvOnHitbox hitbox; // entitiy item must have hitbox to handle hitbox
 	}
 }
 

@@ -23,9 +23,9 @@ namespace Game.Entity{
 		public static int IdCount = 0;
 
 		//components 
-		public Rigidbody body;
-		public CharacterController myController;
-		public Game.Graphic.GRenderer myRenderer;
+		public Rigidbody2D body;
+		//public CharacterController myController;
+		//public Game.Graphic.GRenderer myRenderer;
 
 
 		//Status
@@ -44,7 +44,7 @@ namespace Game.Entity{
 		public List<GTask> myTasks = new List<GTask>();
 
 		internal bool 
-			isMove = false,
+			isMoved = false,
 			isMoveChanged = false;
 		internal Vector3 
 			moveAmount = Vector3.zero,
@@ -59,11 +59,7 @@ namespace Game.Entity{
 			HelperIterateInit (myBehaviors);
 			HelperIterateInit (myTasks);
 			id = IdCount++;
-			if (myController != null) {
-				//myController.detectCollisions = false;
-				//myController.isTrigger = true;
-				//myController.is
-			}
+
 		}
 		
 		public virtual void Start(){
@@ -73,19 +69,22 @@ namespace Game.Entity{
 		}
 		void UpdateMove(){
 			if (isMoveChanged) {
-				isMove = true;
+				isMoved = true;
 				isMoveChanged = false;
 				moveAmountOld = moveAmount;
-				this.myController.Move (moveAmount * Time.deltaTime);
+				//this.body.AddForce(new Vector2(moveAmount.x,moveAmount.y) );
+				this.body.velocity = new Vector2(moveAmount.x,moveAmount.y);
+				//this.myController.Move (moveAmount * Time.deltaTime);
 				moveAmount = Vector3.zero;
 			} else {
-				if(isMove){
-					this.myController.Move(Vector3.zero);
+				if(isMoved){
+					this.body.velocity = new Vector2(0,0);
+					//this.myController.Move(Vector3.zero);
 					moveAmountOld = Vector3.zero;
-					isMove = false;
+					isMoved = false;
 				}
 			}
-			if(isMove&& myController != null)this.myController.Move (body.velocity * Time.deltaTime);
+			//if(isMove&& myController != null)this.myController.Move (body.velocity * Time.deltaTime);
 
 		}
 		public virtual void KUpdate (GRoom room)
@@ -101,8 +100,8 @@ namespace Game.Entity{
 
 
 			//UpdateTasks (room);
-			this.rotation = rot;
-			this.position = new Vector3 (this.position.x,0,this.position.z);
+			//this.rotation = rot;
+			//this.position = new Vector3 (this.position.x,0,this.position.z);
 			if (!isAlive) return;			
 			if (hp <= 0) {
 				Kill();
@@ -195,13 +194,14 @@ namespace Game.Entity{
 			this.isAlive = false;
 			E_Killed (this);
 		}
-		public virtual void OnCollisionEnter(Collision c){
+		public virtual void OnCollisionEnter2D(Collision2D c){
 			this.E_OnCollisionEnter (this, c);
 		}
-		public virtual void OnTriggerEnter(Collider c){
+		public virtual void OnTriggerEnter2D(Collider2D c){
+			Debug.Log ("TRIIGER ENTER 2D");
 			this.E_OnTriggerEnter (this, c);
 		}
-		public virtual void OnTriggerStay(Collider c){
+		public virtual void OnTriggerStay2D(Collider2D c){
 			this.E_OnTriigerStay (this, c);
 		}
 

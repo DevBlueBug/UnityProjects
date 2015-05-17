@@ -41,13 +41,13 @@ namespace Game.Graphic{
 		void Update(){
 			if (animator == null) return;
 		//	if(isDebug && !myEntity.isMoved)Debug.Log ("GRENDERER " + gameObject.name + " "+ myEntity.isMoved);
-			animator.SetBool ("isMoving", myEntity.isMove	);
+			animator.SetBool ("isMoving", myEntity.isMoved	);
 			
-			if (isMove && !myEntity.isMove) {
+			if (isMove && !myEntity.isMoved) {
 				isMove = false;
 				animator.speed = 1;
 			}
-			if (myEntity.isMove) {
+			if (myEntity.isMoved) {
 				isMove = true;
 				animator.speed = .8f + myEntity.velo*.2f;
 			}

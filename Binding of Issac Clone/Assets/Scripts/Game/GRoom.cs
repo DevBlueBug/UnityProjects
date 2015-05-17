@@ -10,11 +10,11 @@ namespace Game{
 		public enum KType {Normal,Treasure,Boss,Secret }
 		public enum KState {None, HasGold,HasHeart,HasBomb }
 		static Dictionary<int,Vector3> DicPlayerStartingPosition = new Dictionary<int, Vector3>(){
-			{-1, new Vector3(.5f,0,.5f)},
-			{0, new Vector3(.5f,0,1)},
-			{1, new Vector3(1, 0,.5f)},
+			{-1, new Vector3(.5f,.5f,0)},
+			{0, new Vector3(.5f,1,0)},
+			{1, new Vector3(1, .5f,0)},
 			{2, new Vector3(.5f, 0, 0)},
-			{3, new Vector3(0, 0,.5f)}
+			{3, new Vector3(0, .5f,0)}
 		};
 		
 		public Delegates.D_EnteredDoor Event_EnterDoor = delegate(int w){Debug.Log("HEY " + w);};
@@ -97,7 +97,7 @@ namespace Game{
 		
 		public GEntity AddSimple(GEntity e, int x , int y, int dirLooking){
 			e.transform.parent = this.transform;
-			e.position = new Vector3 (x, 0, y);
+			e.position = new Vector3 (x, y, 0);
 			e.rotation = new Vector3 (0, 180 + 90 * dirLooking,0);
 			myEntities.Add (e);
 			LinkEntity (e);
@@ -110,11 +110,13 @@ namespace Game{
 				if (direction == k.Key) {
 				
 				var respawnPoint = new Vector3 (
-					(int)(width * k.Value.x), 0, 
-					(int)(height * k.Value.z));// * k.Value;
+					(int)(width * k.Value.x), 
+					(int)(height * k.Value.y),
+					0);// * k.Value;
 
-				var ToCenter = (new Vector3((int)(width*.5f),0,(int)(height*.5f) ) - respawnPoint).normalized;
+				var ToCenter = (new Vector3((int)(width*.5f),(int)(height*.5f),0 ) - respawnPoint).normalized;
 				playerEntity.position = respawnPoint + ToCenter*1.3f;
+				Debug.Log("PLAYER POSITON "  + (respawnPoint + ToCenter*1.3f));
 
 				}
 		}

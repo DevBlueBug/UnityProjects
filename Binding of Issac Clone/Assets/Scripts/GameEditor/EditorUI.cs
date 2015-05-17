@@ -46,6 +46,7 @@ namespace GameEditor{
 			InitMapButtons (PN_Room,P_BttnRoom);
 
 			UpdateDoors ();
+			RefreshFromFilesSaved ();
 			Load ();
 			//canvasScale.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
 		}
@@ -162,17 +163,21 @@ namespace GameEditor{
 				o.gameObject.name = "" + i + " " + j;
 			}
 		}
-		void Save(){
+		DRoomLayout ToLayout(){
 			DRoomLayout layout = new DRoomLayout (13, 7);
 			layout.doors = doorIsOpen;
 			Debug.Log ("SAVING " + doorIsOpen [0]);
 			for (int i = 0; i < 13; i++) for (int j = 0; j < 7; j++) {
 				layout.tiles[i,j]= tiles[i,j].myType;
-				}
-			master.Save (idSelected, layout);
+			}
+			return layout;
+		}
+		void Save(){
+			master.Save (idSelected, ToLayout());
 		}
 		void Load(){
-			DRoomLayout layout = master.Load (this.idSelected);
+			DRoomLayout layout;
+			master.Load (this.idSelected,out layout);
 			LoadLayout (layout);
 			txtIdSelected.text =""+ idSelected;
 		}
@@ -189,6 +194,15 @@ namespace GameEditor{
 				doors[i].SetType((doorIsOpen[i])?  DRoomLayout.TileType.Ground : DRoomLayout.TileType.Air);
 			}
 			
+		}
+		void RefreshFromFilesSaved(){
+			List<DRoomLayout> layouts = new List<DRoomLayout> ();
+			for(int i = 0 ; i < this.master.idCount;i++){
+				DRoomLayout layout;
+				master.Load(i,out layout);
+				layouts.Add(layout);
+			}
+			master.Refresh (layouts);
 		}
 	}
 }

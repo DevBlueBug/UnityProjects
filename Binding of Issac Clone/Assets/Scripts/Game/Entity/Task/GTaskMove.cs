@@ -33,8 +33,8 @@ namespace Game.Entity.Task
 		}
 		public void Move(GEntity entity, GRoom room){
 			var dis = position - entity.position;
-			var dir = new Vector3 (dis.x, 0, dis.z).normalized;
-			entity.Move (new Vector3(dir.x * entity.velo ,0, dir.z * entity.velo));
+			var dir = new Vector3 (dis.x, dis.y,0).normalized;
+			entity.Move (new Vector3(dir.x * entity.velo ,dir.y * entity.velo,0));
 
 			
 			

@@ -72,10 +72,10 @@ namespace Game.Entity.Behavior
 
 			return false;
 		}
-		public void Hdr_OnCollision(GEntity entity, Collision c){
+		public void Hdr_OnCollision(GEntity entity, Collision2D c){
 			Hdr_Collision (entity, c.gameObject);
 		}
-		public void Hdr_OnTrigger(GEntity entity, Collider c){
+		public void Hdr_OnTrigger(GEntity entity, Collider2D c){
 			Hdr_Collision (entity, c.gameObject);
 		}
 		public void Hdr_Collision(GEntity me, GameObject other){

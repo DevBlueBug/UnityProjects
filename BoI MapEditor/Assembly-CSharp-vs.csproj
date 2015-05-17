@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{FCDA4740-D26A-2320-8522-2F6F3F4C8AC8}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_5_0_1;UNITY_5_0;UNITY_5;ENABLE_LICENSE_RENAME;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_NEW_HIERARCHY;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_NONPRO;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PROFILER;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\AniOnStateExit.cs" />
+     <Compile Include="Assets\Scripts\Data\DEntity.cs" />
+     <Compile Include="Assets\Scripts\Data\DMap.cs" />
+     <Compile Include="Assets\Scripts\Data\DMapDecorator.cs" />
+     <Compile Include="Assets\Scripts\Data\DMapGenerator.cs" />
+     <Compile Include="Assets\Scripts\Data\DMapPopulator.cs" />
+     <Compile Include="Assets\Scripts\Data\DRoom.cs" />
+     <Compile Include="Assets\Scripts\Data\DRoomLayout.cs" />
+     <Compile Include="Assets\Scripts\DataEditor.cs" />
+     <Compile Include="Assets\Scripts\DataSaved.cs" />
+     <Compile Include="Assets\Scripts\GameEditor\EditorMaster.cs" />
+     <Compile Include="Assets\Scripts\GameEditor\EditorTile.cs" />
+     <Compile Include="Assets\Scripts\GameEditor\EditorUI.cs" />
+     <Compile Include="Assets\Scripts\GameEditor\EditorUI_WheelMenu.cs" />
+     <Compile Include="Assets\Scripts\SelectLevel\RoomDisplayer.cs" />
+     <Compile Include="Assets\Scripts\SelectLevel\SelectLevelMaster.cs" />
+     <Compile Include="Assets\Scripts\SimpleJSON.cs" />
+     <Compile Include="Assets\Scripts\Utility\EasyInstantiate.cs" />
+     <Compile Include="Assets\Scripts\Utility\EasyTimer.cs" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\35.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\46.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\55.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\6.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\58.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts_saved\14.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts_saved\3.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\10.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\25.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\12.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\24.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\7.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\38.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\4.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\42.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts_saved\6.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\15.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\49.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\2.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\17.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\32.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts_saved\10.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\16.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts_saved\17.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\9.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\51.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts_saved\9.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\1.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\33.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\11.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\14.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\57.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts_saved\12.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\5.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\21.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\45.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts_saved\0.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\19.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\29.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\48.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\26.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\36.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts_saved\16.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\44.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts_saved\4.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\22.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts_saved\7.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\37.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\18.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\39.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\47.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\20.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts_saved\5.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\59.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\23.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\30.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\0.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts_saved\2.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\41.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\28.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts_saved\13.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\34.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts_saved\1.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\43.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\60.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\56.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts_saved\15.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\40.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\52.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\54.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts_saved\8.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\31.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\50.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\3.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts_saved\11.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\53.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\8.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\13.txt" />
+     <None Include="Assets\Prefabs\Editor\RoomLayouts\27.txt" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>

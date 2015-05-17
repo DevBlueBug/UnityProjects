@@ -16,9 +16,9 @@ namespace Game{
 		}
 		static Dictionary<KeyCode,Vector3> inputKeyboardMove = new Dictionary<KeyCode, Vector3>()
 		{
-			{KeyCode.W, new Vector3(0,0,1)},
+			{KeyCode.W, new Vector3(0,1,0)},
 			{KeyCode.D, new Vector3(1,0,0)},
-			{KeyCode.S, new Vector3(0,0,-1)},
+			{KeyCode.S, new Vector3(0,-1,0)},
 			{KeyCode.A, new Vector3(-1,0,0) }
 		};
 		
@@ -76,8 +76,7 @@ namespace Game{
 
 
 			
-			if (direction.sqrMagnitude == 0)
-				return;
+			if (direction.sqrMagnitude == 0) return;
 
 			direction.Normalize ();
 			

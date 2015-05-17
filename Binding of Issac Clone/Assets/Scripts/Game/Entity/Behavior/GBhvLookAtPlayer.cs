@@ -11,6 +11,7 @@ namespace Game.Entity.Behavior
 			var dir = GPlayer.PlayerPosition - entity.position;
 			int x = (int)dir.x, y = (int)dir.z;
 			//Debug.Log (x + " " + y);
+
 			if(Mathf.Abs(x) > Mathf.Abs(y) ){
 				//x
 				if(x >0){

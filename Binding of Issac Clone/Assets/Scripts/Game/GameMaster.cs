@@ -44,16 +44,6 @@ namespace Game{
 
 
 		}
-
-		
-		// Update is called once per frame
-		void Update ()
-		{
-			KUpdate ();
-		}
-		void FixedUpdate(){
-			KFixedUpdate ();
-		}
 		void EVENT_LOAD_NEW_ROOM(GRoom room, int playerDirection){
 			player.E_NewRoom(room,playerDirection);
 			mapMini.MoveCameraTo(room.X, room.Y);
@@ -82,10 +72,10 @@ namespace Game{
 
 		}
 		void KFixedUpdate(){
-			player.KFixedUpdate (mapGame.roomActive);
-			mapGame.KFixedUpdate ();
+			//player.KFixedUpdate (mapGame.roomActive);
+			//mapGame.KFixedUpdate ();
 		}
-		void KUpdate(){
+		void Update(){
 			player.KUpdate (mapGame.roomActive);
 			mapGame.KUpdate ();
 			//myRoom.KUpdate ();

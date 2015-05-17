@@ -15,7 +15,7 @@ namespace UI.MiniMap{
 		}
 		public void Reset(){
 			rooms = new MinMapRoom[width, height];
-			return;
+
 			for (int i = 0; i < width; i++)
 			for (int j = 0; j < height; j++) {
 				rooms[i,j] = Utility.EasyInstantiate
@@ -28,18 +28,20 @@ namespace UI.MiniMap{
 		}
 		void Update ()
 		{
+
 			var dicKeys = new Dictionary<KeyCode, Vector3>(){
 				{KeyCode.I, new Vector3(0,1,0)},
 				{KeyCode.K, new Vector3(0,-1,0)},
 				{KeyCode.J, new Vector3(-1,0,0)},
 				{KeyCode.L, new Vector3(1,0,0)}
 			};
-			return;
+			/**
 			foreach (var k in dicKeys) {
 				if(Input.GetKeyDown(k.Key)){
 					MoveCamera((int)k.Value.x,(int)k.Value.y);
 				}
 			}
+			**/
 		}
 		public MinMapRoom this[int x, int y]{
 			get{ 

@@ -9,7 +9,7 @@ namespace Game.Entity.Delegates{
 	public delegate void D_HpChange(GEntity me, float change);
 	public delegate void D_ForceApplied(GEntity me, Vector3 force);
 
-	public delegate void D_OnCollisionEnter(GEntity me, Collision c);
-	public delegate void D_OnTriggerEnter(GEntity me, Collider c);
-	public delegate void D_OnTriggerStay(GEntity me, Collider c);
+	public delegate void D_OnCollisionEnter(GEntity me, Collision2D c);
+	public delegate void D_OnTriggerEnter(GEntity me, Collider2D c);
+	public delegate void D_OnTriggerStay(GEntity me, Collider2D c);
 }
