@@ -1,1 +1,1 @@
-{"door":[ "false", "false", "false", "false" ], "piecesWorld":[  ], "piecesUnits":[  ]}
+{"door":[ "false", "false", "false", "false" ], "piecesWorld":[ {"X":"5", "Y":"5", "Type":"A"} ], "piecesUnits":[  ]}
