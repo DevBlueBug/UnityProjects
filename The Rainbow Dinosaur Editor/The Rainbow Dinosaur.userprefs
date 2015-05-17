@@ -1,0 +1,26 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Edit\Edit\EditorBoard.cs">
+    <Files>
+      <File FileName="The Rainbow Dinosaur.sln" Line="1" Column="1" />
+      <File FileName="Assets\DRoomLayout.cs" Line="1" Column="1" />
+      <File FileName="Assets\EditorUI_WheelMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Edit\Edit\EditorBoard.cs" Line="52" Column="15" />
+      <File FileName="Assets\Scripts\Edit\Edit\EditorBrain.cs" Line="33" Column="3" />
+      <File FileName="Assets\Scripts\Utility\EasyFile.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Utility\EasyInstantiate.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Edit\Edit\EditorBoard_Theme.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Edit\Edit\EditorJsonWrapper.cs" Line="1" Column="1" />
+      <File FileName="c:\Users\KyungHwan\Desktop\GitHub\DevBlueBug\UnityProjects\The Rainbow Dinosaur\Assets\Scripts\HUDFPS.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Edit\Edit\EditorBoard_Data.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Edit\EditSelect\SelUI.cs" Line="52" Column="22" />
+      <File FileName="Assets\Scripts\Edit\Edit\Piece\EditorPiece_Data.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Edit\EditSelect\SelFileLoader.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Edit\Edit\EditorUI.cs" Line="51" Column="34" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
