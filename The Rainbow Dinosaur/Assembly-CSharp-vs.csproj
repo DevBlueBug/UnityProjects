@@ -57,13 +57,15 @@
      <Compile Include="Assets\Scripts\DataMap\Data_Test_Scenario.cs" />
      <Compile Include="Assets\Scripts\Game\DataLoader.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Entity.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\EntityMove.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Rendering\EBitamsk_Simple.cs" />
      <Compile Include="Assets\Scripts\Game\GameBrain.cs" />
+     <Compile Include="Assets\Scripts\Game\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\Game\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\Game\Room\Room.cs" />
      <Compile Include="Assets\Scripts\Game\Room\RoomAsset.cs" />
      <Compile Include="Assets\Scripts\Game\Test\Test00.cs" />
      <Compile Include="Assets\Scripts\Game\Test\Test01.cs" />
-     <Compile Include="Assets\Scripts\Game\TestController.cs" />
      <Compile Include="Assets\Scripts\SimpleJSON.cs" />
      <Compile Include="Assets\Scripts\Utility\EasyFile.cs" />
      <Compile Include="Assets\Scripts\Utility\EasyInstantiate.cs" />

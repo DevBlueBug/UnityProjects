@@ -7,20 +7,17 @@ public class Room : MonoBehaviour
 {
 
 	public float width,height;
-	public Entity[,] entitiesWorld;
+	public Entity[,] entitiesWorldIndex;
+	public List<Entity> entities,entitiesWorld; 
 	// Use this for initialization
 	void Awake ()
 	{
-		entitiesWorld = new Entity[(int)width,(int)height];
+		entitiesWorldIndex = new Entity[(int)width,(int)height];
 	}
-	Vector3 H_GetDoorPosition(int n){
-		List<Vector3> positions = new List<Vector3> (){
-			new Vector3((int)width/2,height-1,0),
-			new Vector3(width-1,(int)height/2,0),
-			new Vector3((int)width/2,0,0),
-			new Vector3(0,(int)height/2,0)
-		};
-		return positions [n];
+	public void KUpdate(){
+		for (int i = 0; i< entities.Count; i++) {
+			entities[i].KUpdate(this);
+		}
 	}
 	public void Reset(RoomAsset asset){
 		for (int i = 0; i< width; i++) {
@@ -48,7 +45,7 @@ public class Room : MonoBehaviour
 		for (int i  = 0; i < 4; i++) {
 			var door = data.doors[i];
 			if(door){
-				var pos = H_GetDoorPosition(i);
+				var pos = GetDoorPosition(i);
 				AddEntity(asset.Get(Piece.KType.Door),(int)pos.x,(int)pos.y,true);
 			}
 		}
@@ -56,13 +53,21 @@ public class Room : MonoBehaviour
 			AddEntity(asset.Get(piece.meType), piece.X,piece.Y,true);
 		}
 		for (int i = 0; i< width; i++) for (int j = 0; j<height; j++) {
-			if(entitiesWorld[i,j] == null){
+			if(entitiesWorldIndex[i,j] == null){
 				AddEntity(asset.Get(Piece.KType.Ground), i,j,true);
 			}
 			}
 		Refresh ();
 	}
-	void AddEntity(Entity entity, int x, int y, bool isWorld){
+	
+	public void Refresh(){
+		for (int i = 0; i< width; i++)
+		for (int j = 0; j < this.height; j++) {
+			var entity = entitiesWorldIndex[i,j];
+			if(entity!=null)entity.Refresh(this);
+		}
+	}
+	public void AddEntity(Entity entity, int x, int y, bool isWorld){
 		float _w = 1.0f / (width-1), _h = 1.0f / (height-1);
 		float sizeCell = (_w < _h )? _w : _h;
 		var pos  = new Vector3 (x, y, 0);
@@ -73,18 +78,36 @@ public class Room : MonoBehaviour
 		entity.transform.localPosition = new Vector3(x,y,0);
 
 		if (isWorld) {
-			if(entitiesWorld[x,y] !=null){
-				entitiesWorld[x,y].Kill(this);
+
+			entitiesWorld.Add(entity);
+			if (entitiesWorldIndex [x, y] != null) {
+				entitiesWorldIndex [x, y].Kill (this);
+				entitiesWorld.Remove(entitiesWorldIndex [x, y]);
 			}
-			entitiesWorld[x,y] = entity;
+			entitiesWorldIndex [x, y] = entity;
+		} else {
+			entities.Add(entity);
 		}
 	}
-	public void Refresh(){
-		for (int i = 0; i< width; i++)
-			for (int j = 0; j < this.height; j++) {
-			var entity = entitiesWorld[i,j];
-			if(entity!=null)entity.Refresh(this);
-			}
+	public void RemoveEntity(Entity entity){
+		try{
+			entity.Kill (this);
+			entities.Remove (entity);
+		}
+		catch{
+			Debug.Log("Room Remove Entity call has failed.");
+		}
+
+	}
+	
+	public Vector3 GetDoorPosition(int n){
+		List<Vector3> positions = new List<Vector3> (){
+			new Vector3((int)width/2,height-1,0),
+			new Vector3(width-1,(int)height/2,0),
+			new Vector3((int)width/2,0,0),
+			new Vector3(0,(int)height/2,0)
+		};
+		return positions [n];
 	}
 	// Update is called once per frame
 	void Update ()

@@ -20,7 +20,7 @@ public class EBitamsk_Simple : MonoBehaviour
 			if(posNew.x < 0 || posNew.y< 0 
 			   || posNew.x >= room.width||posNew.y >= room.height) continue;
 
-			var entityNew = room.entitiesWorld[(int)posNew.x,(int)posNew.y];
+			var entityNew = room.entitiesWorldIndex[(int)posNew.x,(int)posNew.y];
 			if(entityNew == null) continue;
 			if(entityNew.meType == entity.meType) 
 				score += socreAdded[i]; 

@@ -4,10 +4,12 @@ using System.Collections;
 public class Entity : MonoBehaviour
 {
 	public delegate void D_Refreshed(Entity me, Room room);
-	public enum KType{Edge,Blcok };
+	public enum KType{Enemy,Player,World, };
 	public D_Refreshed E_Refreshed = delegate {};
 
 	public KType meType;
+
+	internal bool isAlive = true;
 
 	// Use this for initialization
 	void Start ()
@@ -16,7 +18,7 @@ public class Entity : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	public virtual void KUpdate (Room room)
 	{
 	
 	}

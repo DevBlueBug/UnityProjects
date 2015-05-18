@@ -1,17 +1,21 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Game\Room\RoomAsset.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Game\Entity\EntityMove.cs">
     <Files>
-      <File FileName="Assets\Scripts\Game\GameBrain.cs" Line="30" Column="14" />
+      <File FileName="Assets\Scripts\Game\GameBrain.cs" Line="28" Column="3" />
       <File FileName="Assets\Scripts\DataMap\Data_Test_Scenario.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\DataMap\DMap.cs" Line="8" Column="22" />
-      <File FileName="Assets\Scripts\Game\Test\Test01.cs" Line="7" Column="31" />
-      <File FileName="Assets\Scripts\Game\Room\RoomAsset.cs" Line="21" Column="5" />
-      <File FileName="Assets\Scripts\Game\Room\Room.cs" Line="61" Column="5" />
-      <File FileName="Assets\Scripts\Game\Entity\Rendering\EBitamsk_Simple.cs" Line="15" Column="16" />
-      <File FileName="Assets\Scripts\Utility\EasyFile.cs" Line="12" Column="6" />
-      <File FileName="Assets\Scripts\Game\DataLoader.cs" Line="12" Column="32" />
-      <File FileName="c:\Users\KyungHwan\Desktop\GitHub\DevBlueBug\UnityProjects\The Rainbow Dinosaur\Assets\Scripts\Game\Test\Test00.cs" Line="21" Column="6" />
+      <File FileName="Assets\Scripts\DataMap\DMap.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\Test\Test01.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\Room\RoomAsset.cs" Line="15" Column="30" />
+      <File FileName="Assets\Scripts\Game\Room\Room.cs" Line="80" Column="17" />
+      <File FileName="Assets\Scripts\Game\Entity\Rendering\EBitamsk_Simple.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Utility\EasyFile.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\DataLoader.cs" Line="1" Column="1" />
+      <File FileName="c:\Users\KyungHwan\Desktop\GitHub\DevBlueBug\UnityProjects\The Rainbow Dinosaur\Assets\Scripts\Game\Test\Test00.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\Entity\Entity.cs" Line="21" Column="40" />
+      <File FileName="Assets\Scripts\Game\PlayerManager.cs" Line="18" Column="45" />
+      <File FileName="Assets\Scripts\Game\PlayerController.cs" Line="14" Column="34" />
+      <File FileName="Assets\Scripts\Game\Entity\EntityMove.cs" Line="27" Column="27" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
