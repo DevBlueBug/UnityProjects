@@ -9,7 +9,7 @@ public class Entity : MonoBehaviour
 	public delegate void D_Kill(Entity me);
 	public delegate void D_Attacked(Entity me, int hpChange);
 	public delegate void D_Refreshed(Entity me, Room room);
-	public delegate int D_TriggerTarget(Entity me, Entity other); // continue on true, stop testing on false
+	public delegate int D_TriggerTarget(Entity me, Entity other, Collider2D collider); // continue on true, stop testing on false
 
 	public D_Kill E_Kill = delegate {};
 	public D_Refreshed E_Refreshed = delegate {};
@@ -31,7 +31,7 @@ public class Entity : MonoBehaviour
 		isContinueTriggerCheck = true,
 		isAlive = true;
 	internal NWeapon.Weapon weapon = new NWeapon.Weapon();
-	internal List<NS_Behaviour.Behaviour> bhvs = new List<NS_Behaviour.Behaviour> ();
+	internal List<NBehaviour.Behaviour> bhvs = new List<NBehaviour.Behaviour> ();
 
 
 
@@ -105,7 +105,7 @@ public class Entity : MonoBehaviour
 		
 		for(int i = 0 ; i < targets.Count;i++){
 			if(otherEntity.meType == targets[i]){
-				int result = E_TriggerTarget(this,otherEntity);
+				int result = E_TriggerTarget(this,otherEntity, collider);
 				if(result == 1) isContinueTriggerCheck = true;
 				else if(result == 0) break;
 				else if(result == -1) isContinueTriggerCheck = false;

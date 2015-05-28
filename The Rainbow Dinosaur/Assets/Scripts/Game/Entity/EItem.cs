@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class EItem : Entity
+public class EItem : EntityMove
 {
 	public enum ItemId {
 		Error =-1,  
@@ -24,7 +24,7 @@ public class EItem : Entity
 		base.Awake ();
 		this.E_TriggerTarget += H_TriggerTarget;
 	}
-	int H_TriggerTarget(Entity me, Entity target){
+	int H_TriggerTarget(Entity me, Entity target, Collider2D collider){
 		E_PlayerAcquired (this);
 		Kill ();
 		return -1;

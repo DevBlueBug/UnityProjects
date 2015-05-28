@@ -1,8 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
-namespace NS_Behaviour
+namespace NBehaviour
 {
-	public class BhvFollowPlayer :NS_Behaviour.Behaviour
+	public class BhvFollowPlayer :NBehaviour.Behaviour
 	{
 		Utility.EasyTimer timer;
 		Stack<Vector3> destinations = new Stack<Vector3>();
@@ -22,7 +22,7 @@ namespace NS_Behaviour
 			if (destination == null) return -1;
 			//Debug.Log ("DESTINATION GIVEN AT " + destination);
 			var dir = destination.Value - entity.transform.localPosition;
-			entityMove.SetVelocity (dir.normalized);
+			entityMove.SetVelocity (dir.normalized * entityMove.velo	);
 
 			if ( dir.sqrMagnitude < .05f) {
 				if(destinations.Count >0 ) destination = destinations.Pop();

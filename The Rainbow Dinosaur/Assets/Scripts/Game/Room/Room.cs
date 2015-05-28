@@ -29,7 +29,7 @@ public class Room : MonoBehaviour
 		isSomethingDead = UpdateEntities (entities);
 		isSomethingDead = UpdateEntities (entitiesWorld) || isSomethingDead;
 
-		SetAllDoors(true);
+		//SetAllDoors(true);
 		if (isSomethingDead) {
 			if(IsGameOver())SetAllDoors(true);
 		}
@@ -112,7 +112,7 @@ public class Room : MonoBehaviour
 		}
 	}
 	public void AddDoor(Entity entity, int doorIndex){
-		entity.E_TriggerTarget += delegate(Entity door,Entity doorEntered) {
+		entity.E_TriggerTarget += delegate(Entity door,Entity doorEntered, Collider2D collider) {
 			E_NextRoom (doorIndex);
 			return 1;
 		};

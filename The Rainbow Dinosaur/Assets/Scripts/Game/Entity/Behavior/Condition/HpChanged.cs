@@ -1,5 +1,5 @@
 using System;
-namespace NS_Behaviour.NCondition
+namespace NBehaviour.NCondition
 {
 	public class HpChanged :Condition
 	{

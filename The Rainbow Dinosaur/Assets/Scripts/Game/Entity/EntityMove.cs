@@ -5,7 +5,7 @@ public class EntityMove : Entity
 {
 	public Rigidbody2D body;
 	public float velo,friction;
-	Vector3 
+	internal Vector3 
 		velocity		= Vector3.zero,
 		velocityForce	= Vector3.zero;
 

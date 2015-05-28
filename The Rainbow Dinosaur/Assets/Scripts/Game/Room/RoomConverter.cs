@@ -22,25 +22,30 @@ public class RoomConverter
 	                    Data.DMap map){
 		rooms = new Room[map.width, map.height];
 		foreach (var r in map.roomsAvailable) {
-			bool resetWithData = (r.X != map.roomInit.X || r.Y != map.roomInit.Y);
+			//bool resetWithData = (r.X != map.roomInit.X || r.Y != map.roomInit.Y);
 			AddRoom(ref rooms, organizer,p_roomAsset,
 			        UnityEngine.GameObject.Instantiate(p_room),
-			        r.meType, r.X,r.Y, r.doors,resetWithData);
+			        r.meType, r.X,r.Y, r.doors);
 			E_NewRoom(rooms[r.X,r.Y]);
 		}
 		return rooms [map.roomInit.X, map.roomInit.Y];
 	}
 	void AddRoom(ref Room[,] rooms, Data.Organizer organizer, RoomAsset roomAsset,
 	             Room room,
-	             Data.DRoom.KType type, int x, int y, bool[] doors, bool isResetWithNewData){
+	             Data.DRoom.KType type, int x, int y, bool[] doors){
 		rooms [x, y] = room;
 		room.type = type;
 		room.SetPosition(x,y);
-		if (isResetWithNewData) {
+		if (room.type == Data.DRoom.KType.Normal) {
 			var dataBoard = organizer.GetBoard(doors[0],doors[1],doors[2],doors[3]);
 			room.Reset(roomAsset, dataBoard);
-		} else {
+		} else if(room.type == Data.DRoom.KType.Start) {
 			room.Reset(roomAsset,new Data.Board(doors[0],doors[1],doors[2],doors[3]));
+			room.AddEntity(roomAsset.GetBoss(0),room.width/2,room.height/2,false);
+		}
+		else if(room.type== Data.DRoom.KType.Boss){
+			room.Reset(roomAsset,new Data.Board(doors[0],doors[1],doors[2],doors[3]));
+
 		}
 
 

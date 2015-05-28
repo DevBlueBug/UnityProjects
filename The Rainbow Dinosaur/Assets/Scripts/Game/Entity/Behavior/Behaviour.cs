@@ -1,6 +1,7 @@
 using System;
-using NS_Behaviour.NCondition;
-namespace NS_Behaviour{
+using System.Collections.Generic;
+using NBehaviour.NCondition;
+namespace NBehaviour{
 	
 	public class Behaviour
 	{
@@ -9,7 +10,8 @@ namespace NS_Behaviour{
 		public Behaviour 
 			bhvParent,
 			bhvSuccess,bhvFail;
-		public NCondition.Condition condition;
+		public List<Behaviour> others = new List<NBehaviour.Behaviour>();
+		public  NCondition.Condition condition;
 		
 		public Behaviour(){
 			condition = new Condition (null);
@@ -17,7 +19,10 @@ namespace NS_Behaviour{
 		public Behaviour(Entity entity){
 			condition = new Condition (entity);
 		}
-
+		//  1 success
+		// -1 fail
+		// -2 back to parent
+		// 0 : null : nothing happens is not supposed to happen... no implementation
 		public Behaviour Update(Entity entity, Room room){
 			var result = condition.Process(entity,room, Process (entity, room));
 			//UnityEngine.Debug.Log("returning " +result);

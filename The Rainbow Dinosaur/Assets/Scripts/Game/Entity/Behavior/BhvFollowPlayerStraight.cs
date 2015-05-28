@@ -1,8 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
-namespace NS_Behaviour
+namespace NBehaviour
 {
-	public class BhvFollowPlayerStraight :NS_Behaviour.Behaviour
+	public class BhvFollowPlayerStraight :NBehaviour.Behaviour
 	{
 		Utility.EasyTimer timer;
 		Vector3 direction;

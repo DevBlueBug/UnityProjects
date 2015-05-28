@@ -1,7 +1,7 @@
 using System.Collections;
-namespace NS_Behaviour{
+namespace NBehaviour{
 	
-	public class BhvOnContact : NS_Behaviour.Behaviour
+	public class BhvOnContact : NBehaviour.Behaviour
 	{
 	}
 

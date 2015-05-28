@@ -7,12 +7,15 @@ public class RoomAsset : MonoBehaviour
 	public Entity 
 		EError,
 		EEmpty,
-		EEdge,EGround,
+		EEdge, EGround,
 		EDoor,
 		EBlockHard,
 		EBlockSoft,
 		EEnemyFoot,
 		EEnemyFlying;
+	public Entity
+		Boss00;
+
 	public Entity Get(Data.Piece.KId id){
 		Entity entity;
 		switch (id) {
@@ -28,8 +31,10 @@ public class RoomAsset : MonoBehaviour
 		}
 		entity.meId = id;
 		//Debug.Log (type + " " + dic);
-		return Instantiate(entity);
-		
+		return Instantiate(entity);	
+	}
+	public Entity GetBoss(int level){
+		return Instantiate( Boss00 );
 	}
 
 	// Use this for initialization

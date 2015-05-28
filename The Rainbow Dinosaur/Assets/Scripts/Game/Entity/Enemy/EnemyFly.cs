@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
-using NS_Behaviour.NCondition;
+using NBehaviour;
+using NBehaviour.NCondition;
 
 public class EnemyFly : Enemy
 {
@@ -19,8 +20,8 @@ public class EnemyFly : Enemy
 	public override void Awake ()
 	{
 		base.Awake ();
-		var bhvFollow = new NS_Behaviour.BhvFollowPlayerStraight(this);
-		var bhvRunInCircle = new NS_Behaviour.BhvRunInCircle (this, .3f, 1);
+		var bhvFollow = new BhvFollowPlayerStraight(this);
+		var bhvRunInCircle = new BhvRunInCircle (this, .3f, 1);
 		bhvRunInCircle.condition = new HpChanged (this);
 		bhvRunInCircle.bhvSuccess = bhvFollow;
 		bhvRunInCircle.bhvFail = bhvFollow;

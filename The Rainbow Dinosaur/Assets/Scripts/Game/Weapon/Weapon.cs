@@ -14,7 +14,10 @@ namespace NWeapon
 {
 	public class Weapon
 	{
+		internal BulletManager.KTypes typeBullet;
+		internal float backSwing = 5.0f, speed = 10.0f;
 		internal List<Entity.KType> targets;
+
 
 		public Weapon ()
 		{
@@ -26,7 +29,16 @@ namespace NWeapon
 			}
 			return this;
 		}
+		public Weapon SetSpeed(float s){
+			this.speed = s;
+			return this;
+		}
 		public virtual void Attack(Entity entity,Room room, Vector3 direction){
+			try{
+				((EntityMove)entity).AddForceVelocity(-direction * backSwing);
+			}
+			catch{
+			}
 			//return null;
 			
 		}

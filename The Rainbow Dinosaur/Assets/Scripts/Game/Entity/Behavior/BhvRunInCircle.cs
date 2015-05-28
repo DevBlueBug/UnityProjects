@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using System;
-namespace NS_Behaviour
+namespace NBehaviour
 {
-	public class BhvRunInCircle : Behaviour
+	public class BhvRunInCircle : NBehaviour.Behaviour
 	{
 		float 
 			circelsPerSecond,

@@ -13,12 +13,15 @@ namespace NWeapon
 {
 	public class GunBasic : Weapon
 	{
-
+		
+		public GunBasic (){
+			this.typeBullet = BulletManager.KTypes.Normal;
+		}
 		public override void Attack (Entity entity,Room room,UnityEngine.Vector3 direction)
 		{
 			base.Attack (entity,room, direction);
 			var bullet = BulletManager.E_RequestBullet (BulletManager.KTypes.Normal);
-			bullet.SetVelocity (direction * 10	);
+			bullet.SetVelocity (direction * speed	);
 			bullet.targets = this.targets;
 			bullet.hpChange = -1;
 			bullet.forceApplied = 3;
