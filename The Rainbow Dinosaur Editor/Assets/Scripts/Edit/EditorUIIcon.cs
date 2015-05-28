@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EditorUIIcon : MonoBehaviour
 {
-	public Data.Piece.KType type;
+	public Data.Piece.KId type;
 	public Sprite spr;
 }
 

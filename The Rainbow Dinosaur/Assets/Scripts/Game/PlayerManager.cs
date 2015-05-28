@@ -3,34 +3,122 @@ using System.Collections.Generic;
 
 public class PlayerManager : MonoBehaviour
 {
-	public Entity player;
+	public static Vector3 PlayerPosInt = Vector3.zero;
+	public static Vector3 PlayerPosFloat = Vector3.zero;
+	public EBullet P_Bullet;
+	public Player P_Player;
+
 	public PlayerController controller;
+	public Player player;
+
+	bool 
+		isAttack_Called = false,
+		isAttacked = false;
+	Room room;
 	List<Room> roomsAdded = new List<Room>();
-	// Use this for initialization
-	void Start ()
-	{
-	
+
+	Utility.EasyTimer 
+		timerAttack = new Utility.EasyTimer (0, .1f),
+		timerAttackedInvincibility = new Utility.EasyTimer(0,2.0f);
+
+
+	void Awake(){
+		EItem.E_PlayerAcquired += H_ItemNew;
+
 	}
-	
 	// Update is called once per frame
 	public void KUpdate ()
 	{
-		if (player.isAlive) controller.KUpdate ();
+		if (isAttacked) {
+			if(timerAttackedInvincibility.Tick(Time.deltaTime)){
+				isAttacked = false;
+				player.SetInvinsibility(true);
+			}
+
+		}
+		if (isAttack_Called && timerAttack.Tick(Time.deltaTime) ) {
+
+			isAttack_Called = false;
+		}
+
+		controller.KUpdate (this, player.entity,room);
+		UpdatePlayerPosition ();
 	
 	}
+	void UpdatePlayerPosition(){
+		PlayerPosFloat = player.transform.localPosition;
+		PlayerPosInt =new Vector3(Mathf.Round( player.transform.localPosition.x),
+		                       Mathf.Round( player.transform.localPosition.y)
+		                       ,0);
+	}
 
+	
+	public void E_GetNewPlayer(){
+		player = Instantiate (P_Player);
+		player.entity.E_Attacked += H_Attacked;
+		player.entity.weapon = new NWeapon.GunBasic().SetTargets(Entity.KType.Enemy,Entity.KType.World);
+	}
 	public void E_NewRoom(Room room, int direction){
-
-		Vector3 pos = (direction == -1) ? 
-			new Vector3 ((int) room.width / 2, (int) (room.height / 2), 0) :
-				room.GetDoorPosition (direction);
+		this.room = room;
+		Vector3 pos,
+		center = new Vector3 ((int)room.width / 2, (int)(room.height / 2), 0);
+		if (direction == -1) {
+			pos = center;
+		} else {
+			pos = room.GetDoorPosition (direction);
+			var to = (center - pos).normalized;
+			to.Scale( new Vector3(1,1,1));
+			pos += to;
+		}
 		//Debug.Log (direction + " " +  pos);
 		for (int i = 0; i < roomsAdded.Count; i++) {
-			roomsAdded[i].RemoveEntity(player);
+			roomsAdded[i].RemoveEntity(player.entity,false);
 		}
-		room.AddEntity (player, (int)pos.x, (int)pos.y, false);
+		room.AddEntity (player.entity, (int)pos.x, (int)pos.y, false);
 		roomsAdded = new List<Room> (){room};
+		UpdatePlayerPosition ();
+	}
+	public void E_Move(Vector3 dir){
+		player.entity.SetVelocity (dir * player.information.GetVelocity());
+	}
+	public void E_Attack(Entity entitiPlayer,Room room, Vector3 dir){
+		if (isAttack_Called) return;
+		isAttack_Called = true;
+		entitiPlayer.Attack (room, dir);
+		/**
+
+		var bullet = Instantiate (P_Bullet);
+		room.AddEntity (bullet,
+		                player.transform.localPosition.x,
+		                player.transform.localPosition.y,false);
+		bullet.SetVelocity (dir * player.information.GetVelocity());
+		**/
+	}
+	void H_Attacked(Entity entity, int damage){
+		isAttacked = true;
+		player.SetInvinsibility (false);
+		Debug.Log ("PLAYER ATTACKED " + entity.hp);
 
 	}
+	void H_ItemNew(EItem item){
+		Debug.Log ("Item : "+item.gameObject.name);
+		if(item.itemId == EItem.ItemId.Money){
+			player.inventory.money += 1;
+		}
+		else if(item.itemId == EItem.ItemId.MoneyBig){
+			player.inventory.money = 99;
+		}
+		else if(item.itemId == EItem.ItemId.Bomb){
+			player.inventory.bomb += 1;
+		}
+		else if(item.itemId == EItem.ItemId.BombBig){
+			player.inventory.bomb = 99;
+		}
+		
+		else if(item.itemId == EItem.ItemId.Heart){
+			player.entity.hp++;
+		}
+	}
+
 }
 

@@ -9,7 +9,7 @@ public class EditorBrain : MonoBehaviour
 	public EditorBoard board;
 	public EditorBoard_Theme boardTheme;
 
-	Data.Piece.KType meTypeEdit = Data.Piece.KType.Edge;
+	Data.Piece.KId meTypeEdit = Data.Piece.KId.Edge;
 	int modeMoveEdit =0;
 
 	Vector3 mousePosOld = Vector3.zero;
@@ -41,7 +41,7 @@ public class EditorBrain : MonoBehaviour
 		mousePosOld = Input.mousePosition;
 	}
 
-	public void E_SetEditType (Data.Piece.KType type)
+	public void E_SetEditType (Data.Piece.KId type)
 	{
 		Debug.Log ("SET " + type);
 		meTypeEdit = type;
@@ -88,7 +88,7 @@ public class EditorBrain : MonoBehaviour
 		var index = board.ToLocalIndex (Camera.main.ScreenToWorldPoint (Input.mousePosition));
 		if (index == null) return;
 		Debug.Log ("CLICK " + meTypeEdit);
-		if (meTypeEdit == Data.Piece.KType.Edge) {
+		if (meTypeEdit == Data.Piece.KId.Edge) {
 			
 			if (index [0] == 0 || index [0] == board.width - 1)
 				index [1] = 4;
@@ -96,17 +96,23 @@ public class EditorBrain : MonoBehaviour
 				index [0] = 7;
 			var entity = board.entitiesWorld [index [0]] [index [1]];
 
-			if (entity.meType == Data.Piece.KType.Empty) {
-				board.AddPiece (Instantiate( boardTheme.Get(Data.Piece.KType.Ground)), index [0], index [1], true);
-			}else if (entity.meType == Data.Piece.KType.Ground) {
-				board.AddPiece (Instantiate( boardTheme.Get(Data.Piece.KType.Empty)), index [0], index [1], true);
+			if(index[0] >= 1 && index[0] < board.width-1 && index[1] >= 1 && index[1] < board.height-1){
+				
+				if (entity.meType != Data.Piece.KId.Ground) {
+					board.AddPiece (Instantiate( boardTheme.Get(Data.Piece.KId.Ground)), index [0], index [1], true);
+				}else if (entity.meType == Data.Piece.KId.Ground) {
+					board.AddPiece (Instantiate( boardTheme.Get(Data.Piece.KId.Empty)), index [0], index [1], true);
+				}
+				return;
 			}
+			else{
 
-			else if (entity.meType == Data.Piece.KType.Edge) {
-				board.AddPiece (Instantiate(boardTheme.Get(Data.Piece.KType.Door)), index [0], index [1], true);
-			} else if (entity.meType == Data.Piece.KType.Door) {
-				board.AddPiece (Instantiate(boardTheme.Get(Data.Piece.KType.Edge)), index [0], index [1], true);
-			} 
+				if (entity.meType == Data.Piece.KId.Edge) {
+					board.AddPiece (Instantiate(boardTheme.Get(Data.Piece.KId.Door)), index [0], index [1], true);
+				} else if (entity.meType == Data.Piece.KId.Door) {
+					board.AddPiece (Instantiate(boardTheme.Get(Data.Piece.KId.Edge)), index [0], index [1], true);
+				} 
+			}
 		} else {
 			if (board.entitiesUnits [index [0]] [index [1]] == null) {
 				board.AddPiece (Instantiate (boardTheme.Get(meTypeEdit)), index [0], index [1], false);

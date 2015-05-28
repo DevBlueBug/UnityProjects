@@ -10,7 +10,7 @@ public class EditorPiece : MonoBehaviour
 
 	public SpriteRenderer meRenderer;
 	//public KType meType;
-	public Data.Piece.KType meType;
+	public Data.Piece.KId meType;
 	public int hp;
 	public bool 
 		isAttacked_Bullet,

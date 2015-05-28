@@ -28,7 +28,7 @@ public class Ani_Player : MonoBehaviour {
 		}
 		if (dirFacing != dirFacingNew) {
 			dirFacing = dirFacingNew;
-			Debug.Log(dirFacing);
+			//Debug.Log(dirFacing);
 			if(dirFacing == -1){
 				this.transform.localRotation = Quaternion.Euler(0,0,0);
 			}

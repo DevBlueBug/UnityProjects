@@ -25,31 +25,31 @@ public class EditorBoard_Theme : MonoBehaviour
 		entEnemyTower,
 		entEnemyTurret;
 	// Use this for initialization
-	Dictionary<Data.Piece.KType,EditorPiece> pieces;
+	Dictionary<Data.Piece.KId,EditorPiece> pieces;
 	void Awake ()
 	{
-		pieces = new Dictionary<Data.Piece.KType, EditorPiece>(){
-			{Data.Piece.KType.Empty,entEmpty},
-			{Data.Piece.KType.Edge,entEdge},
-			{Data.Piece.KType.Door,entDoor},
-			{Data.Piece.KType.Ground,entGround},
-			{Data.Piece.KType.Block_Soft,entBlockSoft},
-			{Data.Piece.KType.Block_Hard,entBlockHard},
-			{Data.Piece.KType.Decoration,entDecoration},
-			{Data.Piece.KType.Item,entItem},
-			{Data.Piece.KType.TrapFoot,entTrapFoot},
-			{Data.Piece.KType.TrapTower,entTrapTower},
-			{Data.Piece.KType.TrapGravity,entTrapGravity},
-			{Data.Piece.KType.EnemyFoot,entEnemyFoot},
-			{Data.Piece.KType.EnemyFlying,entEnemyFlying},
-			{Data.Piece.KType.EnemyTower,entEnemyTower},
-			{Data.Piece.KType.EnemyTurret,entEnemyTurret},
+		pieces = new Dictionary<Data.Piece.KId, EditorPiece>(){
+			{Data.Piece.KId.Empty,entEmpty},
+			{Data.Piece.KId.Edge,entEdge},
+			{Data.Piece.KId.Door,entDoor},
+			{Data.Piece.KId.Ground,entGround},
+			{Data.Piece.KId.Block_Soft,entBlockSoft},
+			{Data.Piece.KId.Block_Hard,entBlockHard},
+			{Data.Piece.KId.Decoration,entDecoration},
+			{Data.Piece.KId.Item,entItem},
+			{Data.Piece.KId.TrapFoot,entTrapFoot},
+			{Data.Piece.KId.TrapTower,entTrapTower},
+			{Data.Piece.KId.TrapGravity,entTrapGravity},
+			{Data.Piece.KId.EnemyFoot,entEnemyFoot},
+			{Data.Piece.KId.EnemyFlying,entEnemyFlying},
+			{Data.Piece.KId.EnemyTower,entEnemyTower},
+			{Data.Piece.KId.EnemyTurret,entEnemyTurret},
 			
 		};
 
 	
 	}
-	public EditorPiece Get(Data.Piece.KType type){
+	public EditorPiece Get(Data.Piece.KId type){
 		pieces [type].meType = type;
 		return pieces [type];
 	}

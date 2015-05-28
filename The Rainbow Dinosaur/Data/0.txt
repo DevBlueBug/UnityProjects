@@ -1,1 +1,1 @@
-{"door":[ "true", "true", "true", "true" ], "piecesWorld":[ {"X":"5", "Y":"4", "Type":"A"} ], "piecesUnits":[  ]}
+{"door":[ "true", "true", "true", "true" ], "piecesWorld":[  ], "piecesUnits":[ {"X":"1", "Y":"1", "Type":"B"}, {"X":"1", "Y":"7", "Type":"B"}, {"X":"6", "Y":"4", "Type":"H"}, {"X":"8", "Y":"4", "Type":"H"}, {"X":"13", "Y":"1", "Type":"B"}, {"X":"13", "Y":"7", "Type":"B"} ]}

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 public class EditorBoard : MonoBehaviour {
@@ -14,20 +14,20 @@ public class EditorBoard : MonoBehaviour {
 		for (int i = 0; i < 4; i++) {
 			var doorPos = doorPositions[i];
 			var entity = me.entitiesWorld[doorPos[0]][doorPos[1]];
-			if(entity == null || entity.meType != Data.Piece.KType.Door) continue;
+			if(entity == null || entity.meType != Data.Piece.KId.Door) continue;
 			data.doors[i] = true;
 		}
 		for (int i = 1; i < me.width-1; i++)for (int j = 1; j < me.height-1; j++) {
 			var piece = me.entitiesWorld[i][j];
-			if(piece != null && piece.meType == Data.Piece.KType.Ground )continue;
+			if(piece != null && piece.meType == Data.Piece.KId.Ground )continue;
 			if(piece == null)
-				data.piecesWorld.Add(new Data.Piece(Data.Piece.KType.Empty,i,j) );
+				data.piecesWorld.Add(new Data.Piece(Data.Piece.KId.Empty,i,j) );
 			else data.piecesWorld.Add(new Data.Piece(piece.meType, i,j));
 		}
 		for (int i = 1; i < me.width-1; i++) for (int j = 1; j < me.height-1; j++) {
 			var piece = me.entitiesUnits[i][j];
 			if(piece ==null) continue;
-			data.piecesWorld.Add(new Data.Piece(piece.meType, i,j));
+			data.piecesUnits.Add(new Data.Piece(piece.meType, i,j));
 		}
 
 		return data;
@@ -51,19 +51,19 @@ public class EditorBoard : MonoBehaviour {
 	}
 	public void Reset(EditorBoard_Theme boardTheme){
 		for (int x = 0; x < width; x++) {
-			AddPiece(Instantiate (boardTheme.Get(Data.Piece.KType.Edge)),x,0,true);
-			AddPiece(Instantiate (boardTheme.Get(Data.Piece.KType.Edge)),x,height-1,true);
+			AddPiece(Instantiate (boardTheme.Get(Data.Piece.KId.Edge)),x,0,true);
+			AddPiece(Instantiate (boardTheme.Get(Data.Piece.KId.Edge)),x,height-1,true);
 		}
 		for (int y= 1; y < height-1; y++) {
-			AddPiece(Instantiate (boardTheme.Get(Data.Piece.KType.Edge)),0,y,true);
-			AddPiece(Instantiate (boardTheme.Get(Data.Piece.KType.Edge)),width-1,y,true);
+			AddPiece(Instantiate (boardTheme.Get(Data.Piece.KId.Edge)),0,y,true);
+			AddPiece(Instantiate (boardTheme.Get(Data.Piece.KId.Edge)),width-1,y,true);
 		}
 		for (int x = 1; x< width-1; x++)
 		for (int y= 1; y < height-1; y++) {
-			AddPiece(Instantiate (boardTheme.Get(Data.Piece.KType.Ground)),x,y,true);
+			AddPiece(Instantiate (boardTheme.Get(Data.Piece.KId.Ground)),x,y,true);
 		}
 		for (int i = 0; i < 4; i++) {
-			AddPiece(Instantiate (boardTheme.Get(Data.Piece.KType.Door)),doorPositions[i][0],doorPositions[i][1],true);
+			AddPiece(Instantiate (boardTheme.Get(Data.Piece.KId.Door)),doorPositions[i][0],doorPositions[i][1],true);
 
 		}
 	}
@@ -80,19 +80,19 @@ public class EditorBoard : MonoBehaviour {
 			AddPiece (Instantiate (theme.Get (piece.meType)), piece.X, piece.Y, false);
 		for (int i = 0; i < 4; i++) {
 			if(boardData.doors[i])AddPiece(
-				Instantiate(theme.Get(Data.Piece.KType.Door)),
+				Instantiate(theme.Get(Data.Piece.KId.Door)),
 				doorPositions[i][0],doorPositions[i][1],true);
 		}
 		
 		for (int i = 1; i < width-1; i++) for (int j = 1; j < height-1; j++) {
 			if(entitiesWorld[i][j] == null)
-				AddPiece(Instantiate(theme.Get(Data.Piece.KType.Ground)),i,j,true);
+				AddPiece(Instantiate(theme.Get(Data.Piece.KId.Ground)),i,j,true);
 		}
 			  
 		//throw new System.NotImplementedException ();
 	}
 
-	public int GetScore(List<List<EditorPiece>> map, int x, int y, Data.Piece.KType type){
+	public int GetScore(List<List<EditorPiece>> map, int x, int y, Data.Piece.KId type){
 		int score = 0;
 		for (int i =0;i< 4; i++) {
 			var d = KUtiltiy.dirs[i];

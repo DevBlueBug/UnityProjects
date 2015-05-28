@@ -3,24 +3,35 @@ using System.Collections;
 
 public class GameBrain : MonoBehaviour
 {
+	public delegate void D_NewMap(Data.DMap map);
+	public delegate void D_GameStarted_NewRoom(Room room, int n);
+	
+	public D_NewMap E_NewMap = delegate {	};
+	public D_GameStarted_NewRoom E_GameStarted_NewRoom = delegate { };
+
+	public EItemList P_ItemList;
 	public Room P_Room;
 	public RoomAsset P_RoomAsset;
-	RoomAsset roomAsset;
 
 	public PlayerManager pManager;
 
 	internal float difficulty = 0;
 
 	internal Data.DMap map;
+	internal Data.Organizer organizer;
+	internal Room[,] rooms;
 	internal Room room;
 
 
+	void Awake(){
+		organizer = new Data.Organizer ();
+		E_GameStarted_NewRoom += H_NewRoom;
+	}
 	// Use this for initialization
 	void Start ()
 	{
-		roomAsset = Instantiate (P_RoomAsset);
-		roomAsset.transform.parent = this.transform;
-	
+		//var e = new  Data.Organizer ().GetId (true, true, false, true);
+
 	}
 	
 	// Update is called once per frame
@@ -28,19 +39,52 @@ public class GameBrain : MonoBehaviour
 	{
 		room.KUpdate ();
 		pManager.KUpdate ();
+		if (Input.GetKeyDown (KeyCode.E)) {
+			Debug.Log("ITEM SPAWN");
+			room.AddEntity(P_ItemList.GetRandom(),
+			               Random.Range(1,13),Random.Range(1,7),false);
+		}
 	
 	}
 	
 	public void Init(){
-		if (room != null) Destroy (room.gameObject);
-		room = Instantiate (P_Room);
-		//room.Reset (P_RoomAsset);
-		var data = DataLoader.Load (0);
-		room.Reset (roomAsset,data);
-		E_NewRoom (room);
+		pManager.E_GetNewPlayer ();
+		map = new Data.DMapGenerator ().GenerateMap (10, 10, 10);
+		E_NewMap (map);
+
+
+		if (rooms != null) {
+			for(int i = 0 ; i < map.width;i++)for(int j = 0 ; j< map.height;j++){
+				if(rooms[i,j] != null) rooms[i,j].Kill();
+			}
+		}
+		rooms = new Room[map.width, map.height];
+		room = new RoomConverter ().ToRooms (out rooms, P_Room, P_RoomAsset, organizer, H_NewRoom, map);
+		//ToRooms (map);
+		E_GameStarted_NewRoom (room,-1);
+
 	}
-	public void E_NewRoom(Room room){
-		pManager.E_NewRoom (room, -1);
+	public void H_NewRoom(Room room){
+		room.gameObject.SetActive(false);
+		room.E_NextRoom += delegate (int n) {
+			Debug.Log("NEW ROOM");
+			var pos = Utility.EasyUnity.dirFour3[n];
+			E_GameStarted_NewRoom(rooms[room.posX+(int)pos.x,room.posY+(int)pos.y],(n+2)%4);
+		};
+
+	}
+	public IEnumerator H_EnterDoor(Room roomNew, int direction){
+		yield return new WaitForEndOfFrame();
+		H_NewRoom (roomNew, direction);
+	}
+	public void H_NewRoom(Room room, int direction){
+		Debug.Log (room);
+		this.room.gameObject.SetActive (false);
+		room.On ();
+		this.room = room;
+		pManager.E_NewRoom (room, direction);
+		room.gameObject.SetActive (true);
+		//E_GameStarted_NewRoom (room, direction);
 	}
 
 }

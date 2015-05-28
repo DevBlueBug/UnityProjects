@@ -18,6 +18,12 @@ namespace Utility
 			this.time = timeInit;
 			this.timeMax = timeMax;
 		}
+		public bool IsDone(){
+			return time > timeMax;
+		}
+		public void ReadyNextTick(){
+			time = 9999999;
+		}
 		public bool Tick(float timeElapsed){
 			time += timeElapsed;
 			bool done = time > timeMax;
