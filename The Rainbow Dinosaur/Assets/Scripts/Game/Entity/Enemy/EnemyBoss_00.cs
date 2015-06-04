@@ -22,7 +22,7 @@ public class EnemyBoss_00 : Enemy
 
 
 		bhvs.Add (new BhvFireAtPlayer (this, fireRate));
-		weapon = new NWeapon.GunBasic ().SetTargets(KType.Player,KType.World ).SetSpeed(bulletSpeed);
+		weapon = new NItem.NWeapon.GunBasic ().SetTargets(KType.Player,KType.World ).SetSpeed(bulletSpeed);
 
 
 	}

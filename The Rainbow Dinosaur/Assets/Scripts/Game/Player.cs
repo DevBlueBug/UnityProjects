@@ -4,7 +4,6 @@ using System.Collections;
 public class Player : MonoBehaviour
 {
 	public EntityMove entity;
-	public Inventory inventory;
 	public PlayerInformation information;
 
 	// Use this for initialization
@@ -19,7 +18,6 @@ public class Player : MonoBehaviour
 	
 	}
 	public void SetEntity(EntityMove entity){
-		inventory.Reset ();
 		information = new PlayerInformation ().Reset (entity);
 	}
 	public void SetInvinsibility(bool on){

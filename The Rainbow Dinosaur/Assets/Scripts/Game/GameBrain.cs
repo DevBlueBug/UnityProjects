@@ -9,7 +9,7 @@ public class GameBrain : MonoBehaviour
 	public D_NewMap E_NewMap = delegate {	};
 	public D_GameStarted_NewRoom E_GameStarted_NewRoom = delegate { };
 
-	public EItemList P_ItemList;
+	public EItemManager P_ItemList;
 	public Room P_Room;
 	public RoomAsset P_RoomAsset;
 
@@ -49,7 +49,7 @@ public class GameBrain : MonoBehaviour
 	
 	public void Init(){
 		pManager.E_GetNewPlayer ();
-		map = new Data.DMapGenerator ().GenerateMap (10, 10, 10);
+		map = new Data.DMapGenerator ().GenerateMap (10, 10, 5);
 		E_NewMap (map);
 
 

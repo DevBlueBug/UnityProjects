@@ -7,8 +7,8 @@ public class Test01 : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		var map = new  Data.DMapGenerator().GenerateMap (10, 10, 10);
-		gameBrain.map = map;
+		//var map = new  Data.DMapGenerator().GenerateMap (10, 10, 10);
+		//gameBrain.map = map;
 		gameBrain.Init ();
 	
 	}

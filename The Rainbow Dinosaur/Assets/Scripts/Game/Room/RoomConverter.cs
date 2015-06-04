@@ -21,33 +21,37 @@ public class RoomConverter
 
 	                    Data.DMap map){
 		rooms = new Room[map.width, map.height];
-		foreach (var r in map.roomsAvailable) {
+		foreach (var roomData in map.roomsAvailable) {
 			//bool resetWithData = (r.X != map.roomInit.X || r.Y != map.roomInit.Y);
 			AddRoom(ref rooms, organizer,p_roomAsset,
 			        UnityEngine.GameObject.Instantiate(p_room),
-			        r.meType, r.X,r.Y, r.doors);
-			E_NewRoom(rooms[r.X,r.Y]);
+			        roomData, roomData.X,roomData.Y, roomData.doors);
+			E_NewRoom(rooms[roomData.X,roomData.Y]);
 		}
 		return rooms [map.roomInit.X, map.roomInit.Y];
 	}
 	void AddRoom(ref Room[,] rooms, Data.Organizer organizer, RoomAsset roomAsset,
 	             Room room,
-	             Data.DRoom.KType type, int x, int y, bool[] doors){
+	             Data.DRoom roomData, int x, int y, bool[] doors){
 		rooms [x, y] = room;
-		room.type = type;
+		room.type = roomData.meType;
 		room.SetPosition(x,y);
-		if (room.type == Data.DRoom.KType.Normal) {
-			var dataBoard = organizer.GetBoard(doors[0],doors[1],doors[2],doors[3]);
-			room.Reset(roomAsset, dataBoard);
-		} else if(room.type == Data.DRoom.KType.Start) {
-			room.Reset(roomAsset,new Data.Board(doors[0],doors[1],doors[2],doors[3]));
-			room.AddEntity(roomAsset.GetBoss(0),room.width/2,room.height/2,false);
+		if (room.type == Data.DRoom.KType.Start) {
+			room.Reset (roomAsset, new Data.Board (doors [0], doors [1], doors [2], doors [3]));
+			//room.AddEntity (roomAsset.GetBoss (0), room.width / 2, room.height / 2, false);
+			//
+		} else if (room.type == Data.DRoom.KType.Boss) {
+			room.Reset (roomAsset, new Data.Board (doors [0], doors [1], doors [2], doors [3]));
+			room.AddEntity (roomAsset.GetBoss (0), room.width / 2, room.height / 2, false);
+		} else {
+			var dataBoard = organizer.GetBoard (doors [0], doors [1], doors [2], doors [3]);
+			room.Reset (roomAsset, dataBoard);
 		}
-		else if(room.type== Data.DRoom.KType.Boss){
-			room.Reset(roomAsset,new Data.Board(doors[0],doors[1],doors[2],doors[3]));
-
+		for (int i = 0; i < 4; i++) {
+			//	UnityEngine.Debug.Log ("door "+roomData.doorss[i]);
+			if(roomData.doorss[i]==null) continue;
+			room.AddDoor(roomAsset.GetDoor(roomData.doorss[i].type),i);
 		}
-
 
 		//move this to brain
 		/**

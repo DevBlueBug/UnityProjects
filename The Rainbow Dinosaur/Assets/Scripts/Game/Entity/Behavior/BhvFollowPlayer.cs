@@ -34,7 +34,8 @@ namespace NBehaviour
 		bool UpdateDestinations(Entity entity,Room room){
 			destinations = ((EntityMove)entity).GetPathToPlayer (room);
 			if (destinations == null) {
-				Debug.Log("FAILED TO FIND THE PATH");
+				Debug.Log("FAILED TO FIND THE PATH " + PlayerManager.PlayerPosInt + " " +PlayerManager.PlayerPosFloat);
+				Debug.Log(room.aStarMap[(int)PlayerManager.PlayerPosInt.x,(int)PlayerManager.PlayerPosInt.y].isAlive);
 				destination = null;
 				return false;
 			}

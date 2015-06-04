@@ -5,9 +5,11 @@ namespace Data
 	public class DMap
 	{
 		public int width, height;
-		public DRoom roomInit;
 		DRoom[,] rooms;
 		public List<DRoom> roomsAvailable;
+		public DRoom 
+			roomInit,
+			roomFar;
 		
 		public DMap (int w, int h)
 		{
@@ -27,6 +29,28 @@ namespace Data
 				roomsAvailable.Add(value);
 				rooms[x,y] = value;
 			}
+		}
+		
+		int RC_UpdateCostCount = 0;
+		void RC_UpdateCost(int x, int y,ref float distanceMax){
+			if (RC_UpdateCostCount++ > 100) return;
+			if (this[x, y].distance > distanceMax){
+				UnityEngine.Debug.Log("RoOM FAR " + x + " " + y);
+				distanceMax = this[x,y].distance;
+				roomFar = this[x,y];
+			}
+			for (int i = 0; i < 4; i++) {
+				int 
+					xNew = x + (int)Utility.EasyUnity.dirFour3[i].x,
+					yNew = y+ (int)Utility.EasyUnity.dirFour3[i].y;
+				if(!helperIsPositionValid(xNew,yNew) || this[xNew,yNew] == null) continue;
+				this[xNew,yNew].distance = this[x,y].distance +1;
+				RC_UpdateCost(xNew,yNew,ref distanceMax); 
+			}
+		}
+		bool helperIsPositionValid(int posx, int posy){
+			return posx >= 0 && posx < width && 
+				posy >= 0 && posy < height;
 		}
 	}
 }

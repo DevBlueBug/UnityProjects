@@ -4,6 +4,10 @@ using System.Collections.Generic;
 
 public class RoomAsset : MonoBehaviour
 {
+	public enum TypeDoor {Normal, Treasure,Boos, Secret };
+
+
+
 	public Entity 
 		EError,
 		EEmpty,
@@ -15,6 +19,12 @@ public class RoomAsset : MonoBehaviour
 		EEnemyFlying;
 	public Entity
 		Boss00;
+	public EDoor
+		DoorNormal,
+		DoorTreasure,
+		DoorSecret,
+		DoorBoss;
+	Dictionary<TypeDoor, EDoor> dicDoors; 
 
 	public Entity Get(Data.Piece.KId id){
 		Entity entity;
@@ -36,7 +46,18 @@ public class RoomAsset : MonoBehaviour
 	public Entity GetBoss(int level){
 		return Instantiate( Boss00 );
 	}
+	public EDoor GetDoor(DDoor.Types type){
+		Dictionary<DDoor.Types, EDoor> dic = new Dictionary<DDoor.Types, EDoor> (){
+			{DDoor.Types.Normal,DoorNormal},
+			{DDoor.Types.Treausre,DoorTreasure},
+			{DDoor.Types.Secret,DoorSecret},
+			{DDoor.Types.Boss,DoorBoss},
+		};
+		var obj = Instantiate (dic [type]);
+		obj.type = type;
+		return obj;
 
+	}
 	// Use this for initialization
 	void Start ()
 	{

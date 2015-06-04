@@ -3,7 +3,7 @@ namespace NBehaviour.NCondition
 {
 	public class HpChanged_Threshold :Condition
 	{
-		int hpBefore,hpChangeNeeded;
+		float hpBefore,hpChangeNeeded;
 		public HpChanged_Threshold (Entity entity, int hpChangeNeeded):base(entity)
 		{
 			hpBefore = entity.hp;

@@ -12,7 +12,6 @@ public class PlayerManager : MonoBehaviour
 	public Player player;
 
 	bool 
-		isAttack_Called = false,
 		isAttacked = false;
 	Room room;
 	List<Room> roomsAdded = new List<Room>();
@@ -23,7 +22,7 @@ public class PlayerManager : MonoBehaviour
 
 
 	void Awake(){
-		EItem.E_PlayerAcquired += H_ItemNew;
+		//EItem.E_PlayerAcquired += H_ItemNew;
 
 	}
 	// Update is called once per frame
@@ -35,10 +34,6 @@ public class PlayerManager : MonoBehaviour
 				player.SetInvinsibility(true);
 			}
 
-		}
-		if (isAttack_Called && timerAttack.Tick(Time.deltaTime) ) {
-
-			isAttack_Called = false;
 		}
 
 		controller.KUpdate (this, player.entity,room);
@@ -56,7 +51,9 @@ public class PlayerManager : MonoBehaviour
 	public void E_GetNewPlayer(){
 		player = Instantiate (P_Player);
 		player.entity.E_Attacked += H_Attacked;
-		player.entity.weapon = new NWeapon.GunBasic().SetTargets(Entity.KType.Enemy,Entity.KType.World);
+		player.entity.weapon = new NItem.NWeapon.GunBasic()
+			.SetTargets(Entity.KType.Enemy,Entity.KType.World)
+				.SetSpeed(30);
 	}
 	public void E_NewRoom(Room room, int direction){
 		this.room = room;
@@ -82,8 +79,7 @@ public class PlayerManager : MonoBehaviour
 		player.entity.SetVelocity (dir * player.information.GetVelocity());
 	}
 	public void E_Attack(Entity entitiPlayer,Room room, Vector3 dir){
-		if (isAttack_Called) return;
-		isAttack_Called = true;
+	
 		entitiPlayer.Attack (room, dir);
 		/**
 
@@ -94,30 +90,11 @@ public class PlayerManager : MonoBehaviour
 		bullet.SetVelocity (dir * player.information.GetVelocity());
 		**/
 	}
-	void H_Attacked(Entity entity, int damage){
+	void H_Attacked(Entity entity, float damage){
 		isAttacked = true;
 		player.SetInvinsibility (false);
-		Debug.Log ("PLAYER ATTACKED " + entity.hp);
+		//Debug.Log ("PLAYER ATTACKED " + entity.hp);
 
-	}
-	void H_ItemNew(EItem item){
-		Debug.Log ("Item : "+item.gameObject.name);
-		if(item.itemId == EItem.ItemId.Money){
-			player.inventory.money += 1;
-		}
-		else if(item.itemId == EItem.ItemId.MoneyBig){
-			player.inventory.money = 99;
-		}
-		else if(item.itemId == EItem.ItemId.Bomb){
-			player.inventory.bomb += 1;
-		}
-		else if(item.itemId == EItem.ItemId.BombBig){
-			player.inventory.bomb = 99;
-		}
-		
-		else if(item.itemId == EItem.ItemId.Heart){
-			player.entity.hp++;
-		}
 	}
 
 }

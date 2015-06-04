@@ -1,12 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class EBullet : EntityMove
+public class EBullet : Entity
 {
 	int isWillBeDead = -1;
 	Vector3 finalPosition;
-	public int hpChange;
+	public float hpChange;
 	public float forceApplied;
+	public Vector3 direction;
+	public float velocity;
 	Vector3 originPoint;
 	public override void Awake ()
 	{
@@ -19,9 +21,45 @@ public class EBullet : EntityMove
 		base.Start ();
 		originPoint = this.transform.position;
 	}
+	bool UpdateBullet(float amount){
+
+		var rayCast = Physics2D.Raycast (this.transform.position, direction,amount);
+		
+		if (rayCast.collider == null) {
+			this.transform.localPosition += direction * amount;
+			return true;
+		}
+		try{
+			var entity = rayCast.collider.GetComponent<EntityPointer>().entity;
+			//if(rayCast.distance > amount*.1f) this.transform.transform.position = rayCast.point;
+			//else 
+
+			if(helperIsMyTarget(entity.meType)){
+				Hit(entity);
+				Kill();
+				return false;
+			}
+			else{
+				this.transform.transform.position += direction*amount;
+			}
+		}
+		catch{
+		}
+		return true;
+
+
+	}
 	public override void KUpdate (Room room)
 	{
 		base.KUpdate (room);
+
+		float count = (velocity*Time.deltaTime) /.1f;
+		for (int i = 0; i< count && i < 900; i++) {
+			if(!UpdateBullet(.1f)) break;
+			if(i >= 900)Debug.Log("NO");
+		}
+
+
 		if (isWillBeDead == -1)
 			return;
 		if (isWillBeDead == 2)
@@ -30,32 +68,45 @@ public class EBullet : EntityMove
 			isWillBeDead++;
 		//this.transform.position = finalPosition;
 	}
-	public int H_TriigerTarget(Entity me, Entity other, Collider2D collider){
-		isWillBeDead = 1;
-
-		var pos = me.transform.position;
-		var velo = new Vector3(body.velocity.x,body.velocity.y,0);
-		pos -= this.velocity.normalized *.8f;
-
-		var rayPoint = Physics2D.Raycast (pos, velo);
-		if (rayPoint.collider != collider) return 1;
-		this.transform.position = rayPoint.point;
-
-
+	void Hit(Entity other){
 		other.HpChange ( HpChangeType.Bullet, hpChange);
 		try{
-			(other as EntityMove).AddForceVelocity(
-				this.body.velocity
-				.normalized * forceApplied);  
+			(other as EntityMove).AddForceVelocity( direction * forceApplied);  
 		}
 		catch{
 		}
+
+	}
+	public int H_TriigerTarget(Entity me, Entity other, Collider2D collider){
+
+		return 1;
+		/**
+		var pos = me.transform.position;
+		var velo = new Vector3(body.velocity.x,body.velocity.y,0);
+		var veloNormalized = velo.normalized;
+
+		RaycastHit2D rayPoint;
+		int count = 0;
+		do {
+			pos -= veloNormalized * .5f;
+			rayPoint = Physics2D.Raycast (pos, velo);
+		} while(count++ <10 && rayPoint.collider != collider);
+
+		if (rayPoint.collider != null) {
+			this.transform.position = pos;
+			isWillBeDead = 1;
+		} else return 1;
+
+
+
+
 
 		this.body.velocity = Vector3.zero;
 		this.body.isKinematic = true;
 		SetVelocity (Vector3.zero);
 
 		return -1;
+		**/
 
 	}
 

@@ -3,7 +3,7 @@ namespace NBehaviour.NCondition
 {
 	public class HpChanged :Condition
 	{
-		int hpBefore;
+		float hpBefore;
 		public HpChanged (Entity entity):base(entity)
 		{
 			hpBefore = entity.hp;

@@ -14,7 +14,7 @@ namespace Data
 {
 	public class Organizer
 	{
-		static int idMax = 5;
+		static int idMax = 3;
 		Dictionary<string,List<Board>> dicBoards;
 		public Organizer ()
 		{

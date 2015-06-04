@@ -21,8 +21,8 @@ public class GameUI : MonoBehaviour
 	void Update ()
 	{
 		txtHealth.text = "HEALTH " + manager.player.entity.hp;
-		txtMoney.text = "MONEY " + manager.player.inventory.money;
-		txtBomb.text = "BOMB " + manager.player.inventory.bomb;
+		txtMoney.text = "MONEY " + manager.player.entity.inventory.Get(NItem.Item.KType.Money);
+		txtBomb.text = "BOMB " + manager.player.entity.inventory.Get(NItem.Item.KType.Bomb);
 	
 	}
 }

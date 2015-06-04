@@ -8,8 +8,9 @@ public class Minimap : MonoBehaviour
 		SPR_RoomActive,
 		SPR_RoomSleep,
 		SPR_Init,
+		SPR_Boss,
 		SPR_Treasure,
-		SPR_Boss;
+		SPR_Secret;
 
 	public Camera camera;
 	public GameBrain brain;
@@ -25,6 +26,7 @@ public class Minimap : MonoBehaviour
 	void H_NewRoom(Room room, int direction){
 		camera.transform.localPosition = 
 			new Vector3 (room.posX,room.posY,-1);
+
 		for(int i = 0 ; i < icons.GetLength(0);i++)
 		for(int j = 0 ; j < icons.GetLength(1);j++){
 			var icon =icons[i,j];
@@ -32,6 +34,15 @@ public class Minimap : MonoBehaviour
 			icon.sprite00.sprite = SPR_RoomSleep;
 		}
 		icons [room.posX, room.posY].sprite00.sprite = SPR_RoomActive;
+		icons [room.posX, room.posY].gameObject.SetActive(true);
+		for(int i = 0;  i< 4;i++){
+			int 
+				indexX = room.posX + (int)Utility.EasyUnity.dirFour3[i].x,
+				indexY = room.posY + (int)Utility.EasyUnity.dirFour3[i].y;
+			if(icons [indexX, indexY] == null) continue;
+			icons [indexX, indexY].gameObject.SetActive(true);
+
+		}
 
 		//icons [room.posX, room.posY].sprite00.sprite = SPR_RoomActive;
 	}
@@ -46,6 +57,7 @@ public class Minimap : MonoBehaviour
 		icons = new MinimapIcon[map.width, map.height];
 		foreach (var room in map.roomsAvailable) {
 			var icon = Instantiate(P_MinimapIcon);
+			icon.gameObject.SetActive(false);
 			icons[room.X,room.Y] = icon;
 			icon.transform.parent = this.transform;
 			icon.transform.localScale = Vector3.one;
@@ -54,6 +66,7 @@ public class Minimap : MonoBehaviour
 			case Data.DRoom.KType.Start:icon.sprite01.sprite = 		SPR_Init;break;
 			case Data.DRoom.KType.Boss:	icon.sprite01.sprite =		SPR_Boss;break;
 			case Data.DRoom.KType.Treasure:icon.sprite01.sprite =	SPR_Treasure;break;
+			case Data.DRoom.KType.Secret:icon.sprite01.sprite =	SPR_Secret;break;
 			}
 		}
 

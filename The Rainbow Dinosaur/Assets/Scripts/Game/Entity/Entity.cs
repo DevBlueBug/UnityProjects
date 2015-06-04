@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 public class Entity : MonoBehaviour
 {
-	public enum KType{World,Player,Enemy,Bullet};
+	public enum KType{Nothing =-1, World=0,Player=1,Enemy=2,Bullet=3};
 	public enum HpChangeType{Absolute, Bullet,Bomb,Contact};
 	public delegate void D_Kill(Entity me);
-	public delegate void D_Attacked(Entity me, int hpChange);
+	public delegate void D_Attacked(Entity me, float hpChange);
 	public delegate void D_Refreshed(Entity me, Room room);
 	public delegate int D_TriggerTarget(Entity me, Entity other, Collider2D collider); // continue on true, stop testing on false
 
@@ -20,7 +20,7 @@ public class Entity : MonoBehaviour
 	public Data.Piece.KId meId;
 	public KType meType;
 	public List<Entity.KType> targets;
-	public int hp = 10;
+	public float hp = 10;
 	public bool
 		isAttackedBullet = true,
 		isAttackedBomb = true,
@@ -30,7 +30,8 @@ public class Entity : MonoBehaviour
 	internal bool 
 		isContinueTriggerCheck = true,
 		isAlive = true;
-	internal NWeapon.Weapon weapon = new NWeapon.Weapon();
+	internal NItem.Inventory inventory = new NItem.Inventory();
+	internal NItem.NWeapon.Weapon weapon = new NItem.NWeapon.Weapon();
 	internal List<NBehaviour.Behaviour> bhvs = new List<NBehaviour.Behaviour> ();
 
 
@@ -66,11 +67,11 @@ public class Entity : MonoBehaviour
 		
 	}
 
-	public void Refresh(Room room){
+	public virtual void Refresh(Room room){
 		E_Refreshed (this, room);
 	}
 
-	public void HpChange(HpChangeType type, int change){
+	public void HpChange(HpChangeType type, float change){
 		if (!isAttackedBomb && type == HpChangeType.Bomb) return;
 		if (!isAttackedBullet && type == HpChangeType.Bullet) return;
 		if (!isAttackedContact && type == HpChangeType.Contact)return;
@@ -92,7 +93,17 @@ public class Entity : MonoBehaviour
 	public void Terminate(){
 		Destroy (this.gameObject);
 	}
+	//gets called when a room enters
 	public virtual void Init(){
+	}
+
+	internal bool helperIsMyTarget(KType type){
+		for (int i = 0; i < targets.Count; i++) {
+			if(type == targets[i]){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	void OnTriggerEnter2D(Collider2D collider){
@@ -102,17 +113,16 @@ public class Entity : MonoBehaviour
 		if (other == null) return;
 		var otherEntity = other.entity;
 		//Debug.Log ("ETRIGGER ENTER CALLING");
-		
-		for(int i = 0 ; i < targets.Count;i++){
-			if(otherEntity.meType == targets[i]){
-				int result = E_TriggerTarget(this,otherEntity, collider);
-				if(result == 1) isContinueTriggerCheck = true;
-				else if(result == 0) break;
-				else if(result == -1) isContinueTriggerCheck = false;
-				//Debug.Log("FOUND IT "+this.gameObject.name );
-				//isContinueTriggerCheck = E_TriggerTarget (this, otherEntity);
-				if(!isContinueTriggerCheck) break;
-			}
+		if (helperIsMyTarget (otherEntity.meType)) {
+			
+			int result = E_TriggerTarget(this,otherEntity, collider);
+			if(result == 1) isContinueTriggerCheck = true;
+			else if(result == 0) return;
+			else if(result == -1) isContinueTriggerCheck = false;
+			//Debug.Log("FOUND IT "+this.gameObject.name );
+			//isContinueTriggerCheck = E_TriggerTarget (this, otherEntity);
+			if(!isContinueTriggerCheck) return;
+
 		}
 		
 	}

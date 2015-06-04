@@ -29,7 +29,7 @@ public class Room : MonoBehaviour
 		isSomethingDead = UpdateEntities (entities);
 		isSomethingDead = UpdateEntities (entitiesWorld) || isSomethingDead;
 
-		//SetAllDoors(true);
+		//SetAllDoors(false);
 		if (isSomethingDead) {
 			if(IsGameOver())SetAllDoors(true);
 		}
@@ -84,11 +84,6 @@ public class Room : MonoBehaviour
 
 			Refresh ();
 			return;
-		} 
-		for (int i  = 0; i < 4; i++) {
-			if(data.doors[i]){
-				AddDoor(asset.Get(Piece.KId.Door),i);
-			}
 		}
 		foreach (var piece in  data.piecesWorld) {
 			AddEntity(asset.Get(piece.meType), piece.X,piece.Y,true);
@@ -96,7 +91,7 @@ public class Room : MonoBehaviour
 		foreach (var piece in  data.piecesUnits) {
 			AddEntity(asset.Get(piece.meType), piece.X,piece.Y,false);
 		}
-		for (int i = 0; i< width; i++) for (int j = 0; j<height; j++) {
+		for (int i = 1; i< width-1; i++) for (int j = 1; j<height-1; j++) {
 			if(entitiesWorldIndex[i,j] == null){
 				AddEntity(asset.Get(Piece.KId.Ground), i,j,true);
 			}
@@ -111,8 +106,9 @@ public class Room : MonoBehaviour
 			if(entity!=null)entity.Refresh(this);
 		}
 	}
+
 	public void AddDoor(Entity entity, int doorIndex){
-		entity.E_TriggerTarget += delegate(Entity door,Entity doorEntered, Collider2D collider) {
+		((EDoor) entity).E_TriggerBack += delegate(Entity door,Entity doorEntered, Collider2D collider) {
 			E_NextRoom (doorIndex);
 			return 1;
 		};
@@ -120,6 +116,13 @@ public class Room : MonoBehaviour
 		var doorPosition = GetDoorPosition (doorIndex);
 		entityDoors [doorIndex] = (EDoor) entity;
 		AddEntity (entity, (int)doorPosition.x, (int)doorPosition.y , true);
+		if (doorPosition.x == (int)width / 2) {
+			RemoveEntityWorld ((int)doorPosition.x - 1, (int)doorPosition.y, true);
+			RemoveEntityWorld ((int)doorPosition.x + 1, (int)doorPosition.y, true);
+		} else {
+			RemoveEntityWorld ((int)doorPosition.x , (int)doorPosition.y-1, true);
+			RemoveEntityWorld ((int)doorPosition.x , (int)doorPosition.y+1, true);
+		}
 	}
 	public void AddEntity(Entity entity, float x, float y, bool isWorld){
 		int indexX = Mathf.RoundToInt(x),
@@ -147,11 +150,23 @@ public class Room : MonoBehaviour
 		} else {
 			entities.Add(entity);
 		}
+		entity.Refresh (this);
+	}
+	public void RemoveEntityWorld(int x, int y,bool isKill){
+		try{
+			var entity = entitiesWorldIndex[x,y];
+			entitiesWorld.Remove(entity);
+			entitiesWorldIndex[x,y] = null;
+			if(isKill) entity.Terminate();
+		}
+		catch{
+			Debug.Log("Room Remove Entity call has failed.");
+		}
 	}
 	public void RemoveEntity(Entity entity, bool isKill){
 		try{
-			if(isKill)entity.Kill ();
 			entities.Remove (entity);
+			if(isKill)entity.Terminate();
 		}
 		catch{
 			Debug.Log("Room Remove Entity call has failed.");
@@ -175,7 +190,6 @@ public class Room : MonoBehaviour
 	void SetAllDoors(bool open){
 		for (int i = 0; i < 4; i++)
 			if(entityDoors [i] !=null)entityDoors [i].SetOpen (open);
-
 	}
 	bool IsGameOver(){
 		for (int i = 0; i< entities.Count; i++) {
@@ -191,7 +205,6 @@ public class Room : MonoBehaviour
 		   entity.meId == Data.Piece.KId.Block_Soft ||
 		   entity.meId == Data.Piece.KId.Block_Hard 
 		   ) aStarMap [x, y].isAlive = false;
-
 	}
 	void UnWeightOnAStartMap(Entity entity, int x, int y){
 		//aStarMap.Reset (x,y);

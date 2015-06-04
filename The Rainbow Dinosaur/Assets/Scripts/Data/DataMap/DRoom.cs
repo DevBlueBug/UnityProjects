@@ -15,6 +15,7 @@ namespace Data {
 		public int Y{ get { return(int)id.y; } }
 		public int width,height;
 		public bool[] doors = new bool[]{false,false,false,false};
+		public DDoor[] doorss= new DDoor[4];
 		public float distance;
 		
 
@@ -23,6 +24,8 @@ namespace Data {
 			height = 9;
 			this.id = id;
 		}
+
+
 	}
 
 }
