@@ -19,7 +19,7 @@ namespace Data
 		public Organizer ()
 		{
 			dicBoards = new Dictionary<string, List<Board>> ();
-			for (int i = 0; i < idMax; i++) {
+			for (int i = 1; i < idMax; i++) {
 				var board =  DataLoader.Load(i);
 				var id = GetId(board);
 				List<Board> boardOut;

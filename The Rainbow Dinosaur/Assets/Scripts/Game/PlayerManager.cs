@@ -51,9 +51,8 @@ public class PlayerManager : MonoBehaviour
 	public void E_GetNewPlayer(){
 		player = Instantiate (P_Player);
 		player.entity.E_Attacked += H_Attacked;
-		player.entity.weapon = new NItem.NWeapon.GunBasic()
-			.SetTargets(Entity.KType.Enemy,Entity.KType.World)
-				.SetSpeed(30);
+		player.entity.weapon = new NItem.NWeapon.GunBasic ()
+			.SetTargets (Entity.KType.Enemy, Entity.KType.World);
 	}
 	public void E_NewRoom(Room room, int direction){
 		this.room = room;

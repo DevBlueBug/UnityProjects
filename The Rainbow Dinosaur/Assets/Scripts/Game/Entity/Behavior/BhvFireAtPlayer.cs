@@ -15,8 +15,9 @@ namespace NBehaviour
 			if (timer.Tick (Time.deltaTime)) {
 				entity.Attack(room, 
 				              (PlayerManager.PlayerPosFloat- entity.transform.localPosition).normalized);
+				return 1;
 			}
-			return 1;
+			return 0;
 		}
 	}
 }

@@ -50,7 +50,7 @@ public class Entity : MonoBehaviour
 	// Update is called once per frame
 	public virtual void KUpdate (Room room)
 	{
-		for(int i = bhvs.Count-1;  i >= 0;i--){
+		for(int i = 0;  i < bhvs.Count;i++){
 			var currentBhv = bhvs[i].Update(this,room);
 			if(currentBhv != null) bhvs[i] = currentBhv;
 			if(!bhvs[i].isAlive){
@@ -86,7 +86,9 @@ public class Entity : MonoBehaviour
 		weapon.Attack (this, room,direction);
 	}
 	public void Kill(){
-		//E_Kill (this, room);
+		if (!isAlive)
+			return;
+		E_Kill (this);
 		this.isAlive = false;
 
 	}

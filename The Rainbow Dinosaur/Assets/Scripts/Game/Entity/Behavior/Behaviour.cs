@@ -24,7 +24,7 @@ namespace NBehaviour{
 		// -2 back to parent
 		// 0 : null : nothing happens is not supposed to happen... no implementation
 		public Behaviour Update(Entity entity, Room room){
-			var result = condition.Process(entity,room, Process (entity, room));
+			var result = condition.IsCondition(entity,room, Process (entity, room));
 			//UnityEngine.Debug.Log("returning " +result);
 			if (result == 1 && bhvSuccess != null) {
 				return bhvSuccess;

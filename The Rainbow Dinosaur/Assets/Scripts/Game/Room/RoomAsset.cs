@@ -17,6 +17,12 @@ public class RoomAsset : MonoBehaviour
 		EBlockSoft,
 		EEnemyFoot,
 		EEnemyFlying;
+	public Enemy
+		Fly,
+		FlyAttack,
+		FlyAvoid,
+		FlyWanderer,
+		FlyDancer;
 	public Entity
 		Boss00;
 	public EDoor
