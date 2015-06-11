@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 8002c679cfe11f046bcb65ccd7906315
+timeCreated: 1433912248
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - Example: {instanceID: 0}
+  - cam: {instanceID: 0}
+  - matApply: {fileID: 2100000, guid: 68ba6ab1e8283dc47816ca8a12bd7ca1, type: 2}
+  - matChromatic: {fileID: 2100000, guid: 8546bc049c2d8394b82743bb873ee244, type: 2}
+  - matClear: {fileID: 2100000, guid: 2f6ccf2f39f2d074fbdd865cdc1e08f5, type: 2}
+  - textureHolder: {fileID: 8400000, guid: ca3a26ac6644f1b47a8c190c544048bd, type: 2}
+  - textureApplied: {fileID: 8400000, guid: 16cfbd157b420aa4e96f510456a84532, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
