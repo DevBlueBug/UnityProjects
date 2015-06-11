@@ -34,6 +34,9 @@ public class PlayerController : MonoBehaviour
 				manager.E_Attack(entityPlayer,room, v.Value);
 			}
 		}
+		if (Input.GetKeyDown (KeyCode.O)) {
+			manager.E_Bomb(entityPlayer,room);
+		}
 		
 		if(isChanged) manager.E_Move(direction.normalized );
 	

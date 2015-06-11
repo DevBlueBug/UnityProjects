@@ -5,10 +5,16 @@ using Data;
 
 public class Room : MonoBehaviour
 {
+	public delegate void D_Me(Room me);
 	public delegate void D_NextRoom(int n);
+	public delegate void D_MeEntity(Room me, Entity entity);
 	public delegate EBullet D_RequireBullet(Entity entityRequesting, List<Entity.KType> targets);
 
 	internal D_NextRoom E_NextRoom = delegate {};
+	internal D_Me E_On = delegate {};
+	internal D_MeEntity	
+	E_EntityAdded = delegate {},
+	E_EntityDeleted = delegate {	};
 
 	public DRoom.KType type = DRoom.KType.Normal;
 	public int posX,posY;
@@ -50,8 +56,8 @@ public class Room : MonoBehaviour
 		return isSomethingDead;
 	}
 	public void On(){
+		E_On (this);
 		this.gameObject.SetActive (true);
-
 		SetAllDoors ( IsGameOver ());
 		for(int i = 0; i < entities.Count;i++){
 			entities[i].Init();
@@ -59,7 +65,9 @@ public class Room : MonoBehaviour
 		for(int i = 0; i < entitiesWorld.Count;i++){
 			entitiesWorld[i].Init();
 		}
-
+	}
+	public void Off(){
+		this.gameObject.SetActive (false);
 	}
 
 	
@@ -125,6 +133,8 @@ public class Room : MonoBehaviour
 		}
 	}
 	public void AddEntity(Entity entity, float x, float y, bool isWorld){
+		E_EntityAdded (this, entity);
+
 		int indexX = Mathf.RoundToInt(x),
 			indexY = Mathf.RoundToInt(y);
 		float _w = 1.0f / (width-1), _h = 1.0f / (height-1);
@@ -139,6 +149,7 @@ public class Room : MonoBehaviour
 
 		if (isWorld) {
 			if (entitiesWorldIndex [indexX, indexY] != null) {
+				E_EntityDeleted (this, entitiesWorldIndex [indexX, indexY]);
 				entitiesWorldIndex [indexX, indexY].Kill();
 				entitiesWorldIndex [indexX, indexY].Terminate();
 				entitiesWorld.Remove(entitiesWorldIndex [indexX, indexY]);

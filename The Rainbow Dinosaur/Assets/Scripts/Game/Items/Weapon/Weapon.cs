@@ -15,6 +15,8 @@ namespace NItem.NWeapon
 {
 	public class Weapon : Item
 	{
+		public delegate void D_Backswing(Vector3 position, Vector3 direction, float force);
+		public static D_Backswing E_Backswing = delegate {	};
 		internal BulletManager.KTypes typeBullet;
 		internal float 
 			speed = 0.0f,
@@ -68,6 +70,7 @@ namespace NItem.NWeapon
 		
 		
 		internal void AddBackswing(Entity entity, Vector3 direction, float amount){
+			E_Backswing (entity.transform.position, direction, amount);
 			((EntityMove)entity).AddForceVelocity(direction * amount);
 		}
 		public EBullet AddBullet(Room room,  float x, float y,

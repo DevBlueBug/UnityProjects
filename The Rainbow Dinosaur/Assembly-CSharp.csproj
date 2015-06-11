@@ -47,6 +47,11 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Character\Ani_Player.cs" />
+     <Compile Include="Assets\ChromaticEffectProject\ChromaticEffect.cs" />
+     <Compile Include="Assets\ChromaticEffectProject\ChromaticForce.cs" />
+     <Compile Include="Assets\ChromaticEffectProject\ChromaticObject.cs" />
+     <Compile Include="Assets\ChromaticEffectProject\ChromaticObjectGlobal.cs" />
+     <Compile Include="Assets\ChromaticEffectProject\_ChromaticTest.cs" />
      <Compile Include="Assets\Scripts\AStar\KMap.cs" />
      <Compile Include="Assets\Scripts\AStar\Node.cs" />
      <Compile Include="Assets\Scripts\Data\DataJson\Board.cs" />
@@ -90,6 +95,7 @@
      <Compile Include="Assets\Scripts\Game\Entity\Items\EItemManager.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Modifiers\AttackOnContract.cs" />
      <Compile Include="Assets\Scripts\Game\GameBrain.cs" />
+     <Compile Include="Assets\Scripts\Game\GameMainCamera.cs" />
      <Compile Include="Assets\Scripts\Game\Items\Inventory.cs" />
      <Compile Include="Assets\Scripts\Game\Items\Item.cs" />
      <Compile Include="Assets\Scripts\Game\Items\Weapon\GunBasic.cs" />
@@ -108,6 +114,8 @@
      <Compile Include="Assets\Scripts\Game\UI\Minimap.cs" />
      <Compile Include="Assets\Scripts\Game\UI\MinimapIcon.cs" />
      <Compile Include="Assets\Scripts\HUDFPS.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Effect\EffectBulletBounce.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Effect\EffectChromaticForce.cs" />
      <Compile Include="Assets\Scripts\Rendering\Entity\EBitamsk_Simple.cs" />
      <Compile Include="Assets\Scripts\Rendering\Entity\EBitmask.cs" />
      <Compile Include="Assets\Scripts\Rendering\Entity\EReposion.cs" />
@@ -115,16 +123,26 @@
      <Compile Include="Assets\Scripts\Rendering\Entity\EdgeRotator.cs" />
      <Compile Include="Assets\Scripts\Rendering\Entity\EffectKilled.cs" />
      <Compile Include="Assets\Scripts\Rendering\Entity\RendererDoor.cs" />
+     <Compile Include="Assets\Scripts\Rendering\RenderBullet.cs" />
+     <Compile Include="Assets\Scripts\Rendering\RenderEntity.cs" />
+     <Compile Include="Assets\Scripts\Rendering\RenderManager.cs" />
+     <Compile Include="Assets\Scripts\Rendering\RenderRoom.cs" />
      <Compile Include="Assets\Scripts\Rendering\RoomDecorator.cs" />
      <Compile Include="Assets\Scripts\Rendering\RoomRenderer.cs" />
+     <Compile Include="Assets\Scripts\ShaderUpdate.cs" />
      <Compile Include="Assets\Scripts\SimpleJSON.cs" />
      <Compile Include="Assets\Scripts\SpriteRenderer\RandomSprite.cs" />
+     <Compile Include="Assets\Scripts\Utility\EasyCamera.cs" />
      <Compile Include="Assets\Scripts\Utility\EasyFile.cs" />
      <Compile Include="Assets\Scripts\Utility\EasyInstantiate.cs" />
      <Compile Include="Assets\Scripts\Utility\EasyMath.cs" />
      <Compile Include="Assets\Scripts\Utility\EasyTimer.cs" />
      <Compile Include="Assets\Scripts\Utility\EasyUnity.cs" />
      <None Include="Assets\Shader\SpriteTinter.shader" />
+     <None Include="Assets\Shader\Wall.shader" />
+     <None Include="Assets\ChromaticEffectProject\Material\Chromatic.shader" />
+     <None Include="Assets\ChromaticEffectProject\Material\ChromaticClear.shader" />
+     <None Include="Assets\ChromaticEffectProject\Material\ChromaticApply.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 
 public class PlayerManager : MonoBehaviour
 {
+	public delegate void D_PlayerPositin (Vector3 pos);
+	public static D_PlayerPositin E_PlayerPositionChanged = delegate {};
 	public static Vector3 PlayerPosInt = Vector3.zero;
 	public static Vector3 PlayerPosFloat = Vector3.zero;
-	public EBullet P_Bullet;
 	public Player P_Player;
 
+	public RenderManager renderManager;
 	public PlayerController controller;
 	public Player player;
 
@@ -22,6 +24,8 @@ public class PlayerManager : MonoBehaviour
 
 
 	void Awake(){
+		this.controller = new GameObject ("Controller").AddComponent<PlayerController> ();
+		controller.transform.parent = this.transform;
 		//EItem.E_PlayerAcquired += H_ItemNew;
 
 	}
@@ -45,6 +49,7 @@ public class PlayerManager : MonoBehaviour
 		PlayerPosInt =new Vector3(Mathf.Round( player.transform.localPosition.x),
 		                       Mathf.Round( player.transform.localPosition.y)
 		                       ,0);
+		E_PlayerPositionChanged (PlayerPosFloat);
 	}
 
 	
@@ -80,6 +85,7 @@ public class PlayerManager : MonoBehaviour
 	public void E_Attack(Entity entitiPlayer,Room room, Vector3 dir){
 	
 		entitiPlayer.Attack (room, dir);
+
 		/**
 
 		var bullet = Instantiate (P_Bullet);
@@ -89,6 +95,12 @@ public class PlayerManager : MonoBehaviour
 		bullet.SetVelocity (dir * player.information.GetVelocity());
 		**/
 	}
+	
+	public void E_Bomb(Entity entity, Room room){
+		//get bomb/
+		//then give the item to bulletManager 
+	}
+
 	void H_Attacked(Entity entity, float damage){
 		isAttacked = true;
 		player.SetInvinsibility (false);

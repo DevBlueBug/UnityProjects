@@ -24,8 +24,10 @@ public class GameBrain : MonoBehaviour
 
 
 	void Awake(){
+		var bulletManager = new GameObject ("BulletManager").AddComponent<BulletManager>();
+		bulletManager.transform.parent = this.transform;
 		organizer = new Data.Organizer ();
-		E_GameStarted_NewRoom += H_NewRoom;
+		E_GameStarted_NewRoom += H_NewRoomInit;
 	}
 	// Use this for initialization
 	void Start ()
@@ -59,13 +61,13 @@ public class GameBrain : MonoBehaviour
 			}
 		}
 		rooms = new Room[map.width, map.height];
-		room = new RoomConverter ().ToRooms (out rooms, P_Room, P_RoomAsset, organizer, H_NewRoom, map);
+		room = new RoomConverter ().ToRooms (out rooms, P_Room, P_RoomAsset, organizer, H_NewRoomCreated, map);
 		//ToRooms (map);
 		E_GameStarted_NewRoom (room,-1);
 
 	}
-	public void H_NewRoom(Room room){
-		room.gameObject.SetActive(false);
+	public void H_NewRoomCreated(Room room){
+		room.Off ();
 		room.E_NextRoom += delegate (int n) {
 			Debug.Log("NEW ROOM");
 			var pos = Utility.EasyUnity.dirFour3[n];
@@ -75,16 +77,14 @@ public class GameBrain : MonoBehaviour
 	}
 	public IEnumerator H_EnterDoor(Room roomNew, int direction){
 		yield return new WaitForEndOfFrame();
-		H_NewRoom (roomNew, direction);
+		H_NewRoomInit (roomNew, direction);
 	}
-	public void H_NewRoom(Room room, int direction){
-		Debug.Log (room);
-		this.room.gameObject.SetActive (false);
-		room.On ();
-		this.room = room;
-		pManager.E_NewRoom (room, direction);
-		room.gameObject.SetActive (true);
-		//E_GameStarted_NewRoom (room, direction);
+	public void H_NewRoomInit(Room roomInit, int direction){
+		Debug.Log (roomInit);
+		this.room.Off ();
+		roomInit.On ();
+		this.room = roomInit;
+		pManager.E_NewRoom (roomInit, direction);
 	}
 
 }

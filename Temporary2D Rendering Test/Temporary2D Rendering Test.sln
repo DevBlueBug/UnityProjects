@@ -1,7 +1,11 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
+Project("{C6B92D9A-9B4B-D21A-06C0-9D2CDE76D0CE}") = "Temporary2D Rendering Test", "Assembly-CSharp-firstpass.csproj", "{BF3CBC7A-09A6-49DF-1C14-9629BBE98847}"
+EndProject
 Project("{C6B92D9A-9B4B-D21A-06C0-9D2CDE76D0CE}") = "Temporary2D Rendering Test", "Assembly-CSharp.csproj", "{C749A027-0389-9DB8-7BFB-59646316D8DD}"
+EndProject
+Project("{C6B92D9A-9B4B-D21A-06C0-9D2CDE76D0CE}") = "Temporary2D Rendering Test", "Assembly-CSharp-Editor.csproj", "{6622F769-7974-305D-7A46-784800921F05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +13,23 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF3CBC7A-09A6-49DF-1C14-9629BBE98847}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF3CBC7A-09A6-49DF-1C14-9629BBE98847}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF3CBC7A-09A6-49DF-1C14-9629BBE98847}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF3CBC7A-09A6-49DF-1C14-9629BBE98847}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C749A027-0389-9DB8-7BFB-59646316D8DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C749A027-0389-9DB8-7BFB-59646316D8DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C749A027-0389-9DB8-7BFB-59646316D8DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C749A027-0389-9DB8-7BFB-59646316D8DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6622F769-7974-305D-7A46-784800921F05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6622F769-7974-305D-7A46-784800921F05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6622F769-7974-305D-7A46-784800921F05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6622F769-7974-305D-7A46-784800921F05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-					GlobalSection(MonoDevelopProperties) = preSolution
+																																																										GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1

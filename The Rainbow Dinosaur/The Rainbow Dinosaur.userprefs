@@ -1,14 +1,26 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Game\Entity\Enemy\EnemyFlyAvoid.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ShaderUpdate.cs">
     <Files>
-      <File FileName="Assets\Scripts\Game\Entity\EntityMove.cs" Line="15" Column="2" />
-      <File FileName="Assets\Scripts\Game\Entity\Behavior\BhvAvoidBulletsForce.cs" Line="24" Column="52" />
-      <File FileName="Assets\Scripts\Game\Entity\Enemy\EnemyFlyWanderer.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\Entity\Enemy\EnemyFlyAttack.cs" Line="16" Column="13" />
-      <File FileName="Assets\Scripts\Game\Entity\Enemy\EnemyFly.cs" Line="20" Column="2" />
-      <File FileName="Assets\Scripts\Game\Entity\Enemy\EnemyFlyDancer.cs" Line="5" Column="1" />
-      <File FileName="Assets\Scripts\Game\Entity\Enemy\EnemyFlyAvoid.cs" Line="18" Column="52" />
+      <File FileName="Assets\Scripts\Game\PlayerController.cs" Line="38" Column="32" />
+      <File FileName="Assets\Scripts\Rendering\RenderManager.cs" Line="12" Column="117" />
+      <File FileName="Assets\Scripts\Rendering\RenderRoom.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\Room\Room.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Utility\EasyCamera.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Utility\EasyFile.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Utility\EasyTimer.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Rendering\RenderEntity.cs" Line="1" Column="1" />
+      <File FileName="Assets\ChromaticEffectProject\ChromaticObject.cs" Line="20" Column="6" />
+      <File FileName="Assets\ChromaticEffectProject\ChromaticForce.cs" Line="1" Column="1" />
+      <File FileName="Assets\ChromaticEffectProject\_ChromaticTest.cs" Line="1" Column="1" />
+      <File FileName="Assets\ChromaticEffectProject\ChromaticEffect.cs" Line="83" Column="4" />
+      <File FileName="Assets\Scripts\Rendering\RenderBullet.cs" Line="33" Column="6" />
+      <File FileName="Assets\Scripts\Rendering\Effect\EffectChromaticForce.cs" Line="1" Column="1" />
+      <File FileName="Assets\ChromaticEffectProject\ChromaticObjectGlobal.cs" Line="4" Column="44" />
+      <File FileName="Assets\Scripts\Rendering\Effect\EffectBulletBounce.cs" Line="22" Column="11" />
+      <File FileName="Assets\Scripts\Game\GameMainCamera.cs" Line="13" Column="17" />
+      <File FileName="Assets\Scripts\Game\PlayerManager.cs" Line="10" Column="25" />
+      <File FileName="Assets\Scripts\ShaderUpdate.cs" Line="17" Column="47" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
