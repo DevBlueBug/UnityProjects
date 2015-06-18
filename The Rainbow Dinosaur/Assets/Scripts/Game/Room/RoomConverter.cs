@@ -24,7 +24,7 @@ public class RoomConverter
 		foreach (var roomData in map.roomsAvailable) {
 			//bool resetWithData = (r.X != map.roomInit.X || r.Y != map.roomInit.Y);
 			AddRoom(ref rooms, organizer,p_roomAsset,
-			        UnityEngine.GameObject.Instantiate(p_room),
+			        UnityEngine	.GameObject.Instantiate(p_room),
 			        roomData, roomData.X,roomData.Y, roomData.doors);
 			E_NewRoom(rooms[roomData.X,roomData.Y]);
 		}

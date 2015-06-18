@@ -20,9 +20,10 @@ public class EffectChromaticForce : MonoBehaviour
 	void Update ()
 	{
 		if ((interval = (interval + 1) % intervalMax) != 0) {
-			//Debug.Log(interval);
+			//Debug.Log(interval + " AND " + (interval%intervalMax));
 			return;
 		}
+		//Debug.Log(this.gameObject.name + " " + interval + " AND " + (interval%intervalMax));
 		ChromaticEffect.E_NewForce (new ChromaticForce (this.transform.position.x ,this.transform.position.y,force,distance,count)) ;
 	
 	}

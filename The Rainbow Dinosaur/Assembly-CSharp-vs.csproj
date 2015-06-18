@@ -46,14 +46,22 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Character\Ani_Player.cs" />
-     <Compile Include="Assets\ChromaticEffectProject\ChromaticEffect.cs" />
-     <Compile Include="Assets\ChromaticEffectProject\ChromaticForce.cs" />
-     <Compile Include="Assets\ChromaticEffectProject\ChromaticObject.cs" />
-     <Compile Include="Assets\ChromaticEffectProject\ChromaticObjectGlobal.cs" />
-     <Compile Include="Assets\ChromaticEffectProject\_ChromaticTest.cs" />
+     <Compile Include="Assets\Imported\ChromaticEffectProject\ChromaticEffect.cs" />
+     <Compile Include="Assets\Imported\ChromaticEffectProject\ChromaticForce.cs" />
+     <Compile Include="Assets\Imported\ChromaticEffectProject\ChromaticObject03.cs" />
+     <Compile Include="Assets\Imported\ChromaticEffectProject\ChromaticObjectGlobal.cs" />
+     <Compile Include="Assets\Imported\ChromaticEffectProject\_ChromaticTest.cs" />
      <Compile Include="Assets\Scripts\AStar\KMap.cs" />
      <Compile Include="Assets\Scripts\AStar\Node.cs" />
+     <Compile Include="Assets\Scripts\CamMaterial.cs" />
+     <Compile Include="Assets\Scripts\Chromatic\ChromaticApply.cs" />
+     <Compile Include="Assets\Scripts\Chromatic\ChromaticEngine.cs" />
+     <Compile Include="Assets\Scripts\Chromatic\ChromaticObject.cs" />
+     <Compile Include="Assets\Scripts\Chromatic\ChromaticParticle.cs" />
+     <Compile Include="Assets\Scripts\Chromatic\EffectColorDistortion\CameraMaterial.cs" />
+     <Compile Include="Assets\Scripts\Chromatic\EffectColorDistortion\ColorDistortionParticle.cs" />
+     <Compile Include="Assets\Scripts\Chromatic\EffectColorDistortion\ColorDistortionParticleEngine.cs" />
+     <Compile Include="Assets\Scripts\Chromatic\EffectColorDistortion\EffectColorDistortion.cs" />
      <Compile Include="Assets\Scripts\Data\DataJson\Board.cs" />
      <Compile Include="Assets\Scripts\Data\DataJson\JsonWrapper.cs" />
      <Compile Include="Assets\Scripts\Data\DataJson\Piece.cs" />
@@ -114,6 +122,7 @@
      <Compile Include="Assets\Scripts\Game\UI\Minimap.cs" />
      <Compile Include="Assets\Scripts\Game\UI\MinimapIcon.cs" />
      <Compile Include="Assets\Scripts\HUDFPS.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Decoration\DC_Flower.cs" />
      <Compile Include="Assets\Scripts\Rendering\Effect\EffectBulletBounce.cs" />
      <Compile Include="Assets\Scripts\Rendering\Effect\EffectChromaticForce.cs" />
      <Compile Include="Assets\Scripts\Rendering\Entity\EBitamsk_Simple.cs" />
@@ -122,13 +131,15 @@
      <Compile Include="Assets\Scripts\Rendering\Entity\EdgeReposition.cs" />
      <Compile Include="Assets\Scripts\Rendering\Entity\EdgeRotator.cs" />
      <Compile Include="Assets\Scripts\Rendering\Entity\EffectKilled.cs" />
-     <Compile Include="Assets\Scripts\Rendering\Entity\RendererDoor.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Entity\RenderDoor.cs" />
      <Compile Include="Assets\Scripts\Rendering\RenderBullet.cs" />
      <Compile Include="Assets\Scripts\Rendering\RenderEntity.cs" />
      <Compile Include="Assets\Scripts\Rendering\RenderManager.cs" />
      <Compile Include="Assets\Scripts\Rendering\RenderRoom.cs" />
+     <Compile Include="Assets\Scripts\Rendering\RenderRoomFloor.cs" />
+     <Compile Include="Assets\Scripts\Rendering\RenderSprite.cs" />
+     <Compile Include="Assets\Scripts\Rendering\RenderWalls.cs" />
      <Compile Include="Assets\Scripts\Rendering\RoomDecorator.cs" />
-     <Compile Include="Assets\Scripts\Rendering\RoomRenderer.cs" />
      <Compile Include="Assets\Scripts\ShaderUpdate.cs" />
      <Compile Include="Assets\Scripts\SimpleJSON.cs" />
      <Compile Include="Assets\Scripts\SpriteRenderer\RandomSprite.cs" />
@@ -140,9 +151,13 @@
      <Compile Include="Assets\Scripts\Utility\EasyUnity.cs" />
      <None Include="Assets\Shader\SpriteTinter.shader" />
      <None Include="Assets\Shader\Wall.shader" />
-     <None Include="Assets\ChromaticEffectProject\Material\Chromatic.shader" />
-     <None Include="Assets\ChromaticEffectProject\Material\ChromaticClear.shader" />
-     <None Include="Assets\ChromaticEffectProject\Material\ChromaticApply.shader" />
+     <None Include="Assets\Shader\Chromatic\ChromaticObject.shader" />
+     <None Include="Assets\Shader\Chromatic\ChromaticApply.shader" />
+     <None Include="Assets\Imported\ChromaticEffectProject\Material\Chromatic.shader" />
+     <None Include="Assets\Imported\ChromaticEffectProject\Material\ChromaticClear.shader" />
+     <None Include="Assets\Imported\ChromaticEffectProject\Material\ChromaticApply.shader" />
+     <None Include="Assets\Shader\Chromatic\ChromaticClear.shader" />
+     <None Include="Assets\Shader\ClearTransparent.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

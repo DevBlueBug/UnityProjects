@@ -18,6 +18,7 @@ public class RenderBullet : RenderEntity
 	// Use this for initialization
 	void Start ()
 	{
+		//Debug.Log ("RNEDER BULLET START");
 		position = this.transform.position;
 		this.transform.localRotation = Quaternion.Euler (0,0,
 		  Mathf.Atan2( bullet.direction.y,bullet.direction.x) * (180/3.14f));
@@ -44,15 +45,11 @@ public class RenderBullet : RenderEntity
 
 		
 	}
-	int count =0;
 	// Update is called once per frame
-	void Update ()
+	public override void Update ()
 	{
 		var dis = this.transform.position - position;
-		//if (count++ > distanceCount) {
-		//	position = this.transform.position;
-		///	count =0;
-		//}
+		RenderManager.E_BulletEffect (this);
 
 		Model.transform.localScale = new Vector3 ( Mathf.Min(LengthMax, dis.magnitude), Model.transform.localScale.y,Model.transform.localScale.z);//*Time.deltaTime;
 	}

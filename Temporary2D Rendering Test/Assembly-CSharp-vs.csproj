@@ -46,26 +46,34 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ChromaticEffectProject\ChromaticEffect.cs" />
-     <Compile Include="Assets\ChromaticEffectProject\ChromaticForce.cs" />
-     <Compile Include="Assets\ChromaticEffectProject\ChromaticObject.cs" />
-     <Compile Include="Assets\ChromaticEffectProject\EasyCamera.cs" />
-     <Compile Include="Assets\ChromaticEffectProject\_ChromaticTest.cs" />
+     <Compile Include="Assets\EffectChromatic\ChromaticEffect.cs" />
+     <Compile Include="Assets\EffectChromatic\ChromaticForce.cs" />
+     <Compile Include="Assets\EffectChromatic\ChromaticObject.cs" />
+     <Compile Include="Assets\EffectChromatic\EasyCamera.cs" />
+     <Compile Include="Assets\EffectChromatic\_ChromaticTest.cs" />
+     <Compile Include="Assets\EffectColorDistortion\CameraMaterial.cs" />
+     <Compile Include="Assets\EffectColorDistortion\ColorDistortionParticle.cs" />
+     <Compile Include="Assets\EffectColorDistortion\ColorDistortionParticleEngine.cs" />
+     <Compile Include="Assets\EffectColorDistortion\EffectColorDistortion.cs" />
      <Compile Include="Assets\RoomDecorator.cs" />
      <Compile Include="Assets\RoomRenderer.cs" />
+     <Compile Include="Assets\RotatingShit.cs" />
      <Compile Include="Assets\Shader\AlphaClear.cs" />
      <Compile Include="Assets\Shader\ChromaticAberration.cs" />
      <Compile Include="Assets\Shader\DistortionTexture.cs" />
      <Compile Include="Assets\Shader\ImageEffectClearAlpha.cs" />
+     <Compile Include="Assets\TestEffect00.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
+     <None Include="Assets\EffectColorDistortion\Shader\DistortionObject.shader" />
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ShowAlphaChannel.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\SunShaftsComposite.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurves.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceAmbientObscurance.shader" />
+     <None Include="Assets\EffectColorDistortion\Shader\ColorDistortionApply.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\NFAA.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\TiltShiftHdrLensBlur.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\VignetteShader.shader" />
@@ -83,11 +91,11 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\FisheyeShader.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Apply.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\frag_ao.cginc" />
-     <None Include="Assets\ChromaticEffectProject\Material\Chromatic.shader" />
-     <None Include="Assets\ChromaticEffectProject\Material\ChromaticClear.shader" />
+     <None Include="Assets\EffectChromatic\Material\Chromatic.shader" />
+     <None Include="Assets\EffectChromatic\Material\ChromaticClear.shader" />
      <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfField34.shader" />
-     <None Include="Assets\ChromaticEffectProject\Material\ChromaticApply.shader" />
+     <None Include="Assets\EffectChromatic\Material\ChromaticApply.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBlur.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\SSAOShader.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\ConvertDepth.shader" />
@@ -133,6 +141,7 @@
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\SimpleClear.shader" />
      <None Include="Assets\Standard Assets\Effects\TessellationShaders\Shaders\BumpedSpecularDisplacement.shader" />
+     <None Include="Assets\EffectColorDistortion\Shader\ColorDistortionClear.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA3Console.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset2.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />

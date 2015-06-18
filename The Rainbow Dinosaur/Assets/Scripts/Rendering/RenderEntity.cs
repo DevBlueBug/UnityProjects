@@ -3,19 +3,27 @@ using System.Collections;
 
 public class RenderEntity : MonoBehaviour
 {
+	public RenderSprite renderSprite; 
 	public bool isChromatic;
-	// Use this for initialization
+
+	internal ChromaticObject chroObject;
+
 	public virtual void Awake ()
 	{
-		if(isChromatic) this.gameObject.AddComponent<ChromaticObject> ();
-		var entity = GetComponent<Entity> ();
-
+		if (isChromatic) {
+			chroObject = GetComponent<ChromaticObject>();
+			if(chroObject == null){
+				chroObject = this.gameObject.AddComponent<ChromaticObject>();
+				chroObject.renderSprite = renderSprite;
+			}
+		}
 
 	}
 
 	// Update is called once per frame
-	void Update ()
+	public virtual void Update ()
 	{
+		//Debug.Log ("UPDATEEE");
 	
 	}
 }

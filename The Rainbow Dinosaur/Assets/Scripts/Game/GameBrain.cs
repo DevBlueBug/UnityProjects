@@ -5,6 +5,7 @@ public class GameBrain : MonoBehaviour
 {
 	public delegate void D_NewMap(Data.DMap map);
 	public delegate void D_GameStarted_NewRoom(Room room, int n);
+	public delegate void D_RoomLoaded (Room room);
 	
 	public D_NewMap E_NewMap = delegate {	};
 	public D_GameStarted_NewRoom E_GameStarted_NewRoom = delegate { };
@@ -13,6 +14,7 @@ public class GameBrain : MonoBehaviour
 	public Room P_Room;
 	public RoomAsset P_RoomAsset;
 
+	public ChromaticEffect effect;
 	public PlayerManager pManager;
 
 	internal float difficulty = 0;

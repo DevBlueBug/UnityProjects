@@ -5,6 +5,8 @@ namespace Utility
 public class EasyCamera : MonoBehaviour
 {
 	public Camera cam;
+	public RenderTexture appliedTexture;
+
 
 	public RenderTexture Render(RenderTexture texture){
 			//Debug.Log ("RENDER");

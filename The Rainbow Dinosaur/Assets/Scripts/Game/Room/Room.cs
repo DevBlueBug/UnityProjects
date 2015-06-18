@@ -45,7 +45,7 @@ public class Room : MonoBehaviour
 		for (int i = 0; i< entities.Count; i++) {
 			var entity = entities[i];
 			if(!entities[i].isAlive){
-				isSomethingDead = true;
+				if(entities[i].meType != Entity.KType.Bullet) isSomethingDead = true;
 				UnWeightOnAStartMap(entity,(int)entity.posX,(int)entity.posY);
 				entity.Terminate();
 				entities.RemoveAt(i);
