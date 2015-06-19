@@ -47,22 +47,35 @@ Shader "Chromatic/Apply" {
 				o.uv = v.texcoord;
 				return o;
 			}
+			
+			float rand(float x ,float y){
+				return frac(sin(dot(float2(x,y) ,float2(12.9898,78.233))) * 43758.5453f);
+			}
+			float toSquare(float n){
+				return round(n/.01) * .01;
+			}
+			float randSquareFloat2(float2 uv){
+				return rand(toSquare(uv.x)+ _Time ,toSquare(uv.y) );
+			}
+			
 
 			fixed4 GetColor(sampler2D main, sampler2D src, float2 uv, float ratio){
 				float4 color = tex2D(src,float2(uv.x,uv.y));
 				float2 coordinate = (color.rg - float2(.5,.5) ) /.5;
-				return tex2D(main,uv + float2(coordinate.x,coordinate.y)*ratio );
+				//float r =  min(1, max(0,-.5f+randSquareFloat2(uv)) * 1000.0f);
+				float r = min(1,.7f+randSquareFloat2(uv)*1.0f);
+				return tex2D(main,uv + float2(coordinate.x*r,coordinate.y*r)*ratio );
 			}
 
 
 			fixed4 frag(vertex  i) : COLOR  {
-				float ratio = .5+length(i.uv - float2(.5,.5) )*.5;
+				float ratio = .2+length(i.uv - float2(.5,.5) )*.8;
 				//float ratio = 1;
 
 				float4 r = GetColor (_MainTex,_distortionRed, i.uv ,ratio);
 				float4 g = GetColor (_MainTex,_distortionGreen, i.uv ,ratio);
 				float4 b = GetColor (_MainTex,_distortionBlue, i.uv ,ratio);
-				float4 color = float4(r.r,g.g,b.b,max(b.a,max(r.a,g.a)) );
+				float4 color = float4(r.r,g.g,b.b,max(r.a,max(g.a,b.a)) );
 
 				return color;
 			}

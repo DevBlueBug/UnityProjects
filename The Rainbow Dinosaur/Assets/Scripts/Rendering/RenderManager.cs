@@ -24,13 +24,22 @@ public class RenderManager : MonoBehaviour
 		float angle = 
 			Mathf.Atan2 (bullet.bullet.direction.y, bullet.bullet.direction.x);
 		var dir = new Vector3 (Mathf.Cos(angle),Mathf.Sin(angle),0 );
-		ChromaticEngine.E_Effect00 (bullet.transform.position);
+		ChromaticEngine.E_Effect00 (bullet.transform.position);	
+
+		ChromaticEngine.E_NewForce (new ChromaticForce(
+			bullet.transform.position.x +bullet.bullet.direction.x*.01f,
+			bullet.transform.position.y+bullet.bullet.direction.y *.01f,
+			.1f*bullet.bullet.forceApplied,
+			3));
 
 	}
 	void H_Backswing(Vector3 position, Vector3 direction, float force){
 		force *= .1f;
 		ChromaticEffect.E_NewForce (new ChromaticForce (position.x - direction.x*.2f,position.y - direction.y*.2f,force,.5f));
 
+	}
+	public void KUpdate(){
+		engineChromatic.KUpdate ();
 	}
 
 

@@ -1,17 +1,24 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Shader\Chromatic\ChromaticClear.shader">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Rendering\CameraRenderHere.cs">
     <Files>
-      <File FileName="Assets\Scripts\Chromatic\ChromaticEngine.cs" Line="43" Column="76" />
-      <File FileName="Assets\Scripts\Rendering\RenderEntity.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Rendering\RenderRoom.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Rendering\RenderManager.cs" Line="27" Column="29" />
-      <File FileName="Assets\Scripts\Chromatic\ChromaticApply.cs" Line="19" Column="39" />
-      <File FileName="Assets\Scripts\Chromatic\ChromaticObject.cs" Line="27" Column="22" />
-      <File FileName="Assets\Scripts\Game\Items\Weapon\GunBasic.cs" Line="17" Column="31" />
-      <File FileName="Assets\Scripts\Chromatic\ChromaticParticle.cs" Line="22" Column="3" />
-      <File FileName="Assets\Shader\Chromatic\ChromaticApply.shader" Line="66" Column="1" />
-      <File FileName="Assets\Shader\Chromatic\ChromaticClear.shader" Line="77" Column="57" />
+      <File FileName="Assets\Scripts\Game\GameBrain.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Rendering\RenderSprite.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\PlayerController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\PlayerManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\PlayerInformation.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\Player.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\Entity\EntityMove.cs" Line="1" Column="1" />
+      <File FileName="Assets\Shader\Chromatic\ChromaticObject.shader" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Chromatic\ChromaticParticle.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Chromatic\ChromaticEngine.cs" Line="22" Column="3" />
+      <File FileName="Assets\Scripts\Rendering\RenderManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Chromatic\Objects\ChromaticObject.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Rendering\Effect\EffectBulletBounce.cs" Line="30" Column="34" />
+      <File FileName="Assets\Scripts\Rendering\CameraRenderHere.cs" Line="17" Column="40" />
+      <File FileName="Assets\Scripts\Game\GameMainCamera.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Rendering\RenderBullet.cs" Line="32" Column="22" />
+      <File FileName="Assets\Scripts\CamMaterial.cs" Line="16" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

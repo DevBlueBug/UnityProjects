@@ -3,6 +3,11 @@ using System.Collections.Generic;
 
 public class EBullet : Entity
 {
+	public delegate void D_Moved(EBullet me);
+	public delegate void D_Hit(Entity hitted, Vector3 reflective);
+	public D_Hit E_Hit = delegate {};
+	public D_Moved E_Moved = delegate {};
+
 	int isWillBeDead = -1;
 	Vector3 finalPosition;
 	public float hpChange;
@@ -31,10 +36,17 @@ public class EBullet : Entity
 		}
 		try{
 			var entity = rayCast.collider.GetComponent<EntityPointer>().entity;
+
+			//rayCast.normal
+		
 			//if(rayCast.distance > amount*.1f) this.transform.transform.position = rayCast.point;
 			//else 
 
 			if(helperIsMyTarget(entity.meType)){
+				var relfectiveVar = Vector3.Reflect( rayCast.point - 
+				                                    (rayCast.point - new Vector2(direction.x,direction.y)) ,  rayCast.normal);
+				//Debug.Log("reflective " + relfectiveVar.normalized);
+				E_Hit(entity, relfectiveVar);
 				Hit(entity);
 				Kill();
 				return false;
@@ -52,10 +64,15 @@ public class EBullet : Entity
 	public override void KUpdate (Room room)
 	{
 		base.KUpdate (room);
-
+		int countEffect = 0;
 		float count = (velocity*Time.deltaTime) /.1f;
 		for (int i = 0; i< count && i < 900; i++) {
+
 			if(!UpdateBullet(.1f)) break;
+			if(countEffect++ % 3 == 0){
+				countEffect = 1;
+				E_Moved(this);
+			}
 			if(i >= 900)Debug.Log("NO");
 		}
 

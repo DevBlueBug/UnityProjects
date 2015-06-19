@@ -4,7 +4,7 @@ using System.Collections;
 public class RenderEntity : MonoBehaviour
 {
 	public RenderSprite renderSprite; 
-	public bool isChromatic;
+	public bool isChromatic, isChromaticSelfUpdate;
 
 	internal ChromaticObject chroObject;
 
@@ -13,12 +13,18 @@ public class RenderEntity : MonoBehaviour
 		if (isChromatic) {
 			chroObject = GetComponent<ChromaticObject>();
 			if(chroObject == null){
-				chroObject = this.gameObject.AddComponent<ChromaticObject>();
-				chroObject.renderSprite = renderSprite;
+				AwakeAddChromaticObject();
 			}
 		}
 
+
 	}
+	public virtual void AwakeAddChromaticObject(){
+		
+		chroObject = renderSprite.gameObject.AddComponent<ChromaticObject>()
+			.Init(renderSprite,isChromaticSelfUpdate);
+	}
+
 
 	// Update is called once per frame
 	public virtual void Update ()

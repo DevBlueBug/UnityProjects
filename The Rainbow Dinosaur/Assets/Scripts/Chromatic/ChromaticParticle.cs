@@ -9,7 +9,6 @@ public class ChromaticParticle : MonoBehaviour
 	public int count;
 	void Start(){
 		sprRender= this.gameObject.AddComponent<SpriteRenderer> ();
-		Debug.Log ("MAT " + mat);
 		sprRender.material = mat;
 	}
 	public void On(Sprite sprite, int layer,Vector3 position,Color color, int count){
@@ -24,6 +23,10 @@ public class ChromaticParticle : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		Vector3 c = new Vector3 (sprRender.color.r, sprRender.color.g, 0);
+
+		Vector3 color = c + (new Vector3 (.5f, .5f, 0) - c )* 1.1f * Time.deltaTime;
+		this.sprRender.color = new Color (c.x, c.y, 0,sprRender.color.a - .1f*Time.deltaTime);
 		if (--count <= 0)
 			this.gameObject.SetActive (false);
 	

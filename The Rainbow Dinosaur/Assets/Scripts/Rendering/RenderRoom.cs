@@ -27,22 +27,28 @@ public class RenderRoom : MonoBehaviour
 	void H_EntityAdded(Room room, Entity entity){
 
 
-		var chroObject = entity.GetComponent<ChromaticObject> ();
-		if (chroObject == null) return;
-		chroObjects.Add (chroObject);
+		var renderEntity = entity.GetComponent<RenderEntity> ();
+		if (renderEntity == null) {
+			return;
+		}
+		var chromaticObject = renderEntity.chroObject;
+		if (chromaticObject == null) {
+			return;
+		}
+		chroObjects.Add (chromaticObject);
 		entity.E_Kill += delegate(Entity me){
 			H_EntityDeleted(null,me);
 	
 		};
 	}
 	void H_EntityDeleted(Room room, Entity entity){
-		var chroObject = entity.GetComponent<ChromaticObject> ();
+		var chroObject = entity
+			.GetComponent<RenderEntity> ().chroObject;
 		if (chroObject == null) return;
 		try{
 			chroObjects.Remove(chroObject);
 		}
 		catch{
-			Debug.Log("ChroObjectRemoveFailure");
 		}
 	}
 }

@@ -80,7 +80,8 @@ public class PlayerManager : MonoBehaviour
 		UpdatePlayerPosition ();
 	}
 	public void E_Move(Vector3 dir){
-		player.entity.SetVelocity (dir * player.information.GetVelocity());
+		//Debug.Log (	 player.information.GetVelocity ());
+		player.entity.Move (dir	);
 	}
 	public void E_Attack(Entity entitiPlayer,Room room, Vector3 dir){
 	

@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Imported\ChromaticEffectProject\ChromaticEffect.cs" />
-     <Compile Include="Assets\Imported\ChromaticEffectProject\ChromaticForce.cs" />
      <Compile Include="Assets\Imported\ChromaticEffectProject\ChromaticObject03.cs" />
      <Compile Include="Assets\Imported\ChromaticEffectProject\ChromaticObjectGlobal.cs" />
      <Compile Include="Assets\Imported\ChromaticEffectProject\_ChromaticTest.cs" />
@@ -56,12 +55,14 @@
      <Compile Include="Assets\Scripts\CamMaterial.cs" />
      <Compile Include="Assets\Scripts\Chromatic\ChromaticApply.cs" />
      <Compile Include="Assets\Scripts\Chromatic\ChromaticEngine.cs" />
-     <Compile Include="Assets\Scripts\Chromatic\ChromaticObject.cs" />
+     <Compile Include="Assets\Scripts\Chromatic\ChromaticForce.cs" />
      <Compile Include="Assets\Scripts\Chromatic\ChromaticParticle.cs" />
      <Compile Include="Assets\Scripts\Chromatic\EffectColorDistortion\CameraMaterial.cs" />
      <Compile Include="Assets\Scripts\Chromatic\EffectColorDistortion\ColorDistortionParticle.cs" />
      <Compile Include="Assets\Scripts\Chromatic\EffectColorDistortion\ColorDistortionParticleEngine.cs" />
      <Compile Include="Assets\Scripts\Chromatic\EffectColorDistortion\EffectColorDistortion.cs" />
+     <Compile Include="Assets\Scripts\Chromatic\Objects\ChromaticBullet.cs" />
+     <Compile Include="Assets\Scripts\Chromatic\Objects\ChromaticObject.cs" />
      <Compile Include="Assets\Scripts\Data\DataJson\Board.cs" />
      <Compile Include="Assets\Scripts\Data\DataJson\JsonWrapper.cs" />
      <Compile Include="Assets\Scripts\Data\DataJson\Piece.cs" />
@@ -122,6 +123,7 @@
      <Compile Include="Assets\Scripts\Game\UI\Minimap.cs" />
      <Compile Include="Assets\Scripts\Game\UI\MinimapIcon.cs" />
      <Compile Include="Assets\Scripts\HUDFPS.cs" />
+     <Compile Include="Assets\Scripts\Rendering\CameraRenderHere.cs" />
      <Compile Include="Assets\Scripts\Rendering\Decoration\DC_Flower.cs" />
      <Compile Include="Assets\Scripts\Rendering\Effect\EffectBulletBounce.cs" />
      <Compile Include="Assets\Scripts\Rendering\Effect\EffectChromaticForce.cs" />

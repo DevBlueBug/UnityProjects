@@ -16,6 +16,7 @@ public class GameBrain : MonoBehaviour
 
 	public ChromaticEffect effect;
 	public PlayerManager pManager;
+	public RenderManager rManager;
 
 	internal float difficulty = 0;
 
@@ -48,7 +49,9 @@ public class GameBrain : MonoBehaviour
 			room.AddEntity(P_ItemList.GetRandom(),
 			               Random.Range(1,13),Random.Range(1,7),false);
 		}
-	
+		rManager.KUpdate ();
+	}
+	void OnGUI(){
 	}
 	
 	public void Init(){
