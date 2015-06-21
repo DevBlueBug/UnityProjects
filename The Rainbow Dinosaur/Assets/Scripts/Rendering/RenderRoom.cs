@@ -5,7 +5,7 @@ public class RenderRoom : MonoBehaviour
 {
 	public RenderRoomFloor P_RenderRoomFloor;
 
-	List<ChromaticObject> chroObjects = new List<ChromaticObject>();
+	List<PPE_Object> chroObjects = new List<PPE_Object>();
 	List<ChromaticObject03> chroObjects03 = new List<ChromaticObject03>();
 	// Use this for initialization
 	void Awake(){
@@ -21,7 +21,7 @@ public class RenderRoom : MonoBehaviour
 		room.E_EntityDeleted += H_EntityAdded;
 	}
 	void H_On(Room room){
-		ChromaticEngine.E_NewChromaticObjects (chroObjects);
+		PPE_Engine.E_NewChromaticObjects (chroObjects);
 
 	}
 	void H_EntityAdded(Room room, Entity entity){

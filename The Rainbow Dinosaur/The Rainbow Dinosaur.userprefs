@@ -1,24 +1,17 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Rendering\CameraRenderHere.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Shader\Deteriorate\DeteriorateApply.shader">
     <Files>
-      <File FileName="Assets\Scripts\Game\GameBrain.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Rendering\RenderSprite.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\PlayerController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\PlayerManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\PlayerInformation.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\Player.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\Entity\EntityMove.cs" Line="1" Column="1" />
-      <File FileName="Assets\Shader\Chromatic\ChromaticObject.shader" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Chromatic\ChromaticParticle.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Chromatic\ChromaticEngine.cs" Line="22" Column="3" />
-      <File FileName="Assets\Scripts\Rendering\RenderManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Chromatic\Objects\ChromaticObject.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Rendering\Effect\EffectBulletBounce.cs" Line="30" Column="34" />
-      <File FileName="Assets\Scripts\Rendering\CameraRenderHere.cs" Line="17" Column="40" />
-      <File FileName="Assets\Scripts\Game\GameMainCamera.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Rendering\RenderBullet.cs" Line="32" Column="22" />
-      <File FileName="Assets\Scripts\CamMaterial.cs" Line="16" Column="3" />
+      <File FileName="Assets\Scripts\PostProcessingEngine\ColorDeteriorate\ColorDeteriorate.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PostProcessingEngine\ColorDeteriorate\ColorDeteriorateCamera.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PostProcessingEngine\PPE_Engine.cs" Line="1" Column="1" />
+      <File FileName="Assets\Shader\Chromatic\ChromaticClear.shader" Line="1" Column="1" />
+      <File FileName="Assets\Shader\Chromatic\ChromaticApply.shader" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PostProcessingEngine\Objects\PPE_Object.cs" Line="1" Column="1" />
+      <File FileName="Assets\Shader\Deteriorate\DeteriorateApply.shader" Line="7" Column="11" />
+      <File FileName="Assets\Shader\Deteriorate\DeteriorateUpdate.shader" Line="20" Column="1" />
+      <File FileName="Assets\Shader\Deteriorate\Deteriorate.shader" Line="1" Column="28" />
+      <File FileName="Assets\Shader\Deteriorate\DeteriorateClear.shader" Line="1" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

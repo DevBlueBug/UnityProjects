@@ -2,8 +2,7 @@
 	Properties {
 		_Time("Time" , Float) = 0
 		_Color ("Color", Color) = (1,1,1,1)
-		_MainTex ("Albedo (RGB)", 2D) = "white" {}
-		_SubTex ("_SubTex", 2D) = "white" {}
+		_MainTex  ("Albedo (RGB)", 2D) = "white" {}
 	}
 	SubShader {
 		Tags { "RenderType"="Opaque" }
@@ -19,7 +18,7 @@
 
 			#include "UnityCG.cginc"
 
-			sampler2D _MainTex;
+			uniform sampler2D _MainTex;
 			sampler2D _SubTex;
 			float4 _PlayerPosition;
 
@@ -90,8 +89,9 @@
 			}
 
 			fixed4 frag(vertex  i) : COLOR  {
-				float4 color0 = tex2D(_MainTex,i.uv);
-				return float4(.5,.5,0,.05f + color0.a * .01f);
+				float4 color0 = tex2D(_MainTex ,i.uv);
+				//return color0;
+				return float4(.5,.5,0,.01f + color0.a * .3f);
 				//float2 dir =normalize( color0.rg - float2(.5,.5) );
 				//float4 colorDir = GetLeftOver(i.uv + dir * .01);
 

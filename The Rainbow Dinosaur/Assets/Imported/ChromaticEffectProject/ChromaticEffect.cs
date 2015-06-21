@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class ChromaticEffect : MonoBehaviour
 {
 	public delegate void D_NewChroOjbects(List<ChromaticObject03> list);
-	public delegate void D_NewFrce(ChromaticForce force);
+	public delegate void D_NewFrce(PPE_Force force);
 	public static D_NewChroOjbects E_NewChroObjects = delegate{};
 	public static D_NewFrce E_NewForce = delegate{};
 
@@ -23,7 +23,7 @@ public class ChromaticEffect : MonoBehaviour
 	public List<ChromaticObject03> objects;
 	public static List<ChromaticObject03> objectsGlobal = new List<ChromaticObject03> ();
 
-	internal List<ChromaticForce> forces = new List<ChromaticForce>();
+	internal List<PPE_Force> forces = new List<PPE_Force>();
 	// Use this for initialization
 	void Awake ()
 	{
@@ -34,7 +34,7 @@ public class ChromaticEffect : MonoBehaviour
 	void H_NewChroOjbects(List<ChromaticObject03> list){
 		this.objects = list;
 	}
-	void H_NewForce(ChromaticForce force){
+	void H_NewForce(PPE_Force force){
 		this.forces.Add (force);
 		//	Debug.Log ("newForceAdded");
 	}
@@ -96,7 +96,7 @@ public class ChromaticEffect : MonoBehaviour
 	
 	}
 	void Render(
-		List<ChromaticForce> forces,
+		List<PPE_Force> forces,
 		Utility.EasyCamera camera, Color color){
 		//apply forces
 		for (int i = 0; i < objects.Count; i++) {

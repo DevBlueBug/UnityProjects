@@ -24,7 +24,7 @@ public class EffectChromaticForce : MonoBehaviour
 			return;
 		}
 		//Debug.Log(this.gameObject.name + " " + interval + " AND " + (interval%intervalMax));
-		ChromaticEffect.E_NewForce (new ChromaticForce (this.transform.position.x ,this.transform.position.y,force,distance,count)) ;
+		ChromaticEffect.E_NewForce (new PPE_Force (this.transform.position.x ,this.transform.position.y,force,distance,count)) ;
 	
 	}
 }

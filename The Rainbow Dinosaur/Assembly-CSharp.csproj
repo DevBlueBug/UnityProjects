@@ -53,16 +53,6 @@
      <Compile Include="Assets\Scripts\AStar\KMap.cs" />
      <Compile Include="Assets\Scripts\AStar\Node.cs" />
      <Compile Include="Assets\Scripts\CamMaterial.cs" />
-     <Compile Include="Assets\Scripts\Chromatic\ChromaticApply.cs" />
-     <Compile Include="Assets\Scripts\Chromatic\ChromaticEngine.cs" />
-     <Compile Include="Assets\Scripts\Chromatic\ChromaticForce.cs" />
-     <Compile Include="Assets\Scripts\Chromatic\ChromaticParticle.cs" />
-     <Compile Include="Assets\Scripts\Chromatic\EffectColorDistortion\CameraMaterial.cs" />
-     <Compile Include="Assets\Scripts\Chromatic\EffectColorDistortion\ColorDistortionParticle.cs" />
-     <Compile Include="Assets\Scripts\Chromatic\EffectColorDistortion\ColorDistortionParticleEngine.cs" />
-     <Compile Include="Assets\Scripts\Chromatic\EffectColorDistortion\EffectColorDistortion.cs" />
-     <Compile Include="Assets\Scripts\Chromatic\Objects\ChromaticBullet.cs" />
-     <Compile Include="Assets\Scripts\Chromatic\Objects\ChromaticObject.cs" />
      <Compile Include="Assets\Scripts\Data\DataJson\Board.cs" />
      <Compile Include="Assets\Scripts\Data\DataJson\JsonWrapper.cs" />
      <Compile Include="Assets\Scripts\Data\DataJson\Piece.cs" />
@@ -123,6 +113,22 @@
      <Compile Include="Assets\Scripts\Game\UI\Minimap.cs" />
      <Compile Include="Assets\Scripts\Game\UI\MinimapIcon.cs" />
      <Compile Include="Assets\Scripts\HUDFPS.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\Chromatic\ChromaticAberrarionCamera.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\Chromatic\ChromaticAberration.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\Chromatic\ChromaticAberrationMonobehavior.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\ColorDeteriorate\ColorDeteriorate.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\ColorDeteriorate\ColorDeteriorateCamera.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\EffectColorDistortion\CameraMaterial.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\EffectColorDistortion\ColorDistortionParticle.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\EffectColorDistortion\ColorDistortionParticleEngine.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\EffectColorDistortion\EffectColorDistortion.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\Objects\PPE_Object.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\Objects\PPE_Object_Bullet.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\PPE_Apply.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\PPE_Apply_Chromatic.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\PPE_Engine.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\PPE_Force.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\PPE_Particle.cs" />
      <Compile Include="Assets\Scripts\Rendering\CameraRenderHere.cs" />
      <Compile Include="Assets\Scripts\Rendering\Decoration\DC_Flower.cs" />
      <Compile Include="Assets\Scripts\Rendering\Effect\EffectBulletBounce.cs" />
@@ -154,12 +160,16 @@
      <None Include="Assets\Shader\SpriteTinter.shader" />
      <None Include="Assets\Shader\Wall.shader" />
      <None Include="Assets\Shader\Chromatic\ChromaticObject.shader" />
+     <None Include="Assets\Shader\Deteriorate\DeteriorateUpdate.shader" />
      <None Include="Assets\Shader\Chromatic\ChromaticApply.shader" />
      <None Include="Assets\Imported\ChromaticEffectProject\Material\Chromatic.shader" />
      <None Include="Assets\Imported\ChromaticEffectProject\Material\ChromaticClear.shader" />
+     <None Include="Assets\Shader\Deteriorate\DeteriorateClear.shader" />
      <None Include="Assets\Imported\ChromaticEffectProject\Material\ChromaticApply.shader" />
      <None Include="Assets\Shader\Chromatic\ChromaticClear.shader" />
      <None Include="Assets\Shader\ClearTransparent.shader" />
+     <None Include="Assets\Shader\Deteriorate\Deteriorate.shader" />
+     <None Include="Assets\Shader\Deteriorate\DeteriorateApply.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

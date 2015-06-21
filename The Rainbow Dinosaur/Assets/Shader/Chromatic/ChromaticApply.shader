@@ -52,7 +52,7 @@ Shader "Chromatic/Apply" {
 				return frac(sin(dot(float2(x,y) ,float2(12.9898,78.233))) * 43758.5453f);
 			}
 			float toSquare(float n){
-				return round(n/.01) * .01;
+				return round(n/.005) * .005;
 			}
 			float randSquareFloat2(float2 uv){
 				return rand(toSquare(uv.x)+ _Time ,toSquare(uv.y) );
@@ -63,14 +63,14 @@ Shader "Chromatic/Apply" {
 				float4 color = tex2D(src,float2(uv.x,uv.y));
 				float2 coordinate = (color.rg - float2(.5,.5) ) /.5;
 				//float r =  min(1, max(0,-.5f+randSquareFloat2(uv)) * 1000.0f);
-				float r = min(1,.7f+randSquareFloat2(uv)*1.0f);
+				float r = max(0 , min(1,(-.05f+randSquareFloat2(uv) ) * 10 ) );
 				return tex2D(main,uv + float2(coordinate.x*r,coordinate.y*r)*ratio );
 			}
 
 
 			fixed4 frag(vertex  i) : COLOR  {
-				float ratio = .2+length(i.uv - float2(.5,.5) )*.8;
-				//float ratio = 1;
+				//float ratio = .2+length(i.uv - float2(.5,.5) )*.8;
+				float ratio = 1;
 
 				float4 r = GetColor (_MainTex,_distortionRed, i.uv ,ratio);
 				float4 g = GetColor (_MainTex,_distortionGreen, i.uv ,ratio);

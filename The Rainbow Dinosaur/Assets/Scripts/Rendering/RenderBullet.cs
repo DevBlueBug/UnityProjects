@@ -22,7 +22,7 @@ public class RenderBullet : RenderEntity
 	}
 	public override void AwakeAddChromaticObject ()
 	{
-		chroObject = renderSprite.gameObject.AddComponent<ChromaticBullet>()
+		chroObject = renderSprite.gameObject.AddComponent<PPE_Object_Bullet>()
 			.Init(renderSprite,isChromaticSelfUpdate,this);
 	}
 
@@ -36,34 +36,22 @@ public class RenderBullet : RenderEntity
 	
 	}
 	void H_Hit(Entity hittedEntity, Vector3 reflective){
-		ChromaticEffect.E_NewForce (new ChromaticForce (this.transform.position.x,this.transform.position.y,
+		ChromaticEffect.E_NewForce (new PPE_Force (this.transform.position.x,this.transform.position.y,
 		                                                bullet.forceApplied*.1f,1,1)) ;
 		int count = Random.Range (2, 3);
-		var angle = Mathf.Atan2 (reflective.y, reflective.x) * (180.0f/3.14f) ;
+		var angle = Mathf.Atan2 (reflective.y, reflective.x) * (180.0f/3.14f);
 		{
 			var bounce = Instantiate(P_Bounce);
-			//bounce.transform.parent = this.transform.parent;
-			bounce.transform.position = this.transform.position;
-			bounce.angle = angle;
-			//Debug.Log("ADDING ANGLE " + (this.transform.rotation.z + " " +180) );
 			float ratio = Random.Range(1,2.0f);
-			bounce.speed = 7.0f* ratio;
-			bounce.length = .5f ;
-			bounce.travelDistance = 1.0f* ratio;
+			bounce.Init(angle,7.0f* ratio,.5f,1.0f* ratio);
+			bounce.transform.position = this.transform.position;
 		}
 
-		for (int i = 0; i < count; i++) {
+		for (int i = 0; i < 3; i++) {
 			var bounce = Instantiate(P_Bounce);
-			//bounce.transform.parent = this.transform.parent;
 			bounce.transform.position = this.transform.position;
-			bounce.angle = angle + Random.Range(-45,45);
-			//Debug.Log("ADDING ANGLE " + (this.transform.rotation.z + " " +180) );
 			float ratio = Random.Range(1,2.0f);
-			bounce.speed = 5.3f* ratio;
-			bounce.length = .5f ;
-			bounce.travelDistance = .9f* ratio;
-			
-			
+			bounce.Init( angle + Random.Range(-45,45),5.3f*ratio,.5f,.9f*ratio);
 		}
 	}
 	
@@ -71,13 +59,24 @@ public class RenderBullet : RenderEntity
 
 		
 	}
+	float magnitudeBefore = 0;
+	//Vector3 posBefore;
 	// Update is called once per frame
 	public override void Update ()
 	{
-		var dis = this.transform.position - position;
+		var mag = (this.transform.position - position) .magnitude;
+		if (mag > magnitudeBefore) {
+			mag = mag;
+		} else if (mag <= magnitudeBefore * .5f) {
+			mag = magnitudeBefore;
+		} else {
+			mag = magnitudeBefore*1.3f;
+		}
 		//RenderManager.E_BulletEffect (this);
 
-		Model.transform.localScale = new Vector3 ( Mathf.Min(LengthMax, dis.magnitude), Model.transform.localScale.y,Model.transform.localScale.z);//*Time.deltaTime;
+		Model.transform.localScale = new Vector3 ( mag, Model.transform.localScale.y,Model.transform.localScale.z);//*Time.deltaTime;
+		magnitudeBefore = mag;
+		position = this.transform.position;
 	}
 }
 

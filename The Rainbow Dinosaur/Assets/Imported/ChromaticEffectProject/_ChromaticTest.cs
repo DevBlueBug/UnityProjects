@@ -15,7 +15,7 @@ public class _ChromaticTest : MonoBehaviour
 	void Update () {
 		if (Input.GetMouseButtonDown (0)) {
 			var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-			effect.forces.Add(new ChromaticForce(pos.x,pos.y,1,3));
+			effect.forces.Add(new PPE_Force(pos.x,pos.y,1,3));
 			//Debug.Log(pos + " : "  + ChromaticEffectManager.forces.Count	);
 		}
 		

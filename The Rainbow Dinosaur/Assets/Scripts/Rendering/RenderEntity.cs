@@ -6,12 +6,12 @@ public class RenderEntity : MonoBehaviour
 	public RenderSprite renderSprite; 
 	public bool isChromatic, isChromaticSelfUpdate;
 
-	internal ChromaticObject chroObject;
+	internal PPE_Object chroObject;
 
 	public virtual void Awake ()
 	{
 		if (isChromatic) {
-			chroObject = GetComponent<ChromaticObject>();
+			chroObject = GetComponent<PPE_Object>();
 			if(chroObject == null){
 				AwakeAddChromaticObject();
 			}
@@ -21,7 +21,7 @@ public class RenderEntity : MonoBehaviour
 	}
 	public virtual void AwakeAddChromaticObject(){
 		
-		chroObject = renderSprite.gameObject.AddComponent<ChromaticObject>()
+		chroObject = renderSprite.gameObject.AddComponent<PPE_Object>()
 			.Init(renderSprite,isChromaticSelfUpdate);
 	}
 

@@ -32,11 +32,11 @@ public class ChromaticObject03 : MonoBehaviour
 	void OnPostRender (){
 		//Debug.Log ("POST RENDER");
 	}
-	public void ApplyForce(List<ChromaticForce> forces){
+	public void ApplyForce(List<PPE_Force> forces){
 		bool isApplied = false;
 		if (isAlwaysOn) {
 			//this.gameObject.SetActive (true);
-			ApplyForce(new ChromaticForce(this.transform.localPosition.x,this.transform.localPosition.y,power*Random.Range(.3f,1.0f),1.0f));
+			ApplyForce(new PPE_Force(this.transform.localPosition.x,this.transform.localPosition.y,power*Random.Range(.3f,1.0f),1.0f));
 			return;
 		}
 		for (int i = 0; i < forces.Count; i++) {
@@ -44,7 +44,7 @@ public class ChromaticObject03 : MonoBehaviour
 		}
 		this.gameObject.SetActive (isApplied);
 	}
-	bool ApplyForce(ChromaticForce force){
+	bool ApplyForce(PPE_Force force){
 		if (posInit == null) posInit = transform.position;
 		var angle02 = Random.Range (0, 6.28f);
 		var dis = posInit.Value - (force.position + new Vector3( Mathf.Cos(angle02) , Mathf.Sin(angle02),0) *.01f) ;
