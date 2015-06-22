@@ -8,7 +8,7 @@ Shader "Deteriorate/Apply" {
 	    	//Blend one one
 	   		//Blend OneMinusDstColor OneMinusSrcColor
 	   		//Blend Zero OneMinusSrcColor
-	   		Blend one OneMinusSrcAlpha
+	   		Blend OneMinusDstColor OneMinusSrcColor
 	    	//ZTest Always Cull Off ZWrite Off Fog { Mode Off } //Rendering settings
 
 			CGPROGRAM
@@ -74,7 +74,7 @@ Shader "Deteriorate/Apply" {
 				//ratioRest -= ratioG;
 				float ratioB = ratioMin+rand(color.b+60,ratio)*ratioRest;
 				color.rgb *= float3(ratioR,ratioG,ratioB);
-				color.rgb  *= color.a;
+				color.rgb  *=color.a;
 				return  color;
 			}
 

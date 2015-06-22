@@ -65,14 +65,7 @@ Shader "Deteriorate/Update" {
 
 			fixed4 frag(vertex  i) : COLOR  {
 				float4 color = tex2D(_MainTex,i.uv);
-				float ratio = randSquareFloat2(i.uv);
-				float ratioMin = .5f;
-				float ratioRest = 1- ratioMin;
-				float ratioR = color.r*ratioMin+ rand(color.r+1,ratio)*ratioRest;
-				float ratioG = color.g*ratioMin+rand(color.g+2,ratio)*ratioRest;
-				float ratioB = color.b*ratioMin+rand(color.b+3,ratio)*ratioRest;
-				//color.rgb = float3(ratioR,ratioG,ratioB) *color.a;
-				color.a *=.95;
+				color.a *=.90;
 				return  color;
 			}
 

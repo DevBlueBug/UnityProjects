@@ -64,10 +64,13 @@ public class PPE_Engine : MonoBehaviour
 	{
 
 	}
+	void OnGUI(){
+	}
 	// Update is called once per frame
 	public void KUpdate ()
 	{
 		effectDeteriorate.Update ();
+		effectChromatic.UpdateAll ();
 		for(int i = 0 ; i<objects.Count;i++){
 			objects[i].Begin();
 		}

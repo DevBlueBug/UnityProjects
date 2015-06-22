@@ -103,7 +103,7 @@
 				float3 colorRGB = tex2D(_SubTex,float2(i.uv.x,1-i.uv.y)) ;
 
 				float4 color = ((color1 + color2+ color3 + color4)/4 ) ;
-				color.a =max(0,color.a- .1f)	; 
+				color.a = max(0,color.a- .3f)	; 
 				return color;
 			}
 
