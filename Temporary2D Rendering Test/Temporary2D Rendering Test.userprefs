@@ -1,6 +1,17 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\EffectRorschach\Rorschach.cs">
+    <Files>
+      <File FileName="Assets\EffectRorschach\Rorschach.cs" Line="27" Column="6" />
+      <File FileName="Assets\EffectRorschach\Shader\Blur.shader" Line="89" Column="44" />
+      <File FileName="Assets\EffectRorschach\Shader\SimplexNoise.shader" Line="1" Column="1" />
+      <File FileName="Assets\NoiseTutorial\TextureCreator.cs" Line="1" Column="1" />
+      <File FileName="Assets\Editor\TextureCreatorInspector.cs" Line="1" Column="1" />
+      <File FileName="Assets\EffectRorschach\RorschachEditor.cs" Line="1" Column="1" />
+      <File FileName="Assets\Shader\ShaderUtility.cginc" Line="6" Column="2" />
+      <File FileName="Assets\EffectRorschach\Shader\Noise.shader" Line="56" Column="25" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

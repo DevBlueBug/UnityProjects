@@ -50,6 +50,8 @@
      <Compile Include="Assets\Imported\ChromaticEffectProject\ChromaticObject03.cs" />
      <Compile Include="Assets\Imported\ChromaticEffectProject\ChromaticObjectGlobal.cs" />
      <Compile Include="Assets\Imported\ChromaticEffectProject\_ChromaticTest.cs" />
+     <Compile Include="Assets\Imported\EffectRorschach\Rorschach.cs" />
+     <Compile Include="Assets\Imported\EffectRorschach\RorschachEditor.cs" />
      <Compile Include="Assets\Scripts\AStar\KMap.cs" />
      <Compile Include="Assets\Scripts\AStar\Node.cs" />
      <Compile Include="Assets\Scripts\CBT_Screen.cs" />
@@ -166,14 +168,19 @@
      <None Include="Assets\Shader\Chromatic\ChromaticObject.shader" />
      <None Include="Assets\Shader\Deteriorate\DeteriorateUpdate.shader" />
      <None Include="Assets\Shader\Chromatic\ChromaticApply.shader" />
+     <None Include="Assets\Imported\EffectRorschach\Shader\Noise.shader" />
      <None Include="Assets\Imported\ChromaticEffectProject\Material\Chromatic.shader" />
      <None Include="Assets\Imported\ChromaticEffectProject\Material\ChromaticClear.shader" />
+     <None Include="Assets\Imported\EffectRorschach\Shader\Blur.shader" />
+     <None Include="Assets\Shader\ShaderUtility.cginc" />
      <None Include="Assets\Shader\Deteriorate\DeteriorateClear.shader" />
      <None Include="Assets\Imported\ChromaticEffectProject\Material\ChromaticApply.shader" />
      <None Include="Assets\Shader\Chromatic\ChromaticClear.shader" />
      <None Include="Assets\Shader\ClearTransparent.shader" />
+     <None Include="Assets\Imported\EffectRorschach\Shader\Apply.shader" />
      <None Include="Assets\Shader\Deteriorate\Deteriorate.shader" />
      <None Include="Assets\Shader\Deteriorate\DeteriorateApply.shader" />
+     <None Include="Assets\Imported\EffectRorschach\Shader\SimplexNoise.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

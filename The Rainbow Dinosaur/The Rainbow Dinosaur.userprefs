@@ -1,16 +1,6 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Shader\CBTScreen.shader">
-    <Files>
-      <File FileName="Assets\Scripts\Utility\EasyRenderTexture.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PostProcessingEngine\Chromatic\ChromaticAberration.cs" Line="34" Column="55" />
-      <File FileName="Assets\Shader\Deteriorate\DeteriorateApply.shader" Line="26" Column="18" />
-      <File FileName="Assets\Shader\Chromatic\ChromaticClear.shader" Line="95" Column="37" />
-      <File FileName="Assets\Shader\Deteriorate\DeteriorateClear.shader" Line="17" Column="14" />
-      <File FileName="Assets\Scripts\CBT_Screen.cs" Line="18" Column="40" />
-      <File FileName="Assets\Shader\CBTScreen.shader" Line="76" Column="47" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
