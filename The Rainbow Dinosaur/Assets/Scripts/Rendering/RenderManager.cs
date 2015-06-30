@@ -5,16 +5,23 @@ public class RenderManager : MonoBehaviour
 {
 	public delegate void D_BulletEffect(RenderBullet bullet);
 	public static D_BulletEffect E_BulletEffect = delegate {};
+	public GameObject P_Floor;
 	public PPE_Engine engineChromatic;
+	public Rorschach engineRorschach;
 	public GameBrain game;
 	public PlayerManager playerManager;
 
 	RenderWalls renderWalls;
+	GameObject floorTexture;
 	void Awake(){
 		renderWalls = new GameObject ("RenderWalls")
 			.AddComponent<RenderWalls> ();
+		floorTexture = Instantiate (P_Floor);
+		floorTexture.transform.parent = this.transform;
+		floorTexture.transform.position = new Vector3 (7f, 4f,0 );
 
 		renderWalls.transform.parent = this.transform;
+
 
 		NItem.NWeapon.Weapon.E_Backswing += H_Backswing;
 		RenderManager.E_BulletEffect = H_BulletEffect;
@@ -40,6 +47,7 @@ public class RenderManager : MonoBehaviour
 	}
 	public void KUpdate(){
 		engineChromatic.KUpdate ();
+		engineRorschach.KUpdate ();
 	}
 
 

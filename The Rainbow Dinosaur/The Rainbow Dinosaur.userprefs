@@ -1,6 +1,21 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Shader\Room\RoomFloor.shader">
+    <Files>
+      <File FileName="Assets\Scripts\Rendering\Rorschach\Rorschach.cs" Line="40" Column="14" />
+      <File FileName="Assets\Shader\IgnoreTransparent.shader" Line="17" Column="1" />
+      <File FileName="Assets\Shader\ShaderUtility.cginc" Line="14" Column="25" />
+      <File FileName="Assets\Shader\SpriteTinter.shader" Line="24" Column="9" />
+      <File FileName="Assets\Shader\ClearTransparent.shader" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Rendering\RenderWalls.cs" Line="11" Column="12" />
+      <File FileName="Assets\Scripts\Game\Room\RoomConverter.cs" Line="25" Column="32" />
+      <File FileName="Assets\Scripts\Game\Room\RoomAsset.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\Room\Room.cs" Line="121" Column="5" />
+      <File FileName="Assets\Scripts\Rendering\RenderManager.cs" Line="37" Column="29" />
+      <File FileName="Assets\Scripts\Rendering\RenderRoom.cs" Line="25" Column="48" />
+      <File FileName="Assets\Shader\Room\RoomFloor.shader" Line="32" Column="6" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

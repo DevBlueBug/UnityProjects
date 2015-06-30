@@ -21,6 +21,7 @@ public class RenderRoomFloor : MonoBehaviour {
 		ResolveCollision (large);
 		ResolveCollision (small);
 		**/
+		return;
 		RenderEdges (sprsLarge, layerInt, sprOrder);
 		RenderEdgesInner(SprsBig, layerInt, sprOrder+1);
 		RenderEdgesInside(sprsSmall, layerInt, sprOrder+2);

@@ -92,7 +92,7 @@ Shader "Rorschach/Noise" {
 				float frequencyAmplitdue = 2.0f;
 				float maxNoise = 1.0f;
 				float persistence = .5f;
-				for(int n = 1; n < 6; n++){
+				for(int n = 1; n < 4; n++){
 					frequency *= frequencyAmplitdue;	
 					amplitude *= persistence;
 					maxNoise += amplitude;
@@ -102,7 +102,7 @@ Shader "Rorschach/Noise" {
 				noise /= maxNoise;
 				//noise *= noise;
 				noise *= whiteIntensity;
-				noise = pow(noise,35);
+				noise = pow(noise,20);
 				return float4(noise,noise,noise,.2f);
 				
 				/**

@@ -64,8 +64,8 @@ Shader "Custom/CBTScreen" {
 
 
 			fixed4 frag(vertex  i) : COLOR  {
-				//return tex2D(_MainTex, i.uv  );
-				float distortPower = .45f;
+				return tex2D(_MainTex, i.uv  );
+				float distortPower = .40f;
 				i.uv *= 1-distortPower;
 				i.uv += float2(distortPower,distortPower)/2;
 				

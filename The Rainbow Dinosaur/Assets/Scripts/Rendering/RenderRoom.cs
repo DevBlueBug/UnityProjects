@@ -22,7 +22,7 @@ public class RenderRoom : MonoBehaviour
 	}
 	void H_On(Room room){
 		PPE_Engine.E_NewChromaticObjects (chroObjects);
-
+		Rorschach.E_NewSeed (room.posX + room.posY*10);
 	}
 	void H_EntityAdded(Room room, Entity entity){
 

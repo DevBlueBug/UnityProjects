@@ -83,13 +83,8 @@ public class Room : MonoBehaviour
 			AddEntity(asset.Get(Piece.KId.Edge) ,(int)width-1,j,true);
 		}
 		if (data == null) {
-			for (int i = 0; i< width; i++)
-				for (int j = 0; j<height; j++) {
-					if (entitiesWorldIndex [i, j] == null) {
-						AddEntity (asset.Get (Piece.KId.Ground), i, j, true);
-					}
-				}
-
+			
+			AddGround (asset);
 			Refresh ();
 			return;
 		}
@@ -99,12 +94,16 @@ public class Room : MonoBehaviour
 		foreach (var piece in  data.piecesUnits) {
 			AddEntity(asset.Get(piece.meType), piece.X,piece.Y,false);
 		}
+		AddGround (asset);
+
+		Refresh ();
+	}
+	public void AddGround(RoomAsset asset){
 		for (int i = 1; i< width-1; i++) for (int j = 1; j<height-1; j++) {
 			if(entitiesWorldIndex[i,j] == null){
 				AddEntity(asset.Get(Piece.KId.Ground), i,j,true);
 			}
 		}
-		Refresh ();
 	}
 	
 	public void Refresh(){

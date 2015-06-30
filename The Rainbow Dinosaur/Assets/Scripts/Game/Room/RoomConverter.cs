@@ -53,16 +53,6 @@ public class RoomConverter
 			room.AddDoor(roomAsset.GetDoor(roomData.doorss[i].type),i);
 		}
 
-		//move this to brain
-		/**
-		room.gameObject.SetActive(false);
-		room.E_NextRoom += delegate (int n) {
-			Debug.Log("NEW ROOM");
-			var pos = Utility.EasyUnity.dirFour3[n];
-			E_GameStarted_NewRoom(rooms[room.posX+(int)pos.x,room.posY+(int)pos.y],(n+2)%4);
-		};
-		**/
-
 	}
 	/**
 	public IEnumerator H_EnterDoor(Room roomNew, int direction){
