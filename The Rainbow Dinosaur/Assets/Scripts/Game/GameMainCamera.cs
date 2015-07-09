@@ -12,7 +12,7 @@ public class GameMainCamera : MonoBehaviour
 	}
 	void PlayerPositionChanged(Vector3 pos){
 		Vector3 dis = pos - center;
-		var position = center + dis * .1f;
+		var position = center + dis * .05f;
 		this.transform.localPosition = new Vector3 (position.x,position.y,this.transform.localPosition.z);
 	}
 	

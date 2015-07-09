@@ -145,10 +145,12 @@
      <Compile Include="Assets\Scripts\Rendering\RenderBullet.cs" />
      <Compile Include="Assets\Scripts\Rendering\RenderEntity.cs" />
      <Compile Include="Assets\Scripts\Rendering\RenderManager.cs" />
-     <Compile Include="Assets\Scripts\Rendering\RenderRoom.cs" />
-     <Compile Include="Assets\Scripts\Rendering\RenderRoomFloor.cs" />
+     <Compile Include="Assets\Scripts\Rendering\RenderRoomConstant.cs" />
      <Compile Include="Assets\Scripts\Rendering\RenderSprite.cs" />
      <Compile Include="Assets\Scripts\Rendering\RenderWalls.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Room\RenderRoom.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Room\RenderRoomFloor.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Room\RenderRoomWalls.cs" />
      <Compile Include="Assets\Scripts\Rendering\RoomDecorator.cs" />
      <Compile Include="Assets\Scripts\Rendering\Rorschach\Rorschach.cs" />
      <Compile Include="Assets\Scripts\Rendering\Rorschach\RorschachEditor.cs" />
@@ -164,6 +166,7 @@
      <Compile Include="Assets\Scripts\Utility\EasyUnity.cs" />
      <None Include="Assets\Shader\CBTScreen.shader" />
      <None Include="Assets\Shader\SpriteTinter.shader" />
+     <None Include="Assets\Shader\Game\ColorLitter.shader" />
      <None Include="Assets\Shader\Wall.shader" />
      <None Include="Assets\Shader\Chromatic\ChromaticObject.shader" />
      <None Include="Assets\Shader\Deteriorate\DeteriorateUpdate.shader" />

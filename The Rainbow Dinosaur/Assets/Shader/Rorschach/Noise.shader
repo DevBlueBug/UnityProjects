@@ -1,6 +1,7 @@
 Shader "Rorschach/Noise" {
 	Properties {
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
+		_Speed("Speed", Float) = 1
 		_Frequency("Frequency", Float) = 2
 		_Seed("Seed", Float) = 0
 		_Resolution("Resolution",Float) = 1.5
@@ -46,6 +47,7 @@ Shader "Rorschach/Noise" {
 				o.uv = v.texcoord;
 				return o;
 			}
+			float _Speed;
 			float _Resolution;
 			float _Frequency;
 			float _Seed;
@@ -55,7 +57,7 @@ Shader "Rorschach/Noise" {
 			static int gradientsCount = 8;
 
 			float2 getGradient(float number){
-				number += _Time.y*.1;
+				number += _Time.y*_Speed;
 				return float2(cos(number),sin(number) );
 				
 				//return gradients[ int(number ) &	 (gradientsCount -1)];

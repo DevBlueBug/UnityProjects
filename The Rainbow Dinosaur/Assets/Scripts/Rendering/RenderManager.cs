@@ -5,27 +5,39 @@ public class RenderManager : MonoBehaviour
 {
 	public delegate void D_BulletEffect(RenderBullet bullet);
 	public static D_BulletEffect E_BulletEffect = delegate {};
-	public GameObject P_Floor;
+	public RenderRoomConstant P_RoomConstant;
+	
 	public PPE_Engine engineChromatic;
 	public Rorschach engineRorschach;
 	public GameBrain game;
 	public PlayerManager playerManager;
 
-	RenderWalls renderWalls;
-	GameObject floorTexture;
-	void Awake(){
-		renderWalls = new GameObject ("RenderWalls")
-			.AddComponent<RenderWalls> ();
-		floorTexture = Instantiate (P_Floor);
-		floorTexture.transform.parent = this.transform;
-		floorTexture.transform.position = new Vector3 (7f, 4f,0 );
+	public int 
+		layerWall,
+		layerShadow,
+		orderWall,
+		orderWallShadow;
 
-		renderWalls.transform.parent = this.transform;
+	//RenderWalls renderWalls;
+	RenderRoomConstant roomConstant;
+	void Awake(){
+		RenderRoom.wallLayer = layerWall;
+		RenderRoom.wallOrder = orderWall;
+		RenderRoom.wallShadowLayer = layerShadow;
+		RenderRoom.wallShadowOrder = orderWallShadow;
+		//roomConstant = Instantiate (P_RoomConstant);
+		//roomConstant.transform.parent = this.transform;
+		//roomConstant.transform.parent = this.transform;
 
 
 		NItem.NWeapon.Weapon.E_Backswing += H_Backswing;
 		RenderManager.E_BulletEffect = H_BulletEffect;
+		game.E_GameStarted_NewRoom += H_NewRoom;
 
+	}
+	void H_NewRoom(Room room,int n){
+		Debug.Log ("RENDER MANAGER :" + room);
+		engineRorschach.E_NewSeed (room.posX + room.posY * 100);
 	}
 	void H_BulletEffect(RenderBullet bullet){
 		float angle = 

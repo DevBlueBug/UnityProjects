@@ -1,19 +1,26 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Shader\Room\RoomFloor.shader">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Game\Room\Room.cs">
     <Files>
-      <File FileName="Assets\Scripts\Rendering\Rorschach\Rorschach.cs" Line="40" Column="14" />
-      <File FileName="Assets\Shader\IgnoreTransparent.shader" Line="17" Column="1" />
-      <File FileName="Assets\Shader\ShaderUtility.cginc" Line="14" Column="25" />
-      <File FileName="Assets\Shader\SpriteTinter.shader" Line="24" Column="9" />
-      <File FileName="Assets\Shader\ClearTransparent.shader" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Rendering\RenderWalls.cs" Line="11" Column="12" />
-      <File FileName="Assets\Scripts\Game\Room\RoomConverter.cs" Line="25" Column="32" />
       <File FileName="Assets\Scripts\Game\Room\RoomAsset.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\Room\Room.cs" Line="121" Column="5" />
-      <File FileName="Assets\Scripts\Rendering\RenderManager.cs" Line="37" Column="29" />
-      <File FileName="Assets\Scripts\Rendering\RenderRoom.cs" Line="25" Column="48" />
-      <File FileName="Assets\Shader\Room\RoomFloor.shader" Line="32" Column="6" />
+      <File FileName="Assets\Scripts\Game\Room\Room.cs" Line="38" Column="20" />
+      <File FileName="Assets\Scripts\Rendering\RenderManager.cs" Line="40" Column="56" />
+      <File FileName="Assets\Scripts\Rendering\RenderWalls.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Rendering\RenderSprite.cs" Line="1" Column="1" />
+      <File FileName="Assets\Shader\Room\RoomFloor.shader" Line="1" Column="1" />
+      <File FileName="Assets\Shader\ClearTransparent.shader" Line="1" Column="1" />
+      <File FileName="Assets\Shader\IgnoreTransparent.shader" Line="1" Column="1" />
+      <File FileName="Assets\Shader\CBTScreen.shader" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Rendering\RenderRoomConstant.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Rendering\Room\RenderRoomFloor.cs" Line="79" Column="72" />
+      <File FileName="Assets\Scripts\Game\GameBrain.cs" Line="10" Column="26" />
+      <File FileName="Assets\Scripts\Rendering\Room\RenderRoom.cs" Line="35" Column="50" />
+      <File FileName="Assets\Scripts\Rendering\Room\RenderRoomWalls.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Utility\EasyUnity.cs" Line="1" Column="1" />
+      <File FileName="Assets\Shader\SpriteTinter.shader" Line="1" Column="1" />
+      <File FileName="Assets\Shader\Game\ColorLitter.shader" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Rendering\Rorschach\Rorschach.cs" Line="7" Column="9" />
+      <File FileName="Assets\Shader\Rorschach\Noise.shader" Line="4" Column="16" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

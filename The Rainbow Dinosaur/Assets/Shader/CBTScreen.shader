@@ -1,6 +1,9 @@
 Shader "Custom/CBTScreen" {
 	Properties {
 		_MainTex ("_MainTex", 2D) = "white" {}
+		_LightMap ("Shadow", 2D) = "white" {}
+		_LightBase("LightBase", Float) = .1
+		_LightMax("LightBase", Float) = 1
 	}
 	SubShader {
 		Tags { "RenderType"="Opaque" }
@@ -19,6 +22,9 @@ Shader "Custom/CBTScreen" {
 			#include "UnityCG.cginc"
 
 			sampler2D _MainTex;
+			sampler2D _LightMap;
+			float _LightBase;
+			float _LightMax;
 
 			struct appdata_me{
 				float4 vertex : POSITION;
@@ -64,8 +70,11 @@ Shader "Custom/CBTScreen" {
 
 
 			fixed4 frag(vertex  i) : COLOR  {
-				return tex2D(_MainTex, i.uv  );
-				float distortPower = .40f;
+				//return tex2D(_LightMap, i.uv);
+				float4 light =  (1+(tex2D(_LightMap, i.uv) - .5 ) /.5 )* _LightMax;
+				light = float4(max(_LightBase,light.x),max(_LightBase,light.y),max(_LightBase,light.z),light.a); 
+				return tex2D(_MainTex, i.uv  ) * light;
+				float distortPower = .48f;
 				i.uv *= 1-distortPower;
 				i.uv += float2(distortPower,distortPower)/2;
 				

@@ -12,16 +12,16 @@ public class RenderWalls : MonoBehaviour
 	
 	}
 	void Init(GameObject P_Wall , float z){
-		for(int i = 0; i < 15; i++){
-			((GameObject)Instantiate(P_Wall,new Vector3(i,-1,z),Quaternion.Euler(0,0,180)))
+		for(int i = -1; i < 16; i++){
+			((GameObject)Instantiate(P_Wall,new Vector3(i,-2,z),Quaternion.Euler(0,0,180)))
 				.transform.parent= this.transform;;
-			((GameObject)Instantiate(P_Wall,new Vector3(i,9,z),Quaternion.Euler(0,0,0)))
+			((GameObject)Instantiate(P_Wall,new Vector3(i,10,z),Quaternion.Euler(0,0,0)))
 				.transform.parent= this.transform;;
 		}
-		for (int j = -1; j < 10; j++) {
-			((GameObject)Instantiate(P_Wall,new Vector3(-1,j,z),Quaternion.Euler(0,0,90)))
+		for (int j = -2; j < 11; j++) {
+			((GameObject)Instantiate(P_Wall,new Vector3(-2,j,z),Quaternion.Euler(0,0,90)))
 				.transform.parent= this.transform;
-			((GameObject)Instantiate(P_Wall,new Vector3(15	,j,z),Quaternion.Euler(0,0,270)))
+			((GameObject)Instantiate(P_Wall,new Vector3(16	,j,z),Quaternion.Euler(0,0,270)))
 				.transform.parent= this.transform;
 		}
 	}

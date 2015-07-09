@@ -35,7 +35,7 @@ public class Room : MonoBehaviour
 		isSomethingDead = UpdateEntities (entities);
 		isSomethingDead = UpdateEntities (entitiesWorld) || isSomethingDead;
 
-		//SetAllDoors(false);
+		//SetAllDoors(true	);
 		if (isSomethingDead) {
 			if(IsGameOver())SetAllDoors(true);
 		}

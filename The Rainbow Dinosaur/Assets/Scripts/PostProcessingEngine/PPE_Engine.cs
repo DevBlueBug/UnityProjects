@@ -39,6 +39,7 @@ public class PPE_Engine : MonoBehaviour
 		for (int i = 0; i < 30; i++) {
 			var p =  Instantiate(P_Particle);
 			particles.Add(p);
+			p.transform.parent = this.transform;
 		}
 
 	}

@@ -4,7 +4,7 @@ using System.Collections;
 [ExecuteInEditMode]
 public class Rorschach : MonoBehaviour {
 	public delegate void D_NewSeed (float seed);
-	public static D_NewSeed E_NewSeed =delegate {};
+	public D_NewSeed E_NewSeed =delegate {};
 	public Camera cam;
 	public RenderTexture texture00,texture01;
 	public Material matNoise,matBlur,matApply;
