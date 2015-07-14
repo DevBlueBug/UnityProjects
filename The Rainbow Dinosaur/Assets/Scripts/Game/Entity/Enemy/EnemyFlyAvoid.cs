@@ -10,7 +10,7 @@ public class EnemyFlyAvoid : Enemy
 	{
 		base.Awake ();
 		//this.velo *= 1.75f;
-		var bhvFollow = new BhvFollowPlayerFlyWave(this,360,1.5f);
+		var bhvFollow = new BhvFollowPlayerFlyWave(this,360,.5f);
 		var bhvRunInCircle = new BhvRunInCircle (this, .3f, 1);
 		bhvRunInCircle.condition = new HpChanged (this);
 		bhvRunInCircle.bhvSuccess = bhvFollow;

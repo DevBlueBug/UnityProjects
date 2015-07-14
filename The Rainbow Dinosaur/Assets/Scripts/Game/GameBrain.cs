@@ -10,7 +10,7 @@ public class GameBrain : MonoBehaviour
 	public D_NewMap E_NewMap = delegate {	};
 	public D_GameStarted_NewRoom E_GameStarted_NewRoom = delegate { };
 
-	public EItemManager P_ItemList;
+	public EItemManager P_ItemManager;
 	public Room P_Room;
 	public RoomAsset P_RoomAsset;
 
@@ -46,7 +46,7 @@ public class GameBrain : MonoBehaviour
 		pManager.KUpdate ();
 		if (Input.GetKeyDown (KeyCode.E)) {
 			Debug.Log("ITEM SPAWN");
-			room.AddEntity(P_ItemList.GetRandom(),
+			room.AddEntity(P_ItemManager.GetRandom(),
 			               Random.Range(1,13),Random.Range(1,7),false);
 		}
 		rManager.KUpdate ();
@@ -66,9 +66,10 @@ public class GameBrain : MonoBehaviour
 			}
 		}
 		rooms = new Room[map.width, map.height];
-		room = new RoomConverter ().ToRooms (out rooms, P_Room, P_RoomAsset, organizer, H_NewRoomCreated, map);
+		//room = new RoomConverter ().ToRooms (out rooms, P_Room, P_RoomAsset, organizer, H_NewRoomCreated, map);
 		//ToRooms (map);
-		E_GameStarted_NewRoom (room,-1);
+		E_GameStarted_NewRoom (
+				new RoomConverter ().ToRooms (out rooms, P_Room, P_RoomAsset, organizer, H_NewRoomCreated, map),-1);
 
 	}
 	public void H_NewRoomCreated(Room room){
@@ -78,6 +79,8 @@ public class GameBrain : MonoBehaviour
 			var pos = Utility.EasyUnity.dirFour3[n];
 			E_GameStarted_NewRoom(rooms[room.posX+(int)pos.x,room.posY+(int)pos.y],(n+2)%4);
 		};
+		room.E_GetItemDrop += P_ItemManager.GetDrop;
+		room.E_GetItemStationary += P_ItemManager.GetStationary;
 
 	}
 	public IEnumerator H_EnterDoor(Room roomNew, int direction){
@@ -86,10 +89,10 @@ public class GameBrain : MonoBehaviour
 	}
 	public void H_NewRoomInit(Room roomInit, int direction){
 		Debug.Log (roomInit);
-		this.room.Off ();
 		roomInit.On ();
-		this.room = roomInit;
 		pManager.E_NewRoom (roomInit, direction);
+		if(this.room != null) this.room.Off ();
+		this.room = roomInit;
 	}
 
 }

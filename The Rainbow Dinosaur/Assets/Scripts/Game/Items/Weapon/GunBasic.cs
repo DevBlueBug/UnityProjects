@@ -14,7 +14,7 @@ namespace NItem.NWeapon
 	public class GunBasic : Weapon
 	{
 		
-		public GunBasic ():base(-1,31f,10,.1f){
+		public GunBasic ():base(-1,1f,1,.3f){
 		}
 
 		public override void Process (Entity entity,Room room,UnityEngine.Vector3 direction)

@@ -52,6 +52,7 @@
      <Compile Include="Assets\Imported\ChromaticEffectProject\_ChromaticTest.cs" />
      <Compile Include="Assets\Scripts\AStar\KMap.cs" />
      <Compile Include="Assets\Scripts\AStar\Node.cs" />
+     <Compile Include="Assets\Scripts\AnimationPlay.cs" />
      <Compile Include="Assets\Scripts\CBT_Screen.cs" />
      <Compile Include="Assets\Scripts\CamMaterial.cs" />
      <Compile Include="Assets\Scripts\Data\DataJson\Board.cs" />
@@ -93,9 +94,9 @@
      <Compile Include="Assets\Scripts\Game\Entity\EntityPointer.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Items\EItem.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Items\EItemManager.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Items\EItemModels.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Modifiers\AttackOnContract.cs" />
      <Compile Include="Assets\Scripts\Game\GameBrain.cs" />
-     <Compile Include="Assets\Scripts\Game\GameMainCamera.cs" />
      <Compile Include="Assets\Scripts\Game\Items\Inventory.cs" />
      <Compile Include="Assets\Scripts\Game\Items\Item.cs" />
      <Compile Include="Assets\Scripts\Game\Items\Weapon\GunBasic.cs" />
@@ -119,10 +120,10 @@
      <Compile Include="Assets\Scripts\PostProcessingEngine\Chromatic\ChromaticAberrationMonobehavior.cs" />
      <Compile Include="Assets\Scripts\PostProcessingEngine\ColorDeteriorate\ColorDeteriorate.cs" />
      <Compile Include="Assets\Scripts\PostProcessingEngine\ColorDeteriorate\ColorDeteriorateCamera.cs" />
-     <Compile Include="Assets\Scripts\PostProcessingEngine\EffectColorDistortion\CameraMaterial.cs" />
-     <Compile Include="Assets\Scripts\PostProcessingEngine\EffectColorDistortion\ColorDistortionParticle.cs" />
-     <Compile Include="Assets\Scripts\PostProcessingEngine\EffectColorDistortion\ColorDistortionParticleEngine.cs" />
-     <Compile Include="Assets\Scripts\PostProcessingEngine\EffectColorDistortion\EffectColorDistortion.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\EffectColorDistortion Not Being Used\CameraMaterial.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\EffectColorDistortion Not Being Used\ColorDistortionParticle.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\EffectColorDistortion Not Being Used\ColorDistortionParticleEngine.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\EffectColorDistortion Not Being Used\EffectColorDistortion.cs" />
      <Compile Include="Assets\Scripts\PostProcessingEngine\Objects\PPE_Object.cs" />
      <Compile Include="Assets\Scripts\PostProcessingEngine\Objects\PPE_Object_Bullet.cs" />
      <Compile Include="Assets\Scripts\PostProcessingEngine\PPE_Apply.cs" />
@@ -135,6 +136,7 @@
      <Compile Include="Assets\Scripts\Rendering\Decoration\DC_Flower.cs" />
      <Compile Include="Assets\Scripts\Rendering\Effect\EffectBulletBounce.cs" />
      <Compile Include="Assets\Scripts\Rendering\Effect\EffectChromaticForce.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Entity\AniEntity.cs" />
      <Compile Include="Assets\Scripts\Rendering\Entity\EBitamsk_Simple.cs" />
      <Compile Include="Assets\Scripts\Rendering\Entity\EBitmask.cs" />
      <Compile Include="Assets\Scripts\Rendering\Entity\EReposion.cs" />
@@ -142,8 +144,10 @@
      <Compile Include="Assets\Scripts\Rendering\Entity\EdgeRotator.cs" />
      <Compile Include="Assets\Scripts\Rendering\Entity\EffectKilled.cs" />
      <Compile Include="Assets\Scripts\Rendering\Entity\RenderDoor.cs" />
+     <Compile Include="Assets\Scripts\Rendering\GameMainCamera.cs" />
      <Compile Include="Assets\Scripts\Rendering\RenderBullet.cs" />
      <Compile Include="Assets\Scripts\Rendering\RenderEntity.cs" />
+     <Compile Include="Assets\Scripts\Rendering\RenderEyeball.cs" />
      <Compile Include="Assets\Scripts\Rendering\RenderManager.cs" />
      <Compile Include="Assets\Scripts\Rendering\RenderRoomConstant.cs" />
      <Compile Include="Assets\Scripts\Rendering\RenderSprite.cs" />
@@ -183,6 +187,7 @@
      <None Include="Assets\Shader\ClearTransparent.shader" />
      <None Include="Assets\Shader\Rorschach\Apply.shader" />
      <None Include="Assets\Shader\Deteriorate\Deteriorate.shader" />
+     <None Include="Assets\Shader\PPE_Particle.shader" />
      <None Include="Assets\Shader\Deteriorate\DeteriorateApply.shader" />
      <None Include="Assets\Shader\IgnoreTransparent.shader" />
      <None Include="Assets\Shader\Rorschach\SimplexNoise.shader" />

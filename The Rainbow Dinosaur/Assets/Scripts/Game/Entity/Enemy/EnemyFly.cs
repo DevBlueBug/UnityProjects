@@ -20,8 +20,8 @@ public class EnemyFly : Enemy
 	public override void Awake ()
 	{
 		base.Awake ();
-		var bhvFollow = new BhvFollowPlayerFly(this);
-		var bhvRunInCircle = new BhvRunInCircle (this, .3f, 1);
+		var bhvFollow = new BhvFollowPlayerFlyWave(this,1/this.velo,.5f);
+		var bhvRunInCircle = new BhvRunInCircle (this, .1f,  .3f * this.velo);
 		bhvRunInCircle.condition = new HpChanged (this);
 		bhvRunInCircle.bhvSuccess = bhvFollow;
 		bhvRunInCircle.bhvFail = bhvFollow;

@@ -8,13 +8,7 @@ public class PPE_Object : MonoBehaviour
 	internal Vector3 pos;
 	List<Color> colors;
 	internal int layer;
-	internal PPE_Object Init (RenderSprite renderSprite, bool isSelfUpdated)
-	{
-		this.renderSprite = renderSprite;
-		this.isSelfUpdate = isSelfUpdated;
-		return this;
-	
-	}
+
 
 	public void Begin(){
 		pos = renderSprite.transform.position;
@@ -38,23 +32,26 @@ public class PPE_Object : MonoBehaviour
 		}
 		if (isForceApplied) {
 			renderSprite.layer = layer;
-			var color = GetColor(pos, renderSprite.transform.position);
+			var color = ChromaticAberration.GetColor(pos, renderSprite.transform.position);
 			renderSprite.color = color;
 		}
 			 
 
 	}
 	public virtual void KUpdateSelf(int layer){
+		/**
 		var posNew = pos + new Vector3 (
 			Random.Range(-.5f,.5f),
 			Random.Range(-.5f,.5f),
 			0);
 
-		var color = GetColor(pos, posNew);
-	
+		var color = ChromaticAberration.GetColor(pos, posNew);
+		
+		Debug.Log ("SELF UPDATE " + posNew);
 		renderSprite.layer = layer;
 		renderSprite.transform.position = posNew;
 		renderSprite.color = color;
+		**/
 	}
 	bool ApplyForce(PPE_Force force){
 		var dis = renderSprite.transform.position - force.position ;
@@ -68,17 +65,6 @@ public class PPE_Object : MonoBehaviour
 			ratio *= -1;
 		this.transform.position += new Vector3 (dis.x /distance,dis.y/distance,0) * ratio * force.magnitude;
 		return true;
-	}
-	public Color GetColor( Vector3 posFrom, Vector3 posTo){
-		this.gameObject.layer = layer;
-		posFrom = Camera.main.WorldToScreenPoint (posFrom);
-		posTo = Camera.main.WorldToScreenPoint (posTo);
-		var dis = posFrom - posTo;
-		float x = dis.x / Screen.width, y = dis.y / Screen.height;
-
-		Color color = new Color (.5f + x *.5f,.5f+  y*.5f, 0);
-		return color;
-
 	}
 	// Update is called once per frame
 	void Update ()

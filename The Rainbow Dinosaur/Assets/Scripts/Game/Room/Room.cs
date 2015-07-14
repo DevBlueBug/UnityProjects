@@ -9,13 +9,18 @@ public class Room : MonoBehaviour
 	public delegate void D_NextRoom(int n);
 	public delegate void D_MeEntity(Room me, Entity entity);
 	public delegate EBullet D_RequireBullet(Entity entityRequesting, List<Entity.KType> targets);
+	public delegate EItem D_GetItem(NItem.Item item);
 
-	internal D_NextRoom E_NextRoom = delegate {};
-	internal D_Me E_On = delegate {};
+	internal D_NextRoom	E_NextRoom = delegate {};
+	internal D_Me		E_On = delegate {};
 	internal D_MeEntity	
 	E_EntityAdded = delegate {},
 	E_EntityDeleted = delegate {	};
 
+	internal D_GetItem	
+	E_GetItemDrop = delegate {return null;},
+	E_GetItemStationary = delegate {return null;};
+	
 	public DRoom.KType type = DRoom.KType.Normal;
 	public int posX,posY;
 	public float width,height;
@@ -57,6 +62,7 @@ public class Room : MonoBehaviour
 	}
 	public void On(){
 		E_On (this);
+		Debug.Log (" I A M O N ");	
 		this.gameObject.SetActive (true);
 		SetAllDoors ( IsGameOver ());
 		for(int i = 0; i < entities.Count;i++){
@@ -113,6 +119,10 @@ public class Room : MonoBehaviour
 			if(entity!=null)entity.Refresh(this);
 		}
 	}
+	
+	public void Kill(){
+		Destroy (this.gameObject);
+	}
 
 	public void AddDoor(Entity entity, int doorIndex){
 		((EDoor) entity).E_TriggerBack += delegate(Entity door,Entity doorEntered, Collider2D collider) {
@@ -144,6 +154,7 @@ public class Room : MonoBehaviour
 		entity.transform.parent = this.transform;
 		entity.transform.localScale = Vector3.one;
 		entity.transform.localPosition = new Vector3(x,y,0);
+		AddEventHandlers (entity);
 		WeightOnAStartMap(entity,indexX,indexY);
 
 		if (isWorld) {
@@ -182,6 +193,10 @@ public class Room : MonoBehaviour
 			Debug.Log("Room Remove Entity call has failed.");
 		}
 
+	}
+	void AddEventHandlers(Entity entity)
+	{
+		entity.E_Kill += H_Kill;
 	}
 	public void SetPosition(int x, int y){
 		this.posX = x;
@@ -226,8 +241,17 @@ public class Room : MonoBehaviour
 			aStarMap.Reset(x,y);
 		}
 	}
-	public void Kill(){
-		Destroy (this.gameObject);
+	void H_Kill(Entity entity){
+		foreach (var entry in entity.inventory.items) {
+
+		}
+		for (int i = 0; i < entity.inventory.items.Count; i++) {
+			//var item = entity.inventory.items[i];
+
+		}
+		if (entity.meType == Entity.KType.Enemy) {
+
+		}
 	}
 	void H_DoorEntered(int n , Entity door, Entity doorEntered){
 		if (doorEntered.meType == Entity.KType.Player)

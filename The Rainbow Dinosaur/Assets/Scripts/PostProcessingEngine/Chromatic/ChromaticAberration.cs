@@ -14,6 +14,18 @@ public class ChromaticAberration : PPE_Effect
 	public Material matClear, matApply;
 	public List<CameraPairs> camPairs;
 	List<RenderTexture> renderTextureCopy;
+	
+	public static Color GetColor( Vector3 posFrom, Vector3 posTo){
+
+		posFrom = Camera.main.WorldToScreenPoint (posFrom);
+		posTo = Camera.main.WorldToScreenPoint (posTo);
+		var dis = posFrom - posTo;
+		float x = dis.x / Screen.width, y = dis.y / Screen.height;
+		
+		Color color = new Color (.5f + x *.5f,.5f+  y*.5f, 0);
+		return color;
+		
+	}
 	public int TextureCount{
 		get{
 			return camPairs.Count;

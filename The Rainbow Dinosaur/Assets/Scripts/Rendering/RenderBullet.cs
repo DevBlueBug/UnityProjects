@@ -7,8 +7,9 @@ public class RenderBullet : RenderEntity
 	public float LengthMax;
 	public EBullet bullet;
 	public GameObject Model;
+	public float travelDistance = 5.0f;
 
-	Vector3 position;
+	Vector3 posInit, posOld;
 	public override void Awake ()
 	{
 		base.Awake ();
@@ -20,19 +21,15 @@ public class RenderBullet : RenderEntity
 
 		};
 	}
-	public override void AwakeAddChromaticObject ()
-	{
-		chroObject = renderSprite.gameObject.AddComponent<PPE_Object_Bullet>()
-			.Init(renderSprite,isChromaticSelfUpdate,this);
-	}
 
 	// Use this for initialization
 	void Start ()
 	{
 		//Debug.Log ("RNEDER BULLET START");
-		position = this.transform.position;
-		this.transform.localRotation = Quaternion.Euler (0,0,
-		  Mathf.Atan2( bullet.direction.y,bullet.direction.x) * (180/3.14f));
+		posInit = this.transform.position;
+		posOld = this.transform.position;
+		//this.transform.localRotation = Quaternion.Euler (0,0,
+		//  Mathf.Atan2( bullet.direction.y,bullet.direction.x) * (180/3.14f));
 	
 	}
 	void H_Hit(Entity hittedEntity, Vector3 reflective){
@@ -59,24 +56,16 @@ public class RenderBullet : RenderEntity
 
 		
 	}
-	float magnitudeBefore = 0;
 	//Vector3 posBefore;
 	// Update is called once per frame
 	public override void Update ()
 	{
-		var mag = (this.transform.position - position) .magnitude;
-		if (mag > magnitudeBefore) {
-			mag = mag;
-		} else if (mag <= magnitudeBefore * .5f) {
-			mag = magnitudeBefore;
-		} else {
-			mag = magnitudeBefore*1.3f;
+		var disInit = this.transform.position - posInit;
+		if (Mathf.Sqrt(disInit.x*disInit.x + disInit.y*disInit.y) > travelDistance) {
+			//Debug.Log(posInit);
+			//this.bullet.Kill();
+			//return;
 		}
-		//RenderManager.E_BulletEffect (this);
-
-		Model.transform.localScale = new Vector3 ( mag, Model.transform.localScale.y,Model.transform.localScale.z);//*Time.deltaTime;
-		magnitudeBefore = mag;
-		position = this.transform.position;
 	}
 }
 

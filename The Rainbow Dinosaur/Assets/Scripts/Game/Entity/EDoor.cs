@@ -29,7 +29,7 @@ public class EDoor : Entity
 		}
 	}
 	int H_TriggerEnter(Entity me,Entity other, Collider2D collider){
-		
+		return E_TriggerBack(me,other,collider);
 		if (triggerBack.bounds.Intersects (collider.bounds)) {
 			return E_TriggerBack(me,other,collider);
 		}

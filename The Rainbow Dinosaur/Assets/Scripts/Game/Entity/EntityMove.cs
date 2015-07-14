@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class EntityMove : Entity
 {
+	public delegate void D_Moved(EntityMove me);
+	public D_Moved E_Moved = delegate {};
 	public Rigidbody2D body;
 	public float velo,friction;
 	internal Vector3 
@@ -28,6 +30,7 @@ public class EntityMove : Entity
 	public override void KUpdate (Room room)
 	{
 		body.velocity = velocity + velocityForce;
+		E_Moved (this);
 		if (!moveChanged) {
 			UpdateFriction(ref velocity);
 		} else {

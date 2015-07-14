@@ -43,24 +43,6 @@ public class PPE_Engine : MonoBehaviour
 		}
 
 	}
-	void H_Effect00(Vector3 position ){
-		IncreasePower (.2f);
-		particleId = (particleId + 1) % particles.Count;
-		Color color = new Color (.5f +Random.Range(-1.0f,1.0f)*(powerEffect00*.005f),
-		                         .5f +Random.Range(-1.0f,1.0f)*(powerEffect00*.005f),0,.1f);
-		int camLayer = effectChromatic.camPairs[Random.Range (0, effectChromatic.camPairs.Count)].cameraLayer;
-		particles [particleId].On (
-			particleSprites[Random.Range(0,particleSprites.Count)],
-			camLayer,
-			position, color,(int)(  10+ powerEffect00*20 	));
-	}
-	void H_NewChromaticObjects(List<PPE_Object> objects){
-		this.objects = objects;
-	}
-	void H_NewForce(PPE_Force force){
-		IncreasePower (1.0f);
-		this.forces.Add (force);
-	}
 	void Start ()
 	{
 
@@ -70,19 +52,15 @@ public class PPE_Engine : MonoBehaviour
 	// Update is called once per frame
 	public void KUpdate ()
 	{
+		//	Debug.Log ("ENGINE UPDATE " +objects.Count);
 		effectDeteriorate.Update ();
 		effectChromatic.UpdateAll ();
 		for(int i = 0 ; i<objects.Count;i++){
 			objects[i].Begin();
 		}
-		if (powerDeteriorate > 55.0f) {
-			for(int i = 0 ; i<objects.Count;i++){
-				objects[i].renderSprite.layer = effectDeteriorate.layer;
-			}
-			powerDeteriorate= 0;
-			effectDeteriorate.Render();
-
-		}
+		//render deteriorate 
+		KUpdateDeteriorate ();
+		KUpdateChromaticSelf ();
 
 		for(int i = 0 ; i<objects.Count;i++){
 			int camLayer = effectChromatic.camPairs[Random.Range (0, effectChromatic.camPairs.Count)].cameraLayer;
@@ -102,6 +80,40 @@ public class PPE_Engine : MonoBehaviour
 		}
 		UpdatePowers ();
 	}
+	void KUpdateChromaticSelf(PPE_Object obj){
+		if (!obj.isSelfUpdate) return;
+		var pos = obj.transform.position + new Vector3 (Random.Range(-1f, 1f ),Random.Range(-1f, 1f ),0)*.2f;
+
+		for (int i = 0; i< obj.renderSprite.sprites.Count; i++) {
+
+			GetParticle(
+				obj.renderSprite.sprites[i].sprite,
+				effectChromatic.camPairs[Random.Range (0, effectChromatic.camPairs.Count)].cameraLayer,
+				pos,
+				ChromaticAberration.GetColor(obj.transform.position, pos),
+				1);
+		}
+	}
+	void KUpdateChromaticSelf(){
+		for(int i = 0 ; i<objects.Count;i++){
+			int camLayer = effectChromatic.camPairs[Random.Range (0, effectChromatic.camPairs.Count)].cameraLayer;
+			var obj = objects[i];
+			KUpdateChromaticSelf(obj);
+
+		}
+
+	}
+	void KUpdateDeteriorate(){
+		if (powerDeteriorate > 55.0f) {
+			for(int i = 0 ; i<objects.Count;i++){
+				objects[i].renderSprite.layer = effectDeteriorate.layer;
+			}
+			powerDeteriorate= 0;
+			effectDeteriorate.Render();
+			
+		}
+	}
+
 	void IncreasePower(float n){
 		powerDeteriorate += n;
 		powerAll += n;
@@ -111,6 +123,37 @@ public class PPE_Engine : MonoBehaviour
 		powerDeteriorate = Mathf.Max (0, powerDeteriorate - 23.1f * Time.deltaTime);
 		powerAll = Mathf.Max (0, powerAll*(1 - .3f * Time.deltaTime) - 200 * Time.deltaTime);
 		powerEffect00 = Mathf.Max (0, powerEffect00 - 2f * Time.deltaTime);
+	}
+	PPE_Particle GetParticle(Sprite sprite, int layer, Vector3 position, Color color, int lifeLegth){
+		if (sprite == null)
+			Debug.Log ("Warning :: Sprite is null");
+		particleId = (particleId + 1) % particles.Count;
+		particles[particleId].On(
+			sprite,
+			layer,
+			position, color,(int)(  10+ powerEffect00*20 	));
+
+		return particles [particleId];
+
+	}
+	
+	void H_Effect00(Vector3 position ){
+		IncreasePower (.2f);
+		Color color = new Color (.5f +Random.Range(-1.0f,1.0f)*(powerEffect00*.005f),
+		                         .5f +Random.Range(-1.0f,1.0f)*(powerEffect00*.005f),0,.1f);
+		int camLayer = effectChromatic.camPairs[Random.Range (0, effectChromatic.camPairs.Count)].cameraLayer;
+		GetParticle(
+			particleSprites[Random.Range(0,particleSprites.Count)],
+			camLayer,
+			position, color,(int)(  10+ powerEffect00*20 	));
+	}
+	void H_NewChromaticObjects(List<PPE_Object> objects){
+		Debug.Log ("New chromatic objects");
+		this.objects = objects;
+	}
+	void H_NewForce(PPE_Force force){
+		IncreasePower (1.0f);
+		this.forces.Add (force);
 	}
 }
 

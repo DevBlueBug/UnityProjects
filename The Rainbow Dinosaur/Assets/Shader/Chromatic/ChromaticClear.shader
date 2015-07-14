@@ -91,7 +91,7 @@
 			fixed4 frag(vertex  i) : COLOR  {
 				float4 color0 = tex2D(_MainTex ,i.uv);
 				//return color0;
-				return float4(.5,.5,0,.01f + color0.a * .3f);
+				return float4(.5,.5,0,.01f + color0.a * .9f);
 				//float2 dir =normalize( color0.rg - float2(.5,.5) );
 				//float4 colorDir = GetLeftOver(i.uv + dir * .01);
 
@@ -103,7 +103,7 @@
 				float3 colorRGB = tex2D(_SubTex,float2(i.uv.x,1-i.uv.y)) ;
 
 				float4 color = ((color1 + color2+ color3 + color4)/4 ) ;
-				color.a = max(0,color.a- .3f)	; 
+				color.a = max(0, color.a - .3f)	; 
 				return color;
 			}
 

@@ -12,7 +12,7 @@ public class RenderRoom : MonoBehaviour
 	List<PPE_Object> chroObjects = new List<PPE_Object>();
 	List<ChromaticObject03> chroObjects03 = new List<ChromaticObject03>();
 	// Use this for initialization
-	void Start(){
+	void Awake(){
 		var room = this.GetComponent<Room> ();
 		if (room == null) {
 			Destroy(this);
@@ -22,10 +22,6 @@ public class RenderRoom : MonoBehaviour
 		//var renderWall = Instantiate (P_RenderWalls);
 		P_RenderWalls.Init (this.transform, wallLayer,wallOrder,wallShadowLayer,wallShadowOrder , (int)room.width,(int)room.height);
 		P_RenderFloor.Init (this.transform, wallLayer, wallOrder - 1,wallShadowLayer,wallShadowOrder-1, room.width,room.height);
-		return;
-
-		var renderRoomFloor = (RenderRoomFloor)Instantiate (P_RenderFloor, this.transform.position,Quaternion.identity);
-		renderRoomFloor.transform.parent = this.transform;
 
 		room.E_On += H_On;
 		room.E_EntityAdded += H_EntityAdded;
@@ -35,31 +31,25 @@ public class RenderRoom : MonoBehaviour
 		PPE_Engine.E_NewChromaticObjects (chroObjects);
 	}
 	void H_EntityAdded(Room room, Entity entity){
-
-
 		var renderEntity = entity.GetComponent<RenderEntity> ();
 		if (renderEntity == null) {
 			return;
 		}
-		var chromaticObject = renderEntity.chroObject;
-		if (chromaticObject == null) {
-			return;
+		var chromaticObject = renderEntity.ppeObject;
+		if (chromaticObject != null) {
+			chroObjects.Add (chromaticObject);
+			entity.E_Kill += delegate(Entity me){
+				H_PPE_Object_Killed(null,me);
+				
+			};
 		}
-		chroObjects.Add (chromaticObject);
-		entity.E_Kill += delegate(Entity me){
-			H_EntityDeleted(null,me);
-	
-		};
 	}
-	void H_EntityDeleted(Room room, Entity entity){
+	void H_PPE_Object_Killed(Room room, Entity entity){
 		var chroObject = entity
-			.GetComponent<RenderEntity> ().chroObject;
+			.GetComponent<RenderEntity> ().ppeObject;
 		if (chroObject == null) return;
-		try{
-			chroObjects.Remove(chroObject);
-		}
-		catch{
-		}
+		try{ chroObjects.Remove(chroObject);}
+		catch{ }
 	}
 }
 

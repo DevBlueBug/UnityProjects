@@ -26,7 +26,7 @@ public class RenderDoor : MonoBehaviour
 	// Update is called once per frame
 	void H_OpenClose (bool openClose)
 	{
-		Debug.Log ("oepnClose " + openClose);
+		//Debug.Log ("oepnClose " + openClose);
 		ani.SetInteger("state" ,(openClose)?1:0);
 	}
 	// Update is called once per frame

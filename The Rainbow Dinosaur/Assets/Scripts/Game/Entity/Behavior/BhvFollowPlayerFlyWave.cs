@@ -6,21 +6,20 @@ namespace NBehaviour
 	{
 		Utility.EasyTimer timer;
 		Vector3 direction,directionFinal;
-		float cos = 0.0f,cosChange,power;
+		float cos = 0.0f,cosChange,forwardRatio;
 		
-		public BhvFollowPlayerFlyWave(Entity Entity,float waveChange,float power):base(Entity){
+		public BhvFollowPlayerFlyWave(Entity Entity,float numberOfTimesToCircle ,float forwardRatio):base(Entity){
 			timer = new Utility.EasyTimer (10, .51f);
-			this.cosChange = waveChange *(3.14f/180.0f);
-			this.power = power;
-			
+			this.cosChange = numberOfTimesToCircle * 6.28f;//* (3.14f/180.0f);
+			this.forwardRatio = forwardRatio;
 		}
 		
 		public override int Process (Entity entity, Room room)
 		{
 			var entityMove = (EntityMove) entity;
 			cos += cosChange *Time.deltaTime;
-			//directionFinal = direction + new Vector3(Mathf.Cos(cos),Mathf.Sin(cos),0) *power ;
-			directionFinal = direction + new Vector3(-direction.y,direction.x,0) *Mathf.Cos(cos) *power ;
+			directionFinal = direction*forwardRatio + new Vector3(Mathf.Cos(cos),Mathf.Sin(cos),0)  ;
+			//directionFinal = direction + new Vector3(-direction.y,direction.x,0) *Mathf.Cos(cos) ;
 			directionFinal.Normalize();
 			if (timer.Tick (UnityEngine.Time.deltaTime)) {
 				direction = (PlayerManager.PlayerPosFloat- entity.transform.localPosition)

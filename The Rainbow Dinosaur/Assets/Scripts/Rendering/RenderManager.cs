@@ -43,6 +43,7 @@ public class RenderManager : MonoBehaviour
 		float angle = 
 			Mathf.Atan2 (bullet.bullet.direction.y, bullet.bullet.direction.x);
 		var dir = new Vector3 (Mathf.Cos(angle),Mathf.Sin(angle),0 );
+		return;
 		PPE_Engine.E_Effect00 (bullet.transform.position);	
 
 		PPE_Engine.E_NewForce (new PPE_Force(

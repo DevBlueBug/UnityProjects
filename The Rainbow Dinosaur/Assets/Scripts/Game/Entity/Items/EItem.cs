@@ -18,15 +18,29 @@ public class EItem : EntityMove
 	public ItemId		itemId;
 	public ItemPosition	itemPosion;
 	public int value;
+	bool isStablized = false;
+
 
 	public override void Awake ()
 	{
 		base.Awake ();
 		this.E_TriggerTarget += H_TriggerTarget;
 	}
+	
+	public override void KUpdate (Room room)
+	{
+		base.KUpdate (room);
+		if (!isStablized) {
+			isStablized = IsStablized();
+		}
+	}
+	bool IsStablized(){
+		return (this.transform.position - PlayerManager.PlayerPosFloat).magnitude > 1.0f;
+	}
 	int H_TriggerTarget(Entity me, Entity target, Collider2D collider){
 		//E_PlayerAcquired (this, target);
 		//Triggered (target);
+		if (!isStablized) return 0;
 		if (inventory != null) Transfer (target);
 		Kill ();
 		return -1;
