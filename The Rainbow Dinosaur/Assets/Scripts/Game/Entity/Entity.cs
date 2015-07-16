@@ -18,7 +18,7 @@ public class Entity : MonoBehaviour
 	public D_TriggerTarget E_TriggerTarget = delegate {return 1;};
 
 
-	public Data.Piece.KId meId;
+	public Data.Piece.KId id;
 	public KType meType;
 	public List<Entity.KType> targets;
 	public float hp = 10;

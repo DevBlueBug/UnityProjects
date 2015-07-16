@@ -45,7 +45,7 @@ public class RoomAsset : MonoBehaviour
 		case Piece.KId.Block_Soft: entity = EBlockSoft; break;
 		case Piece.KId.EnemyFlying: entity = EEnemyFlying; break;
 		}
-		entity.meId = id;
+		entity.id = id;
 		//Debug.Log (type + " " + dic);
 		return Instantiate(entity);	
 	}

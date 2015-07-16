@@ -63,8 +63,10 @@
      <None Include="Assets\Shader\Deteriorate\DeteriorateClear.shader" />
      <None Include="Assets\Imported\ChromaticEffectProject\Material\ChromaticApply.shader" />
      <None Include="Assets\Shader\Chromatic\ChromaticClear.shader" />
+     <None Include="Assets\Shader\Game\ShadowAdditive.shader" />
      <None Include="Assets\Shader\ClearTransparent.shader" />
      <None Include="Assets\Shader\Rorschach\Apply.shader" />
+     <None Include="Assets\Shader\Game\SpriteRenderer.shader" />
      <None Include="Assets\Shader\Deteriorate\Deteriorate.shader" />
      <None Include="Assets\Shader\PPE_Particle.shader" />
      <None Include="Assets\Shader\Deteriorate\DeteriorateApply.shader" />

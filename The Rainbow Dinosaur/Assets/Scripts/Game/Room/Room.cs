@@ -10,6 +10,7 @@ public class Room : MonoBehaviour
 	public delegate void D_MeEntity(Room me, Entity entity);
 	public delegate EBullet D_RequireBullet(Entity entityRequesting, List<Entity.KType> targets);
 	public delegate EItem D_GetItem(NItem.Item item);
+	public static EItemManager P_ItemManager;
 
 	internal D_NextRoom	E_NextRoom = delegate {};
 	internal D_Me		E_On = delegate {};
@@ -17,9 +18,6 @@ public class Room : MonoBehaviour
 	E_EntityAdded = delegate {},
 	E_EntityDeleted = delegate {	};
 
-	internal D_GetItem	
-	E_GetItemDrop = delegate {return null;},
-	E_GetItemStationary = delegate {return null;};
 	
 	public DRoom.KType type = DRoom.KType.Normal;
 	public int posX,posY;
@@ -143,6 +141,8 @@ public class Room : MonoBehaviour
 	}
 	public void AddEntity(Entity entity, float x, float y, bool isWorld){
 		E_EntityAdded (this, entity);
+		entity.transform.localPosition = new Vector3(x,y,0);
+
 
 		int indexX = Mathf.RoundToInt(x),
 			indexY = Mathf.RoundToInt(y);
@@ -153,7 +153,6 @@ public class Room : MonoBehaviour
 
 		entity.transform.parent = this.transform;
 		entity.transform.localScale = Vector3.one;
-		entity.transform.localPosition = new Vector3(x,y,0);
 		AddEventHandlers (entity);
 		WeightOnAStartMap(entity,indexX,indexY);
 
@@ -225,37 +224,65 @@ public class Room : MonoBehaviour
 	}
 	void WeightOnAStartMap(Entity entity, int x, int y){
 			
-		if(entity.meId == Data.Piece.KId.Edge ||
-		   entity.meId == Data.Piece.KId.Empty ||
-		   entity.meId == Data.Piece.KId.Block_Soft ||
-		   entity.meId == Data.Piece.KId.Block_Hard 
+		if(entity.id == Data.Piece.KId.Edge ||
+		   entity.id == Data.Piece.KId.Empty ||
+		   entity.id == Data.Piece.KId.Block_Soft ||
+		   entity.id == Data.Piece.KId.Block_Hard 
 		   ) aStarMap [x, y].isAlive = false;
 	}
 	void UnWeightOnAStartMap(Entity entity, int x, int y){
 		//aStarMap.Reset (x,y);
-		if (entity.meId == Data.Piece.KId.Edge ||
-			entity.meId == Data.Piece.KId.Empty ||
-			entity.meId == Data.Piece.KId.Block_Soft ||
-			entity.meId == Data.Piece.KId.Block_Hard 
+		if (entity.id == Data.Piece.KId.Edge ||
+			entity.id == Data.Piece.KId.Empty ||
+			entity.id == Data.Piece.KId.Block_Soft ||
+			entity.id == Data.Piece.KId.Block_Hard 
 		   ) {
 			aStarMap.Reset(x,y);
 		}
 	}
 	void H_Kill(Entity entity){
-		foreach (var entry in entity.inventory.items) {
-
+		var item = GetItem (entity);
+		if (item != null) {
+			for(int i = 0 ; i < item.Count;i++){
+				if(item[i] ==null) continue;
+				AddEntity (item[i],item[i].transform.localPosition.x,item[i].transform.localPosition.y, false);
+			}
 		}
-		for (int i = 0; i < entity.inventory.items.Count; i++) {
-			//var item = entity.inventory.items[i];
 
-		}
-		if (entity.meType == Entity.KType.Enemy) {
-
-		}
 	}
 	void H_DoorEntered(int n , Entity door, Entity doorEntered){
 		if (doorEntered.meType == Entity.KType.Player)
 			E_NextRoom (n);
+	}
+	public virtual List<EItem> GetItem(Entity entity){
+		List<EItem> items = new List<EItem> ();
+		if (entity.meType == Entity.KType.Enemy) {
+			foreach (var entry in entity.inventory.items) {
+				items.Add(P_ItemManager.GetDrop(entry.Value));
+
+				//items.Add(E_GetItemDrop(entry.Value)) ;
+			}
+			var money = P_ItemManager.GetMoney(Random.Range(0,10) );
+			foreach(var m in money)
+				items.Add(m);
+			//var gold = E_GetItemDrop (new NItem.Item (NItem.Item.KType.Money,1 ));
+			//gold.transform.position = entity.transform.position;
+
+			//	items.Add (gold);
+		}
+		foreach (var i in items) {
+			i.transform.position = entity.transform.position + new Vector3(Random.Range(-1,.1f),Random.Range(-1,.1f),0);
+
+		}
+		for (int i = 0; i < entity.inventory.items.Count; i++) {
+			//var item = entity.inventory.items[i];
+			
+		}
+		if (entity.meType == Entity.KType.Enemy) {
+			
+		}
+		return items;
+
 	}
 
 

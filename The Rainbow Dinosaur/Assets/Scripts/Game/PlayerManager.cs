@@ -45,7 +45,7 @@ public class PlayerManager : MonoBehaviour
 	
 	}
 	void UpdatePlayerPosition(){
-		PlayerPosFloat = player.transform.localPosition;
+		PlayerPosFloat = new Vector3(player.transform.localPosition.x,player.transform.localPosition.y,0);
 		PlayerPosInt =new Vector3(Mathf.Round( player.transform.localPosition.x),
 		                       Mathf.Round( player.transform.localPosition.y)
 		                       ,0);

@@ -95,6 +95,7 @@
      <Compile Include="Assets\Scripts\Game\Entity\Items\EItem.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Items\EItemManager.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Items\EItemModels.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Items\EItem_Reward.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Modifiers\AttackOnContract.cs" />
      <Compile Include="Assets\Scripts\Game\GameBrain.cs" />
      <Compile Include="Assets\Scripts\Game\Items\Inventory.cs" />
@@ -143,10 +144,15 @@
      <Compile Include="Assets\Scripts\Rendering\Entity\EdgeReposition.cs" />
      <Compile Include="Assets\Scripts\Rendering\Entity\EdgeRotator.cs" />
      <Compile Include="Assets\Scripts\Rendering\Entity\EffectKilled.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Entity\RenderBullet.cs" />
      <Compile Include="Assets\Scripts\Rendering\Entity\RenderDoor.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Entity\RenderEntity.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Entity\RenderEntityDirected.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Entity\RenderEntityMove.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Entity\RenderEntityMovePart.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Entity\RenderItem.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Entity\RenderItemModels.cs" />
      <Compile Include="Assets\Scripts\Rendering\GameMainCamera.cs" />
-     <Compile Include="Assets\Scripts\Rendering\RenderBullet.cs" />
-     <Compile Include="Assets\Scripts\Rendering\RenderEntity.cs" />
      <Compile Include="Assets\Scripts\Rendering\RenderEyeball.cs" />
      <Compile Include="Assets\Scripts\Rendering\RenderManager.cs" />
      <Compile Include="Assets\Scripts\Rendering\RenderRoomConstant.cs" />
@@ -184,8 +190,10 @@
      <None Include="Assets\Shader\Deteriorate\DeteriorateClear.shader" />
      <None Include="Assets\Imported\ChromaticEffectProject\Material\ChromaticApply.shader" />
      <None Include="Assets\Shader\Chromatic\ChromaticClear.shader" />
+     <None Include="Assets\Shader\Game\ShadowAdditive.shader" />
      <None Include="Assets\Shader\ClearTransparent.shader" />
      <None Include="Assets\Shader\Rorschach\Apply.shader" />
+     <None Include="Assets\Shader\Game\SpriteRenderer.shader" />
      <None Include="Assets\Shader\Deteriorate\Deteriorate.shader" />
      <None Include="Assets\Shader\PPE_Particle.shader" />
      <None Include="Assets\Shader\Deteriorate\DeteriorateApply.shader" />

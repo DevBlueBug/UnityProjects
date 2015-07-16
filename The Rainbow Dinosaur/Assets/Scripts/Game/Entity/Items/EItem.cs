@@ -15,7 +15,7 @@ public class EItem : EntityMove
 
 	public EItem P_Original;
 	
-	public ItemId		itemId;
+	public ItemId		idItem;
 	public ItemPosition	itemPosion;
 	public int value;
 	bool isStablized = false;

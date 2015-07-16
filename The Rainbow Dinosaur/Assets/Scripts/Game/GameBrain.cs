@@ -27,6 +27,7 @@ public class GameBrain : MonoBehaviour
 
 
 	void Awake(){
+		Room.P_ItemManager = P_ItemManager;
 		var bulletManager = new GameObject ("BulletManager").AddComponent<BulletManager>();
 		bulletManager.transform.parent = this.transform;
 		organizer = new Data.Organizer ();
@@ -46,8 +47,8 @@ public class GameBrain : MonoBehaviour
 		pManager.KUpdate ();
 		if (Input.GetKeyDown (KeyCode.E)) {
 			Debug.Log("ITEM SPAWN");
-			room.AddEntity(P_ItemManager.GetRandom(),
-			               Random.Range(1,13),Random.Range(1,7),false);
+			//room.AddEntity(P_ItemManager.GetRandom(),
+			 //              Random.Range(1,13),Random.Range(1,7),false);
 		}
 		rManager.KUpdate ();
 	}
@@ -79,8 +80,8 @@ public class GameBrain : MonoBehaviour
 			var pos = Utility.EasyUnity.dirFour3[n];
 			E_GameStarted_NewRoom(rooms[room.posX+(int)pos.x,room.posY+(int)pos.y],(n+2)%4);
 		};
-		room.E_GetItemDrop += P_ItemManager.GetDrop;
-		room.E_GetItemStationary += P_ItemManager.GetStationary;
+		//room.E_GetItemDrop += P_ItemManager.GetDrop;
+		//room.E_GetItemStationary += P_ItemManager.GetStationary;
 
 	}
 	public IEnumerator H_EnterDoor(Room roomNew, int direction){

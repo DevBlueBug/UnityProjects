@@ -20,7 +20,7 @@ public class EBitmask : MonoBehaviour
 			
 			var entityNew = room.entitiesWorldIndex[(int)posNew.x,(int)posNew.y];
 			if(entityNew == null) continue;
-			if(entityNew.meId == entity.meId) 
+			if(entityNew.id == entity.id) 
 				score += socreAdded[i]; 
 		}
 		sprRenderer.sprite = sprites [score];

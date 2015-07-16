@@ -4,6 +4,7 @@ namespace Data
 	public class Piece
 	{
 		public enum KId { 
+			Unknown,
 			Empty,
 			Edge,Ground,Door,
 			Decoration,Item,
