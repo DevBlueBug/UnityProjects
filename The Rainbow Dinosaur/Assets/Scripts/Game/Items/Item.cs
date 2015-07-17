@@ -13,6 +13,7 @@ namespace NItem
 	public class Item
 	{
 		public enum KType {Nothing, Bomb,Money, Weapon};
+		public enum KTypeEquip	{None, Head, Head_Hat, Body, Body_Front,Body_Back, Body_Pants, Body_Floor};
 		public KType meType;
 		public int Count = 1;
 		
