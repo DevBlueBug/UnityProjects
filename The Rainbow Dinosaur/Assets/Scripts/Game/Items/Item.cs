@@ -14,8 +14,8 @@ namespace NItem
 	{
 		public enum KId {
 			Unknown, Bomb,Money, Weapon,
-			Equip_Body_default,
-			Equip_Head_Default,
+			Equip_Body_Player_Default,
+			Equip_Head_Player_Default,
 			Equip_Head_Kaonash,
 			Equip_Body_Heart
 		};
@@ -25,9 +25,9 @@ namespace NItem
 		public int Count = 1;
 		public static Item Get(KId id){
 			switch (id) {
-			case KId.Equip_Body_default:
+			case KId.Equip_Body_Player_Default:
 				return new Item(id,1).SetTypeEquip(KTypeEquip.Body);
-			case KId.Equip_Head_Default:
+			case KId.Equip_Head_Player_Default:
 				return new Item(id,1).SetTypeEquip(KTypeEquip.Head);
 			}
 			return null;

@@ -3,7 +3,6 @@ using System.Collections;
 using NItem;
 public class RenderEntityEquipped : RenderEntityDirected
 {
-	public Prefabs_RenderEntityEquipped P_Prefabs;
 	//public enum KTypeEquip	{None, Head, Head_Hat, Body, Body_Front,Body_Back, Body_Pants, Body_Floor};
 	public GameObject 
 		slotHead,
@@ -18,7 +17,7 @@ public class RenderEntityEquipped : RenderEntityDirected
 		base.Awake ();
 		this.entity.inventory.E_EquipItem += H_EquipItem;
 	}
-	public void Equip(RenderSprite item, NItem.Item.KTypeEquip id){
+	public void Equip(RenderEntityMovePart item, NItem.Item.KTypeEquip id){
 		switch (id) {
 		default:
 		case NItem.Item.KTypeEquip.Head:
@@ -45,20 +44,21 @@ public class RenderEntityEquipped : RenderEntityDirected
 		}
 
 	}
-	void Replace(ref GameObject original, RenderSprite replacedBy){
+	void Replace(ref GameObject original, RenderEntityMovePart replacedBy){
+		if (original.GetComponent<RenderEntityMovePart>() != null) {
+			RemovePart(original.GetComponent<RenderEntityMovePart>() );
+		}
 		replacedBy.transform.parent = original.transform.parent;
 		replacedBy.transform.localPosition = original.transform.localPosition;
+		replacedBy.gameObject.name = original.gameObject.name;
 		Destroy (original);
 		original = replacedBy.gameObject;
+		AddPart (replacedBy);
 	}
 	void H_EquipItem(Item item){
 		Debug.Log ("EQUIPPING ITEM " + item + " " + item.id + " " + item.typeEquip);
-		Equip (P_Prefabs.Get (item.id), item.typeEquip);
-		switch (item.id) {
-		case Item.KId.Equip_Head_Default:
+		Equip (Prefabs_RenderEntityEquipped.Get (item.id), item.typeEquip);
 
-			break;
-		}
 		//equipping item now
 	}
 

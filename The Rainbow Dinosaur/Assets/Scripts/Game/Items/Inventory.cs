@@ -20,6 +20,8 @@ namespace NItem{
 			equipBody_Pants,
 			equipFloor;
 
+		List<Item> itemsDiscarded = new List<Item>();
+
 		public Inventory(){
 			items = new Dictionary<Item.KId, Item> ();
 		}
@@ -56,16 +58,28 @@ namespace NItem{
 		void AddSlot(Item itemAdded){
 			switch (itemAdded.typeEquip) {
 			case Item.KTypeEquip.Head:
-				this.equipHead = itemAdded;
+				AddSlot(ref this.equipHead,itemAdded);
 				break;
 			case Item.KTypeEquip.Body:
-				this.equipBody = itemAdded;
+				AddSlot(ref this.equipBody,itemAdded);
 				break;
 			}
 			E_EquipItem (itemAdded);
 		}
+		void AddSlot(ref Item slot, Item itemAdded){
+			if (slot != null)
+				itemsDiscarded.Add (slot);
+			slot = itemAdded;
+		}
 		public void Reset(){
 			
+		}
+		
+		public virtual void KUpdate(Entity entity, Room room){
+			for(int i = 0 ; i < itemsDiscarded.Count;i++){
+				room.AddItemDrop(itemsDiscarded[i], entity.transform.localPosition.x,entity.transform.localPosition.y);
+			}
+			itemsDiscarded.Clear ();
 		}
 	}
 }

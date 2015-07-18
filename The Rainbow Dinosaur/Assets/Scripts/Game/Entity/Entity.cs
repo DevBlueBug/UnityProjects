@@ -6,18 +6,19 @@ public class Entity : MonoBehaviour
 {
 	public enum KType{Nothing =-1, World=0,Player=1,Enemy=2,Bullet=3};
 	public enum HpChangeType{Absolute, Bullet,Bomb,Contact};
-	public delegate void D_Kill(Entity me);
+	public delegate void D_Me(Entity me);
+	public delegate void D_MeOther(Entity me, Entity other);
 	public delegate void D_Attacked(Entity me, float hpChange);
 	public delegate void D_MeRoom(Entity me, Room room);
 	public delegate void D_MeItem(NItem.Item item);
 	public delegate int D_TriggerTarget(Entity me, Entity other, Collider2D collider); // continue on true, stop testing on false
 
-	public D_Kill E_Kill = delegate {};
+	public D_Me E_Kill = delegate {};
 	public D_MeRoom E_Refreshed = delegate {};
 	public D_MeRoom E_Updated = delegate {};
 	public D_Attacked E_Attacked = delegate{};
 	public D_TriggerTarget E_TriggerTarget = delegate {return 1;};
-
+	public D_MeOther E_NewEntity = delegate { };
 
 	public Data.Piece.KId id;
 	public KType meType;
@@ -60,6 +61,7 @@ public class Entity : MonoBehaviour
 				continue;
 			}
 		}
+		inventory.KUpdate (this, room);
 		this.transform.position = new Vector3 (transform.position.x,transform.position.y,transform.position.y);
 		E_Updated (this, room);
 	

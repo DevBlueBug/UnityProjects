@@ -139,6 +139,8 @@ public class Room : MonoBehaviour
 			RemoveEntityWorld ((int)doorPosition.x , (int)doorPosition.y+1, true);
 		}
 	}
+	public void AddItemDrop(NItem.Item item, float x, float y){
+	}
 	public void AddEntity(Entity entity, float x, float y, bool isWorld){
 		E_EntityAdded (this, entity);
 		entity.transform.localPosition = new Vector3(x,y,0);
@@ -193,10 +195,7 @@ public class Room : MonoBehaviour
 		}
 
 	}
-	void AddEventHandlers(Entity entity)
-	{
-		entity.E_Kill += H_Kill;
-	}
+	
 	public void SetPosition(int x, int y){
 		this.posX = x;
 		this.posY = y;
@@ -210,6 +209,12 @@ public class Room : MonoBehaviour
 			new Vector3(0,(int)height/2,0)
 		};
 		return positions [n];
+	}
+
+	void AddEventHandlers(Entity entity)
+	{
+		entity.E_Kill += H_Kill;
+		entity.E_NewEntity += H_NewEntity;
 	}
 	void SetAllDoors(bool open){
 		for (int i = 0; i < 4; i++)
@@ -240,21 +245,23 @@ public class Room : MonoBehaviour
 			aStarMap.Reset(x,y);
 		}
 	}
+	void H_NewEntity(Entity original, Entity newOne){
+		AddEntity (newOne,newOne.transform.localPosition.x,newOne.transform.localPosition.y,false);
+	}
 	void H_Kill(Entity entity){
-		var item = GetItem (entity);
+		var item = GetDrops (entity);
 		if (item != null) {
 			for(int i = 0 ; i < item.Count;i++){
 				if(item[i] ==null) continue;
 				AddEntity (item[i],item[i].transform.localPosition.x,item[i].transform.localPosition.y, false);
 			}
 		}
-
 	}
 	void H_DoorEntered(int n , Entity door, Entity doorEntered){
 		if (doorEntered.meType == Entity.KType.Player)
 			E_NextRoom (n);
 	}
-	public virtual List<EItem> GetItem(Entity entity){
+	public virtual List<EItem> GetDrops(Entity entity){
 		List<EItem> items = new List<EItem> ();
 		if (entity.meType == Entity.KType.Enemy) {
 			foreach (var entry in entity.inventory.items) {
@@ -284,6 +291,7 @@ public class Room : MonoBehaviour
 		return items;
 
 	}
+
 
 
 }

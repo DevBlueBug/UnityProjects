@@ -30,26 +30,38 @@ public class EItemManager : MonoBehaviour
 
 		return list;
 	}
+	public EItem FillItemContent(EItem body){
+		switch (body.idItem) {
+		case Item.KId.Equip_Body_Player_Default:
+			break;
+		case Item.KId.Equip_Head_Player_Default:
+			break;
+		}
+		return body;
+	}
 	
 	public EItem GetDrop(Item item){
-		var obj = AddItem( Instantiate(ItemDrop), item);
+		var obj = AddContent( Instantiate(ItemDrop), item);
 		return obj;
 	}
 	
 	public EItem GetDropStuck(Item item){
-		var obj = AddItem( Instantiate(ItemDropStuck), item);
+		var obj = AddContent( Instantiate(ItemDropStuck), item);
 		return obj;
 	}
 	
 	public EItem GetStationary(Item item){
-		var obj = AddItem( Instantiate(ItemDrop),item);
+		var obj = AddContent( Instantiate(ItemDrop),item);
 		return obj;
 	}
-	EItem AddItem(EItem model, Item item){
+	EItem AddContent(EItem model, Item item){
 		model.inventory.Add(model,item);
-		model.idItem = Item.KId.Unknown;
-		if (item.id == Item.KId.Money) {
-			model.idItem = item.id;
+		model.idItem = item.id;
+		switch (model.idItem) {
+		case Item.KId.Equip_Head_Player_Default:
+		case Item.KId.Equip_Body_Player_Default:
+		case Item.KId.Equip_Head_Kaonash:
+			break;
 		}
 		return model;
 	}

@@ -93,7 +93,7 @@
      <Compile Include="Assets\Scripts\Game\Entity\EntityMove.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Items\EItem.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Items\EItemManager.cs" />
-     <Compile Include="Assets\Scripts\Game\Entity\Items\EItemModels.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Items\EItem_Gen.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Items\EItem_Reward.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Modifiers\AttackOnContract.cs" />
      <Compile Include="Assets\Scripts\Game\GameBrain.cs" />

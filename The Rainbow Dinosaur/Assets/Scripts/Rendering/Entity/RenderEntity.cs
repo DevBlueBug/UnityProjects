@@ -4,7 +4,7 @@ using System.Collections.Generic;
 public class RenderEntity : MonoBehaviour
 {
 	public Entity entity;
-	public List<RenderSprite> renderSprite; 
+	public List<RenderSprite> renderSprites; 
 	public PPE_Object ppeObject;
 
 	public virtual void Awake ()
@@ -12,6 +12,8 @@ public class RenderEntity : MonoBehaviour
 
 
 
+	}
+	public virtual void Start(){
 	}
 
 
