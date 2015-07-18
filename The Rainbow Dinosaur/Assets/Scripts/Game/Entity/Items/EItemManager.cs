@@ -19,13 +19,13 @@ public class EItemManager : MonoBehaviour
 		int nMiddle = (int)((amount - nLarge * RatioGoldL) / RatioGoldM);
 		int nSmall = (int)((amount - nLarge * RatioGoldL - nMiddle * RatioGoldM  ) / RatioGoldS);
 		for(int i = 0 ; i < nLarge;i++){
-			list.Add(GetDrop(new Item(Item.KType.Money,RatioGoldL)));
+			list.Add(GetDrop(new Item(Item.KId.Money,RatioGoldL)));
 		}
 		for (int i = 0; i < nMiddle; i++) {
-			list.Add(GetDrop(new Item(Item.KType.Money,RatioGoldM)));
+			list.Add(GetDrop(new Item(Item.KId.Money,RatioGoldM)));
 		}
 		for (int i = 0; i < nSmall; i++) {
-			list.Add(GetDrop(new Item(Item.KType.Money,RatioGoldS)));
+			list.Add(GetDrop(new Item(Item.KId.Money,RatioGoldS)));
 		}
 
 		return list;
@@ -46,21 +46,15 @@ public class EItemManager : MonoBehaviour
 		return obj;
 	}
 	EItem AddItem(EItem model, Item item){
-		model.inventory.Add(item);
-		model.idItem = EItem.ItemId.Error;
-		if (item.meType == Item.KType.Money) {
-			model.idItem = EItem.ItemId.Money;
+		model.inventory.Add(model,item);
+		model.idItem = Item.KId.Unknown;
+		if (item.id == Item.KId.Money) {
+			model.idItem = item.id;
 		}
 		return model;
 	}
 
 
-	internal NItem.Inventory GetInventory(EItem.ItemId type){
-		var inventory = new NItem.Inventory ();
-		//inventory.Add (NItem.Item.GetMoney ());
-		inventory.Add (new Shotgun());
-		return inventory;
-	}
 
 }
 

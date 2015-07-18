@@ -30,6 +30,7 @@ public class EDoor : Entity
 	}
 	int H_TriggerEnter(Entity me,Entity other, Collider2D collider){
 		return E_TriggerBack(me,other,collider);
+		/**
 		if (triggerBack.bounds.Intersects (collider.bounds)) {
 			return E_TriggerBack(me,other,collider);
 		}
@@ -37,6 +38,7 @@ public class EDoor : Entity
 			return E_TriggerFront (me, other, collider);
 		}
 		return 1;
+		**/
 	}
 
 	public void SetOpen(bool isOpen){

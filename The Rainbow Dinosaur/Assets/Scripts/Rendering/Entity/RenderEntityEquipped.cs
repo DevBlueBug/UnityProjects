@@ -1,8 +1,9 @@
 using UnityEngine;
 using System.Collections;
-
+using NItem;
 public class RenderEntityEquipped : RenderEntityDirected
 {
+	public Prefabs_RenderEntityEquipped P_Prefabs;
 	//public enum KTypeEquip	{None, Head, Head_Hat, Body, Body_Front,Body_Back, Body_Pants, Body_Floor};
 	public GameObject 
 		slotHead,
@@ -11,8 +12,13 @@ public class RenderEntityEquipped : RenderEntityDirected
 		slotBody_Front,
 		slotBody_Back,
 		slotBody_Pants,
-		slotBody_Floor;
-	public void Equip(NItem.Item.KTypeEquip id, GameObject item){
+		slotFloor;
+	public override void Awake ()
+	{
+		base.Awake ();
+		this.entity.inventory.E_EquipItem += H_EquipItem;
+	}
+	public void Equip(RenderSprite item, NItem.Item.KTypeEquip id){
 		switch (id) {
 		default:
 		case NItem.Item.KTypeEquip.Head:
@@ -33,17 +39,27 @@ public class RenderEntityEquipped : RenderEntityDirected
 		case NItem.Item.KTypeEquip.Body_Pants:
 			Replace(ref slotBody_Pants,item);
 			break;
-		case NItem.Item.KTypeEquip.Body_Floor:
-			Replace(ref slotBody_Floor,item);
+		case NItem.Item.KTypeEquip.Floor:
+			Replace(ref slotFloor,item);
 			break;
 		}
 
 	}
-	void Replace(ref GameObject original, GameObject replacedBy){
+	void Replace(ref GameObject original, RenderSprite replacedBy){
 		replacedBy.transform.parent = original.transform.parent;
 		replacedBy.transform.localPosition = original.transform.localPosition;
 		Destroy (original);
-		original = replacedBy;
+		original = replacedBy.gameObject;
+	}
+	void H_EquipItem(Item item){
+		Debug.Log ("EQUIPPING ITEM " + item + " " + item.id + " " + item.typeEquip);
+		Equip (P_Prefabs.Get (item.id), item.typeEquip);
+		switch (item.id) {
+		case Item.KId.Equip_Head_Default:
+
+			break;
+		}
+		//equipping item now
 	}
 
 }

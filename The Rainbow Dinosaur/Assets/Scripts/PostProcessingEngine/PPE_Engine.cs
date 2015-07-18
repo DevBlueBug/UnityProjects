@@ -96,7 +96,7 @@ public class PPE_Engine : MonoBehaviour
 	}
 	void KUpdateChromaticSelf(){
 		for(int i = 0 ; i<objects.Count;i++){
-			int camLayer = effectChromatic.camPairs[Random.Range (0, effectChromatic.camPairs.Count)].cameraLayer;
+			//int camLayer = effectChromatic.camPairs[Random.Range (0, effectChromatic.camPairs.Count)].cameraLayer;
 			var obj = objects[i];
 			KUpdateChromaticSelf(obj);
 

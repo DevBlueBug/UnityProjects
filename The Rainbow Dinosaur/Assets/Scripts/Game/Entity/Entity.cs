@@ -9,6 +9,7 @@ public class Entity : MonoBehaviour
 	public delegate void D_Kill(Entity me);
 	public delegate void D_Attacked(Entity me, float hpChange);
 	public delegate void D_MeRoom(Entity me, Room room);
+	public delegate void D_MeItem(NItem.Item item);
 	public delegate int D_TriggerTarget(Entity me, Entity other, Collider2D collider); // continue on true, stop testing on false
 
 	public D_Kill E_Kill = delegate {};
@@ -114,7 +115,7 @@ public class Entity : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D collider){
 		if (!isContinueTriggerCheck) return;
 		//Debug.Log ("ETRIGGER ENTER");
-		var other = collider.GetComponent<EntityPointer> ();
+		var other = collider.GetComponent<PointerEntity> ();
 		if (other == null) return;
 		var otherEntity = other.entity;
 		//Debug.Log ("ETRIGGER ENTER CALLING");

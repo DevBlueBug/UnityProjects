@@ -31,7 +31,7 @@ namespace NItem.NWeapon
 		public Weapon ()
 		{
 			this.targets = new List<Entity.KType> ();
-			base.meType = KType.Weapon;
+			base.id = KId.Weapon;
 			typeBullet = BulletManager.KTypes.Normal;
 		}
 		public Weapon(float hpChange, float speed, float backswing,float delay):this(){

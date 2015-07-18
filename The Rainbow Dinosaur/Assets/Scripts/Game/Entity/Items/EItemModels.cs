@@ -6,7 +6,7 @@ public class EItemModels : MonoBehaviour
 	public Sprite
 		Money,Bomb,Heart,WeaponStraight,WeaponTriple;
 	// Use this for initialization
-	public Sprite Get(NItem.Item.KType type){
+	public Sprite Get(NItem.Item.KId type){
 		return null;
 	}
 }

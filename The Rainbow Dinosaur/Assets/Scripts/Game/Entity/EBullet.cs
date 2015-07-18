@@ -35,7 +35,7 @@ public class EBullet : Entity
 			return true;
 		}
 		try{
-			var entity = rayCast.collider.GetComponent<EntityPointer>().entity;
+			var entity = rayCast.collider.GetComponent<PointerEntity>().entity;
 
 			//rayCast.normal
 		

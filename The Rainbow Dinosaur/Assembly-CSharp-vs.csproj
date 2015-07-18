@@ -91,13 +91,13 @@
      <Compile Include="Assets\Scripts\Game\Entity\Enemy\EnemyFoot.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Entity.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\EntityMove.cs" />
-     <Compile Include="Assets\Scripts\Game\Entity\EntityPointer.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Items\EItem.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Items\EItemManager.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Items\EItemModels.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Items\EItem_Reward.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Modifiers\AttackOnContract.cs" />
      <Compile Include="Assets\Scripts\Game\GameBrain.cs" />
+     <Compile Include="Assets\Scripts\Game\Items\Equips\Head_Kaonash.cs" />
      <Compile Include="Assets\Scripts\Game\Items\Inventory.cs" />
      <Compile Include="Assets\Scripts\Game\Items\Item.cs" />
      <Compile Include="Assets\Scripts\Game\Items\Weapon\GunBasic.cs" />
@@ -116,6 +116,8 @@
      <Compile Include="Assets\Scripts\Game\UI\Minimap.cs" />
      <Compile Include="Assets\Scripts\Game\UI\MinimapIcon.cs" />
      <Compile Include="Assets\Scripts\HUDFPS.cs" />
+     <Compile Include="Assets\Scripts\PointerEntity.cs" />
+     <Compile Include="Assets\Scripts\PointerSprites.cs" />
      <Compile Include="Assets\Scripts\PostProcessingEngine\Chromatic\ChromaticAberrarionCamera.cs" />
      <Compile Include="Assets\Scripts\PostProcessingEngine\Chromatic\ChromaticAberration.cs" />
      <Compile Include="Assets\Scripts\PostProcessingEngine\Chromatic\ChromaticAberrationMonobehavior.cs" />
@@ -133,6 +135,7 @@
      <Compile Include="Assets\Scripts\PostProcessingEngine\PPE_Engine.cs" />
      <Compile Include="Assets\Scripts\PostProcessingEngine\PPE_Force.cs" />
      <Compile Include="Assets\Scripts\PostProcessingEngine\PPE_Particle.cs" />
+     <Compile Include="Assets\Scripts\Rendering\AwakeOnce_Render.cs" />
      <Compile Include="Assets\Scripts\Rendering\CameraRenderHere.cs" />
      <Compile Include="Assets\Scripts\Rendering\Decoration\DC_Flower.cs" />
      <Compile Include="Assets\Scripts\Rendering\ETC\EBitamsk_Simple.cs" />
@@ -152,8 +155,9 @@
      <Compile Include="Assets\Scripts\Rendering\Entity\RenderEntityMove.cs" />
      <Compile Include="Assets\Scripts\Rendering\Entity\RenderEntityMovePart.cs" />
      <Compile Include="Assets\Scripts\Rendering\Entity\RenderItem.cs" />
-     <Compile Include="Assets\Scripts\Rendering\Entity\RenderItemModels.cs" />
      <Compile Include="Assets\Scripts\Rendering\GameMainCamera.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Prefabs\Prefabs_RenderEntityEquipped.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Prefabs\Prefabs_RenderItem.cs" />
      <Compile Include="Assets\Scripts\Rendering\RenderEyeball.cs" />
      <Compile Include="Assets\Scripts\Rendering\RenderManager.cs" />
      <Compile Include="Assets\Scripts\Rendering\RenderRoomConstant.cs" />

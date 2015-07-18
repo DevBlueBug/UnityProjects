@@ -56,6 +56,7 @@ public class ChromaticEffect : MonoBehaviour
 	{
 		
 		return;
+		/**
 		List<List<Color>> dic = new List<List<Color>>(){
 			colorsApplied00,colorsApplied01,colorsApplied02
 		};
@@ -76,6 +77,7 @@ public class ChromaticEffect : MonoBehaviour
 		if (true || forces.Count != 0) {
 			StartCoroutine(Cycle());
 		}
+		**/
 		//Graphics.Blit (textureApplied, textureApplied, matClear);	
 
 

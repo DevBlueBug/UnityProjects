@@ -12,7 +12,7 @@ public class Minimap : MonoBehaviour
 		SPR_Treasure,
 		SPR_Secret;
 
-	public Camera camera;
+	public Camera cam;
 	public GameBrain brain;
 
 	MinimapIcon[,] icons = null;
@@ -24,7 +24,7 @@ public class Minimap : MonoBehaviour
 		brain.E_GameStarted_NewRoom += H_NewRoom;
 	}
 	void H_NewRoom(Room room, int direction){
-		camera.transform.localPosition = 
+		cam.transform.localPosition = 
 			new Vector3 (room.posX,room.posY,-1);
 
 		for(int i = 0 ; i < icons.GetLength(0);i++)

@@ -16,7 +16,7 @@ public class HUDFPS : MonoBehaviour
 	// 5.5 frames.
 	
 	public  float updateInterval = 0.5F;
-	public UnityEngine.UI.Text guiText;
+	public UnityEngine.UI.Text KGuiText;
 	private float accum   = 0; // FPS accumulated over the interval
 	private int   frames  = 0; // Frames drawn over the interval
 	private float timeleft; // Left time for current interval
@@ -37,15 +37,15 @@ public class HUDFPS : MonoBehaviour
 			// display two fractional digits (f2 format)
 			float fps = accum/frames;
 			string format = System.String.Format("{0:F2} FPS",fps);
-			guiText.text = format;
+			KGuiText.text = format;
 			
 			if(fps < 30)
-				guiText.material.color = Color.yellow;
+				KGuiText.material.color = Color.yellow;
 			else 
 				if(fps < 10)
-					guiText.material.color = Color.red;
+					KGuiText.material.color = Color.red;
 			else
-				guiText.material.color = Color.green;
+				KGuiText.material.color = Color.green;
 			//	DebugConsole.Log(format,level);
 			timeleft = updateInterval;
 			accum = 0.0F;

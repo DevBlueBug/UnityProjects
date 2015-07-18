@@ -4,13 +4,13 @@ using System.Collections;
 public class GameMainCamera : MonoBehaviour
 {
 	public Camera cam;
-	float unitPerPixel = 1/50.0f;
+	//float unitPerPixel = 1/50.0f;
 	Vector3 center = new Vector3 (7,4,0);
 	// Use this for initialization
 	void Awake ()
 	{
 		PlayerManager.E_PlayerPositionChanged += PlayerPositionChanged;
-		cam.orthographicSize = 640 / (50.0f*2);
+		cam.orthographicSize = 640 / (50.0f*2); // height / pixels*2
 	}
 	public static float RoundToNearestPixel(float unityUnits, Camera viewingCamera)
 	{

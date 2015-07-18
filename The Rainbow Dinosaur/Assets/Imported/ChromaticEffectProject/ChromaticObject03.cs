@@ -55,7 +55,7 @@ public class ChromaticObject03 : MonoBehaviour
 		}
 		
 		var dir = dis.normalized;
-		float angle = Random.Range (0, 6.28f);
+		//float angle = Random.Range (0, 6.28f);
 		//var dir = new Vector3 (Mathf.Cos (angle), Mathf.Sin (angle), 0);
 		var ratio = (1 - distance / force.distance) * Random.Range (.01f, 1.0f);
 		if (Random.Range (0, 3) == 0)

@@ -1,13 +1,15 @@
 using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class RenderEntity : MonoBehaviour
 {
-	public RenderSprite renderSprite; 
+	public Entity entity;
+	public List<RenderSprite> renderSprite; 
 	public PPE_Object ppeObject;
 
 	public virtual void Awake ()
 	{
+
 
 
 	}

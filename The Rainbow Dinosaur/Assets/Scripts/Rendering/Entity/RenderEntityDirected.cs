@@ -6,12 +6,11 @@ public class RenderEntityDirected : RenderEntityMove
 	public enum StateDirection{Idl, Up,Down,Left,Right };
 	static Dictionary<StateDirection, string> dicAniStateTrigger = new Dictionary<StateDirection, string>(){
 		{StateDirection.Idl, "idl"},
-		{StateDirection.Up, "walk"},
+		{StateDirection.Up, "walkFront"},
 		{StateDirection.Right, "walkRight"},
-		{StateDirection.Down, "walk"},
+		{StateDirection.Down, "walkBack"},
 		{StateDirection.Left, "walkLeft"},
 	};
-	public EntityMove entity;
 	StateDirection stateAni;
 	Vector3[] posBefore = new Vector3[2]{Vector3.zero,Vector3.zero};
 	int posBeforeCount = 0 ;
@@ -19,7 +18,7 @@ public class RenderEntityDirected : RenderEntityMove
 
 	float GetEntityMagnitude(){
 		//return 0 if veloicty was 0 because it is not actually moving
-		return  Mathf.Min(1, entity.velocity.sqrMagnitude*100000)  *
+		return  Mathf.Min(1, GetEntity().velocity.sqrMagnitude*100000)  *
 				(entity.transform.localPosition - posBefore[(posBeforeCount+1) & 1]).magnitude;
 	}
 	void UpdatePosOld(){
@@ -37,15 +36,16 @@ public class RenderEntityDirected : RenderEntityMove
 			SetAniState (StateDirection.Idl);
 			return;
 		}
-		if (Mathf.Abs (entity.velocity.x) > Mathf.Abs (entity.velocity.y)) {
-			if (entity.velocity.x > 0)
+		var velocity = GetEntity ().velocity;
+		if (Mathf.Abs (velocity.x) > Mathf.Abs (velocity.y)) {
+			if (velocity.x > 0)
 				SetAniState (StateDirection.Right);
-			else if (entity.velocity.x < 0) 
+			else if (velocity.x < 0) 
 				SetAniState (StateDirection.Left);
 		} else {
-			if (entity.velocity.y > 0)
+			if (velocity.y > 0)
 				SetAniState (StateDirection.Up);
-			else if (entity.velocity.y < 0) 
+			else if (velocity.y < 0) 
 				SetAniState (StateDirection.Down);
 		}
 	}

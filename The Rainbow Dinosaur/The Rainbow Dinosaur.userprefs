@@ -1,22 +1,18 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Rendering\Entity\RenderEntityEquipped.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Rendering\Entity\RenderEntity.cs">
     <Files>
-      <File FileName="Assets\Scripts\Data\DataJson\JsonWrapper.cs" Line="1" Column="1" />
-      <File FileName="c:\Users\KyungHwan\Desktop\GitHub\DevBlueBug\UnityProjects\The Rainbow Dinosaur\Assets\Scripts\Game\GameBrain.cs" Line="1" Column="1" />
-      <File FileName="Assets\Shader\Game\ShadowAdditive.shader" Line="1" Column="1" />
-      <File FileName="Assets\Shader\Game\SpriteRenderer.shader" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Rendering\RenderSprite.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Rendering\Entity\AniEntity.cs" Line="1" Column="1" />
-      <File FileName="c:\Users\KyungHwan\Desktop\GitHub\DevBlueBug\UnityProjects\The Rainbow Dinosaur\Assets\Scripts\Rendering\Room\RenderRoom.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Rendering\Entity\RenderDoor.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\Items\Item.cs" Line="31" Column="57" />
+      <File FileName="Assets\Scripts\Game\Entity\Items\EItem.cs" Line="56" Column="33" />
+      <File FileName="c:\Users\KyungHwan\Desktop\GitHub\DevBlueBug\UnityProjects\The Rainbow Dinosaur\Assets\Scripts\Game\Entity\Items\EItemManager.cs" Line="45" Column="32" />
+      <File FileName="Assets\Scripts\Rendering\Prefabs\Prefabs_RenderEntityEquipped.cs" Line="10" Column="23" />
+      <File FileName="Assets\Scripts\Rendering\Entity\RenderEntityEquipped.cs" Line="54" Column="30" />
+      <File FileName="Assets\Scripts\Rendering\Prefabs\Prefabs_RenderItem.cs" Line="27" Column="27" />
+      <File FileName="Assets\Scripts\Rendering\Entity\RenderItem.cs" Line="12" Column="30" />
+      <File FileName="Assets\Scripts\Game\Items\Inventory.cs" Line="40" Column="36" />
+      <File FileName="Assets\Scripts\Rendering\AwakeOnce_Render.cs" Line="13" Column="3" />
+      <File FileName="Assets\Scripts\Game\PlayerManager.cs" Line="53" Column="3" />
       <File FileName="Assets\Scripts\Rendering\Entity\RenderEntity.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Rendering\Entity\RenderBullet.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Rendering\Entity\RenderEntityMove.cs" Line="11" Column="3" />
-      <File FileName="Assets\Scripts\Rendering\Entity\RenderEntityMovePart.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Rendering\Entity\RenderEntityDirected.cs" Line="28" Column="3" />
-      <File FileName="Assets\Scripts\Rendering\Entity\RenderEntityEquipped.cs" Line="46" Column="25" />
-      <File FileName="Assets\Scripts\Game\Items\Item.cs" Line="16" Column="47" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
