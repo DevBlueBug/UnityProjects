@@ -19,7 +19,7 @@ public class Rorschach : MonoBehaviour {
 	}
 
 	public void Refresh(){
-		Debug.Log ("refreshing");
+		//Debug.Log ("refreshing");
 		matNoise.SetFloat ("_Frequency", frequency);
 		matNoise.SetFloat ("_Seed", seed);
 	}

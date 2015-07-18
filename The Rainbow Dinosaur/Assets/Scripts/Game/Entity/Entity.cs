@@ -33,9 +33,10 @@ public class Entity : MonoBehaviour
 	internal bool 
 		isContinueTriggerCheck = true,
 		isAlive = true;
-	internal NItem.Inventory inventory = new NItem.Inventory();
+	NItem.Inventory inventory = new NItem.Inventory();
 	internal NItem.NWeapon.Weapon weapon = new NItem.NWeapon.Weapon();
 	internal List<NBehaviour.Behaviour> bhvs = new List<NBehaviour.Behaviour> ();
+
 
 
 
@@ -65,6 +66,10 @@ public class Entity : MonoBehaviour
 		this.transform.position = new Vector3 (transform.position.x,transform.position.y,transform.position.y);
 		E_Updated (this, room);
 	
+	}
+	
+	public NItem.Inventory GetInventory(){
+		return this.inventory;
 	}
 	// Update is called once per frame
 	void H_TriggerEnter (Entity me, Entity other)

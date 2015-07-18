@@ -25,12 +25,14 @@ namespace NItem
 		public int Count = 1;
 		public static Item Get(KId id){
 			switch (id) {
+			default:
+				return new Item(KId.Unknown,1);
 			case KId.Equip_Body_Player_Default:
 				return new Item(id,1).SetTypeEquip(KTypeEquip.Body);
 			case KId.Equip_Head_Player_Default:
+			case KId.Equip_Head_Kaonash:
 				return new Item(id,1).SetTypeEquip(KTypeEquip.Head);
 			}
-			return null;
 		}
 		
 		public Item ()

@@ -15,7 +15,7 @@ public class RenderEntityEquipped : RenderEntityDirected
 	public override void Awake ()
 	{
 		base.Awake ();
-		this.entity.inventory.E_EquipItem += H_EquipItem;
+		this.entity.GetInventory().E_EquipItem += H_EquipItem;
 	}
 	public void Equip(RenderEntityMovePart item, NItem.Item.KTypeEquip id){
 		switch (id) {
@@ -56,7 +56,7 @@ public class RenderEntityEquipped : RenderEntityDirected
 		AddPart (replacedBy);
 	}
 	void H_EquipItem(Item item){
-		Debug.Log ("EQUIPPING ITEM " + item + " " + item.id + " " + item.typeEquip);
+		//Debug.Log ("H_EquipItem " + item + " " + item.id + " " + item.typeEquip);
 		Equip (Prefabs_RenderEntityEquipped.Get (item.id), item.typeEquip);
 
 		//equipping item now

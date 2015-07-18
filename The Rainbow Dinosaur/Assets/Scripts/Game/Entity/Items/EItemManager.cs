@@ -55,7 +55,7 @@ public class EItemManager : MonoBehaviour
 		return obj;
 	}
 	EItem AddContent(EItem model, Item item){
-		model.inventory.Add(model,item);
+		model.GetInventory().Add(model,item);
 		model.idItem = item.id;
 		switch (model.idItem) {
 		case Item.KId.Equip_Head_Player_Default:

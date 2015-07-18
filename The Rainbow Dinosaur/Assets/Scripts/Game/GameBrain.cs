@@ -47,9 +47,11 @@ public class GameBrain : MonoBehaviour
 		pManager.KUpdate ();
 		if (Input.GetKeyDown (KeyCode.E)) {
 			Debug.Log("ITEM SPAWN");
+			pManager.player.entity.GetInventory().Add(pManager.player.entity,NItem.Item.Get(NItem.Item.KId.Equip_Head_Kaonash));
 			//room.AddEntity(P_ItemManager.GetRandom(),
 			 //              Random.Range(1,13),Random.Range(1,7),false);
 		}
+		//Debug.Log (pManager.player.entity.GetInventory ().items.Count);
 		rManager.KUpdate ();
 	}
 	void OnGUI(){
@@ -89,7 +91,7 @@ public class GameBrain : MonoBehaviour
 		H_NewRoomInit (roomNew, direction);
 	}
 	public void H_NewRoomInit(Room roomInit, int direction){
-		Debug.Log (roomInit);
+		//Debug.Log (roomInit);
 		roomInit.On ();
 		pManager.E_NewRoom (roomInit, direction);
 		if(this.room != null) this.room.Off ();

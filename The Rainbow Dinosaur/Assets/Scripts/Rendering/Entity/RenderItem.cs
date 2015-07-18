@@ -14,7 +14,7 @@ public class RenderItem : RenderEntity
 		
 		var item = GetEntity ();
 		
-		var m =  Prefabs_RenderItem.GetModel (item.idItem,item.inventory.items);
+		var m =  Prefabs_RenderItem.GetModel (item.idItem,item.GetInventory().items);
 		renderSprites.Add (m);
 		m.transform.parent = model.transform.parent;
 		m.transform.position = model.transform.position;

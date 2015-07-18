@@ -148,7 +148,7 @@ public class PPE_Engine : MonoBehaviour
 			position, color,(int)(  10+ powerEffect00*20 	));
 	}
 	void H_NewChromaticObjects(List<PPE_Object> objects){
-		Debug.Log ("New chromatic objects");
+		//Debug.Log ("New chromatic objects");
 		this.objects = objects;
 	}
 	void H_NewForce(PPE_Force force){

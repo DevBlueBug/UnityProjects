@@ -35,7 +35,7 @@ public class EItem : EntityMove
 		//E_PlayerAcquired (this, target);
 		//Triggered (target);
 		if (!isStablized) return 0;
-		if (inventory != null) Transfer (target);
+		if (GetInventory() != null) Transfer (target);
 		Kill ();
 		return -1;
 	}
@@ -51,16 +51,23 @@ public class EItem : EntityMove
 
 
 	void Transfer(Entity entity){
-		foreach (var i in inventory.items) {
+		var inventoryMe = GetInventory ();
+
+		//Debug.Log ("TRANSFER " + inventoryMe.items.Count);
+		foreach (var i in inventoryMe.items) {
 			if(helperIsRequireTransfer(i.Key) ){
-				entity.inventory.Add(entity,i.Value);
+				//Debug.Log("Rrequiring item Transfer " + i.Value.id);
+				entity.GetInventory().Add(entity,i.Value);
 				continue;
 			}
 			else{
+				//Debug.Log("Not requiring item Transfer");
 				SpecialTransfer(entity, i.Value);
 			}
 		}
 	}
+
+	//if weapons
 	void SpecialTransfer(Entity entity, Item item){
 		if(item.id == Item.KId.Weapon){
 			entity.weapon= ((NItem.NWeapon.Weapon)item)

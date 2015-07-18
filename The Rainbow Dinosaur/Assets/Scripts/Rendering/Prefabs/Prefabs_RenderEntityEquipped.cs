@@ -21,6 +21,8 @@ public class Prefabs_RenderEntityEquipped : MonoBehaviour
 			return Instantiate(me.Head_Player_Default);
 		case NItem.Item.KId.Equip_Body_Player_Default:
 			return Instantiate(me.Body_Player_Default);
+		case NItem.Item.KId.Equip_Head_Kaonash:
+			return Instantiate(me.Head_Kaonash);
 
 		}
 	}

@@ -41,18 +41,23 @@ namespace NItem{
 		}
 		public Inventory Add(Entity owner, Item itemAdded){
 			Item item;
+			//Debug.Log ("ADD " + owner.meType + " " + owner.gameObject.name + " " + items.Count);
 			items.TryGetValue (itemAdded.id, out item);
 			if (item == null) {
-				if(itemAdded.typeEquip != Item.KTypeEquip.None){
-					AddSlot(itemAdded);
+				if (itemAdded.typeEquip != Item.KTypeEquip.None) {
+					//Debug.Log ("AddSlot "+ itemAdded.id + " " + itemAdded.typeEquip);
+					AddSlot (itemAdded);
 
-				}else {
+				} else {
+					//Debug.Log ("AddDefault " + itemAdded.id);
 					items.Add (itemAdded.id, itemAdded);
 				}
 
-			}
-			else
+			} else {
+				//Debug.Log(items.Count);
+				//Debug.Log("Add Additive " + itemAdded.id + " " + items.Count);
 				items [itemAdded.id].Count += itemAdded.Count;
+			}
 			return this;
 		}
 		void AddSlot(Item itemAdded){
@@ -64,12 +69,18 @@ namespace NItem{
 				AddSlot(ref this.equipBody,itemAdded);
 				break;
 			}
-			E_EquipItem (itemAdded);
 		}
 		void AddSlot(ref Item slot, Item itemAdded){
-			if (slot != null)
+			if (slot != null) {
+				//Debug.Log("DISCARDING");
 				itemsDiscarded.Add (slot);
+				items.Remove (slot.id);
+			}
+			items.Add (itemAdded.id, itemAdded);
+			//Debug.Log ("AddSlot AddDefault " + itemAdded.id + " " + items.Count);
 			slot = itemAdded;
+			//Debug.Log ("E_EquipItem " + itemAdded.id );
+			E_EquipItem (itemAdded);
 		}
 		public void Reset(){
 			

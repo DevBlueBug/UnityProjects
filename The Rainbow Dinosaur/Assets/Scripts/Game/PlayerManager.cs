@@ -58,8 +58,8 @@ public class PlayerManager : MonoBehaviour
 		player.entity.E_Attacked += H_Attacked;
 		player.entity.weapon = new NItem.NWeapon.GunBasic ()
 			.SetTargets (Entity.KType.Enemy, Entity.KType.World);
-		player.entity.inventory.Add (player.entity, NItem.Item.Get(NItem.Item.KId.Equip_Body_Player_Default));
-		player.entity.inventory.Add (player.entity, NItem.Item.Get(NItem.Item.KId.Equip_Head_Player_Default));
+		player.entity.GetInventory().Add (player.entity, NItem.Item.Get(NItem.Item.KId.Equip_Body_Player_Default));
+		player.entity.GetInventory().Add (player.entity, NItem.Item.Get(NItem.Item.KId.Equip_Head_Player_Default));
 	}
 	public void E_NewRoom(Room room, int direction){
 		this.room = room;

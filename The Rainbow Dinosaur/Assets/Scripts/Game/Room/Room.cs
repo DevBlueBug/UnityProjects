@@ -263,8 +263,9 @@ public class Room : MonoBehaviour
 	}
 	public virtual List<EItem> GetDrops(Entity entity){
 		List<EItem> items = new List<EItem> ();
+		var inventory = entity.GetInventory ();
 		if (entity.meType == Entity.KType.Enemy) {
-			foreach (var entry in entity.inventory.items) {
+			foreach (var entry in inventory.items) {
 				items.Add(P_ItemManager.GetDrop(entry.Value));
 
 				//items.Add(E_GetItemDrop(entry.Value)) ;
@@ -272,6 +273,8 @@ public class Room : MonoBehaviour
 			var money = P_ItemManager.GetMoney(Random.Range(0,10) );
 			foreach(var m in money)
 				items.Add(m);
+			
+			items.Add(P_ItemManager.GetDrop(NItem.Item.Get(NItem.Item.KId.Equip_Head_Kaonash) ));
 			//var gold = E_GetItemDrop (new NItem.Item (NItem.Item.KType.Money,1 ));
 			//gold.transform.position = entity.transform.position;
 
@@ -281,15 +284,10 @@ public class Room : MonoBehaviour
 			i.transform.position = entity.transform.position + new Vector3(Random.Range(-1,.1f),Random.Range(-1,.1f),0);
 
 		}
-		for (int i = 0; i < entity.inventory.items.Count; i++) {
-			//var item = entity.inventory.items[i];
-			
-		}
 		if (entity.meType == Entity.KType.Enemy) {
 			
 		}
 		return items;
-
 	}
 
 
