@@ -1,20 +1,20 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Game\Room\Room.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Shader\Rorschach\Noise.shader">
     <Files>
-      <File FileName="Assets\Scripts\Game\Room\Room.cs" Line="271" Column="7" />
-      <File FileName="Assets\Scripts\Rendering\Entity\RenderEntityEquipped.cs" Line="59" Column="5" />
-      <File FileName="Assets\Scripts\Game\PlayerManager.cs" Line="59" Column="42" />
-      <File FileName="c:\Users\KyungHwan\Desktop\GitHub\DevBlueBug\UnityProjects\The Rainbow Dinosaur\Assets\Scripts\Game\Entity\Items\EItemManager.cs" Line="57" Column="19" />
-      <File FileName="c:\Users\KyungHwan\Desktop\GitHub\DevBlueBug\UnityProjects\The Rainbow Dinosaur\Assets\Scripts\Game\UI\GameUI.cs" Line="25" Column="64" />
+      <File FileName="Assets\Scripts\Game\Room\Room.cs" Line="275" Column="4" />
+      <File FileName="Assets\Scripts\Rendering\Entity\RenderEntityEquipped.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\PlayerManager.cs" Line="1" Column="1" />
+      <File FileName="c:\Users\KyungHwan\Desktop\GitHub\DevBlueBug\UnityProjects\The Rainbow Dinosaur\Assets\Scripts\Game\Entity\Items\EItemManager.cs" Line="1" Column="1" />
+      <File FileName="c:\Users\KyungHwan\Desktop\GitHub\DevBlueBug\UnityProjects\The Rainbow Dinosaur\Assets\Scripts\Game\UI\GameUI.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Game\Entity\EntityMove.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Game\GameBrain.cs" Line="81" Column="5" />
-      <File FileName="Assets\Scripts\Game\Entity\Items\EItem.cs" Line="56" Column="5" />
-      <File FileName="Assets\Scripts\Game\Items\Item.cs" Line="42" Column="36" />
-      <File FileName="Assets\Scripts\Game\Entity\Items\EItem_Gen.cs" Line="12" Column="4" />
-      <File FileName="Assets\Scripts\Rendering\Rorschach\Rorschach.cs" Line="22" Column="5" />
-      <File FileName="Assets\Scripts\PostProcessingEngine\Objects\PPE_Object.cs" Line="58" Column="35" />
-      <File FileName="Assets\Scripts\Rendering\Prefabs\Prefabs_RenderEntityEquipped.cs" Line="25" Column="40" />
+      <File FileName="Assets\Scripts\Game\GameBrain.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\Entity\Items\EItem.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\Items\Item.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Game\Entity\Items\EItem_Gen.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PostProcessingEngine\Objects\PPE_Object.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Rendering\Prefabs\Prefabs_RenderEntityEquipped.cs" Line="1" Column="1" />
+      <File FileName="Assets\Shader\Rorschach\Noise.shader" Line="4" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
