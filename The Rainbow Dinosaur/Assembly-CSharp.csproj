@@ -1,220 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.20506</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{1B4DE930-98B9-89E8-511C-E21AB86D157D}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <BaseDirectory>Assets</BaseDirectory>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{1B4DE930-98B9-89E8-511C-E21AB86D157D}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-CSharp</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+	<BaseDirectory>Assets</BaseDirectory>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>True</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>False</Optimize>
-    <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_1_1;UNITY_5_1;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_LICENSE;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_EDITOR_METRICS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoWarn>0169</NoWarn>
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_5_1_1;UNITY_5_1;UNITY_5;ENABLE_NEW_BUGREPORTER;ENABLE_2D_PHYSICS;ENABLE_4_6_FEATURES;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PHYSICS_PHYSX3;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SINGLE_INSTANCE_BUILD_SETTING;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_LICENSE;ENABLE_AUDIOMIXER_SUSPEND;ENABLE_EDITOR_METRICS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_LOCALIZATION;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>True</Optimize>
-    <OutputPath>Temp\bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoWarn>0169</NoWarn>
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="UnityEngine">
-      <HintPath>C:\Program Files\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor">
-      <HintPath>C:\Program Files\Unity\Editor\Data\Managed\UnityEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml" />
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="System.Xml.Linq" />
+	<Reference Include="UnityEngine">
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	</Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Imported\ChromaticEffectProject\ChromaticEffect.cs" />
-    <Compile Include="Assets\Imported\ChromaticEffectProject\ChromaticObject03.cs" />
-    <Compile Include="Assets\Imported\ChromaticEffectProject\ChromaticObjectGlobal.cs" />
-    <Compile Include="Assets\Imported\ChromaticEffectProject\_ChromaticTest.cs" />
-    <Compile Include="Assets\Scripts\AStar\KMap.cs" />
-    <Compile Include="Assets\Scripts\AStar\Node.cs" />
-    <Compile Include="Assets\Scripts\AnimationPlay.cs" />
-    <Compile Include="Assets\Scripts\CBT_Screen.cs" />
-    <Compile Include="Assets\Scripts\CamMaterial.cs" />
-    <Compile Include="Assets\Scripts\Data\DataJson\Board.cs" />
-    <Compile Include="Assets\Scripts\Data\DataJson\JsonWrapper.cs" />
-    <Compile Include="Assets\Scripts\Data\DataJson\Piece.cs" />
-    <Compile Include="Assets\Scripts\Data\DataLoader.cs" />
-    <Compile Include="Assets\Scripts\Data\DataMap\DDoor.cs" />
-    <Compile Include="Assets\Scripts\Data\DataMap\DMap.cs" />
-    <Compile Include="Assets\Scripts\Data\DataMap\DMapGenerator.cs" />
-    <Compile Include="Assets\Scripts\Data\DataMap\DMapPopulator.cs" />
-    <Compile Include="Assets\Scripts\Data\DataMap\DRoom.cs" />
-    <Compile Include="Assets\Scripts\Data\DataMap\Data_Test_Scenario.cs" />
-    <Compile Include="Assets\Scripts\Data\DataOrganizer\Organizer.cs" />
-    <Compile Include="Assets\Scripts\Game\BulletManager.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Behavior\Behaviour.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Behavior\BhvAvoidBulletsForce.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Behavior\BhvFireAtPlayer.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Behavior\BhvFollowPlayer.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Behavior\BhvFollowPlayerFly.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Behavior\BhvFollowPlayerFlyWave.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Behavior\BhvOnContact.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Behavior\BhvRunInCircle.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Behavior\Condition\Condition.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Behavior\Condition\HpChanged.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Behavior\Condition\HpChanged_Threshold.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Behavior\Condition\TimeElapsed.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\EBullet.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\EDoor.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Enemy\Enemy.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Enemy\EnemyBoss_00.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Enemy\EnemyFly.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Enemy\EnemyFlyAttack.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Enemy\EnemyFlyAvoid.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Enemy\EnemyFlyDancer.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Enemy\EnemyFlyWanderer.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Enemy\EnemyFoot.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Entity.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\EntityMove.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Items\EItem.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Items\EItemManager.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Items\EItem_Gen.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Items\EItem_Reward.cs" />
-    <Compile Include="Assets\Scripts\Game\Entity\Modifiers\AttackOnContract.cs" />
-    <Compile Include="Assets\Scripts\Game\GameBrain.cs" />
-    <Compile Include="Assets\Scripts\Game\Items\Equips\Head_Kaonash.cs" />
-    <Compile Include="Assets\Scripts\Game\Items\Inventory.cs" />
-    <Compile Include="Assets\Scripts\Game\Items\Item.cs" />
-    <Compile Include="Assets\Scripts\Game\Items\Weapon\GunBasic.cs" />
-    <Compile Include="Assets\Scripts\Game\Items\Weapon\Shotgun.cs" />
-    <Compile Include="Assets\Scripts\Game\Items\Weapon\Weapon.cs" />
-    <Compile Include="Assets\Scripts\Game\Player.cs" />
-    <Compile Include="Assets\Scripts\Game\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\Game\PlayerInformation.cs" />
-    <Compile Include="Assets\Scripts\Game\PlayerManager.cs" />
-    <Compile Include="Assets\Scripts\Game\Room\Room.cs" />
-    <Compile Include="Assets\Scripts\Game\Room\RoomAsset.cs" />
-    <Compile Include="Assets\Scripts\Game\Room\RoomConverter.cs" />
-    <Compile Include="Assets\Scripts\Game\Test\Test00.cs" />
-    <Compile Include="Assets\Scripts\Game\Test\Test01.cs" />
-    <Compile Include="Assets\Scripts\Game\UI\GameUI.cs" />
-    <Compile Include="Assets\Scripts\Game\UI\Minimap.cs" />
-    <Compile Include="Assets\Scripts\Game\UI\MinimapIcon.cs" />
-    <Compile Include="Assets\Scripts\HUDFPS.cs" />
-    <Compile Include="Assets\Scripts\PointerEntity.cs" />
-    <Compile Include="Assets\Scripts\PointerSprites.cs" />
-    <Compile Include="Assets\Scripts\PostProcessingEngine\Chromatic\ChromaticAberrarionCamera.cs" />
-    <Compile Include="Assets\Scripts\PostProcessingEngine\Chromatic\ChromaticAberration.cs" />
-    <Compile Include="Assets\Scripts\PostProcessingEngine\Chromatic\ChromaticAberrationMonobehavior.cs" />
-    <Compile Include="Assets\Scripts\PostProcessingEngine\ColorDeteriorate\ColorDeteriorate.cs" />
-    <Compile Include="Assets\Scripts\PostProcessingEngine\ColorDeteriorate\ColorDeteriorateCamera.cs" />
-    <Compile Include="Assets\Scripts\PostProcessingEngine\EffectColorDistortion Not Being Used\CameraMaterial.cs" />
-    <Compile Include="Assets\Scripts\PostProcessingEngine\EffectColorDistortion Not Being Used\ColorDistortionParticle.cs" />
-    <Compile Include="Assets\Scripts\PostProcessingEngine\EffectColorDistortion Not Being Used\ColorDistortionParticleEngine.cs" />
-    <Compile Include="Assets\Scripts\PostProcessingEngine\EffectColorDistortion Not Being Used\EffectColorDistortion.cs" />
-    <Compile Include="Assets\Scripts\PostProcessingEngine\Objects\PPE_Object.cs" />
-    <Compile Include="Assets\Scripts\PostProcessingEngine\Objects\PPE_Object_Bullet.cs" />
-    <Compile Include="Assets\Scripts\PostProcessingEngine\PPE_Apply.cs" />
-    <Compile Include="Assets\Scripts\PostProcessingEngine\PPE_Apply_Chromatic.cs" />
-    <Compile Include="Assets\Scripts\PostProcessingEngine\PPE_Effect.cs" />
-    <Compile Include="Assets\Scripts\PostProcessingEngine\PPE_Engine.cs" />
-    <Compile Include="Assets\Scripts\PostProcessingEngine\PPE_Force.cs" />
-    <Compile Include="Assets\Scripts\PostProcessingEngine\PPE_Particle.cs" />
-    <Compile Include="Assets\Scripts\Rendering\AwakeOnce_Render.cs" />
-    <Compile Include="Assets\Scripts\Rendering\CameraRenderHere.cs" />
-    <Compile Include="Assets\Scripts\Rendering\Decoration\DC_Flower.cs" />
-    <Compile Include="Assets\Scripts\Rendering\ETC\EBitamsk_Simple.cs" />
-    <Compile Include="Assets\Scripts\Rendering\ETC\EBitmask.cs" />
-    <Compile Include="Assets\Scripts\Rendering\ETC\EReposion.cs" />
-    <Compile Include="Assets\Scripts\Rendering\ETC\EdgeReposition.cs" />
-    <Compile Include="Assets\Scripts\Rendering\ETC\EdgeRotator.cs" />
-    <Compile Include="Assets\Scripts\Rendering\ETC\EffectKilled.cs" />
-    <Compile Include="Assets\Scripts\Rendering\Effect\EffectBulletBounce.cs" />
-    <Compile Include="Assets\Scripts\Rendering\Effect\EffectChromaticForce.cs" />
-    <Compile Include="Assets\Scripts\Rendering\Entity\AniEntity.cs" />
-    <Compile Include="Assets\Scripts\Rendering\Entity\RenderBullet.cs" />
-    <Compile Include="Assets\Scripts\Rendering\Entity\RenderDoor.cs" />
-    <Compile Include="Assets\Scripts\Rendering\Entity\RenderEntity.cs" />
-    <Compile Include="Assets\Scripts\Rendering\Entity\RenderEntityDirected.cs" />
-    <Compile Include="Assets\Scripts\Rendering\Entity\RenderEntityEquipped.cs" />
-    <Compile Include="Assets\Scripts\Rendering\Entity\RenderEntityMove.cs" />
-    <Compile Include="Assets\Scripts\Rendering\Entity\RenderEntityMovePart.cs" />
-    <Compile Include="Assets\Scripts\Rendering\Entity\RenderItem.cs" />
-    <Compile Include="Assets\Scripts\Rendering\GameMainCamera.cs" />
-    <Compile Include="Assets\Scripts\Rendering\Prefabs\Prefabs_RenderEntityEquipped.cs" />
-    <Compile Include="Assets\Scripts\Rendering\Prefabs\Prefabs_RenderItem.cs" />
-    <Compile Include="Assets\Scripts\Rendering\RenderEyeball.cs" />
-    <Compile Include="Assets\Scripts\Rendering\RenderManager.cs" />
-    <Compile Include="Assets\Scripts\Rendering\RenderRoomConstant.cs" />
-    <Compile Include="Assets\Scripts\Rendering\RenderSprite.cs" />
-    <Compile Include="Assets\Scripts\Rendering\RenderWalls.cs" />
-    <Compile Include="Assets\Scripts\Rendering\Room\RenderRoom.cs" />
-    <Compile Include="Assets\Scripts\Rendering\Room\RenderRoomFloor.cs" />
-    <Compile Include="Assets\Scripts\Rendering\Room\RenderRoomWalls.cs" />
-    <Compile Include="Assets\Scripts\Rendering\RoomDecorator.cs" />
-    <Compile Include="Assets\Scripts\Rendering\Rorschach\Rorschach.cs" />
-    <Compile Include="Assets\Scripts\Rendering\Rorschach\RorschachEditor.cs" />
-    <Compile Include="Assets\Scripts\ShaderUpdate.cs" />
-    <Compile Include="Assets\Scripts\SimpleJSON.cs" />
-    <Compile Include="Assets\Scripts\SpriteRenderer\RandomSprite.cs" />
-    <Compile Include="Assets\Scripts\Utility\EasyCamera.cs" />
-    <Compile Include="Assets\Scripts\Utility\EasyFile.cs" />
-    <Compile Include="Assets\Scripts\Utility\EasyInstantiate.cs" />
-    <Compile Include="Assets\Scripts\Utility\EasyMath.cs" />
-    <Compile Include="Assets\Scripts\Utility\EasyRenderTexture.cs" />
-    <Compile Include="Assets\Scripts\Utility\EasyTimer.cs" />
-    <Compile Include="Assets\Scripts\Utility\EasyUnity.cs" />
-    <None Include="Assets\Shader\CBTScreen.shader" />
-    <None Include="Assets\Shader\SpriteTinter.shader" />
-    <None Include="Assets\Shader\Game\ColorLitter.shader" />
-    <None Include="Assets\Shader\Wall.shader" />
-    <None Include="Assets\Shader\Chromatic\ChromaticObject.shader" />
-    <None Include="Assets\Shader\Deteriorate\DeteriorateUpdate.shader" />
-    <None Include="Assets\Shader\Chromatic\ChromaticApply.shader" />
-    <None Include="Assets\Shader\Room\RoomFloor.shader" />
-    <None Include="Assets\Shader\Rorschach\Noise.shader" />
-    <None Include="Assets\Imported\ChromaticEffectProject\Material\Chromatic.shader" />
-    <None Include="Assets\Imported\ChromaticEffectProject\Material\ChromaticClear.shader" />
-    <None Include="Assets\Shader\Rorschach\Blur.shader" />
-    <None Include="Assets\Shader\ShaderUtility.cginc" />
-    <None Include="Assets\Shader\Deteriorate\DeteriorateClear.shader" />
-    <None Include="Assets\Imported\ChromaticEffectProject\Material\ChromaticApply.shader" />
-    <None Include="Assets\Shader\Chromatic\ChromaticClear.shader" />
-    <None Include="Assets\Shader\Game\ShadowAdditive.shader" />
-    <None Include="Assets\Shader\ClearTransparent.shader" />
-    <None Include="Assets\Shader\Rorschach\Apply.shader" />
-    <None Include="Assets\Shader\Game\SpriteRenderer.shader" />
-    <None Include="Assets\Shader\Deteriorate\Deteriorate.shader" />
-    <None Include="Assets\Shader\PPE_Particle.shader" />
-    <None Include="Assets\Shader\Deteriorate\DeteriorateApply.shader" />
-    <None Include="Assets\Shader\IgnoreTransparent.shader" />
-    <None Include="Assets\Shader\Rorschach\SimplexNoise.shader" />
-    <Reference Include="UnityEngine.UI">
-      <HintPath>C:\Program Files\Unity\Editor\Data\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>C:\Program Files\Unity\Editor\Data\UnityExtensions\Unity\Networking\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Analytics">
-      <HintPath>C:\Program Files\Unity\Editor\Data\UnityExtensions\Unity\UnityAnalytics\UnityEngine.Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>C:\Program Files\Unity\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
+     <Compile Include="Assets\Imported\ChromaticEffectProject\ChromaticEffect.cs" />
+     <Compile Include="Assets\Imported\ChromaticEffectProject\ChromaticObject03.cs" />
+     <Compile Include="Assets\Imported\ChromaticEffectProject\ChromaticObjectGlobal.cs" />
+     <Compile Include="Assets\Imported\ChromaticEffectProject\_ChromaticTest.cs" />
+     <Compile Include="Assets\Scripts\AStar\KMap.cs" />
+     <Compile Include="Assets\Scripts\AStar\Node.cs" />
+     <Compile Include="Assets\Scripts\AnimationPlay.cs" />
+     <Compile Include="Assets\Scripts\CBT_Screen.cs" />
+     <Compile Include="Assets\Scripts\CamMaterial.cs" />
+     <Compile Include="Assets\Scripts\Data\DataJson\Board.cs" />
+     <Compile Include="Assets\Scripts\Data\DataJson\JsonWrapper.cs" />
+     <Compile Include="Assets\Scripts\Data\DataJson\Piece.cs" />
+     <Compile Include="Assets\Scripts\Data\DataLoader.cs" />
+     <Compile Include="Assets\Scripts\Data\DataMap\DDoor.cs" />
+     <Compile Include="Assets\Scripts\Data\DataMap\DMap.cs" />
+     <Compile Include="Assets\Scripts\Data\DataMap\DMapGenerator.cs" />
+     <Compile Include="Assets\Scripts\Data\DataMap\DMapPopulator.cs" />
+     <Compile Include="Assets\Scripts\Data\DataMap\DRoom.cs" />
+     <Compile Include="Assets\Scripts\Data\DataMap\Data_Test_Scenario.cs" />
+     <Compile Include="Assets\Scripts\Data\DataOrganizer\Organizer.cs" />
+     <Compile Include="Assets\Scripts\Game\BulletManager.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Behavior\Behaviour.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Behavior\BhvAvoidBulletsForce.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Behavior\BhvFireAtPlayer.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Behavior\BhvFollowPlayer.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Behavior\BhvFollowPlayerFly.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Behavior\BhvFollowPlayerFlyWave.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Behavior\BhvOnContact.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Behavior\BhvRunInCircle.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Behavior\Condition\Condition.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Behavior\Condition\HpChanged.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Behavior\Condition\HpChanged_Threshold.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Behavior\Condition\TimeElapsed.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\EBullet.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\EDoor.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Enemy\Enemy.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Enemy\EnemyBoss_00.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Enemy\EnemyFly.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Enemy\EnemyFlyAttack.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Enemy\EnemyFlyAvoid.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Enemy\EnemyFlyDancer.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Enemy\EnemyFlyWanderer.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Enemy\EnemyFoot.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Entity.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\EntityMove.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Items\EItem.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Items\EItemManager.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Items\EItem_Gen.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Items\EItem_Reward.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Modifiers\AttackOnContract.cs" />
+     <Compile Include="Assets\Scripts\Game\GameBrain.cs" />
+     <Compile Include="Assets\Scripts\Game\Items\Equips\Head_Kaonash.cs" />
+     <Compile Include="Assets\Scripts\Game\Items\Inventory.cs" />
+     <Compile Include="Assets\Scripts\Game\Items\Item.cs" />
+     <Compile Include="Assets\Scripts\Game\Items\Weapon\GunBasic.cs" />
+     <Compile Include="Assets\Scripts\Game\Items\Weapon\Shotgun.cs" />
+     <Compile Include="Assets\Scripts\Game\Items\Weapon\Weapon.cs" />
+     <Compile Include="Assets\Scripts\Game\Player.cs" />
+     <Compile Include="Assets\Scripts\Game\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\Game\PlayerInformation.cs" />
+     <Compile Include="Assets\Scripts\Game\PlayerManager.cs" />
+     <Compile Include="Assets\Scripts\Game\Room\Room.cs" />
+     <Compile Include="Assets\Scripts\Game\Room\RoomAsset.cs" />
+     <Compile Include="Assets\Scripts\Game\Room\RoomConverter.cs" />
+     <Compile Include="Assets\Scripts\Game\Test\Test00.cs" />
+     <Compile Include="Assets\Scripts\Game\Test\Test01.cs" />
+     <Compile Include="Assets\Scripts\Game\UI\GameUI.cs" />
+     <Compile Include="Assets\Scripts\Game\UI\Minimap.cs" />
+     <Compile Include="Assets\Scripts\Game\UI\MinimapIcon.cs" />
+     <Compile Include="Assets\Scripts\HUDFPS.cs" />
+     <Compile Include="Assets\Scripts\PointerEntity.cs" />
+     <Compile Include="Assets\Scripts\PointerSprites.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\Chromatic\ChromaticAberrarionCamera.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\Chromatic\ChromaticAberration.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\Chromatic\ChromaticAberrationMonobehavior.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\ColorDeteriorate\ColorDeteriorate.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\ColorDeteriorate\ColorDeteriorateCamera.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\EffectColorDistortion Not Being Used\CameraMaterial.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\EffectColorDistortion Not Being Used\ColorDistortionParticle.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\EffectColorDistortion Not Being Used\ColorDistortionParticleEngine.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\EffectColorDistortion Not Being Used\EffectColorDistortion.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\Objects\PPE_Object.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\Objects\PPE_Object_Bullet.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\PPE_Apply.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\PPE_Apply_Chromatic.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\PPE_Effect.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\PPE_Engine.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\PPE_Force.cs" />
+     <Compile Include="Assets\Scripts\PostProcessingEngine\PPE_Particle.cs" />
+     <Compile Include="Assets\Scripts\Rendering\AwakeOnce_Render.cs" />
+     <Compile Include="Assets\Scripts\Rendering\CameraRenderHere.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Decoration\DC_Flower.cs" />
+     <Compile Include="Assets\Scripts\Rendering\ETC\EBitamsk_Simple.cs" />
+     <Compile Include="Assets\Scripts\Rendering\ETC\EBitmask.cs" />
+     <Compile Include="Assets\Scripts\Rendering\ETC\EReposion.cs" />
+     <Compile Include="Assets\Scripts\Rendering\ETC\EdgeReposition.cs" />
+     <Compile Include="Assets\Scripts\Rendering\ETC\EdgeRotator.cs" />
+     <Compile Include="Assets\Scripts\Rendering\ETC\EffectKilled.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Effect\EffectBulletBounce.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Effect\EffectChromaticForce.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Entity\AniEntity.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Entity\RenderBullet.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Entity\RenderDoor.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Entity\RenderEntity.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Entity\RenderEntityDirected.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Entity\RenderEntityEquipped.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Entity\RenderEntityMove.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Entity\RenderEntityMovePart.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Entity\RenderItem.cs" />
+     <Compile Include="Assets\Scripts\Rendering\GameMainCamera.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Prefabs\Prefabs_RenderEntityEquipped.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Prefabs\Prefabs_RenderItem.cs" />
+     <Compile Include="Assets\Scripts\Rendering\RenderEyeball.cs" />
+     <Compile Include="Assets\Scripts\Rendering\RenderManager.cs" />
+     <Compile Include="Assets\Scripts\Rendering\RenderRoomConstant.cs" />
+     <Compile Include="Assets\Scripts\Rendering\RenderSprite.cs" />
+     <Compile Include="Assets\Scripts\Rendering\RenderWalls.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Room\RenderRoom.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Room\RenderRoomFloor.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Room\RenderRoomWalls.cs" />
+     <Compile Include="Assets\Scripts\Rendering\RoomDecorator.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Rorschach\Rorschach.cs" />
+     <Compile Include="Assets\Scripts\Rendering\Rorschach\RorschachEditor.cs" />
+     <Compile Include="Assets\Scripts\ShaderUpdate.cs" />
+     <Compile Include="Assets\Scripts\SimpleJSON.cs" />
+     <Compile Include="Assets\Scripts\SpriteRenderer\RandomSprite.cs" />
+     <Compile Include="Assets\Scripts\Utility\EasyCamera.cs" />
+     <Compile Include="Assets\Scripts\Utility\EasyFile.cs" />
+     <Compile Include="Assets\Scripts\Utility\EasyInstantiate.cs" />
+     <Compile Include="Assets\Scripts\Utility\EasyMath.cs" />
+     <Compile Include="Assets\Scripts\Utility\EasyRenderTexture.cs" />
+     <Compile Include="Assets\Scripts\Utility\EasyTimer.cs" />
+     <Compile Include="Assets\Scripts\Utility\EasyUnity.cs" />
+     <None Include="Assets\Shader\CBTScreen.shader" />
+     <None Include="Assets\Shader\SpriteTinter.shader" />
+     <None Include="Assets\Shader\Game\ColorLitter.shader" />
+     <None Include="Assets\Shader\Wall.shader" />
+     <None Include="Assets\Shader\Chromatic\ChromaticObject.shader" />
+     <None Include="Assets\Shader\Deteriorate\DeteriorateUpdate.shader" />
+     <None Include="Assets\Shader\Chromatic\ChromaticApply.shader" />
+     <None Include="Assets\Shader\Room\RoomFloor.shader" />
+     <None Include="Assets\Shader\Rorschach\Noise.shader" />
+     <None Include="Assets\Imported\ChromaticEffectProject\Material\Chromatic.shader" />
+     <None Include="Assets\Imported\ChromaticEffectProject\Material\ChromaticClear.shader" />
+     <None Include="Assets\Shader\Rorschach\Blur.shader" />
+     <None Include="Assets\Shader\ShaderUtility.cginc" />
+     <None Include="Assets\Shader\Deteriorate\DeteriorateClear.shader" />
+     <None Include="Assets\Imported\ChromaticEffectProject\Material\ChromaticApply.shader" />
+     <None Include="Assets\Shader\Chromatic\ChromaticClear.shader" />
+     <None Include="Assets\Shader\Game\ShadowAdditive.shader" />
+     <None Include="Assets\Shader\ClearTransparent.shader" />
+     <None Include="Assets\Shader\Rorschach\Apply.shader" />
+     <None Include="Assets\Shader\Game\SpriteRenderer.shader" />
+     <None Include="Assets\Shader\Deteriorate\Deteriorate.shader" />
+     <None Include="Assets\Shader\PPE_Particle.shader" />
+     <None Include="Assets\Shader\Deteriorate\DeteriorateApply.shader" />
+     <None Include="Assets\Shader\IgnoreTransparent.shader" />
+     <None Include="Assets\Shader\Rorschach\SimplexNoise.shader" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+ <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -224,4 +225,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  
 </Project>
