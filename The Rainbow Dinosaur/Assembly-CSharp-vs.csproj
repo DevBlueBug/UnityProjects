@@ -109,6 +109,8 @@
      <Compile Include="Assets\Scripts\Game\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\Game\Room\Room.cs" />
      <Compile Include="Assets\Scripts\Game\Room\RoomAsset.cs" />
+     <Compile Include="Assets\Scripts\Game\Room\RoomAsset_Entities.cs" />
+     <Compile Include="Assets\Scripts\Game\Room\RoomAsset_Environment.cs" />
      <Compile Include="Assets\Scripts\Game\Room\RoomConverter.cs" />
      <Compile Include="Assets\Scripts\Game\Test\Test00.cs" />
      <Compile Include="Assets\Scripts\Game\Test\Test01.cs" />
