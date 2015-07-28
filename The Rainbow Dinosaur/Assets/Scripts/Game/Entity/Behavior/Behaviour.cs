@@ -11,13 +11,13 @@ namespace NBehaviour{
 			bhvParent,
 			bhvSuccess,bhvFail;
 		public List<Behaviour> others = new List<NBehaviour.Behaviour>();
-		public  NCondition.Condition condition;
+		public  NCondition.Cdt condition;
 		
 		public Behaviour(){
-			condition = new Condition (null);
+			condition = new Cdt (null);
 		}
 		public Behaviour(Entity entity){
-			condition = new Condition (entity);
+			condition = new Cdt (entity);
 		}
 		//  1 success
 		// -1 fail
@@ -28,9 +28,9 @@ namespace NBehaviour{
 			//UnityEngine.Debug.Log("returning " +result);
 			if (result == 1 && bhvSuccess != null) {
 				return bhvSuccess;
-			} else if (result == -1&& bhvFail != null) {
+			} else if (result == -1 && bhvFail != null) {
 				return bhvFail;
-			} else if (result == -2&& bhvParent != null) {
+			} else if (result == -2 && bhvParent != null) {
 				return bhvParent;
 			}
 			return null;

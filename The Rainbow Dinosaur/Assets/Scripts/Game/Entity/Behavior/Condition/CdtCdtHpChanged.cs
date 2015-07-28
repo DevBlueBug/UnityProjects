@@ -1,10 +1,10 @@
 using System;
 namespace NBehaviour.NCondition
 {
-	public class HpChanged :Condition
+	public class CdtCdtHpChanged :Cdt
 	{
 		float hpBefore;
-		public HpChanged (Entity entity):base(entity)
+		public CdtCdtHpChanged (Entity entity):base(entity)
 		{
 			hpBefore = entity.hp;
 		}

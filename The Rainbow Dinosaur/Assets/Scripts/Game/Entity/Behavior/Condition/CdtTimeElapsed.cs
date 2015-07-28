@@ -1,10 +1,10 @@
 using System;
 namespace NBehaviour.NCondition
 {
-	public class TimeElapsed :Condition
+	public class CdtTimeElapsed :Cdt
 	{
 		float timeMax,timeElapsed;
-		public TimeElapsed (Entity entity, float timeMax):base(entity)
+		public CdtTimeElapsed (Entity entity, float timeMax):base(entity)
 		{
 			this.timeMax = timeMax;
 		}

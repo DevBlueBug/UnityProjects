@@ -9,7 +9,7 @@ namespace NBehaviour
 		Vector3? destination = null;
 
 		public BhvFollowPlayer(Entity Entity):base(Entity){
-			timer = new Utility.EasyTimer (0, .51f);
+			timer = new Utility.EasyTimer (0, .50f);
 		}
 
 		public override int Process (Entity entity, Room room)
@@ -20,8 +20,9 @@ namespace NBehaviour
 				UpdateDestinations(entity,room);
 			}
 			if (destination == null) return -1;
-			//Debug.Log ("DESTINATION GIVEN AT " + destination);
-			var dir = destination.Value - entity.transform.localPosition;
+			var dir = destination.Value - new Vector3(entity.transform.localPosition.x,entity.transform.localPosition.y,0);
+			//Debug.Log ("DESTINATION GIVEN AT " + destination + " to " + entity.transform.localPosition 
+			//           + " AND MAGNITUDE WOULD BE " + dir.magnitude);
 			entityMove.SetVelocity (dir.normalized * entityMove.velo	);
 
 			if ( dir.sqrMagnitude < .05f) {

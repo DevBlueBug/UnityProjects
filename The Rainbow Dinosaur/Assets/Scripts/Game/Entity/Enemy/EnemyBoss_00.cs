@@ -13,7 +13,7 @@ public class EnemyBoss_00 : Enemy
 	{
 		base.Awake ();
 		var follow = new BhvFollowPlayer (this);
-		var hpChanged = new HpChanged_Threshold (this, hpThreshold);
+		var hpChanged = new CdtHpChanged_Threshold (this, hpThreshold);
 		var followThenShoot = new BhvFollowPlayer (this);
 		followThenShoot.others.Add (new BhvFireAtPlayer (this, fireRate));
 

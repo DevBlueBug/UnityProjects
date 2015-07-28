@@ -55,17 +55,32 @@ public class Entity : MonoBehaviour
 	public virtual void KUpdate (Room room)
 	{
 		for(int i = 0;  i < bhvs.Count;i++){
+			UpdateBHV(room, i);
+			/**
 			var currentBhv = bhvs[i].Update(this,room);
-			if(currentBhv != null) bhvs[i] = currentBhv;
+			if(currentBhv != null) {
+				bhvs[i] = currentBhv;
+			}
 			if(!bhvs[i].isAlive){
 				bhvs.RemoveAt(i);
 				continue;
 			}
+			**/
 		}
 		inventory.KUpdate (this, room);
 		this.transform.position = new Vector3 (transform.position.x,transform.position.y,transform.position.y);
 		E_Updated (this, room);
-	
+	}
+	void UpdateBHV(Room room, int i){
+		var currentBhv = bhvs[i].Update(this,room);
+		if(currentBhv != null) {
+			bhvs[i] = currentBhv;
+			UpdateBHV(room,i);
+		}
+		if(!bhvs[i].isAlive){
+			bhvs.RemoveAt(i);
+			return;
+		}
 	}
 	
 	public NItem.Inventory GetInventory(){

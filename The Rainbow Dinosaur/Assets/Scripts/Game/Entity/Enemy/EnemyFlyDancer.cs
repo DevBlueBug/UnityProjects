@@ -11,7 +11,7 @@ public class EnemyFlyDancer : Enemy
 		base.Awake ();
 		var bhvFollow = new BhvFollowPlayerFly(this);
 		var bhvRunInCircle = new BhvRunInCircle (this, .3f, 1);
-		bhvRunInCircle.condition = new HpChanged (this);
+		bhvRunInCircle.condition = new CdtCdtHpChanged (this);
 		bhvRunInCircle.bhvSuccess = bhvFollow;
 		bhvRunInCircle.bhvFail = bhvFollow;
 		bhvs.Add (bhvRunInCircle);

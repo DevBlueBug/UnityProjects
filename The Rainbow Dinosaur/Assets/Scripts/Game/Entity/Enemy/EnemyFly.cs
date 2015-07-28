@@ -22,7 +22,7 @@ public class EnemyFly : Enemy
 		base.Awake ();
 		var bhvFollow = new BhvFollowPlayerFlyWave(this,1/this.velo,.5f);
 		var bhvRunInCircle = new BhvRunInCircle (this, .1f,  .3f * this.velo);
-		bhvRunInCircle.condition = new HpChanged (this);
+		bhvRunInCircle.condition = new CdtCdtHpChanged (this);
 		bhvRunInCircle.bhvSuccess = bhvFollow;
 		bhvRunInCircle.bhvFail = bhvFollow;
 		bhvs.Add (bhvRunInCircle);

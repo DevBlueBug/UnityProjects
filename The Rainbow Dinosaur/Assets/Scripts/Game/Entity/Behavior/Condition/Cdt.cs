@@ -2,14 +2,14 @@
 using System;
 namespace NBehaviour.NCondition
 {
-	public class Condition
+	public class Cdt
 	{
 		internal bool isOr = false; //if isOr give second chance to the next condition;
-		public Condition conditionNext;
-		public Condition (Entity entity)
+		public Cdt conditionNext;
+		public Cdt (Entity entity)
 		{
 		}
-		public Condition SetOr(Condition condition){
+		public Cdt SetOr(Cdt condition){
 			isOr = true;
 			conditionNext = condition;
 			return this;
