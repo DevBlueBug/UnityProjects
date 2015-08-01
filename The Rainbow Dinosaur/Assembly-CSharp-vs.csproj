@@ -76,10 +76,14 @@
      <Compile Include="Assets\Scripts\Game\Entity\Behavior\BhvFollowPlayerFlyWave.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Behavior\BhvOnContact.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Behavior\BhvRunInCircle.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Behavior\BhvWait.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Behavior\Condition\Cdt.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Behavior\Condition\CdtBhvResult.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Behavior\Condition\CdtCdtHpChanged.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Behavior\Condition\CdtCustomize.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Behavior\Condition\CdtHpChanged_Threshold.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Behavior\Condition\CdtPathToPlayerAvailable.cs" />
+     <Compile Include="Assets\Scripts\Game\Entity\Behavior\Condition\CdtPreDefined.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\Behavior\Condition\CdtTimeElapsed.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\EBullet.cs" />
      <Compile Include="Assets\Scripts\Game\Entity\EDoor.cs" />

@@ -16,7 +16,7 @@ public class EnemyFlyAvoid : Enemy
 		bhvRunInCircle.bhvSuccess = bhvFollow;
 		bhvRunInCircle.bhvFail = bhvFollow;
 		bhvs.Add (bhvRunInCircle);
-		bhvs.Add( new BhvAvoidBulletsForce(this,3.0f,50));
+		bhvs.Add( new BhvAvoidBulletsForce(this,3.0f,this.velo*2));
 	}
 }
 
