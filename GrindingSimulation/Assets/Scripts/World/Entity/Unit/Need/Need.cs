@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-namespace NWorld.NUnit.NNeed{
+namespace NWorld.NEntity.NUnit.NNeed{
 	
 	public class Need
 	{
@@ -9,6 +9,9 @@ namespace NWorld.NUnit.NNeed{
 		public Need(float currentPoint, float pointMax){
 			this.point = currentPoint;
 			this.pointMax = pointMax;
+		}
+		public virtual void Init(Entity entity){
+
 		}
 		public virtual void Update(World world, Unit entity){
 		}

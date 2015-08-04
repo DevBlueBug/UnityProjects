@@ -2,15 +2,15 @@ using UnityEngine;
 using System.Collections.Generic;
 
 
-namespace NWorld.NUnit.NOrder {
+namespace NWorld.NEntity.NUnit.NOrder {
 	
 	public class Order
 	{
 		public enum State{Processing, Success,Failure};
 		public delegate void D_UpdateMethod(World world,Unit unit);
 		D_UpdateMethod E_UpdateMethod;
-		                            
 		public State stateMe = State.Processing;
+
 		public Order(World world, Entity entity){
 			E_UpdateMethod = UpdateInit;
 

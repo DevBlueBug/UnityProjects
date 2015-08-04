@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 
-namespace NWorld.NUnit.NOrder {
+namespace NWorld.NEntity.NUnit.NOrder {
 	
 	public class Move : Order
 	{

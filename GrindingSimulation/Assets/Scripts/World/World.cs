@@ -1,18 +1,21 @@
 using UnityEngine;
 using System.Collections.Generic;
+using NWorld.NEntity.NNPC.NMerchant;
+
 namespace NWorld{
 	
 	public class World
 	{
-		public delegate void D_UnitAdded(World world, NUnit.Unit unit);
+		public delegate void D_UnitAdded(World world, NEntity.NUnit.Unit unit);
 		public D_UnitAdded E_UnitAdded = delegate {	};
 		public AStar.KMap mapAStar;
 
 		int width, height;
 		public Tile[,] tiles;
-
-		List<NWorld.NUnit.Unit> units = new List<NWorld.NUnit.Unit>();
-		List<NTreasure.Treasure> treasures = new List<NWorld.NTreasure.Treasure>();
+		
+		List<NWorld.NEntity.NUnit.Unit> units = new List<NWorld.NEntity.NUnit.Unit>();
+		List<Merchant> merchants = new List<Merchant>();
+		List<NEntity.NTreasure.Treasure> treasures = new List<NWorld.NEntity.NTreasure.Treasure>();
 		List<NTask.Task> jobs = new List<NWorld.NTask.Task>();
 
 
@@ -28,12 +31,15 @@ namespace NWorld{
 
 			
 		}
-		public void AddUnit(NUnit.Unit unit){
+		public void AddUnit(NEntity.NUnit.Unit unit){
 			units.Add (unit);
 			E_UnitAdded (this,unit);
 
 		}
-		public void AddTreasure(NTreasure.Treasure treasure){
+		public void AddMerchant(Merchant merchant){
+
+		}
+		public void AddTreasure(NEntity.NTreasure.Treasure treasure){
 			treasures.Add (treasure);
 		}
 
@@ -42,23 +48,20 @@ namespace NWorld{
 				units[i].Update(this);
 			}
 		}
-		//return tasks required to fulfill the need
-		//Unit will select one of them 
-		public List<NTask.Task> RequestNeed(KEnums.TypeNeed type){
-			List<NTask.Task> tasks = new List<NWorld.NTask.Task> ();
-			if(type == KEnums.TypeNeed.Treasure){
-				GetTreasureTasks(ref tasks);
-			}
-			return tasks;
 
-		}
-		public void GetTreasureTasks(ref List<NTask.Task> tasks){
+		public void GetTask_Treasure(ref List<NTask.Task> tasks){
 			foreach (var treasure in treasures) {
 				var task = new NTask.TreasureHunt(treasure);
 				tasks.Add(task);
 			}
+		}
+		public void GetTask_EquipmentAcquisition(ref List<NTask.Task> tasks, KEnums.TypeItem typeItem,KEnums.TypeItemEquip equip){
 
+			foreach (var merchant in this.merchants) {
 
+				//var task = new NTask.MerchantPurchase();
+				//tasks.Add(task);
+			}
 		}
 	}
 	

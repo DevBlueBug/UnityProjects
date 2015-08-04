@@ -2,17 +2,21 @@ using UnityEngine;
 using System.Collections.Generic;
 
 
-namespace NWorld.NUnit{
+namespace NWorld.NEntity.NUnit{
 	
 	public class Unit : Entity
 	{
 
-		NTask.Task taskCurrent;
-		List<NNeed.Need> needs = new List<NWorld.NUnit.NNeed.Need> ();
-		Queue<NOrder.Order> orders = new Queue<NWorld.NUnit.NOrder.Order>();
-		List<NSkill.Skill> skills = new List<NWorld.NUnit.NSkill.Skill>();
+		internal EquipmentSlots equipments = new EquipmentSlots();
+		internal Stats statsAfter = new Stats();
+
+		NTask.Task taskCurrent = null;
+		List<NNeed.Need> needs = new List<NNeed.Need> ();
+		Queue<NOrder.Order> orders = new Queue<NOrder.Order>();
+		List<NSkill.Skill> skills = new List<NSkill.Skill>();
 
 		public Unit(int x, int y):base(x,y){
+			EntityRequestHandler.LinkBasic (this);
 
 		}
 
@@ -34,10 +38,13 @@ namespace NWorld.NUnit{
 			} else {
 				var order = orders.Peek();
 				order.Update(world,this);
-				if(order.stateMe == NWorld.NUnit.NOrder.Order.State.Success){
+				if(order.stateMe == NWorld.NEntity.NUnit.NOrder.Order.State.Success){
 					orders.Dequeue();
-				}else if(order.stateMe == NWorld.NUnit.NOrder.Order.State.Failure) {
+				}else if(order.stateMe == NWorld.NEntity.NUnit.NOrder.Order.State.Failure) {
 					orders.Clear();
+				}
+				else{
+					Debug.Log(order + " " +order.stateMe);
 				}
 
 			}
@@ -62,6 +69,7 @@ namespace NWorld.NUnit{
 		public void AddSkill(NSkill.Skill skill){
 		}
 		public void AddNeed(NNeed.Need need){
+			need.Init (this);
 			this.needs.Add (need);
 		}
 		public bool SetTask(World world,NTask.Task task){

@@ -7,9 +7,9 @@ namespace NWorld{
 
 		bool isOccupied = false;
 
-		void IsAvailable(Entity requesting){
+		void IsAvailable(NEntity.Entity requesting){
 		}
-		public int GetTurnRequiredToGetHere(Entity entity){
+		public int GetTurnRequiredToGetHere(NEntity.Entity entity){
 			if (isOccupied) return -1;
 			return 1; // cannot get here
 		}

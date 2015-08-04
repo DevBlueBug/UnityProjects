@@ -9,11 +9,11 @@ namespace NWorld.NTask{
 		public List<KEnums.TypeSkill> skillsNeeded = new List<KEnums.TypeSkill>();
 
 		
-		public virtual void Init(World world, NWorld.NUnit.Unit unit){
+		public virtual void Init(World world, NWorld.NEntity.NUnit.Unit unit){
 			
 		}
 		
-		public virtual void Update(World world, NWorld.NUnit.Unit unit){
+		public virtual void Update(World world, NWorld.NEntity.NUnit.Unit unit){
 			
 		}
 

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 
 public class RenderManager : MonoBehaviour
 {
-	public Main main;
 	public RenderEntity P_RenderEntity;
+	public RenderUnit P_RenderUnit;
+	public Main main;
+	public NUI.UIManager UI;
 
 	public List<RenderEntity> renderEntities;
 	void Awake(){
@@ -28,9 +30,10 @@ public class RenderManager : MonoBehaviour
 		world.E_UnitAdded += H_NewUnit;
 
 	}
-	void H_NewUnit(NWorld.World world, NWorld.NUnit.Unit unit){
-		var r = Instantiate (P_RenderEntity).Init (unit);
+	void H_NewUnit(NWorld.World world, NWorld.NEntity.NUnit.Unit unit){
+		var r = Instantiate (P_RenderUnit).Init (unit);
 		r.transform.parent = this.transform;
+		UI.Link (r);
 		renderEntities.Add(r);
 	}
 }

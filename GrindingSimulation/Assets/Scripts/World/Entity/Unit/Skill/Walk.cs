@@ -2,11 +2,11 @@ using UnityEngine;
 using System.Collections.Generic;
 
 
-namespace NWorld.NUnit.NSkill {
+namespace NWorld.NEntity.NUnit.NSkill {
 	
 	public class Walk:Skill
 	{
-		public KEnums.TypeSkill type;
+
 	}
 	
 }

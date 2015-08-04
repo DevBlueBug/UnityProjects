@@ -5,6 +5,11 @@ namespace NWorld.NItem{
 	
 	public class Inventory
 	{
+		public delegate void D_MeItem(Inventory me, Item item);
+		public D_MeItem 
+		E_ItemAdded = delegate {	},
+		E_ItemRemoved = delegate {	};
+
 		List<Item> items = new List<Item>();
 		public Item this[int n]{
 			get{
@@ -12,21 +17,28 @@ namespace NWorld.NItem{
 			}
 		}
 		public int Count{get { return items.Count; }}
-		public bool Add(Item item){
+		public int Add(Item item){
+			// 1 added fully
+			// 2 Added partially
+			// -1 cannot add
+
 			//could not be added if my inventry is full or something
 
 			if (item.isStackable) {
 				for(int i = 0 ; i < items.Count;i++){
-					if(items[i].isStackable &&  items[i].type == item.type){ 
+					if(items[i].isStackable &&  items[i].IsSame(item) ){ 
 						items[i].Count += item.Count;
-						return true;
+						E_ItemAdded(this,item);
+						return 1;
 					}
 				}
 			}
 			items.Add(item);
-			return true;
+			E_ItemAdded (this,item);
+			return 1;
 		}
 		public void Remove(int n ){
+			E_ItemRemoved (this, items [n]);
 			items.RemoveAt (n);
 		}
 		

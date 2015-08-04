@@ -5,7 +5,6 @@ namespace NWorld{
 	
 	public class District
 	{
-		public List<Entity> entities;
 
 
 	}
