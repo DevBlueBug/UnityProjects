@@ -6,6 +6,8 @@ namespace NWorld.NEntity.NUnit{
 	
 	public class Unit : Entity
 	{
+		//public delegate void D_MeEquipNewItem(Unit me, NItem.NEquip.Equipment equipOld,NItem.NEquip.Equipment equipNew );
+		//internal D_MeEquipNewItem E_EquipNewItem = delegate {	};
 
 		internal EquipmentSlots equipments = new EquipmentSlots();
 		internal Stats statsAfter = new Stats();
@@ -17,6 +19,7 @@ namespace NWorld.NEntity.NUnit{
 
 		public Unit(int x, int y):base(x,y){
 			EntityRequestHandler.LinkBasic (this);
+			//this.E_InventoryItemNew += H_NewItem;
 
 		}
 

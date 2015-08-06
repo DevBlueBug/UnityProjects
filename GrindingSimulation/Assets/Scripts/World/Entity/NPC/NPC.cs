@@ -7,7 +7,9 @@ namespace NWorld.NEntity.NNPC{
 	{
 
 		List<KEnums.TypeTask> taskHandled =new List<KEnums.TypeTask>();
-
+		public virtual NTask.Task GetTask_GiveMe(Entity entity, NItem.ItemChecker check){
+			return null;
+		}
 	}
 	
 

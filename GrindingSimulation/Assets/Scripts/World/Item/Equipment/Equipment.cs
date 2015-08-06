@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-namespace NWorld.NItem{
+namespace NWorld.NItem.NEquip{
 
 	public class Equipment : Item
 	{
@@ -12,6 +12,10 @@ namespace NWorld.NItem{
 		public void Link(NEntity.Entity entity){
 		}
 		public void UnLink(NEntity.Entity entity){
+		}
+		public override float GetValue ()
+		{
+			return base.GetValue () + this.stats.GetTotalStats();
 		}
 	}
 

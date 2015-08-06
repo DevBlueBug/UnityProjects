@@ -14,6 +14,7 @@ namespace NWorld.NTask{
 
 		public TreasureHunt(NEntity.NTreasure.Treasure treasure){
 			this.treasure = treasure;
+			this.type = KEnums.TypeTask.TreasureHunt;
 			//skillsNeeded.Add (KEnums.TypeSkill.Walk);
 			//skillsNeeded.Add (KEnums.TypeSkill.Get);
 		}

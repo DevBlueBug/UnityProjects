@@ -61,8 +61,9 @@
      <Compile Include="Assets\Scripts\World\Entity\EntityRequestDelegates.cs" />
      <Compile Include="Assets\Scripts\World\Entity\EntityRequestHandler.cs" />
      <Compile Include="Assets\Scripts\World\Entity\NPC\Merchant.cs" />
+     <Compile Include="Assets\Scripts\World\Entity\NPC\NMerchant\SaleList.cs" />
      <Compile Include="Assets\Scripts\World\Entity\NPC\NPC.cs" />
-     <Compile Include="Assets\Scripts\World\Entity\NPC\SaleList.cs" />
+     <Compile Include="Assets\Scripts\World\Entity\NPC\NPC_Job.cs" />
      <Compile Include="Assets\Scripts\World\Entity\RequestItem_Condition.cs" />
      <Compile Include="Assets\Scripts\World\Entity\Treasure\Treasure.cs" />
      <Compile Include="Assets\Scripts\World\Entity\Unit\EquipmentSlots.cs" />
@@ -72,6 +73,7 @@
      <Compile Include="Assets\Scripts\World\Entity\Unit\Order\Move.cs" />
      <Compile Include="Assets\Scripts\World\Entity\Unit\Order\Order.cs" />
      <Compile Include="Assets\Scripts\World\Entity\Unit\Order\Request_GiveMe.cs" />
+     <Compile Include="Assets\Scripts\World\Entity\Unit\Order\Request_SellMe.cs" />
      <Compile Include="Assets\Scripts\World\Entity\Unit\Skill\Get.cs" />
      <Compile Include="Assets\Scripts\World\Entity\Unit\Skill\Skill.cs" />
      <Compile Include="Assets\Scripts\World\Entity\Unit\Skill\Walk.cs" />
@@ -80,8 +82,10 @@
      <Compile Include="Assets\Scripts\World\Item\Equipment\EquipmentCheck.cs" />
      <Compile Include="Assets\Scripts\World\Item\Inventory.cs" />
      <Compile Include="Assets\Scripts\World\Item\Item.cs" />
-     <Compile Include="Assets\Scripts\World\Item\ItemChecker.cs" />
      <Compile Include="Assets\Scripts\World\Item\Property\Property.cs" />
+     <Compile Include="Assets\Scripts\World\Item\_ETC\ItemChecker.cs" />
+     <Compile Include="Assets\Scripts\World\Item\_ETC\ItemList.cs" />
+     <Compile Include="Assets\Scripts\World\Item\_ETC\Price.cs" />
      <Compile Include="Assets\Scripts\World\Stats.cs" />
      <Compile Include="Assets\Scripts\World\Task\MerchantPurchase.cs" />
      <Compile Include="Assets\Scripts\World\Task\Task.cs" />

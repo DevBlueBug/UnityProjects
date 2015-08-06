@@ -16,6 +16,7 @@ namespace NWorld.NEntity.NUnit.NOrder {
 
 		}
 		public virtual bool Init(World world, Unit unit){
+			//called when added to the Entity
 			return true;
 		}
 		public void Update(World world, Unit unit){

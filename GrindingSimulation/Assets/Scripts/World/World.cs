@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-using NWorld.NEntity.NNPC.NMerchant;
+using NWorld.NEntity.NNPC;
 
 namespace NWorld{
 	
@@ -37,6 +37,7 @@ namespace NWorld{
 
 		}
 		public void AddMerchant(Merchant merchant){
+			merchants.Add (merchant);
 
 		}
 		public void AddTreasure(NEntity.NTreasure.Treasure treasure){
@@ -49,18 +50,23 @@ namespace NWorld{
 			}
 		}
 
-		public void GetTask_Treasure(ref List<NTask.Task> tasks){
+		public void GetTask_Treasure(NWorld.NEntity.Entity entity, ref List<NTask.Task> tasks){
 			foreach (var treasure in treasures) {
 				var task = new NTask.TreasureHunt(treasure);
 				tasks.Add(task);
 			}
 		}
-		public void GetTask_EquipmentAcquisition(ref List<NTask.Task> tasks, KEnums.TypeItem typeItem,KEnums.TypeItemEquip equip){
-
+		public void GetTask_EquipmentAcquisition(NWorld.NEntity.Entity entity, ref List<NTask.Task> tasks, NItem.NEquip.EquipmentCheck check){
+			//Debug.Log ("Check  : " + check.typeItem.Count+ " " + check.typeEquip.Count + " " +  check.typeItem[0] + " "  + check.typeEquip[0] );
 			foreach (var merchant in this.merchants) {
+				var task = merchant.GetTask_GiveMe(entity, check);
+				if(task != null){
+					tasks.Add(task);
+					//Debug.Log("Success " + tasks.Count);
+				}
+				//else Debug.Log("Fail");
 
-				//var task = new NTask.MerchantPurchase();
-				//tasks.Add(task);
+
 			}
 		}
 	}

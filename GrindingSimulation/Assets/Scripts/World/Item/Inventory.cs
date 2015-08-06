@@ -37,6 +37,11 @@ namespace NWorld.NItem{
 			E_ItemAdded (this,item);
 			return 1;
 		}
+		public void Update(){
+			for(int i = items.Count-1 ; i > -1;i--){
+				if(items[i].Count <=0) Remove(i);
+			}
+		}
 		public void Remove(int n ){
 			E_ItemRemoved (this, items [n]);
 			items.RemoveAt (n);

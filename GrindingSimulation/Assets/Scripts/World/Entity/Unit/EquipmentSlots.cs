@@ -7,10 +7,53 @@ namespace NWorld.NEntity.NUnit{
 	public class EquipmentSlots
 	{
 		public class Slot{
-			internal KEnums.TypeSlot type = KEnums.TypeSlot.Head;
-			internal NItem.Equipment item = null;
+			KEnums.TypeSlot type = KEnums.TypeSlot.Head;
+			internal KEnums.TypeItemEquip typeEquip;
+			internal NItem.NEquip.Equipment item = null;
 			public Slot(KEnums.TypeSlot type){
-				this.type = type;
+				//this.type = type;
+				SetType(type);
+			}
+			public Slot SetType(KEnums.TypeSlot typeSlot){
+				this.type = typeSlot;
+				switch (typeSlot) {
+				case KEnums.TypeSlot.Arms:
+					this.typeEquip= KEnums.TypeItemEquip.Arms;
+					break;
+				case KEnums.TypeSlot.Chest:
+					this.typeEquip= KEnums.TypeItemEquip.Chest;
+					break;
+				case KEnums.TypeSlot.Feet:
+					this.typeEquip= KEnums.TypeItemEquip.Feet;
+					break;
+				case KEnums.TypeSlot.Hands:
+					this.typeEquip= KEnums.TypeItemEquip.Hands;
+					break;
+				case KEnums.TypeSlot.Head:
+					this.typeEquip= KEnums.TypeItemEquip.Head;
+					break;
+				case KEnums.TypeSlot.Legs:
+					this.typeEquip= KEnums.TypeItemEquip.Legs;
+					break;
+				case KEnums.TypeSlot.Neck:
+					this.typeEquip= KEnums.TypeItemEquip.Neck;
+					break;
+				case KEnums.TypeSlot.RingL:
+				case KEnums.TypeSlot.RingR:
+					this.typeEquip= KEnums.TypeItemEquip.Rings;
+					break;
+				case KEnums.TypeSlot.Shoulders:
+					this.typeEquip= KEnums.TypeItemEquip.Shoulders;
+					break;
+				case KEnums.TypeSlot.Waist:
+					this.typeEquip= KEnums.TypeItemEquip.Waist;
+					break;
+				case KEnums.TypeSlot.WeaponL:
+				case KEnums.TypeSlot.WeaponR:
+					this.typeEquip= KEnums.TypeItemEquip.Weapon;
+					break;
+				}
+				return this;
 			}
 
 		}
@@ -44,6 +87,11 @@ namespace NWorld.NEntity.NUnit{
 			case 10: return arms;
 			case 11: return weaponL;
 			case 12: return weaponR;
+			}
+		}
+		public Slot this[KEnums.TypeSlot type]{
+			get{
+				return Get(type);
 			}
 		}
 		public Slot Get(KEnums.TypeSlot type ){

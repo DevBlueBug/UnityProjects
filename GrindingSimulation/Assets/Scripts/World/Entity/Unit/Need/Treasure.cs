@@ -33,7 +33,7 @@ namespace NWorld.NEntity.NUnit.NNeed{
 			Debug.Log ("UpdateAction Treasure");
 			entity.Debug_Text ("I want to find some treasure!");
 			var tasks = new List<NTask.Task>();
-			world.GetTask_Treasure(ref tasks);
+			world.GetTask_Treasure(entity, ref tasks);
 
 			float treasureNeededAmount = this.point * treasurePerPoint;
 			

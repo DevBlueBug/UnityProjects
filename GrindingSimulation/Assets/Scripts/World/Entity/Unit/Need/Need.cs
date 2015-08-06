@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace NWorld.NEntity.NUnit.NNeed{
 	
@@ -17,6 +17,22 @@ namespace NWorld.NEntity.NUnit.NNeed{
 		}
 		
 		public virtual void UpdateAction(World world, Unit entity){
+		}
+		
+		NTask.Task GetBestTask(List<NTask.Task> tasks){
+			if (tasks == null || tasks.Count == 0)
+				return null;
+			NTask.Task taskSeleced = null;
+			float weight = -1;
+			for (int i = 0; i < tasks.Count; i++) {
+				var t= tasks[i];
+				var w = tasks[i].GetWeight();
+				if( w > weight){
+					taskSeleced = tasks[i];
+					weight = w;
+				}
+			}
+			return taskSeleced;
 		}
 
 	}

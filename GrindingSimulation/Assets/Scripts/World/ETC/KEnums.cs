@@ -4,7 +4,7 @@ using System.Collections;
 namespace NWorld{
 	public class KEnums
 	{
-		public enum IdItem{Jewerly_Red};
+		public enum IdItem{Jewerly_Red,Jewerly_Green,Jewerly_Blue};
 		public enum TypeItem{Treasure,Equipment};
 		public enum TypeStats{Strength,Vitality,Intelligence,Dexterity};
 
@@ -17,6 +17,8 @@ namespace NWorld{
 		public enum TypeNeed{Treasure,Gear};
 		public enum TypeTask{
 			TreasureHunt,
+			BuyFromMerchant,
+
 			NewGear_Head,
 			NewGear_Shoulders,
 			NewGear_Neck,

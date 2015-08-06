@@ -16,6 +16,10 @@ namespace NWorld.NTask{
 		public virtual void Update(World world, NWorld.NEntity.NUnit.Unit unit){
 			
 		}
+		public virtual float GetWeight(){
+			return 0;
+			//weight in terms of how heavy the task will be
+		}
 
 	}
 	

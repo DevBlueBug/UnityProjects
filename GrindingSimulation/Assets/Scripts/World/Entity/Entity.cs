@@ -34,18 +34,22 @@ namespace NWorld.NEntity{
 		internal EntityRequestDelegates.PayMe E_ReceiveRequestPayMe = delegate {return false;};
 		internal EntityRequestDelegates.TakeIt E_ReceiveRequestTakeIt = delegate {return false;};
 		internal EntityRequestDelegates.ShowMe E_ReceiveRequestShowMe = delegate {return false;};
+		internal EntityRequestDelegates.SellMe E_ReceiveRequestSellMe = delegate {return false;};
 		
 		public bool RequestGiveMe(Entity entity, params int[] arguments){
 			return E_ReceiveRequestGiveMe (this, entity, arguments);
 		}
-		public bool RequestPayMe(Entity entity, params int[] arguments){
-			return E_ReceiveRequestPayMe (this, entity, arguments);
+		public bool RequestPayMe(Entity entity, NItem.Price price){
+			return E_ReceiveRequestPayMe (this, entity, price);
 		}
 		public bool RequestTakeIt(Entity entity, params int[] arguments){
 			return E_ReceiveRequestTakeIt (this, entity, arguments);
 		}
 		public bool RequestShowMe(Entity entity, params int[] arguments){
 			return E_ReceiveRequestShowMe (this, entity, arguments);
+		}
+		public bool RequestSellMe(Entity entity, NItem.ItemChecker check){
+			return E_ReceiveRequestSellMe (this, entity, check);
 		}
 
 		internal D_MeInventoryItem E_InventoryItemNew = delegate {	};
