@@ -9,7 +9,7 @@ namespace NWorld{
 		public enum TypeStats{Strength,Vitality,Intelligence,Dexterity};
 
 		public enum TypeItemEquip{UnEquippable, Head,Shoulders,Neck,Chest,Waist,Legs,Feet,Hands,Rings,Arms,Weapon };
-		public enum TypeSlot{Head,Shoulders,Neck,Chest,Waist,Legs,Feet,Hands,RingL,RingR,Arms,WeaponL,WeaponR};
+		public enum TypeSlot{Undefined,Head,Shoulders,Neck,Chest,Waist,Legs,Feet,Hands,RingL,RingR,Arms,WeaponL,WeaponR};
 		//head, shoulders, neck, chest, waist, legs, feet, hands, rings, arms,
 		//weaponL, weaponR;
 		

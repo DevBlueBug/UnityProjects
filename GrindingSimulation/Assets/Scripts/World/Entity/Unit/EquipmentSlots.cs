@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-
+using NWorld.NItem.NEquip;
 
 namespace NWorld.NEntity.NUnit{
 	
@@ -71,6 +71,17 @@ namespace NWorld.NEntity.NUnit{
 			arms=new Slot(KEnums.TypeSlot.Head),
 			weaponL=new Slot(KEnums.TypeSlot.WeaponL), 
 			weaponR=new Slot(KEnums.TypeSlot.WeaponR);
+
+		
+		public bool Equip(KEnums.TypeSlot slotType, Equipment equipped, ref Equipment equippedOut){
+			if(equipped.typeEquip == KEnums.TypeItemEquip.UnEquippable)
+				return false;
+			equippedOut = this[slotType].item;
+			this [slotType].item = equipped;
+			return true;
+		}
+
+
 		public Slot Get(int n){
 			switch (n) {
 			default: return null;

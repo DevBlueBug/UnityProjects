@@ -4,19 +4,14 @@ using System.Collections.Generic;
 namespace NUI{
 	public class UIManager : MonoBehaviour
 	{
-		public GameObject cam;
 		public UIDescription uiDesc;
 		public UIItemsEquipped uiEquip;
+		
+		public List<UI_Icon> iconsMenuTile; //
+		public List<UI_Icon> iconsMenuEntities; //
 
 
 
-		Dictionary<KeyCode, Vector2> dirCam = new Dictionary<KeyCode, Vector2>(){
-			{KeyCode.W, Vector3.up},
-			{KeyCode.S, Vector3.down},
-			{KeyCode.A, Vector3.left},
-			{KeyCode.D, Vector3.right}
-		};
-		// Use this for initialization
 		void Awake ()
 		{
 			uiEquip.E_DisplayDescription += H_Equip_DisplayDescription;
@@ -26,12 +21,6 @@ namespace NUI{
 		// Update is called once per frame
 		void Update ()
 		{
-			foreach (var d in dirCam) {
-				if(Input.GetKey(d.Key) ){
-					cam.transform.localPosition += new Vector3(d.Value.x,d.Value.y,0) * 10.0f * Time.deltaTime ;
-				}
-			}
-
 			
 			if (Input.GetKeyDown (KeyCode.X)) {
 				if(uiEquip.IsOn()) {

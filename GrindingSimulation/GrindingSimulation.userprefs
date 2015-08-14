@@ -1,27 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\World\Entity\Unit\Need\Gear.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\UI\UIFootter.cs">
     <Files>
-      <File FileName="Assets\Scripts\World\Item\_ETC\ItemList.cs" Line="20" Column="19" />
-      <File FileName="Assets\Scripts\World\Entity\EntityRequestDelegates.cs" Line="16" Column="2" />
-      <File FileName="Assets\Scripts\World\Entity\Unit\Need\Gear.cs" Line="85" Column="18" />
-      <File FileName="Assets\Scripts\World\Task\Task.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\World\Item\Item.cs" Line="60" Column="46" />
-      <File FileName="Assets\Scripts\World\Item\Equipment\EquipmentCheck.cs" Line="39" Column="29" />
-      <File FileName="Assets\Scripts\World\Item\Equipment\Equipment.cs" Line="22" Column="2" />
-      <File FileName="Assets\Scripts\World\Item\_ETC\Price.cs" Line="18" Column="31" />
-      <File FileName="Assets\Scripts\World\Item\_ETC\ItemChecker.cs" Line="22" Column="16" />
-      <File FileName="Assets\Scripts\World\Entity\Unit\Order\Order.cs" Line="22" Column="28" />
-      <File FileName="Assets\Scripts\World\Entity\Unit\Order\Request_SellMe.cs" Line="19" Column="4" />
-      <File FileName="Assets\Scripts\World\Entity\Unit\Order\Request_GiveMe.cs" Line="16" Column="4" />
-      <File FileName="Assets\Scripts\World\Entity\Unit\Order\Move.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\World\Entity\EntityRequestHandler.cs" Line="94" Column="41" />
-      <File FileName="Assets\Scripts\World\Entity\NPC\Merchant.cs" Line="9" Column="72" />
-      <File FileName="Assets\Scripts\World\Task\MerchantPurchase.cs" Line="38" Column="5" />
-      <File FileName="Assets\Scripts\World\World.cs" Line="65" Column="8" />
-      <File FileName="Assets\Scripts\World\Item\Inventory.cs" Line="28" Column="22" />
-      <File FileName="Assets\Scripts\World\Entity\Unit\Unit.cs" Line="9" Column="5" />
-      <File FileName="Assets\Scripts\World\Entity\Unit\EquipmentSlots.cs" Line="94" Column="6" />
+      <File FileName="Assets\Scripts\UI\UIFootter.cs" Line="16" Column="91" />
+      <File FileName="Assets\Scripts\UI\Icons\UI_IconsSquare.cs" Line="26" Column="39" />
+      <File FileName="Assets\Scripts\UI\UIBase.cs" Line="8" Column="51" />
+      <File FileName="Assets\Scripts\Utility\Extensions\ExtensionsRectTransform.cs" Line="6" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
